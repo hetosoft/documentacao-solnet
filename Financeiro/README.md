@@ -6,7 +6,7 @@ permalink: /Financeiro/
 
 ## 📋 Documentos Disponíveis
 
-### 📊 **[Documentação DRE](Documentacao%20DRE.md)**
+### 📊 **[Documentação DRE](/Financeiro/dre)**
 Guia completo para Demonstração do Resultado do Exercício, incluindo:
 - Conceitos fundamentais do DRE
 - Estruturação do Plano de Contas
@@ -17,7 +17,7 @@ Guia completo para Demonstração do Resultado do Exercício, incluindo:
 - FAQ e solução de problemas
 - Melhores práticas e otimização
 
-### 📄 **[Documentação de Portadores](Documentacao%20Portadores.md)**
+### 📄 **[Documentação de Portadores](financeiro/portador)**
 Manual técnico para gerenciamento de instrumentos de pagamento:
 - Configuração de bancos e boletos
 - Integração PIX e remessa eletrônica
@@ -31,7 +31,7 @@ Manual técnico para gerenciamento de instrumentos de pagamento:
 ## 🎯 Por Onde Começar
 
 ### **👤 Novo no Módulo Financeiro**
-1. Comece com a **[Documentação DRE](Documentacao%20DRE.md)** - seção "O que é DRE"
+1. Comece com a **[Documentação DRE](financeiro/dre)** - seção "O que é DRE"
 2. Entenda a **estrutura do Plano de Contas** no Sol.NET
 3. Configure **Agrupamentos DRE** básicos para sua empresa
 4. Explore **exemplos práticos** do seu segmento
