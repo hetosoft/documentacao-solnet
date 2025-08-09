@@ -1,8 +1,12 @@
+---
+title: "Índice: Documentação Movimentação Sol.NET"
+permalink: /Movimentacao/
+---
 # 📚 Índice: Documentação Movimentação Sol.NET
 
 ## 📋 Documentos Disponíveis
 
-### 📖 **[Documentação Completa](Documentacao%20Movimentacao.md)**
+### 📖 **[Documentação Completa](documentacao/)**
 Guia completo do sistema de movimentação, incluindo:
 - Visão geral do sistema
 - Arquitetura e fluxo de trabalho
@@ -10,7 +14,7 @@ Guia completo do sistema de movimentação, incluindo:
 - Exemplos práticos detalhados
 - Melhores práticas e solução de problemas
 
-### 🚀 **[Guia Rápido](Guia%20Rapido.md)**
+### 🚀 **[Guia Rápido](guia-rapido/)**
 Referência rápida para operação cotidiana:
 - Atalhos de teclado essenciais
 - Checklist para novos movimentos
@@ -18,7 +22,7 @@ Referência rápida para operação cotidiana:
 - Soluções para problemas comuns
 - Configurações básicas de tipos
 
-### ❓ **[FAQ - Perguntas Frequentes](FAQ.md)**
+### ❓ **[FAQ - Perguntas Frequentes](faq/)**
 Respostas para dúvidas comuns organizadas por categoria:
 - Configuração e tipos de movimento
 - Controle financeiro
@@ -34,18 +38,18 @@ Respostas para dúvidas comuns organizadas por categoria:
 ## 🎯 Por Onde Começar
 
 ### **👤 Novo Usuário**
-1. Leia a **[Documentação Completa](Documentacao%20Movimentacao.md)** - seções "Visão Geral" e "Fluxo de Trabalho"
-2. Pratique com o **[Guia Rápido](Guia%20Rapido.md)**
-3. Consulte o **[FAQ](FAQ.md)** para dúvidas específicas
+1. Leia a **[Documentação Completa](documentacao/)** - seções "Visão Geral" e "Fluxo de Trabalho"
+2. Pratique com o **[Guia Rápido](guia-rapido/)**
+3. Consulte o **[FAQ](faq/)** para dúvidas específicas
 
 ### **🔧 Administrador/Configurador**
-1. Foque na seção "Cadastro de Tipos de Movimento" da **[Documentação Completa](Documentacao%20Movimentacao.md)**
+1. Foque na seção "Cadastro de Tipos de Movimento" da **[Documentação Completa](documentacao/)**
 2. Use exemplos práticos para configurar tipos específicos
-3. Consulte "Cenários Específicos" no **[FAQ](FAQ.md)**
+3. Consulte "Cenários Específicos" no **[FAQ](faq/)**
 
 ### **⚡ Usuário Experiente**
-1. Use o **[Guia Rápido](Guia%20Rapido.md)** como referência
-2. Consulte o **[FAQ](FAQ.md)** para situações específicas
+1. Use o **[Guia Rápido](guia-rapido/)** como referência
+2. Consulte o **[FAQ](faq/)** para situações específicas
 3. Contribua com feedback para melhorias na documentação
 
 ---
@@ -53,24 +57,24 @@ Respostas para dúvidas comuns organizadas por categoria:
 ## 🔍 Busca Rápida por Tópico
 
 ### **Configuração**
-- [Cadastro de Tipos de Movimento](Documentacao%20Movimentacao.md#-cadastro-de-tipos-de-movimento---centro-de-controle)
-- [Configuração de Estoque](FAQ.md#-controle-de-estoque)
-- [Configuração Financeira](FAQ.md#-controle-financeiro)
+- [Cadastro de Tipos de Movimento](documentacao/#-cadastro-de-tipos-de-movimento---centro-de-controle)
+- [Configuração de Estoque](faq/#-controle-de-estoque)
+- [Configuração Financeira](faq/#-controle-financeiro)
 
 ### **Operação**
-- [Fluxo de Trabalho](Documentacao%20Movimentacao.md#-fluxo-de-trabalho---passo-a-passo)
-- [Atalhos de Teclado](Guia%20Rapido.md#-atalhos-essenciais)
-- [Checklist Operacional](Guia%20Rapido.md#-checklist-novo-movimento)
+- [Fluxo de Trabalho](documentacao/#-fluxo-de-trabalho---passo-a-passo)
+- [Atalhos de Teclado](guia-rapido/#-atalhos-essenciais)
+- [Checklist Operacional](guia-rapido/#-checklist-novo-movimento)
 
 ### **Problemas**
-- [Solução de Problemas](Documentacao%20Movimentacao.md#-solução-de-problemas-comuns)
-- [Problemas Comuns - Soluções Rápidas](Guia%20Rapido.md#-problemas-comuns---soluções-rápidas)
-- [FAQ Completo](FAQ.md)
+- [Solução de Problemas](documentacao/#-solu%C3%A7%C3%A3o-de-problemas-comuns)
+- [Problemas Comuns - Soluções Rápidas](guia-rapido/#-problemas-comuns---solu%C3%A7%C3%B5es-r%C3%A1pidas)
+- [FAQ Completo](faq/)
 
 ### **Exemplos**
-- [Exemplos Práticos Detalhados](Documentacao%20Movimentacao.md#-exemplos-práticos)
-- [Exemplos Rápidos por Tipo](Guia%20Rapido.md#-exemplos-rápidos-por-tipo)
-- [Cenários Específicos](FAQ.md#-cenários-específicos)
+- [Exemplos Práticos Detalhados](documentacao/#-exemplos-pr%C3%A1ticos)
+- [Exemplos Rápidos por Tipo](guia-rapido/#-exemplos-r%C3%A1pidos-por-tipo)
+- [Cenários Específicos](faq/#-cen%C3%A1rios-espec%C3%ADficos)
 
 ---
 

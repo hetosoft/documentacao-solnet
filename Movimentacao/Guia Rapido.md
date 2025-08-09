@@ -1,3 +1,7 @@
+---
+title: "Guia Rápido: Movimentação Sol.NET"
+permalink: /Movimentacao/guia-rapido/
+---
 # 🚀 Guia Rápido: Movimentação Sol.NET
 
 ## ⌨️ Atalhos Essenciais

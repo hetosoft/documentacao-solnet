@@ -1,5 +1,7 @@
 title: "Documentação Sol.NET"
 description: "Portal de documentação do Sol.NET ERP"
+url: "https://hetosoft.github.io"
+baseurl: "/documentacao-solnet"
 
 # Gera URLs amigáveis (sem .html no final)
 permalink: pretty

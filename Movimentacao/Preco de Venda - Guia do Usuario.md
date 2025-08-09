@@ -1,3 +1,7 @@
+---
+title: "Preço de Venda - Guia do Usuário"
+permalink: /Movimentacao/preco-de-venda-guia/
+---
 # 💰 Preço de Venda na Movimentação - Sol.NET
 
 ## 🎯 Visão Geral

@@ -1,3 +1,7 @@
+---
+title: "Documentação Técnica: Módulo Portadores - Sol.NET ERP"
+permalink: /Financeiro/documentacao-portadores/
+---
 # 📄 Documentação Técnica: Módulo Portadores - Sol.NET ERP
 
 ## 🎯 Visão Geral

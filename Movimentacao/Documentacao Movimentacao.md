@@ -1,3 +1,7 @@
+---
+title: "Documentação: Sistema de Movimentação Sol.NET"
+permalink: /Movimentacao/documentacao/
+---
 # 📋 Documentação: Sistema de Movimentação Sol.NET
 
 ## 🎯 Visão Geral

@@ -1,3 +1,7 @@
+---
+title: "FAQ - Movimentação"
+permalink: /Movimentacao/faq/
+---
 # ❓ FAQ: Sistema de Movimentação Sol.NET
 
 ## 🔧 Configuração e Tipos de Movimento

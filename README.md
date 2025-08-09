@@ -22,7 +22,7 @@ Este é o **portal principal** para toda a documentação do **Sol.NET ERP**, o 
 ### 💰 **[Módulo Financeiro](Financeiro/)**
 Controle completo da gestão financeira da empresa:
 
-#### 📖 **[Documentação de Portadores](Financeiro/Documentacao%20Portadores.md)**
+#### 📖 **[Documentação de Portadores](Financeiro/documentacao-portadores/)**
 - Configuração de bancos e instrumentos de pagamento
 - Boletos, carnês, convênios e integrações PIX  
 - Remessa eletrônica e automação bancária
@@ -33,22 +33,22 @@ Controle completo da gestão financeira da empresa:
 ### 📦 **[Módulo Movimentação](Movimentacao/)**
 Sistema completo de controle de operações comerciais:
 
-#### **📋 [Índice Completo](Movimentacao/README.md)**
+#### **📋 [Índice Completo](Movimentacao/)**
 Portal de navegação para toda documentação de movimentação
 
-#### **📖 [Documentação Completa](Movimentacao/Documentacao%20Movimentacao.md)**
+#### **📖 [Documentação Completa](Movimentacao/documentacao/)**
 - Visão geral e arquitetura do sistema
 - Configuração de tipos de movimento
 - Fluxo de trabalho detalhado
 - Exemplos práticos e melhores práticas
 
-#### **🚀 [Guia Rápido](Movimentacao/Guia%20Rapido.md)**
+#### **🚀 [Guia Rápido](Movimentacao/guia-rapido/)**
 - Atalhos de teclado essenciais
 - Checklist para novos movimentos
 - Soluções rápidas para problemas comuns
 - Configurações básicas
 
-#### **❓ [FAQ - Perguntas Frequentes](Movimentacao/FAQ.md)**
+#### **❓ [FAQ - Perguntas Frequentes](Movimentacao/faq/)**
 - Configuração e tipos de movimento
 - Controle financeiro e de estoque
 - Documentos fiscais e workflows
@@ -89,24 +89,24 @@ Manual completo para gestão de preços de venda
 ### **Por Área de Interesse**
 
 #### **💳 Gestão Financeira**
-- [Configuração de Portadores](Financeiro/Documentacao%20Portadores.md)
-- [Controle Financeiro em Movimentações](Movimentacao/FAQ.md#-controle-financeiro)
-- [Processo de Quitação](Movimentacao/Guia%20Rapido.md#-atalhos-essenciais)
+- [Configuração de Portadores](Financeiro/documentacao-portadores/)
+- [Controle Financeiro em Movimentações](Movimentacao/faq/#-controle-financeiro)
+- [Processo de Quitação](Movimentacao/guia-rapido/#-atalhos-essenciais)
 
 #### **📊 Operações Comerciais**  
-- [Fluxo de Trabalho Completo](Movimentacao/Documentacao%20Movimentacao.md#-fluxo-de-trabalho---passo-a-passo)
-- [Tipos de Movimento](Movimentacao/Documentacao%20Movimentacao.md#-cadastro-de-tipos-de-movimento---centro-de-controle)
-- [Exemplos Práticos](Movimentacao/Documentacao%20Movimentacao.md#-exemplos-práticos)
+- [Fluxo de Trabalho Completo](Movimentacao/documentacao/#-fluxo-de-trabalho---passo-a-passo)
+- [Tipos de Movimento](Movimentacao/documentacao/#-cadastro-de-tipos-de-movimento---centro-de-controle)
+- [Exemplos Práticos](Movimentacao/documentacao/#-exemplos-pr%C3%A1ticos)
 
 #### **⚙️ Configuração e Administração**
-- [Cadastro de Tipos](Movimentacao/README.md#-administradorconfigurador)
-- [Configurações Avançadas](Financeiro/Documentacao%20Portadores.md#-configuração-avançada)
-- [Cenários Específicos](Movimentacao/FAQ.md#-cenários-específicos)
+- [Cadastro de Tipos](Movimentacao/#-administradorconfigurador)
+- [Configurações Avançadas](Financeiro/documentacao-portadores/#-configura%C3%A7%C3%A3o-avan%C3%A7ada)
+- [Cenários Específicos](Movimentacao/faq/#-cen%C3%A1rios-espec%C3%ADficos)
 
 #### **🆘 Suporte e Problemas**
-- [Solução de Problemas](Movimentacao/Documentacao%20Movimentacao.md#-solução-de-problemas-comuns)  
-- [FAQ Completo](Movimentacao/FAQ.md)
-- [Problemas Comuns](Movimentacao/Guia%20Rapido.md#-problemas-comuns---soluções-rápidas)
+- [Solução de Problemas](Movimentacao/documentacao/#-solu%C3%A7%C3%A3o-de-problemas-comuns)  
+- [FAQ Completo](Movimentacao/faq/)
+- [Problemas Comuns](Movimentacao/guia-rapido/#-problemas-comuns---solu%C3%A7%C3%B5es-r%C3%A1pidas)
 
 ---
 
