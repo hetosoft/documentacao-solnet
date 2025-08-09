@@ -112,33 +112,7 @@ Manual completo para gestão de preços de venda
 
 ## 🗺️ Mapa do Sistema
 
-```mermaid
-mindmap
-  root((Sol.NET ERP))
-    Módulo Financeiro
-      Portadores
-        Boletos Bancários
-        Convênios PIX
-        Carnês e Promissórias  
-        Integrações Bancárias
-    Módulo Movimentação
-      Tipos de Movimento
-        Configuração Estoque
-        Configuração Financeira
-        Configuração Fiscal
-        Workflows e Transformações
-      Operação
-        Criação F4
-        Edição F5  
-        Finalização F6
-        Transformação F7
-        Quitação F8
-    Controles Integrados
-      Auditoria e Histórico
-      Relatórios e BI
-      Numeração e Status
-      Multi-empresa
-```
+![](/Assets/SolNET%20Mindmap.svg)
 
 ---
 
