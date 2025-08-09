@@ -6,7 +6,7 @@ permalink: /Financeiro/
 
 ## 📋 Documentos Disponíveis
 
-### 📊 **[Documentação DRE](/Financeiro/dre)**
+### 📊 **[Documentação DRE](Documentacao DRE.md)**
 Guia completo para Demonstração do Resultado do Exercício, incluindo:
 - Conceitos fundamentais do DRE
 - Estruturação do Plano de Contas
@@ -17,7 +17,7 @@ Guia completo para Demonstração do Resultado do Exercício, incluindo:
 - FAQ e solução de problemas
 - Melhores práticas e otimização
 
-### 📄 **[Documentação de Portadores](financeiro/portador)**
+### 📄 **[Documentação de Portadores](Documentacao Portadores.md)**
 Manual técnico para gerenciamento de instrumentos de pagamento:
 - Configuração de bancos e boletos
 - Integração PIX e remessa eletrônica
@@ -31,7 +31,7 @@ Manual técnico para gerenciamento de instrumentos de pagamento:
 ## 🎯 Por Onde Começar
 
 ### **👤 Novo no Módulo Financeiro**
-1. Comece com a **[Documentação DRE](financeiro/dre)** - seção "O que é DRE"
+1. Comece com a **[Documentação DRE](Documentacao DRE.md)** - seção "O que é DRE"
 2. Entenda a **estrutura do Plano de Contas** no Sol.NET
 3. Configure **Agrupamentos DRE** básicos para sua empresa
 4. Explore **exemplos práticos** do seu segmento
@@ -53,51 +53,51 @@ Manual técnico para gerenciamento de instrumentos de pagamento:
 ## 🧭 Navegação Rápida por Funcionalidade
 
 ### **📊 Análises Gerenciais**
-- [DRE por Centro de Custo](Documentacao%20DRE.md#-dre-por-centro-de-custo)
-- [Indicadores de Rentabilidade](Documentacao%20DRE.md#indicadores-calculados)
-- [Análises Comparativas](Documentacao%20DRE.md#-dre-comparativo)
-- [Margem de Lucro por Produto](Documentacao%20DRE.md#p-como-analisar-a-margem-de-lucro-por-produto)
+- [DRE por Centro de Custo](Documentacao DRE.md#-dre-por-centro-de-custo)
+- [Indicadores de Rentabilidade](Documentacao DRE.md#indicadores-calculados)
+- [Análises Comparativas](Documentacao DRE.md#-dre-comparativo)
+- [Margem de Lucro por Produto](Documentacao DRE.md#p-como-analisar-a-margem-de-lucro-por-produto)
 
 ### **⚙️ Configuração e Setup**
-- [Estruturação do Plano de Contas](Documentacao%20DRE.md#-estrutura-hierárquica)
-- [Criação de Agrupamentos DRE](Documentacao%20DRE.md#-configuração-de-agrupamentos)
-- [Configuração de Portadores](Documentacao%20Portadores.md#-estrutura-da-interface-abas-e-funcionalidades)
-- [Integração com Módulos](Documentacao%20DRE.md#-integração-com-módulos-do-solnet)
+- [Estruturação do Plano de Contas](Documentacao DRE.md#-estrutura-hierárquica)
+- [Criação de Agrupamentos DRE](Documentacao DRE.md#-configuração-de-agrupamentos)
+- [Configuração de Portadores](Documentacao Portadores.md#-estrutura-da-interface-abas-e-funcionalidades)
+- [Integração com Módulos](Documentacao DRE.md#-integração-com-módulos-do-solnet)
 
 ### **🔄 Integrações**
-- [Contas a Pagar e Receber](Documentacao%20DRE.md#-contas-a-pagar-e-receber)
-- [Caixa Geral](Documentacao%20DRE.md#-caixa-geral)
-- [Recursos Humanos (RH)](Documentacao%20DRE.md#-recursos-humanos-rh)
-- [Boletos e PIX](Documentacao%20Portadores.md#1-aba-boleto---configurações-bancárias)
+- [Contas a Pagar e Receber](Documentacao DRE.md#-contas-a-pagar-e-receber)
+- [Caixa Geral](Documentacao DRE.md#-caixa-geral)
+- [Recursos Humanos (RH)](Documentacao DRE.md#-recursos-humanos-rh)
+- [Boletos e PIX](Documentacao Portadores.md#1-aba-boleto---configurações-bancárias)
 
 ### **💳 Instrumentos de Pagamento**
-- [Boletos Bancários](Documentacao%20Portadores.md#1-boleto-tipo-0)
-- [Carnês](Documentacao%20Portadores.md#2-carnê-tipo-1)
-- [Convênios](Documentacao%20Portadores.md#4-convênio-tipo-3)
-- [PIX Integrado](Documentacao%20Portadores.md#seção-pix---pagamentos-instantâneos)
+- [Boletos Bancários](Documentacao Portadores.md#1-boleto-tipo-0)
+- [Carnês](Documentacao Portadores.md#2-carnê-tipo-1)
+- [Convênios](Documentacao Portadores.md#4-convênio-tipo-3)
+- [PIX Integrado](Documentacao Portadores.md#seção-pix---pagamentos-instantâneos)
 
 ### **🆘 Suporte e Problemas**
-- [FAQ DRE](Documentacao%20DRE.md#-faq---perguntas-frequentes)
-- [Troubleshooting DRE](Documentacao%20DRE.md#-troubleshooting---solução-de-problemas)
-- [Troubleshooting Portadores](Documentacao%20Portadores.md#-manutenção-e-troubleshooting)
-- [Melhores Práticas](Documentacao%20DRE.md#-melhores-práticas)
+- [FAQ DRE](Documentacao DRE.md#-faq---perguntas-frequentes)
+- [Troubleshooting DRE](Documentacao DRE.md#-troubleshooting---solução-de-problemas)
+- [Troubleshooting Portadores](Documentacao Portadores.md#-manutenção-e-troubleshooting)
+- [Melhores Práticas](Documentacao DRE.md#-melhores-práticas)
 
 ---
 
 ## 🚀 Exemplos por Segmento
 
 ### **🏪 Comércio**
-- **DRE**: [Loja de Roupas](Documentacao%20DRE.md#-exemplo-1-empresa-comercial)
+- **DRE**: [Loja de Roupas](Documentacao DRE.md#-exemplo-1-empresa-comercial)
 - **Portadores**: Boletos com PIX para vendas a prazo
 - **Controle**: Margem por filial e produto
 
 ### **🏭 Indústria**  
-- **DRE**: [Fábrica de Móveis](Documentacao%20DRE.md#-exemplo-2-indústria)
+- **DRE**: [Fábrica de Móveis](Documentacao DRE.md#-exemplo-2-indústria)
 - **Custos**: Controle por centro de produção
 - **Análises**: Custo por produto fabricado
 
 ### **🏥 Serviços**
-- **DRE**: [Clínica Médica](Documentacao%20DRE.md#-exemplo-3-prestação-de-serviços)
+- **DRE**: [Clínica Médica](Documentacao DRE.md#-exemplo-3-prestação-de-serviços)
 - **Convênios**: Gestão de convênios médicos
 - **Receitas**: Análise por especialidade
 

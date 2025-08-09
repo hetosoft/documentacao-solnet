@@ -22,14 +22,14 @@ Este é o **portal principal** para toda a documentação do **Sol.NET ERP**, o 
 ### 💰 **[Módulo Financeiro](Financeiro/)**
 Controle completo da gestão financeira da empresa:
 
-#### 📊 **[Documentação DRE](Financeiro/Documentacao%20DRE.md)**
+#### 📊 **[Documentação DRE](Financeiro/Documentacao DRE.md)**
 - Demonstração do Resultado do Exercício completa
 - Integração com Plano de Contas e módulos AP/AR, Caixa, RH
 - Configuração de Agrupamentos DRE
 - Exemplos práticos por segmento empresarial
 - Análises gerenciais e indicadores de rentabilidade
 
-#### 📖 **[Documentação de Portadores](Financeiro/Documentacao%20Portadores.md)**
+#### 📖 **[Documentação de Portadores](Financeiro/Documentacao Portadores.md)**
 - Configuração de bancos e instrumentos de pagamento
 - Boletos, carnês, convênios e integrações PIX  
 - Remessa eletrônica e automação bancária
@@ -96,8 +96,8 @@ Manual completo para gestão de preços de venda
 ### **Por Área de Interesse**
 
 #### **💳 Gestão Financeira**
-- [Documentação DRE](Financeiro/Documentacao%20DRE.md)
-- [Configuração de Portadores](Financeiro/Documentacao%20Portadores.md)
+- [Documentação DRE](Financeiro/Documentacao DRE.md)
+- [Configuração de Portadores](Financeiro/Documentacao Portadores.md)
 - [Controle Financeiro em Movimentações](Movimentacao/faq/#-controle-financeiro)
 - [Processo de Quitação](Movimentacao/guia-rapido/#-atalhos-essenciais)
 
