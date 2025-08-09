@@ -114,7 +114,7 @@ Manual completo para gestão de preços de venda
 
 ```mermaid
 mindmap
-  root)Sol.NET ERP(
+  root((Sol.NET ERP))
     Módulo Financeiro
       Portadores
         Boletos Bancários
