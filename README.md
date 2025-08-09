@@ -160,5 +160,4 @@ Para sugestões sobre esta documentação ou solicitação de novos conteúdos, 
 
 **📅 Última atualização**: Janeiro de 2025  
 **📦 Versão**: 2.0  
-**🎯 Público-alvo**: Usuários finais, administradores e configuradores Sol.NET  
-**📖 Repositório**: [hetosoft/documentacao-solnet](https://github.com/hetosoft/documentacao-solnet) 
+**🎯 Público-alvo**: Usuários finais, administradores e configuradores Sol.NET
