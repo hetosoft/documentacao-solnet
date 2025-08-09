@@ -1,12 +1,15 @@
-## PR 6914 — Precificação: uso do preço da Base de Cálculo quando a Tabela não for elegível
+# 💰 PR 6914 — Precificação: Uso do Preço da Base de Cálculo - Sol.NET
 
-Data: 2025-08-08
-Aplicações: Sol.NET (Cadastro de Tabela de Preço e cálculo de venda)
+## 🎯 Visão Geral
 
-### Resumo
-Foi adicionada uma opção na Tabela de Preço para, quando a tabela não for elegível para o cliente/produto na venda, utilizar automaticamente o preço definido na Base de Cálculo da própria tabela (ex.: Preço 1…8 ou custos) como preço da venda, sem aplicar percentuais da tabela. Também foi revisado o fallback para usar o Preço de Venda 1 quando o preço base calculado estiver zerado, conforme configuração.
+**Data da Implementação**: 08 de Agosto de 2025  
+**Aplicações**: Sol.NET (Cadastro de Tabela de Preço e cálculo de venda)  
+**Público-alvo**: Usuários e administradores do módulo de precificação
 
-Principais pontos:
+### 📋 Resumo da Funcionalidade
+Foi adicionada uma opção na **Tabela de Preço** para, quando a tabela não for elegível para o cliente/produto na venda, utilizar automaticamente o preço definido na **Base de Cálculo** da própria tabela (ex.: Preço 1…8 ou custos) como preço da venda, sem aplicar percentuais da tabela. Também foi revisado o fallback para usar o **Preço de Venda 1** quando o preço base calculado estiver zerado, conforme configuração.
+
+### ✨ Principais Novidades:
 - Novo campo/flag: “Buscar Preço Base Cálculo se Tabela de Preço inelegível”.
 - Ajuste no fallback: “Buscar Preço Venda1 preço base Zerado(0)”.
 - Atualização de banco: inclusão do campo BUSCAR_PRECO_BASE_CALC em TABELA_PRECO e definição automática para tabelas com base de cálculo por preços 1,2,3,4,5,6,7(15),8(16).
@@ -14,9 +17,9 @@ Principais pontos:
 
 ---
 
-## O que mudou
+## 🔄 O que mudou
 
-### 1) Banco de Dados
+### 💾 1) Banco de Dados
 - Nova coluna em TABELA_PRECO: BUSCAR_PRECO_BASE_CALC (SmallInt)
 - Migração aplica: BUSCAR_PRECO_BASE_CALC = 1 onde BASE_CALCULO IN (1,2,3,4,5,6,15,16)
   - Impacto: por padrão, tabelas que têm base de cálculo em Preços (1 a 8) já vêm habilitadas para usar o preço base quando a tabela não for elegível.
@@ -35,7 +38,7 @@ Na aba de valores (grupo “Extra”) foram ajustadas/renomeadas as opções:
 
 Outros ajustes: ampliação do tamanho da janela e lista de grids, pequenos aprimoramentos de usabilidade (sem mudança de comportamento de negócio).
 
-### 3) Lógica de Cálculo de Preço na Venda
+### 🧮 3) Lógica de Cálculo de Preço na Venda
 Comportamento quando a Tabela de Preço NÃO é elegível:
 1. Se “Buscar Preço Base Cálculo…” estiver marcado: usa-se o preço conforme a Base de Cálculo da tabela.
    - Base de Cálculo suportada:
@@ -47,7 +50,7 @@ Resultado: evita-se erro de precificação quando não há regra aplicável para
 
 ---
 
-## Como configurar
+## ⚙️ Como Configurar
 1) Acesse: Cadastros > Tabela de Preço.
 2) Selecione a tabela desejada e abra a aba de Valores > grupo “Extra”.
 3) Opções:
@@ -60,7 +63,7 @@ Recomendação: valide as configurações em um produto de teste realizando uma 
 
 ---
 
-## Exemplos práticos
+## 💡 Exemplos Práticos
 - Exemplo A (Preço):
   - Tabela com Base de Cálculo = Preço 2 (Preço de venda 2) e “Buscar Preço Base Cálculo…” marcado.
   - Cliente/produto não atendem às regras da tabela.
@@ -78,7 +81,7 @@ Recomendação: valide as configurações em um produto de teste realizando uma 
 
 ---
 
-## Impactos e compatibilidade
+## ⚠️ Impactos e Compatibilidade
 - Compatível com Firebird e SQL Server (campo novo criado via DDL padrão do sistema).
 - Sem alterações em integrações externas.
 - Comportamento antigo é preservado quando o novo flag não estiver marcado.
@@ -86,14 +89,14 @@ Recomendação: valide as configurações em um produto de teste realizando uma 
 
 ---
 
-## Checklist pós-atualização
+## ✅ Checklist Pós-Atualização
 - [ ] Verificar se a migração criou BUSCAR_PRECO_BASE_CALC em TABELA_PRECO.
 - [ ] Revisar as Tabelas de Preço mais usadas e confirmar se as opções no grupo “Extra” estão conforme a estratégia desejada.
 - [ ] Realizar uma venda de teste com cliente/produto inelegíveis para validar o preço aplicado.
 
 ---
 
-## Perguntas frequentes (FAQ)
+## ❓ Perguntas Frequentes (FAQ)
 1) O sistema sempre usará a Base de Cálculo quando a tabela não for elegível?
    - Somente se a opção “Buscar Preço Base Cálculo…” estiver marcada na Tabela de Preço.
 
@@ -108,9 +111,15 @@ Recomendação: valide as configurações em um produto de teste realizando uma 
 
 ---
 
-## Notas técnicas (para administradores)
+## 🔧 Notas Técnicas (Para Administradores)
 - Campo novo: TABELA_PRECO.BUSCAR_PRECO_BASE_CALC (SmallInt)
 - Lógica: inclusão de função de mapeamento da Base de Cálculo para preço/custo na precificação da venda; fallback condicionado ao BUSCAR_PRECO1.
 - Migração identificada via GUIDs internos do processo de atualização; disponível no histórico do processo “ExecutarStatements”.
 
 Em caso de dúvidas, consulte o suporte Hetosoft informando “PR 6914 — Precificação (Base de Cálculo em tabela inelegível)”.
+
+---
+
+**📅 Última atualização**: Agosto de 2025
+**🏷️ Versão**: PR 6914
+**👥 Público-alvo**: Usuários e administradores do módulo de precificação Sol.NET

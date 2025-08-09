@@ -1,8 +1,10 @@
-# Preço de venda na Movimentação
+# 💰 Preço de Venda na Movimentação - Sol.NET
+
+## 🎯 Visão Geral
 
 Este guia explica, de forma prática, como o Sol.NET determina o preço de venda de um produto na tela de Movimentação. Use-o para entender por que um item ficou com determinado preço e como configurar o sistema para chegar ao valor desejado.
 
-## O que influencia o preço
+## 📊 O que Influencia o Preço
 O preço de um item na Movimentação é calculado a partir de:
 - Empresa selecionada (define base de cálculo padrão e permissões de Tabela de Preço).
 - Tabela de Preço (regras por produto/família/grupo/marca/pessoas etc.).
@@ -12,11 +14,11 @@ O preço de um item na Movimentação é calculado a partir de:
 - Moedas dos preços 1 a 8 (se configuradas, há conversão automática).
 - Preferência para substituir preço “0,00” por um preço base (quando ativado).
 
-## Entradas consideradas no cálculo
+## 🔢 Entradas Consideradas no Cálculo
 - Produto, Empresa, Cliente, Condição de Pagamento e Parcelas, Data atual da venda.
 - Parâmetros opcionais: Tabela de Preço fixa e Promoção específica.
 
-## Sequência de cálculo (visão simples)
+## ⚙️ Sequência de Cálculo (Visão Simples)
 1) Carrega Preços Base e Custos do produto
 - Preço 1 … Preço 8 (com conversão de moeda quando houver).
 - Custos (Custo Inicial, Unitário, Médio, Último Preço de Compra etc.).
@@ -50,7 +52,7 @@ O preço de um item na Movimentação é calculado a partir de:
 6) Arredondamento
 - O sistema formata os valores conforme as casas decimais de preço configuradas na Empresa.
 
-## Regras importantes
+## ⚠️ Regras Importantes
 - Tabela de Preço só vale quando houver regra que atenda ao produto e ao público (ex.: “Todos os produtos” e “Todas as pessoas”, ou regras específicas), e não houver marcação de “remover”.
 - Base de Cálculo pode ser um dos Preços 1..8 ou um dos Custos; a Tabela escolhe a base e aplica um percentual de acréscimo/desc.
 - Condição de Pagamento pode aumentar ou diminuir o preço (pessoa ou condição), e esse ajuste vem antes da promoção.
@@ -58,7 +60,7 @@ O preço de um item na Movimentação é calculado a partir de:
 - Se algum preço base estiver 0,00 e a opção “substituir por Preço 1” estiver ativa, o sistema usa o Preço 1 como reserva.
 - Preços 1..8 podem estar em moedas diferentes; a conversão é automática pelo valor da moeda configurado.
 
-## Exemplos do dia a dia
+## 💡 Exemplos do Dia a Dia
 Os exemplos abaixo usam valores hipotéticos apenas para ilustrar a lógica.
 
 1) Varejo balcão, 2x no cartão (acréscimo de 3%)
@@ -94,13 +96,13 @@ Os exemplos abaixo usam valores hipotéticos apenas para ilustrar a lógica.
 - Passo 2: Tabela (+5%) → 80,00 × 1,05 = 84,00.
 - Passo 3: Condição (+2%) → 84,00 × 1,02 = 85,68 → Preço Sem Promoção.
 
-## Como conferir no sistema
+## 🔍 Como Conferir no Sistema
 - Tabela de Preço aplicada: na Movimentação, ver a informação de tabela/descrição do preço (quando exibida) ou abrir o cadastro da Tabela para revisar vínculos e base.
 - Condição de Pagamento: confira se está marcada como a prazo/à vista e se o percentual aplica “na pessoa” ou “na movimentação”.
 - Promoção: confira se há promoção válida na data, se atende a empresa/produto/pessoa/condição e qual a prioridade.
 - Moedas: verifique a moeda associada aos Preços 1..8 do produto e o valor da moeda configurado.
 
-## Dicas práticas
+## 🚀 Dicas Práticas
 - Precisa de um preço específico por canal (e-commerce, delivery, balcão)? Crie uma Tabela de Preço por canal e vincule às empresas/canais desejados.
 - Quer aplicar preços por cliente (VIP, atacado, região)? Use os vínculos de Pessoas (Pessoa, Status, Tipo, Ramo, Região) na Tabela.
 - Para campanhas, prefira Promoções com prioridade e validade; se necessário, use Preço Fixo para garantir o valor final.
@@ -108,3 +110,9 @@ Os exemplos abaixo usam valores hipotéticos apenas para ilustrar a lógica.
 
 ---
 Este documento resume o comportamento padrão observado no cálculo de preço. Ajustes finos podem existir por configuração específica em cada ambiente.
+
+---
+
+**📅 Última atualização**: Dezembro de 2024  
+**🏷️ Versão**: 1.0  
+**👥 Público-alvo**: Usuários finais e administradores Sol.NET
