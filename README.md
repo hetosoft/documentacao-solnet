@@ -54,7 +54,7 @@ Portal de navegação para toda documentação de movimentação
 - Documentos fiscais e workflows
 - Cenários específicos por segmento
 
-#### **💰 [Precificação - Tabela de Preços](Movimentacao/PR-6914-Precificacao-TabelaPreco.md)**
+#### **💰 [Precificação - Tabela de Preços](Movimentacao/Preco de Venda - Guia do Usuario.md)**
 Funcionalidades avançadas de precificação
 
 #### **💲 [Preço de Venda - Guia do Usuário](Movimentacao/Preco%20de%20Venda%20-%20Guia%20do%20Usuario.md)**
@@ -99,7 +99,7 @@ Manual completo para gestão de preços de venda
 - [Exemplos Práticos](Movimentacao/Documentacao%20Movimentacao.md#-exemplos-práticos)
 
 #### **⚙️ Configuração e Administração**
-- [Cadastro de Tipos](Movimentacao/README.md#-administradorconfigura dor)
+- [Cadastro de Tipos](Movimentacao/README.md#-administradorconfigurador)
 - [Configurações Avançadas](Financeiro/Documentacao%20Portadores.md#-configuração-avançada)
 - [Cenários Específicos](Movimentacao/FAQ.md#-cenários-específicos)
 
@@ -142,29 +142,7 @@ mindmap
 
 ---
 
-## 📱 Otimização Mobile
-
-### **🔍 Navegação Móvel**
-- **Links internos** otimizados para toque
-- **Seções colapsáveis** em dispositivos pequenos  
-- **Busca rápida** com Ctrl+F ou função de busca do navegador
-- **Formato responsivo** para leitura confortável
-
-### **📋 Leitura Offline**
-- Documentos podem ser salvos para consulta offline
-- Formato Markdown compatível com visualizadores móveis
-- Links internos funcionam mesmo offline
-
----
-
 ## 🚀 Melhorias Planejadas  
-
-### **📈 Próxima Versão**
-- [ ] Vídeos tutoriais integrados
-- [ ] Busca avançada entre documentos
-- [ ] Templates de configuração downloadáveis
-- [ ] Casos de uso por segmento empresarial
-- [ ] Integração com sistema de tickets
 
 ### **💭 Feedback Contínuo**
 Contribua para melhorar esta documentação:
@@ -178,12 +156,12 @@ Contribua para melhorar esta documentação:
 ## 🔗 Links Importantes
 
 ### **📚 Recursos Adicionais**
-- **[Repositório Principal](https://github.com/hetosoft/ProjetosSol.NET/)**: Código-fonte do Sol.NET
 - **[Suporte Técnico](#)**: Central de atendimento (em breve)
 - **[Changelog](#)**: Histórico de atualizações (em breve)
 - **[Comunidade](#)**: Fórum de usuários (em breve)
 
 ### **⚡ Atalhos Úteis**
+
 | Funcionalidade | Atalho | Módulo |
 |---------------|--------|---------|
 | Novo movimento | **F4** | Movimentação |
