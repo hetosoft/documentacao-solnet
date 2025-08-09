@@ -1,4 +1,4 @@
-# 💰 PR 6914 — Precificação: Uso do Preço da Base de Cálculo - Sol.NET
+# 💰 Precificação: Uso do Preço da Base de Cálculo - Sol.NET
 
 ## 🎯 Visão Geral
 
