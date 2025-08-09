@@ -22,7 +22,7 @@ Este é o **portal principal** para toda a documentação do **Sol.NET ERP**, o 
 ### 💰 **[Módulo Financeiro](Financeiro/)**
 Controle completo da gestão financeira da empresa:
 
-#### 📖 **[Documentação de Portadores](Financeiro/Documentacao%20Portadores.md)**
+#### 📖 ** [Documentação de Portadores](Financeiro/Documentacao%20Portadores.md) **
 - Configuração de bancos e instrumentos de pagamento
 - Boletos, carnês, convênios e integrações PIX  
 - Remessa eletrônica e automação bancária
@@ -54,7 +54,7 @@ Portal de navegação para toda documentação de movimentação
 - Documentos fiscais e workflows
 - Cenários específicos por segmento
 
-#### **💰 [Precificação - Tabela de Preços](Movimentacao/Preco de Venda - Guia do Usuario.md)**
+#### **💰 [Precificação - Tabela de Preços](Movimentacao/Preco%20de%20Venda%20-%20Guia%20do%20Usuario.md)**
 Funcionalidades avançadas de precificação
 
 #### **💲 [Preço de Venda - Guia do Usuário](Movimentacao/Preco%20de%20Venda%20-%20Guia%20do%20Usuario.md)**

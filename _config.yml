@@ -1,0 +1,29 @@
+title: "Documentação Sol.NET"
+description: "Portal de documentação do Sol.NET ERP"
+
+# Gera URLs amigáveis (sem .html no final)
+permalink: pretty
+
+# Markdown engine e compatibilidade com GFM
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  toc_levels: 1..6
+
+# Plugins suportados pelo GitHub Pages para melhorar navegação
+plugins:
+  - jekyll-optional-front-matter   # processa arquivos .md sem front matter
+  - jekyll-readme-index            # usa README.md como index.html nas pastas
+  - jekyll-relative-links          # reescreve links .md -> .html no build
+  - jemoji                         # suporte a emojis
+
+# Configurações específicas dos plugins
+readme_index:
+  enabled: true
+  remove_originals: false
+
+relative_links:
+  enabled: true
+  collections: true
