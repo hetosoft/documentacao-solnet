@@ -1,3 +1,7 @@
+---
+title: "Configuracação de Tabela de Preço"
+permalink: /Movimentacao/TabelaPreco/
+---
 # 💰 Precificação: Uso do Preço da Base de Cálculo - Sol.NET
 
 ## 🎯 Visão Geral
