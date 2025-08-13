@@ -61,10 +61,10 @@ Portal de navegação para toda documentação de movimentação
 - Documentos fiscais e workflows
 - Cenários específicos por segmento
 
-#### **💰 [Precificação - Tabela de Preços](Movimentacao/Preco%20de%20Venda%20-%20Guia%20do%20Usuario.md)**
+#### **💰 [Precificação - Tabela de Preços](Movimentacao/preco-de-venda-guia/)**
 Funcionalidades avançadas de precificação
 
-#### **💲 [Preço de Venda - Guia do Usuário](Movimentacao/Preco%20de%20Venda%20-%20Guia%20do%20Usuario.md)**
+#### **💲 [Preço de Venda - Guia do Usuário](Movimentacao/TabelaPreco/)**
 Manual completo para gestão de preços de venda
 
 ---
