@@ -33,6 +33,14 @@ Respostas para dúvidas comuns organizadas por categoria:
 - Cenários específicos
 - Dicas de produtividade
 
+### 🧮 **[Atualização Automática de Custo](atualizacao-custo/)**
+Entenda como o sistema recalcula custos e integra com a precificação:
+- Fluxo de disparo (finalização, função manual, precificação)
+- Regras de custo médio (ponderada x simples)
+- Vínculos de custo por empresa
+- Impactos na aba Preços e margens
+- Checklist e exemplos práticos
+
 ---
 
 ## 🎯 Por Onde Começar
