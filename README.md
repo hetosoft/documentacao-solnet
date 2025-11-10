@@ -69,6 +69,37 @@ Manual completo para gestão de preços de venda
 
 ---
 
+### 👥 **[Módulo RH - Recursos Humanos](RH/)**
+Gestão completa de pessoal e folha de pagamento:
+
+#### **📋 [Índice Completo](RH/)**
+Portal de navegação para toda documentação de RH
+
+#### **💼 [Documentação Folha de Pagamento](RH/Documentacao Folha de Pagamento.md)**
+- Visão geral e características do módulo
+- Cadastros essenciais (funcionários, cargos, departamentos)
+- Processo completo de lançamento da folha
+- Cálculos detalhados de INSS, IRRF e FGTS
+- Provisões automáticas (13º salário e férias)
+- Integração com contabilidade e DRE
+- Obrigações trabalhistas (eSocial, SEFIP, DIRF, RAIS)
+- Exemplos práticos e troubleshooting
+
+#### **🚀 [Guia Rápido](RH/Guia Rapido.md)**
+- Atalhos de teclado e checklist mensal
+- Prazos e obrigações
+- Calculadora rápida (INSS, IRRF, FGTS)
+- Fluxos de trabalho essenciais
+
+#### **❓ [FAQ - Perguntas Frequentes](RH/FAQ.md)**
+- Configuração e cadastros
+- Cálculos e processamento
+- Integrações e eSocial
+- Problemas comuns e soluções
+- Cenários específicos
+
+---
+
 ## 🎯 Por Onde Começar
 
 ### **👤 Novo no Sol.NET?**
@@ -100,6 +131,12 @@ Manual completo para gestão de preços de venda
 - [Configuração de Portadores](Financeiro/Documentacao Portadores.md)
 - [Controle Financeiro em Movimentações](Movimentacao/faq/#-controle-financeiro)
 - [Processo de Quitação](Movimentacao/guia-rapido/#-atalhos-essenciais)
+
+#### **👥 Gestão de Pessoal**
+- [Folha de Pagamento Completa](RH/Documentacao Folha de Pagamento.md)
+- [Guia Rápido RH](RH/Guia Rapido.md)
+- [Integração RH com DRE](Financeiro/Documentacao DRE.md#-recursos-humanos-rh)
+- [FAQ RH](RH/FAQ.md)
 
 #### **📊 Operações Comerciais**  
 - [Fluxo de Trabalho Completo](Movimentacao/documentacao/#-fluxo-de-trabalho---passo-a-passo)
@@ -151,6 +188,8 @@ Contribua para melhorar esta documentação:
 | Finalizar processo | **F6** | Movimentação |
 | Transformar documento | **F7** | Movimentação |
 | Quitar financeiro | **F8** | Financeiro |
+| Processar folha | **F9** | RH |
+| Gerar holerite | **F10** | RH |
 
 ---
 
