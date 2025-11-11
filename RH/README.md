@@ -47,6 +47,17 @@ Guia completo do módulo de lançamentos de RH:
 - Exemplos práticos detalhados
 - FAQ e troubleshooting
 
+### 📅 **[Processo Mensal de Lançamento](Processo Mensal.md)**
+Guia detalhado do processo mensal usando o formulário de Lançamento RH:
+- **Formulário de Lançamento RH** - Estrutura completa e campos
+- Processo passo a passo mês a mês
+- Como usar o formulário para cada funcionário
+- Conferência e validação dos lançamentos
+- Recursos úteis (busca, cópia, histórico)
+- Relatórios disponíveis
+- Dicas de produtividade
+- Calendário mensal sugerido
+
 ### 🚀 **[Guia Rápido](Guia Rapido.md)**
 Referência rápida para operações do dia a dia:
 - Checklist para cadastro de funcionários
@@ -216,8 +227,11 @@ Lançamento 3:
 - [Campos Obrigatórios](Documentacao Folha de Pagamento.md#informações-do-cadastro-de-pessoa-rh)
 - [Configurar Contas Contábeis](Documentacao Folha de Pagamento.md#configurações-contábeis)
 
-**Fazer Lançamentos:**
-- [Processo Completo](Documentacao Folha de Pagamento.md#-lançamento-de-valores-da-folha-por-funcionário)
+**Fazer Lançamentos Mensais:**
+- **[Processo Mensal Completo](Processo Mensal.md)** - Guia detalhado do formulário
+- [Formulário de Lançamento RH](Processo Mensal.md#-formulário-de-lançamento-rh)
+- [Passo a Passo](Processo Mensal.md#-processo-passo-a-passo)
+- [Conferência e Validação](Processo Mensal.md#-conferência-e-validação)
 - [Guia Rápido](Guia Rapido.md#-fluxo-de-lançamento)
 - [Exemplos Práticos](Documentacao Folha de Pagamento.md#-exemplos-práticos)
 

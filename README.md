@@ -77,13 +77,18 @@ Portal de navegação para toda documentação de RH
 
 #### **💼 [Documentação de Lançamentos de Folha](RH/Documentacao Folha de Pagamento.md)**
 - Visão geral: o que o módulo faz e não faz
+- Cadastro detalhado de funcionários (Pessoa RH)
 - Fluxo de trabalho: contabilidade → lançamento → DRE
-- Cadastros simplificados (funcionários e departamentos)
-- Processo de lançamento de valores
-- Integração automática com DRE
 - Configuração de contas contábeis
+- Vinculação obrigatória a funcionários
 - Exemplos práticos de lançamentos
-- FAQ e troubleshooting
+
+#### **📅 [Processo Mensal de Lançamento](RH/Processo Mensal.md)**
+- Formulário de Lançamento RH detalhado
+- Processo passo a passo mês a mês
+- Como registrar valores de cada funcionário
+- Conferência e validação
+- Relatórios e dicas de produtividade
 
 #### **🚀 [Guia Rápido](RH/Guia Rapido.md)**
 - Checklist mensal de lançamentos
@@ -93,7 +98,8 @@ Portal de navegação para toda documentação de RH
 
 #### **❓ [FAQ - Perguntas Frequentes](RH/FAQ.md)**
 - Sobre o módulo e suas limitações
-- Como fazer lançamentos
+- Vinculação obrigatória a funcionários
+- Como fazer lançamentos individuais
 - Integração com DRE
 - Diferença entre módulo RH e sistema de folha completo
 
