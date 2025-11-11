@@ -1,1490 +1,314 @@
 ---
-title: "FAQ: Módulo RH - Folha de Pagamento - Sol.NET"
+title: "FAQ: Lançamentos de RH - Sol.NET"
 permalink: /RH/faq/
 ---
-# ❓ FAQ - Perguntas Frequentes: Módulo RH - Folha de Pagamento
+# ❓ FAQ - Perguntas Frequentes: Lançamentos de RH
 
 ## 📑 Índice
 
-- [🔧 Configuração e Cadastros](#-configuração-e-cadastros)
-- [💰 Cálculos e Processamento](#-cálculos-e-processamento)
-- [🔗 Integrações](#-integrações)
-- [📄 eSocial e Obrigações](#-esocial-e-obrigações)
+- [🎯 Sobre o Módulo](#-sobre-o-módulo)
+- [📝 Lançamentos](#-lançamentos)
+- [�� Valores e Cálculos](#-valores-e-cálculos)
+- [🔗 Integração com DRE](#-integração-com-dre)
+- [👥 Cadastros](#-cadastros)
 - [🛠️ Problemas Técnicos](#️-problemas-técnicos)
-- [📊 Relatórios](#-relatórios)
-- [🎯 Cenários Específicos](#-cenários-específicos)
-- [💡 Dicas de Produtividade](#-dicas-de-produtividade)
 
 ---
 
-## 🔧 Configuração e Cadastros
+## 🎯 Sobre o Módulo
 
-### **P: Como faço o primeiro cadastro de funcionário no sistema?**
+### **P: O que é o módulo RH do Sol.NET?**
+**R:** É um módulo para **lançamento de valores** da folha de pagamento, com objetivo de integrar as despesas de RH com o DRE. Não é um sistema completo de folha de pagamento.
+
+### **P: O que o módulo RH FAZ?**
 **R:** 
-1. Menu RH > Cadastros > Funcionários
-2. Pressione F4 (Novo)
-3. Preencha obrigatoriamente:
-   - **Aba Dados Pessoais**: Nome, CPF, RG, data nascimento
-   - **Aba Trabalhista**: Matrícula, data admissão, cargo, salário
-   - **Aba Contábil**: Centro de custo, conta salário, conta encargos
-4. Opcionalmente preencha:
-   - **Aba Benefícios**: Vale transporte, vale refeição, plano saúde
-   - **Aba Documentos**: CTPS, PIS, título eleitor
-   - **Aba Dependentes**: Para IRRF e salário família
-5. Pressione F5 para salvar
-6. Gere o evento S-2200 (Admissão) no eSocial
+- ✅ Registra valores de folha de pagamento
+- ✅ Integra com DRE automaticamente
+- ✅ Permite controle por centro de custo/departamento
+- ✅ Gera relatórios de despesas com pessoal
 
-### **P: Qual a diferença entre cargo e função?**
+### **P: O que o módulo RH NÃO FAZ?**
 **R:**
-- **Cargo**: Posição formal na empresa (ex: "Analista Financeiro")
-  - Cadastrado em: RH > Cadastros > Cargos
-  - Tem CBO, faixa salarial, requisitos
-  - Usado para eSocial e relatórios oficiais
-  
-- **Função**: Atividade específica desempenhada
-  - Pode ser diferente do cargo
-  - Usado para controles internos
-  - Exemplo: Cargo "Assistente" exercendo função "Recepcionista"
+- ❌ Cálculo de INSS, IRRF, FGTS
+- ❌ Processamento de folha de pagamento
+- ❌ Emissão de holerites
+- ❌ Integração com eSocial ou órgãos externos
+- ❌ Geração de guias de impostos
+- ❌ Controle de ponto eletrônico
+- ❌ Cálculo de férias ou rescisões
 
-### **P: Como configurar o rateio de um funcionário em múltiplos centros de custo?**
-**R:**
-1. Abra o cadastro do funcionário
-2. Vá para Aba "Rateio"
-3. Clique em "Adicionar Rateio"
-4. Informe:
-   - Centro de Custo: Departamento
-   - Percentual: % a ser alocado
-   - Conta Contábil: Conta de despesa específica
-5. Adicione quantos rateios necessários (total deve ser 100%)
-6. Exemplo prático:
-   ```
-   Centro Custo 001 - Administrativo: 60%
-   Centro Custo 002 - Vendas: 40%
-   ```
-7. O sistema dividirá salário e encargos automaticamente
+### **P: Preciso de um contador para usar o módulo RH?**
+**R:** Sim. A contabilidade (escritório contábil) processa a folha completa e fornece os valores que você lança no Sol.NET.
 
-### **P: Como criar um novo evento (rubrica) na folha?**
-**R:**
-Menu RH > Cadastros > Eventos > F4
-
-Preencha:
-- **Código**: Número único (ex: 150 para "Comissão Vendas")
-- **Descrição**: Nome que aparecerá no holerite
-- **Tipo**: 
-  - Vencimento (aumenta o valor a receber)
-  - Desconto (diminui o valor a receber)
-- **Incidências**: Marque se incide sobre:
-  - INSS (maioria dos vencimentos)
-  - FGTS (maioria dos vencimentos)
-  - IRRF (vencimentos menos descontos permitidos)
-  - 13º Salário
-  - Férias
-- **Conta Contábil**: Vincule a conta do plano de contas
-- **Código eSocial**: Informe a rubrica correspondente na tabela S-1010
-
-**Exemplo - Comissão sobre Vendas:**
-```
-Código: 150
-Descrição: Comissão sobre Vendas
-Tipo: Vencimento
-Incidências: INSS ✓ | FGTS ✓ | IRRF ✓
-Conta: 6.1.01.005 - Comissões Vendas
-eSocial: 1409 - Comissões
-```
-
-### **P: Onde configuro as contas contábeis para integração com o DRE?**
-**R:**
-Há 3 locais (em ordem de prioridade):
-
-1. **Por Funcionário** (mais específico):
-   - Cadastro do Funcionário > Aba Contábil
-   - Permite contas diferentes por pessoa
-
-2. **Por Departamento**:
-   - Cadastros > Departamentos > Aba Contábil
-   - Todos do departamento usam essas contas
-
-3. **Configuração Global** (padrão):
-   - RH > Configurações > Integração Contábil
-   - Usado quando não há configuração específica
-
-**Contas essenciais:**
-```
-Débito (Despesas):
-- Conta Salários
-- Conta Encargos
-- Conta Provisão 13º
-- Conta Provisão Férias
-
-Crédito (Passivos):
-- Salários a Pagar
-- INSS a Recolher
-- FGTS a Recolher
-- IRRF a Recolher
-```
-
-### **P: Como atualizar em lote vários funcionários (ex: reajuste salarial)?**
-**R:**
-Menu RH > Processos > Atualização em Lote
-
-Opções:
-1. **Reajuste Salarial**:
-   - Selecione funcionários (por cargo, depto, ou todos)
-   - Escolha tipo: Percentual ou Valor Fixo
-   - Informe o percentual (ex: 5%)
-   - Data vigência do reajuste
-   - Sistema atualiza e gera histórico
-
-2. **Alteração de Benefícios**:
-   - Selecione grupo de funcionários
-   - Altere valor VT, VR, ou plano saúde
-   - Aplique em lote
-
-3. **Mudança de Departamento**:
-   - Útil em reorganizações
-   - Selecione funcionários
-   - Informe novo departamento/centro custo
-
-**IMPORTANTE**: Sempre faça backup antes de atualizações em lote!
+### **P: O Sol.NET substitui um sistema de folha de pagamento?**
+**R:** Não. O Sol.NET serve apenas para controle gerencial interno. Para processamento completo de folha, use um sistema especializado ou contrate uma contabilidade.
 
 ---
 
-## 💰 Cálculos e Processamento
+## 📝 Lançamentos
 
-### **P: Como o sistema calcula as horas extras?**
+### **P: Como faço um lançamento de folha no Sol.NET?**
 **R:**
-O cálculo depende do tipo de hora extra:
+1. Receba o resumo da contabilidade com valores por categoria
+2. Menu RH → Lançamentos de Folha → Novo
+3. Lance cada categoria (salários, encargos, benefícios)
+4. Salve os lançamentos
+5. Confira no DRE
 
-**1. Hora Extra 50% (dias úteis):**
-```
-Valor Hora Normal = Salário ÷ 220 horas
-Valor Hora Extra 50% = Valor Hora Normal × 1,5
+### **P: Preciso lançar valor por valor de cada funcionário?**
+**R:** Não. Lance apenas os **valores totais** por categoria e departamento. Exemplo:
+- Total Salários Administrativo: R$ 50.000,00
+- Total Encargos: R$ 14.000,00
 
-Exemplo (Salário R$ 3.000,00):
-Hora Normal = R$ 3.000 ÷ 220 = R$ 13,64
-10 horas extras 50% = R$ 13,64 × 1,5 × 10 = R$ 204,60
-```
+Não é necessário detalhar por funcionário individual.
 
-**2. Hora Extra 100% (domingos e feriados):**
-```
-Valor Hora Extra 100% = Valor Hora Normal × 2
+### **P: Com que frequência devo fazer lançamentos?**
+**R:** Mensalmente, após receber as informações da contabilidade referentes à folha do mês.
 
-4 horas em domingo = R$ 13,64 × 2 × 4 = R$ 109,12
-```
+### **P: Posso lançar valores estimados?**
+**R:** Sim. Se a contabilidade atrasar, você pode lançar valores estimados baseados em meses anteriores. Depois ajuste com os valores reais.
 
-**3. DSR sobre Horas Extras:**
-```
-DSR = (Total HE ÷ Dias Úteis) × Domingos/Feriados
-
-Mês com 22 dias úteis e 5 domingos:
-DSR = (R$ 204,60 ÷ 22) × 5 = R$ 46,50
-```
-
-**Configuração:**
-Menu RH > Configurações > Parâmetros Folha
-- Considerar DSR sobre HE: Sim
-- Base de cálculo: 220 horas (padrão CLT)
-
-### **P: Por que o INSS calculado é diferente do que eu esperava?**
+### **P: Como corrijo um lançamento errado?**
 **R:**
-Desde 2020, o Brasil usa **tabela progressiva** para INSS (não é mais alíquota fixa!).
+1. Menu RH → Lançamentos de Folha
+2. Localize o lançamento
+3. Edite ou exclua
+4. Faça o lançamento correto
+5. Regere o DRE para atualizar
 
-**Como funciona:**
-Cada faixa do salário tem uma alíquota diferente, similar ao IRRF.
+### **P: Posso excluir lançamentos de meses anteriores?**
+**R:** Tecnicamente sim, mas não é recomendado. Mantenha histórico de pelo menos 12 meses para análises comparativas.
 
-**Exemplo (Salário R$ 5.000,00):**
-```
-Faixa 1: R$ 1.320,00 × 7,5% = R$ 99,00
-Faixa 2: (R$ 2.571,29 - R$ 1.320,00) × 9% = R$ 112,62
-Faixa 3: (R$ 3.856,94 - R$ 2.571,29) × 12% = R$ 154,28
-Faixa 4: (R$ 5.000,00 - R$ 3.856,94) × 14% = R$ 160,03
-────────────────────────────────────────────
-TOTAL INSS: R$ 525,93 (10,52% efetivo)
-```
-
-**NÃO É**: R$ 5.000,00 × 14% = R$ 700,00 ❌
-
-**Para conferir:**
-Menu RH > Ferramentas > Calculadora INSS
-Digite o salário bruto e veja o cálculo detalhado
-
-### **P: Como funciona o cálculo do IRRF?**
-**R:**
-O IRRF também usa tabela progressiva, mas com deduções:
-
-**Passo 1 - Base de Cálculo:**
-```
-Salário Bruto
-(-) INSS descontado
-(-) Dependentes (R$ 189,59 cada)
-(-) Pensão alimentícia (se judicial)
-(=) Base de Cálculo IRRF
-```
-
-**Passo 2 - Aplicar Alíquota:**
-```
-Aplica alíquota conforme faixa
-Subtrai parcela a deduzir
-```
-
-**Exemplo (Salário R$ 5.000, 2 dependentes):**
-```
-Base: R$ 5.000,00 - R$ 525,93 (INSS) - R$ 379,18 (2 dep) = R$ 4.094,89
-Alíquota: 22,5% (faixa R$ 3.751,06 a R$ 4.664,68)
-Cálculo: R$ 4.094,89 × 22,5% = R$ 921,35
-Dedução: R$ 921,35 - R$ 651,73 = R$ 269,62
-IRRF: R$ 269,62
-```
-
-### **P: Como o sistema calcula as provisões de 13º e férias?**
-**R:**
-**Provisão de 13º Salário:**
-```
-Provisão Mensal = (Salário Base + Médias de HE/Comissões) ÷ 12
-
-Exemplo:
-Salário: R$ 4.000,00
-Média HE (últimos 12 meses): R$ 500,00
-Base: R$ 4.500,00
-Provisão/mês: R$ 4.500,00 ÷ 12 = R$ 375,00
-
-Encargos (FGTS 8%): R$ 375,00 × 8% = R$ 30,00
-```
-
-**Provisão de Férias:**
-```
-Provisão Mensal = (Salário + Médias + 1/3 Constitucional) ÷ 12
-
-Exemplo:
-Salário: R$ 4.000,00
-Média HE: R$ 500,00
-Subtotal: R$ 4.500,00
-Adicional 1/3: R$ 1.500,00
-Total: R$ 6.000,00
-Provisão/mês: R$ 6.000,00 ÷ 12 = R$ 500,00
-
-Encargos (FGTS 8%): R$ 500,00 × 8% = R$ 40,00
-```
-
-**Configuração:**
-Menu RH > Configurações > Provisões
-- Provisionar 13º: Ativado
-- Provisionar Férias: Ativado
-- Considerar médias: Últimos 12 meses
-
-### **P: Como processar férias de um funcionário?**
-**R:**
-Menu RH > Férias > Programação de Férias
-
-**Passo a passo:**
-1. Selecione o funcionário
-2. Sistema mostra períodos aquisitivos disponíveis
-3. Escolha o período (ex: 01/01/2023 a 31/12/2023)
-4. Informe:
-   - Data início: Quando começam as férias
-   - Dias: 30 (integral) ou menos (fracionado)
-   - Abono pecuniário: Se vender 10 dias
-5. Sistema calcula:
-   ```
-   Valor Férias: R$ 4.000,00 (salário)
-   Adicional 1/3: R$ 1.333,33
-   Total Bruto: R$ 5.333,33
-   
-   Descontos:
-   INSS: R$ 491,45
-   IRRF: R$ 280,00 (se aplicável)
-   
-   Líquido: R$ 4.561,88
-   ```
-6. Gerar recibo de férias
-7. Baixar da provisão
-8. Pagar até 2 dias antes do início
-
-**Lançamento Contábil:**
-```
-D - 2.1.3.02 - Provisão Férias (baixa)
-C - 2.1.2.01 - Férias a Pagar (líquido)
-C - 2.1.2.02 - INSS a Recolher
-C - 2.1.2.04 - IRRF a Recolher
-```
-
-### **P: Como calcular uma rescisão de contrato?**
-**R:**
-Menu RH > Rescisão > Nova Rescisão
-
-O sistema calcula automaticamente todas as verbas conforme tipo de desligamento:
-
-**Demissão sem justa causa:**
-- ✅ Saldo de salário (dias trabalhados)
-- ✅ Aviso prévio (trabalhado ou indenizado)
-- ✅ 13º proporcional
-- ✅ Férias vencidas + 1/3
-- ✅ Férias proporcionais + 1/3
-- ✅ Saque FGTS + multa 40%
-
-**Pedido de demissão:**
-- ✅ Saldo de salário
-- ✅ 13º proporcional
-- ✅ Férias vencidas + 1/3
-- ✅ Férias proporcionais + 1/3
-- ❌ Aviso prévio indenizado
-- ❌ Multa FGTS 40%
-
-**Demissão por justa causa:**
-- ✅ Saldo de salário
-- ❌ Aviso prévio
-- ❌ 13º proporcional
-- ✅ Férias vencidas + 1/3 (se houver)
-- ❌ Férias proporcionais
-- ❌ Saque FGTS
-- ❌ Multa FGTS
-
-**IMPORTANTE:**
-- Pagar até 10 dias da notificação
-- Gerar TRCT (Termo de Rescisão)
-- Enviar S-2299 (Desligamento) ao eSocial
-- Enviar S-5001 (FGTS) para liberação saque
+### **P: Qual data devo usar nos lançamentos?**
+**R:** Use o **último dia do mês de competência**. Exemplo: Para folha de março/2024, use data 31/03/2024.
 
 ---
 
-## 🔗 Integrações
+## 💰 Valores e Cálculos
 
-### **P: Como a folha de pagamento integra com o DRE?**
-**R:**
-Após processar a folha:
+### **P: O Sol.NET calcula INSS, IRRF e FGTS automaticamente?**
+**R:** **Não**. O Sol.NET não faz cálculos tributários. Você lança os valores que a contabilidade calculou e informou.
 
-1. **Gerar Lançamentos Contábeis:**
-   Menu RH > Processos > Gerar Lançamentos Contábeis
-   
-2. **O sistema faz:**
-   - Identifica centro de custo de cada funcionário
-   - Agrupa por conta contábil configurada
-   - Gera lançamentos de débito (despesas) e crédito (passivos)
-   - Atualiza saldos no Plano de Contas
-   
-3. **Lançamentos típicos:**
-   ```
-   D - 6.2.01 - Salários Administrativo
-   D - 6.2.02 - Encargos Sociais
-   D - 6.2.03 - Provisão 13º Salário
-   D - 6.2.04 - Provisão Férias
-   C - 2.1.2.01 - Salários a Pagar
-   C - 2.1.2.02 - INSS a Recolher
-   C - 2.1.2.03 - FGTS a Recolher
-   C - 2.1.3.01 - Provisão 13º a Pagar
-   C - 2.1.3.02 - Provisão Férias a Pagar
-   ```
+### **P: Como sei quais valores lançar?**
+**R:** A contabilidade deve fornecer um resumo mensal do tipo:
+```
+Salários: R$ 50.000,00
+Encargos INSS: R$ 11.000,00
+FGTS: R$ 4.000,00
+Benefícios: R$ 3.000,00
+Provisão 13º: R$ 4.166,67
+Provisão Férias: R$ 5.555,56
+```
 
-4. **Reflete no DRE:**
-   - Despesas com pessoal aparecem no agrupamento correto
-   - Por centro de custo (se configurado)
-   - Permite análise de custo por departamento
+Lance esses valores exatamente como informados.
 
-**Para conferir:**
-Menu Financeiro > DRE > Gerar DRE
-Veja as despesas com pessoal no período
+### **P: Preciso separar INSS de FGTS?**
+**R:** Depende da sua necessidade gerencial. Você pode:
+- Lançar tudo junto como "Encargos Sociais"
+- Ou separar em contas diferentes (INSS, FGTS)
 
-### **P: Como gerar os títulos a pagar da folha no Financeiro?**
-**R:**
-Menu RH > Processos > Gerar Financeiro
+Consulte sua contabilidade sobre a melhor prática.
 
-O sistema cria automaticamente:
+### **P: O que são provisões de 13º e férias?**
+**R:** São valores que você lança mensalmente (1/12 do custo anual) para distribuir o impacto ao longo do ano. Assim o DRE fica mais realista.
 
-1. **Salários Líquidos:**
-   - Valor: Total líquido da folha
-   - Vencimento: Dia 5 do mês seguinte
-   - Tipo: Salários
-   - Portador: Conforme configurado (TED, conta corrente)
+**Exemplo:**
+- Custo anual de 13º: R$ 50.000
+- Provisão mensal: R$ 50.000 ÷ 12 = R$ 4.166,67
 
-2. **INSS Patronal + Descontado:**
-   - Valor: INSS empresa + INSS funcionários
-   - Vencimento: Dia 20 do mês seguinte
-   - Código barras: GPS automático
+### **P: Sou obrigado a provisionar 13º e férias mensalmente?**
+**R:** Não é obrigatório no Sol.NET, mas é uma boa prática gerencial. Consulte sua contabilidade.
 
-3. **FGTS:**
-   - Valor: 8% sobre folha
-   - Vencimento: Dia 7 do mês seguinte
-   - Referência: Competência (MM/AAAA)
-
-4. **IRRF:**
-   - Valor: Total retido dos funcionários
-   - Vencimento: Último dia útil 2º decêndio
-   - Código: DARF 0561
-
-**Configuração:**
-RH > Configurações > Integração Financeira
-- Ativar: "Gerar Títulos Automaticamente"
-- Definir portadores padrão
-- Configurar históricos
-
-### **P: É possível importar dados do ponto eletrônico?**
-**R:**
-Sim! Menu RH > Importação > Ponto Eletrônico
-
-**Formatos suportados:**
-- AFD (Arquivo Fonte de Dados - padrão MTE)
-- ACJEF (Arquivo Controle de Jornada Eletrônica de Funcionários)
-- TXT personalizado (configure layout)
-- Excel/CSV (via assistente de importação)
-
-**Processo:**
-1. Export arquivo do relógio de ponto
-2. RH > Importação > Ponto Eletrônico
-3. Selecione arquivo
-4. Escolha competência (mês/ano)
-5. Sistema processa e calcula:
-   - Horas normais trabalhadas
-   - Horas extras 50% e 100%
-   - Faltas e atrasos
-   - Adicional noturno
-   - DSR sobre horas extras
-6. Confira relatório de importação
-7. Aprove ou ajuste manualmente
-
-**Integração contínua:**
-Configure importação automática diária:
-RH > Configurações > Ponto Eletrônico > Importação Automática
-
-### **P: Como funciona a integração com o eSocial?**
-**R:**
-O Sol.NET gera automaticamente os eventos do eSocial:
-
-**Eventos de Tabela (uma vez):**
-- S-1000: Dados do Empregador
-- S-1005: Estabelecimentos
-- S-1010: Rubricas (eventos da folha)
-- S-1020: Lotações (departamentos)
-
-**Eventos Não Periódicos (conforme ocorrência):**
-- S-2200: Admissão (ao cadastrar funcionário)
-- S-2206: Alteração Contratual (mudança salário/cargo)
-- S-2230: Afastamento Temporário
-- S-2299: Desligamento (rescisão)
-
-**Eventos Periódicos (mensais):**
-- S-1200: Remuneração (gerado ao processar folha)
-- S-1210: Pagamentos Diversos
-- S-1299: Fechamento Mensal
-
-**Fluxo automático:**
-1. Processar folha (F9)
-2. Sistema gera S-1200 automaticamente
-3. Validar eventos (RH > eSocial > Validar)
-4. Enviar ao eSocial (manual ou automático)
-5. Receber retorno e protocolo
-6. Fechar competência com S-1299
-
-**Configuração:**
-RH > Configurações > eSocial
-- Certificado Digital (A1 ou A3)
-- Ambiente: Produção
-- Envio automático: Ativado (recomendado)
+### **P: Como calculo os valores de provisão?**
+**R:** Não calcule. A contabilidade deve informar os valores corretos considerando todas as variáveis (médias, encargos, etc.).
 
 ---
 
-## 📄 eSocial e Obrigações
+## 🔗 Integração com DRE
 
-### **P: Quais eventos do eSocial o Sol.NET gera automaticamente?**
+### **P: Os lançamentos de RH aparecem automaticamente no DRE?**
+**R:** Sim. Quando você lança com as contas contábeis corretas, os valores aparecem automaticamente no DRE do período.
+
+### **P: Em que contas os lançamentos aparecem no DRE?**
+**R:** Nas contas de despesa que você configurou:
+```
+6.2.01 - Salários
+6.2.02 - Encargos Sociais
+6.2.03 - Benefícios
+6.2.04 - Provisão 13º
+6.2.05 - Provisão Férias
+```
+
+### **P: Como vejo as despesas de RH separadas por departamento?**
+**R:** 
+1. Lance os valores com centro de custo diferente para cada departamento
+2. No DRE, filtre ou visualize por centro de custo
+3. O sistema mostrará os valores separados
+
+### **P: Valores não aparecem no DRE, o que fazer?**
+**R:** Verifique:
+- A conta contábil usada está no plano de contas?
+- O período do DRE corresponde à competência do lançamento?
+- O lançamento foi salvo corretamente?
+- A conta está vinculada a um agrupamento DRE?
+
+### **P: Posso fazer lançamentos direto no módulo Financeiro?**
+**R:** Sim. Em vez de usar RH → Lançamentos de Folha, você pode usar Financeiro → Lançamentos Contábeis. O efeito no DRE é o mesmo.
+
+---
+
+## 👥 Cadastros
+
+### **P: Preciso cadastrar todos os funcionários no Sol.NET?**
+**R:** Não é obrigatório. O cadastro de funcionários no Sol.NET é simplificado e serve apenas para controle interno. Cadastre se quiser ter uma lista de nomes e departamentos.
+
+### **P: Quais informações são necessárias no cadastro?**
+**R:** Mínimo:
+- Nome do funcionário
+- Departamento/Centro de custo
+- Cargo (opcional)
+- Status (Ativo/Inativo)
+
+Não é necessário CPF, RG, dados bancários, etc.
+
+### **P: Preciso cadastrar dependentes?**
+**R:** Não. O Sol.NET não processa cálculos de IRRF ou salário família, então não precisa de informações de dependentes.
+
+### **P: Como organizo funcionários por departamento?**
 **R:**
-**Gerados Automaticamente:**
-- ✅ S-1200 (Remuneração) - ao processar folha
-- ✅ S-1210 (Pagamentos Diversos) - se houver
-- ✅ S-2200 (Admissão) - ao cadastrar com data
-- ✅ S-2299 (Desligamento) - ao processar rescisão
-- ✅ S-2300 (Trabalhador Sem Vínculo) - se configurado
+1. Primeiro cadastre os departamentos: RH → Cadastros → Departamentos
+2. Depois vincule cada funcionário a um departamento
+3. Use isso para separar custos no DRE
 
-**Gerados Manualmente:**
-- 📝 S-1000 (Empregador) - configuração inicial
-- 📝 S-1005 (Estabelecimentos) - cadastro de filiais
-- 📝 S-1010 (Rubricas) - ao cadastrar eventos
-- 📝 S-1020 (Lotações) - ao cadastrar departamentos
-- 📝 S-2206 (Alteração Contratual) - mudanças cadastrais
-- 📝 S-2230 (Afastamento) - licenças, férias
-- 📝 S-1299 (Fechamento) - fim do mês
-
-**Para enviar manualmente:**
-Menu RH > eSocial > Eventos Pendentes
-Selecione eventos > Enviar
-
-### **P: Como corrigir um erro no eSocial já enviado?**
-**R:**
-**Tipo 1 - Evento Rejeitado (não processou):**
-1. Consulte o erro no extrato do eSocial
-2. RH > eSocial > Eventos com Erro
-3. Corrija os dados no cadastro
-4. Reenvie o mesmo evento
-5. Não precisa retificar
-
-**Tipo 2 - Evento Processado mas com Erro:**
-1. RH > eSocial > Retificação de Eventos
-2. Localize o evento original (informar recibo)
-3. Sistema carrega dados enviados
-4. Corrija as informações
-5. Envie evento retificador
-6. Sistema usa mesmo número de recibo original
-
-**Erros Comuns e Soluções:**
-
-| Erro | Causa | Solução |
-|------|-------|---------|
-| CPF Inválido | CPF errado ou inativo | Corrigir no cadastro e reenviar |
-| Data Incompatível | Admissão após evento | Ajustar datas e retificar |
-| Rubrica não cadastrada | Falta S-1010 | Cadastrar rubrica na tabela |
-| CAEPF obrigatório | Falta no S-1000 | Incluir no cadastro empregador |
-
-**IMPORTANTE:** 
-- Eventos de tabela (S-1000, S-1010, etc.) devem ser enviados ANTES dos eventos de folha
-- Mantenha sempre o Serpro/Gov.br atualizados
-
-### **P: Como gerar e enviar a SEFIP?**
-**R:**
-Menu RH > Obrigações > SEFIP
-
-**Processo completo:**
-
-1. **Processar Folha:**
-   - Folha do mês deve estar fechada e conferida
-
-2. **Gerar Arquivo SEFIP:**
-   - Selecione competência (MM/AAAA)
-   - Escolha tipo:
-     - Mensal (normal)
-     - 13º Salário
-     - Rescisão
-   - Gere arquivo .sfi
-
-3. **Validar no Sistema:**
-   - Sol.NET faz validação prévia
-   - Confira:
-     - Todos funcionários têm PIS
-     - Valores de FGTS corretos
-     - Código GPS correto
-     - Dados da empresa completos
-
-4. **Importar no Aplicativo SEFIP:**
-   - Baixe SEFIP atualizado (site Caixa)
-   - Arquivo > Importar > Arquivo de Transmissão
-   - Selecione o .sfi gerado
-
-5. **Validar no SEFIP:**
-   - SEFIP faz validações adicionais
-   - Corrija erros se houver
-   - Gere RE (Relação de Empregados)
-   - Confira totalizadores
-
-6. **Transmitir:**
-   - Conectividade Social ICP
-   - Certificado Digital necessário
-   - Guarde número do protocolo
-
-7. **Gerar GRF:**
-   - Após transmissão
-   - Guia para pagamento FGTS
-   - Vencimento: Dia 7
-
-**Prazo:** Até dia 7 do mês seguinte
-
-**Arquivo gerado contém:**
-- Remuneração de cada trabalhador
-- Base de cálculo FGTS (8%)
-- Informações de movimentação
-- Afastamentos e licenças
-
-### **P: Como emitir o Informe de Rendimentos para funcionários?**
-**R:**
-Menu RH > Relatórios > Informe de Rendimentos
-
-**Processo:**
-
-1. **Selecionar Ano-Calendário:**
-   - Ano anterior (ex: 2024 para IR 2025)
-
-2. **Escolher Tipo:**
-   - Modelo Simplificado (padrão RFB)
-   - Modelo Completo (com detalhamento mensal)
-   - Modelo Empresa (personalizado com logo)
-
-3. **Selecionar Funcionários:**
-   - Todos ativos e demitidos no ano
-   - Por departamento
-   - Individual (matrícula/CPF)
-
-4. **Informações Incluídas:**
-   - Rendimentos tributáveis (salários, HE, férias, 13º)
-   - Contribuição Previdenciária Oficial (INSS)
-   - Imposto de Renda Retido (IRRF)
-   - Rendimentos isentos (se houver)
-   - 13º salário separadamente
-   - Dependentes declarados
-
-5. **Gerar e Distribuir:**
-   - PDF individual por funcionário
-   - E-mail automático (se configurado)
-   - Impressão em lote
-   - Portal do colaborador (acesso online)
-
-**Prazo:** Até 28 de fevereiro
-
-**Validação:**
-- Confronte valores com DIRF
-- Confira CPF e nome completo
-- Valide dependentes informados
-
-**DICA:** Configure envio automático por e-mail:
-RH > Configurações > E-mail > Informe Rendimentos Automático
-
-### **P: O que fazer se a RAIS/eSocial Social der erro de envio?**
-**R:**
-**Para eSocial Social:**
-
-Consulte o tipo de erro:
-- Menu RH > eSocial > Consultar Retornos
-- Identifique o código do erro
-
-**Erros Comuns:**
-
-**Erro 1:** "Empregador não encontrado"
-- Causa: S-1000 não enviado ou incorreto
-- Solução: Enviar/corrigir S-1000 primeiro
-
-**Erro 2:** "Trabalhador já possui vínculo ativo"
-- Causa: Tentativa de admitir funcionário já ativo
-- Solução: Verificar se não foi enviado duplicado
-
-**Erro 3:** "Incompatibilidade de data"
-- Causa: Data de evento anterior à admissão
-- Solução: Ajustar datas no cadastro
-
-**Erro 4:** "Rubrica não cadastrada"
-- Causa: Evento da folha sem correspondente no S-1010
-- Solução: Enviar S-1010 com a rubrica primeiro
-
-**Para RAIS:**
-
-RAIS foi substituída pelo eSocial, mas para anos anteriores:
-
-1. **Validar Cadastros:**
-   - Todos têm PIS válido
-   - Datas de admissão/demissão corretas
-   - Nacionalidade informada
-
-2. **Regerar Arquivo:**
-   - RH > Obrigações > RAIS
-   - Marcar "Validar antes de gerar"
-   - Corrigir inconsistências
-
-3. **Transmitir:**
-   - Portal RAIS Online (Gov.br)
-   - Upload do arquivo
-   - Conferir recibo
-
-**Suporte Oficial:**
-- eSocial: esocial.gov.br
-- RAIS: rais.gov.br
+### **P: O cadastro no Sol.NET precisa estar igual ao da contabilidade?**
+**R:** Não necessariamente. Como você lança valores totais (não individuais), o cadastro detalhado fica com a contabilidade. No Sol.NET é apenas para controle interno.
 
 ---
 
 ## 🛠️ Problemas Técnicos
 
-### **P: Funcionário não aparece na folha do mês atual**
+### **P: Lançamento aparece duplicado no DRE**
+**R:** Você salvou o mesmo lançamento duas vezes. Solução:
+1. RH → Lançamentos de Folha
+2. Localize o duplicado
+3. Exclua um deles
+4. Regere o DRE
+
+### **P: Total lançado diferente do informado pela contabilidade**
+**R:** Confira:
+1. Some todos os lançamentos do período
+2. Compare categoria por categoria com o resumo da contabilidade
+3. Verifique se não esqueceu de lançar alguma categoria
+4. Confirme se não há lançamentos duplicados
+
+### **P: Valores aparecendo no departamento/centro de custo errado**
 **R:**
-Verifique em ordem:
+1. Edite o lançamento
+2. Corrija o campo "Centro de Custo"
+3. Salve
+4. Regere o DRE
 
-1. **Status do Cadastro:**
-   - Abra o cadastro (F2 + matrícula)
-   - Status deve ser "Ativo"
-   - Se "Demitido" ou "Afastado", não processa
+### **P: Não consigo excluir um lançamento**
+**R:** Possíveis causas:
+- Período já fechado contabilmente
+- Falta de permissão de usuário
+- Lançamento vinculado a outro módulo
 
-2. **Data de Admissão:**
-   - Deve ser anterior ou igual ao período da folha
-   - Ex: Admitido em 15/01, processa a partir de Janeiro
+Consulte o administrador do sistema.
 
-3. **Afastamento:**
-   - Menu RH > Afastamentos
-   - Verifique se há afastamento sem vencimento ativo
+### **P: Como desfaço todos os lançamentos de um mês?**
+**R:** 
+1. RH → Lançamentos de Folha
+2. Filtre pela competência (mês/ano)
+3. Selecione todos os lançamentos
+4. Exclua em lote (se disponível) ou um por um
+5. Refaça os lançamentos corretos
 
-4. **Filtros da Tela:**
-   - Na tela de processamento
-   - Verifique filtros de departamento/centro custo
-   - Marque "Todos" ou o específico do funcionário
-
-5. **Data de Demissão:**
-   - Se demitido antes do período, não aparece
-   - Ex: Demitido 20/01, não aparece em Fevereiro
-
-**Se ainda não aparecer:**
-- RH > Ferramentas > Reconstruir Índices
-- Processar novamente
-
-### **P: Valor líquido diferente entre holerite e título a pagar**
-**R:**
-**Causas possíveis:**
-
-1. **Arredondamentos:**
-   - Sistema arredonda para 2 decimais
-   - Diferença de centavos é normal
-
-2. **Descontos Posteriores:**
-   - Verifique se adicionou descontos após gerar financeiro
-   - Solução: Regerar financeiro
-
-3. **Adiantamentos:**
-   - Adiantamento quinzenal foi lançado separadamente
-   - Líquido do holerite = Bruto - Descontos - Adiantamento
-   - Título a pagar = Só o saldo
-
-4. **Múltiplos Títulos:**
-   - Sistema pode gerar títulos separados:
-     - Salário principal
-     - Férias
-     - Rescisão
-   - Some todos os títulos
-
-**Para conferir:**
-```sql
-Holerite:
-Total Vencimentos: R$ 5.500,00
-Total Descontos: R$ 1.100,00
-Líquido: R$ 4.400,00
-
-Financeiro:
-Título Salário: R$ 3.400,00
-Título Adiantamento (já pago): R$ 1.000,00
-Total: R$ 4.400,00 ✓
-```
-
-**Solução:**
-- Exclua títulos gerados
-- Regere financeiro: RH > Processos > Gerar Financeiro
-- Confira novamente
-
-### **P: Provisão de férias não está sendo lançada automaticamente**
-**R:**
-**Checklist de configuração:**
-
-1. **Ativar Provisões:**
-   - Menu RH > Configurações > Provisões
-   - "Provisionar Férias Mensalmente" = ✓ Ativado
-
-2. **Contas Contábeis:**
-   - RH > Configurações > Integração Contábil
-   - "Conta Provisão Férias" = Informada (ex: 6.2.04)
-   - "Conta Provisão Férias a Pagar" = Informada (ex: 2.1.3.02)
-   - "Conta FGTS sobre Férias" = Informada
-
-3. **Funcionários com Cadastro Completo:**
-   - Cada funcionário deve ter:
-     - Centro de custo definido
-     - Conta contábil de salário
-     - Data de admissão válida
-
-4. **Processar Provisões:**
-   - Após processar folha mensal
-   - Menu RH > Processos > Processar Provisões
-   - Selecione competência
-   - Execute
-
-5. **Conferir Lançamento:**
-   - Menu Financeiro > DRE
-   - Procure conta 6.2.04 - Provisão Férias
-   - Deve ter valor = (Total Folha + 1/3) ÷ 12
-
-**Executar manualmente (se necessário):**
-```
-RH > Processos > Provisões > Recalcular Provisões
-Selecione período (ex: últimos 12 meses)
-Execute
-```
-
-### **P: Sistema está lento ao processar a folha**
-**R:**
-**Otimizações:**
-
-1. **Processamento por Lotes:**
-   - Em vez de processar 500 funcionários de uma vez
-   - Processe por departamento:
-     - Administrativo (100)
-     - Vendas (150)
-     - Produção (200)
-     - Etc.
-
-2. **Desativar Validações Durante Processamento:**
-   - RH > Configurações > Performance
-   - Desmarcar "Validar limites durante processamento"
-   - Validar após processar
-
-3. **Limpar Histórico Antigo:**
-   - Menu RH > Manutenção > Arquivar Folhas Antigas
-   - Mova folhas com mais de 5 anos para arquivo
-   - Mantém performance
-
-4. **Rebuild de Índices:**
-   - RH > Ferramentas > Manutenção Banco
-   - Reconstruir Índices
-   - Executar fora do horário comercial
-
-5. **Atualizar Estatísticas:**
-   - Menu RH > Ferramentas > Atualizar Estatísticas
-   - Melhora plano de execução das consultas
-
-6. **Hardware:**
-   - Verifique:
-     - Memória RAM disponível (mínimo 8GB)
-     - Espaço em disco (SSD recomendado)
-     - Antivírus não bloqueando banco de dados
-
-**Suporte Técnico:**
-Se persistir: suporte.tecnico@solnet.com.br
-Informe:
-- Número de funcionários
-- Tempo de processamento
-- Configuração do servidor
-
----
-
-## 📊 Relatórios
-
-### **P: Como emitir holerite de um funcionário específico?**
-**R:**
-**Método 1 - Direto do Cadastro:**
-1. F2 (Consulta rápida)
-2. Digite nome ou matrícula
-3. F10 (Gerar Holerite)
-4. Selecione competência
-5. Escolha formato (PDF, impressão, e-mail)
-
-**Método 2 - Por Relatório:**
-1. Menu RH > Relatórios > Holerite
-2. Filtros:
-   - Competência: MM/AAAA
-   - Funcionário: Específico
-3. Gerar
-
-**Método 3 - Portal do Funcionário:**
-- Funcionário acessa: solnet.com.br/portal
-- Login: CPF + senha
-- Menu "Meus Holerites"
-- Seleciona competência
-- Download PDF
-
-**Formatos disponíveis:**
-- PDF (padrão)
-- Excel (para análise)
-- E-mail direto ao funcionário
-- Impressão térmica (para ponto)
-
-### **P: Como gerar relatório de custo por departamento?**
-**R:**
-Menu RH > Relatórios > Custo por Centro
-
-**Configurações:**
-1. **Período:**
-   - Mês específico
-   - Intervalo (ex: Jan a Dez)
-   - Ano completo
-
-2. **Filtros:**
-   - Todos os departamentos
-   - Específico(s)
-   - Por tipo (direto/indireto)
-
-3. **Detalhamento:**
-   - Resumido: Só totais
-   - Analítico: Com detalhes por funcionário
-   - Gráfico: Visualização comparativa
-
-4. **Informações Incluídas:**
-   - Salários
-   - Encargos (INSS, FGTS)
-   - Benefícios (VT, VR, plano)
-   - Provisões (13º, férias)
-   - Horas extras
-   - **Total Geral por Departamento**
-
-5. **Análises Possíveis:**
-   - Percentual sobre receita
-   - Custo médio por funcionário
-   - Evolução mensal
-   - Comparativo orçado x realizado
-
-**Export:**
-- Excel (com gráficos)
-- PDF (para apresentação)
-- CSV (para BI)
-
-**Exemplo de saída:**
-```
-Departamento Administrativo:
-Salários: R$ 50.000,00
-Encargos: R$ 14.000,00
-Benefícios: R$ 8.000,00
-Provisões: R$ 10.000,00
-TOTAL: R$ 82.000,00 (28% da receita)
-```
-
-### **P: Como consultar histórico salarial de um funcionário?**
-**R:**
-Menu RH > Consultas > Histórico Salarial
-
-1. **Selecionar Funcionário:**
-   - F2 para busca rápida
-   - Ou informar matrícula
-
-2. **Período:**
-   - Desde admissão
-   - Últimos 12 meses
-   - Personalizado
-
-3. **Informações Exibidas:**
-   - Data do reajuste
-   - Salário anterior
-   - Salário novo
-   - Percentual de aumento
-   - Motivo (dissídio, mérito, promoção)
-   - Usuário que alterou
-
-4. **Gráfico de Evolução:**
-   - Visualização temporal
-   - Comparativo com inflação
-   - Média do departamento
-
-**Exemplo:**
-```
-João da Silva - Matrícula 001
-
-Data       | Salário  | Reajuste | Motivo
------------|----------|----------|------------------
-01/01/2022 | R$ 3.000 | -        | Admissão
-01/05/2022 | R$ 3.180 | 6%       | Dissídio
-01/01/2023 | R$ 3.500 | 10%      | Promoção Analista
-01/05/2023 | R$ 3.717 | 6,2%     | Dissídio
-01/01/2024 | R$ 4.000 | 7,6%     | Mérito
-```
+### **P: Posso importar lançamentos de uma planilha?**
+**R:** Depende da versão do Sol.NET. Consulte a documentação técnica ou suporte para verificar se há funcionalidade de importação.
 
 ---
 
 ## 🎯 Cenários Específicos
 
-### **P: Como processar folha complementar (ex: comissões atrasadas)?**
+### **P: Como lanço o 13º salário (1ª e 2ª parcela)?**
+**R:** Há duas abordagens:
+
+**Opção 1 - Com Provisão:**
+- Todo mês: Provisiona 1/12 do custo
+- Novembro (1ª parcela): Baixa 50% da provisão
+- Dezembro (2ª parcela): Baixa 50% restante + encargos
+
+**Opção 2 - Sem Provisão:**
+- Novembro: Lança 50% do 13º
+- Dezembro: Lança 50% restante + encargos
+
+Consulte sua contabilidade sobre qual usar.
+
+### **P: Como lanço férias pagas?**
+**R:** Similar ao 13º:
+- Se provisiona: Baixa da provisão quando paga
+- Se não provisiona: Lança como despesa no mês de pagamento
+
+A contabilidade deve informar os valores e forma de lançamento.
+
+### **P: Como lanço rescisões?**
+**R:** Lance as verbas rescisórias como despesa do mês:
+```
+D - 6.2.06 - Rescisões e Indenizações
+C - 2.1.2.05 - Rescisões a Pagar
+Valor: Conforme informado pela contabilidade
+```
+
+### **P: Empresa tem múltiplas filiais, como organizar?**
 **R:**
-Menu RH > Processos > Folha Complementar
+1. Crie centros de custo para cada filial
+2. Lance valores separadamente por filial
+3. No DRE, filtre por centro de custo para análise individual
+4. Ou visualize consolidado de todas as filiais
 
-**Quando usar:**
-- Comissões calculadas após fechamento
-- Bonificações decididas depois
-- Correções de valores
-- Horas extras não lançadas
-
-**Processo:**
-1. **Criar Folha Complementar:**
-   - Selecione competência da folha original
-   - Marque "Folha Complementar"
-   - Informe descrição (ex: "Comissões Janeiro")
-
-2. **Lançar Eventos:**
-   - Apenas os eventos complementares
-   - Sistema mantém eventos da folha original
-
-3. **Processar:**
-   - Calcula INSS, IRRF, FGTS sobre complemento
-   - Considera limite de teto (INSS) já usado
-   
-4. **Gerar Holerite Complementar:**
-   - Emite holerite separado
-   - Ou holerite consolidado (original + complementar)
-
-5. **Integração:**
-   - Lançamentos contábeis complementares
-   - Títulos a pagar adicionais
-   - eSocial: S-1200 retificador
-
-**Exemplo:**
-```
-Folha Original (processada dia 25):
-Salário: R$ 3.000,00
-INSS: R$ 360,00
-Líquido: R$ 2.640,00
-
-Folha Complementar (dia 30 - comissões):
-Comissão: R$ 1.500,00
-INSS: R$ 172,00 (considerando já descontado)
-IRRF: R$ 85,00 (recalculado sobre total)
-Líquido Adicional: R$ 1.243,00
-
-Pagamento:
-Dia 5: R$ 2.640,00 (salário)
-Dia 10: R$ 1.243,00 (complemento)
-```
-
-### **P: Como fazer acerto de contas (diferenças de meses anteriores)?**
+### **P: Como faço para comparar custo de RH mês a mês?**
 **R:**
-Menu RH > Processos > Acertos
+1. Menu Financeiro → DRE
+2. Selecione "DRE Comparativo"
+3. Escolha os períodos (ex: últimos 6 meses)
+4. O sistema mostra evolução das despesas com pessoal
 
-**Tipos de acerto:**
-
-1. **Diferenças Salariais:**
-   - Dissídio retroativo
-   - Correção de salário lançado errado
-
-2. **Horas Extras Não Pagas:**
-   - Banco de horas vencido
-   - HE não lançadas
-
-3. **Descontos Indevidos:**
-   - Devolução de valores
-   - Correção de faltas lançadas erradas
-
-**Processo:**
-
-1. **Identificar Diferença:**
-   - Calcule: Valor Correto - Valor Pago = Diferença
-
-2. **Criar Evento de Acerto:**
-   - RH > Cadastros > Eventos
-   - Código: 900-999 (eventos de acerto)
-   - Descrição: "Acerto Salário - Ref. MM/AAAA"
-
-3. **Lançar na Folha Atual:**
-   - Processe normalmente a folha do mês
-   - Adicione evento de acerto
-   - Sistema calcula encargos sobre acerto
-
-4. **Encargos e Impostos:**
-   - INSS: Recolher sobre acerto
-   - IRRF: Aplicar tabela progressiva
-   - FGTS: 8% sobre diferença
-   - **ATENÇÃO:** Encargos incidem no mês do pagamento, não do competência original
-
-5. **Contabilização:**
-   - Lançar na competência atual
-   - Histórico: "Acerto ref. MM/AAAA"
-
-**Exemplo - Dissídio Retroativo:**
-```
-Dissídio Maio/2024: 10% retroativo a Janeiro
-
-Funcionário com salário R$ 3.000,00:
-Janeiro a Abril (4 meses): R$ 3.000 × 10% × 4 = R$ 1.200
-
-Lançamento em Maio:
-Evento: Acerto Dissídio Jan-Abr
-Valor: R$ 1.200,00
-INSS: Calcular sobre R$ 1.200 (mês maio)
-IRRF: Somar com salário maio e recalcular
-FGTS: R$ 1.200 × 8% = R$ 96,00
-
-Pagar em Maio junto com folha normal
-```
-
-**Observação Fiscal:**
-Para diferenças grandes, consulte contador sobre:
-- Tributação de acertos
-- Possibilidade de parcelamento
-- Impacto no eSocial
-
-### **P: Como processar férias coletivas?**
+### **P: Como calculo o percentual de RH sobre a receita?**
 **R:**
-Menu RH > Férias > Férias Coletivas
+1. Gere o DRE do período
+2. Visualize:
+   - Total de Receitas: R$ X
+   - Total Despesas RH: R$ Y
+3. Calcule: (Y ÷ X) × 100 = percentual
 
-**Planejamento:**
-
-1. **Definir Parâmetros:**
-   - Período: Datas início e fim
-   - Departamentos: Todos ou específicos
-   - Dias: Quantidade (mínimo 10 dias por período)
-   - Parcelas: Máximo 2 períodos por ano
-
-2. **Comunicações Obrigatórias:**
-   - Sindicato: 15 dias antes
-   - MTE: 15 dias antes
-   - Funcionários: Com antecedência razoável
-
-**Processamento no Sistema:**
-
-1. **Cadastrar Férias Coletivas:**
-   - RH > Férias > Férias Coletivas > Novo
-   - Informe:
-     - Descrição: "Férias Coletivas Final de Ano 2024"
-     - Data início: 23/12/2024
-     - Data fim: 05/01/2025
-     - Dias: 14 dias (10 úteis)
-     - Departamentos: Todos
-
-2. **Selecionar Funcionários:**
-   - Sistema lista todos do(s) departamento(s)
-   - Marque os que tirarão férias
-   - Desmarque gestores/essenciais (se aplicável)
-
-3. **Calcular Férias:**
-   - Sistema calcula para cada funcionário:
-     - Verifica período aquisitivo disponível
-     - Calcula valor (salário + 1/3)
-     - Desconta INSS e IRRF
-     - Baixa da provisão
-
-4. **Gerar Recibos:**
-   - Em lote para todos
-   - PDF individual para assinatura
-   - Envio por e-mail automático
-
-5. **Comunicar MTE:**
-   - RH > Férias Coletivas > Comunicação MTE
-   - Gerar documento oficial
-   - Enviar via eSocial (evento futuro)
-
-6. **Pagamento:**
-   - Até 2 dias antes do início
-   - Gerar título no financeiro
-   - Processar pagamento
-
-**eSocial:**
-- Enviar S-1280 (Comunicação Férias Coletivas)
-- Informar no S-1200 individual de cada funcionário
-
-**Exemplo:**
-```
-Empresa: 100 funcionários
-Período: 23/12/2024 a 05/01/2025 (14 dias)
-
-Cálculo por funcionário:
-Salário: R$ 4.000,00
-14 dias férias: R$ 4.000,00 × (14/30) = R$ 1.867,00
-Adicional 1/3: R$ 1.867,00 ÷ 3 = R$ 622,00
-Total Bruto: R$ 2.489,00
-
-INSS: R$ 269,00
-IRRF: R$ 120,00
-Líquido: R$ 2.100,00
-
-Multiplicar por 100 funcionários
-Pagamento total: R$ 210.000,00
-```
-
-### **P: Como processar 13º salário?**
-**R:**
-**Calendário:**
-- **1ª Parcela**: Até 30/novembro (50% sem descontos)
-- **2ª Parcela**: Até 20/dezembro (saldo com descontos)
-
-**Processamento 1ª Parcela:**
-
-Menu RH > 13º Salário > 1ª Parcela
-
-1. **Calcular:**
-   - Base: Salário de dezembro ÷ 2
-   - Proporção: Meses trabalhados ÷ 12
-   - Sem descontos (INSS, IRRF)
-
-2. **Exemplo:**
-   ```
-   Funcionário admitido em março (10 meses):
-   Salário: R$ 4.000,00
-   Média HE: R$ 500,00
-   Base: (R$ 4.000 + R$ 500) × 10 ÷ 12 = R$ 3.750
-   1ª Parcela: R$ 3.750 ÷ 2 = R$ 1.875,00
-   Líquido: R$ 1.875,00 (sem descontos)
-   ```
-
-3. **Gerar Títulos:**
-   - RH > 13º Salário > Gerar Financeiro
-   - Vencimento: 30/novembro
-
-4. **Baixar Provisão (50%):**
-   - Sistema baixa metade da provisão acumulada
-
-**Processamento 2ª Parcela:**
-
-Menu RH > 13º Salário > 2ª Parcela
-
-1. **Calcular:**
-   - Total 13º: Salário dezembro × meses ÷ 12
-   - Saldo: Total - 1ª Parcela
-   - Aplicar descontos:
-     - INSS sobre valor total (não só 2ª parcela)
-     - IRRF sobre valor total
-   
-2. **Exemplo:**
-   ```
-   Total 13º: R$ 3.750,00
-   1ª Parcela já paga: R$ 1.875,00
-   Saldo bruto: R$ 1.875,00
-   
-   Descontos (sobre total R$ 3.750):
-   INSS: R$ 412,00
-   IRRF: R$ 95,00
-   
-   2ª Parcela líquida:
-   R$ 1.875,00 - R$ 412,00 - R$ 95,00 = R$ 1.368,00
-   ```
-
-3. **Gerar Títulos:**
-   - Vencimento: 20/dezembro
-   - Inclui INSS e FGTS a recolher
-
-4. **Baixar Provisão Restante:**
-   - Sistema baixa 50% restante + encargos
-
-**eSocial:**
-- Informar no S-1200 de dezembro
-- Código específico para 13º salário
-- S-1210 se 13º complementar
-
-**Rescisão com 13º Proporcional:**
-- Calcular meses trabalhados no ano
-- Incluir 13º proporcional nas verbas rescisórias
-- Descontar 1ª parcela se já paga
+Muitos DREs já mostram isso automaticamente como "Análise Vertical".
 
 ---
 
-## 💡 Dicas de Produtividade
+## 💡 Boas Práticas
 
-### **P: Posso processar a folha por departamento ao invés de todos juntos?**
+### **P: Qual a melhor forma de organizar os lançamentos?**
 **R:**
-Sim! É até recomendado para empresas grandes.
+- Use históricos padronizados
+- Separe por departamento/centro de custo
+- Provisione mensalmente 13º e férias
+- Confira sempre o DRE após lançar
+- Mantenha documentação (resumo da contabilidade)
 
-**Vantagens:**
-- ✅ Mais rápido (processa menos funcionários por vez)
-- ✅ Facilita conferência (foca em um grupo)
-- ✅ Permite correções sem reprocessar tudo
-- ✅ Diferentes responsáveis por área
+### **P: Devo lançar na data de pagamento ou competência?**
+**R:** Use a data de **competência** (último dia do mês de referência da folha), não a data de pagamento. Isso garante que o DRE reflita corretamente as despesas do período.
 
-**Como fazer:**
-
-1. **Processamento Departamental:**
-   ```
-   Menu RH > Processar Folha
-   Filtros:
-   - Departamento: Administrativo
-   - F9 (Processar)
-   
-   Depois:
-   - Departamento: Vendas
-   - F9 (Processar)
-   
-   E assim por diante...
-   ```
-
-2. **Consolidação:**
-   - Sistema mantém tudo na mesma competência
-   - Relatórios consolidam automaticamente
-   - Integração contábil agrupa tudo
-
-3. **Vantagem Adicional:**
-   - Gestor de cada área pode conferir seu departamento
-   - Delegar responsabilidades
-   - Reduzir gargalos
-
-**Cuidado:**
-- Não feche a competência até processar todos
-- Conferir totalizadores finais
-- eSocial: Enviar S-1299 só depois de todos
-
-### **P: Como criar templates de eventos para agilizar lançamentos?**
+### **P: Como garantir que não esqueço de lançar nenhum mês?**
 **R:**
-Menu RH > Templates > Criar Template
-
-**Casos de uso:**
-
-**1. Comissões de Vendas:**
-```
-Template: "Comissões Equipe Vendas"
-
-Eventos:
-- 150 - Comissão Vendas: Variável
-- 151 - Prêmio Meta: R$ 500,00 (fixo)
-- 020 - DSR sobre Comissão: Calculado
-
-Funcionários:
-- João (001)
-- Maria (002)
-- Carlos (003)
-[...]
-
-Próximo mês:
-- Carregar template
-- Ajustar valores variáveis
-- Processar
-```
-
-**2. Gratificações Fixas:**
-```
-Template: "Gratificações Mensais Gerência"
-
-Evento: 120 - Gratificação Gerência
-Funcionários: Todos com cargo "Gerente"
-Valor: R$ 2.000,00
-
-Aplicar todo mês automaticamente
-```
-
-**3. Descontos Recorrentes:**
-```
-Template: "Descontos Consignados"
-
-Empréstimos, planos, pensões
-Carrega valores de tabela externa
-Aplica em lote
-```
-
-**Criar Template:**
-1. Processar folha normal com eventos
-2. Antes de finalizar: Salvar como Template
-3. Nomear e descrever
-4. Próximo mês: Carregar Template
-5. Ajustar valores se necessário
-6. Processar
-
-**Economia de tempo:**
-- Lançamento manual: 2h
-- Com template: 15min
-
-### **P: É possível automatizar o envio de holerites por e-mail?**
-**R:**
-Sim! Configure uma vez e sistema envia automaticamente.
-
-**Configuração:**
-
-1. **Ativar Recurso:**
-   ```
-   Menu RH > Configurações > E-mail
-   
-   Marcar:
-   ✓ Enviar holerites automaticamente após processamento
-   ✓ Enviar informe de rendimentos automaticamente
-   ```
-
-2. **Configurar E-mails Funcionários:**
-   - Cada funcionário deve ter e-mail no cadastro
-   - Aba "Contatos" > E-mail
-   - Validar endereço (clique em "Testar")
-
-3. **Personalizar Mensagem:**
-   ```
-   Assunto: Holerite {MES}/{ANO} - {NOME_FUNCIONARIO}
-   
-   Corpo:
-   Olá {NOME},
-   
-   Segue em anexo seu holerite referente a {MES}/{ANO}.
-   
-   Atenciosamente,
-   Departamento Pessoal
-   ```
-
-4. **Servidor SMTP:**
-   - Configurar servidor de e-mail
-   - Gmail, Outlook, servidor próprio
-   - Porta, SSL, autenticação
-
-5. **Automatização:**
-   - Após processar folha (F9)
-   - Após aprovar
-   - Sistema envia automaticamente para todos
-
-**Vantagens:**
-- Economia de papel
-- Acesso imediato do funcionário
-- Comprovante de envio
-- Portal colaborador dispensável
-
-**Segurança:**
-- E-mail criptografado (TLS)
-- PDF pode ter senha (CPF do funcionário)
-- Log de envios auditável
-
-**Alternativa - Portal do Colaborador:**
-- Funcionário acessa via web
-- Consulta todos os holerites
-- Baixa quando precisar
-- Mais seguro que e-mail
-
-### **P: Como configurar alertas para valores fora do padrão?**
-**R:**
-Menu RH > Configurações > Alertas
-
-**Tipos de alerta:**
-
-**1. Horas Extras Excessivas:**
-```
-Condição: Horas Extras > 40h no mês
-Ação: Alerta vermelho na tela + e-mail gestor
-Motivo: Possível erro ou necessidade contratar
-```
-
-**2. Salário Abaixo do Piso:**
-```
-Condição: Salário < Piso da Categoria
-Ação: Bloquear processamento
-Motivo: Ilegalidade
-```
-
-**3. INSS Acima do Teto:**
-```
-Condição: INSS > R$ 908,85
-Ação: Alerta laranja + ajuste automático
-Motivo: Limite legal
-```
-
-**4. IRRF Negativo:**
-```
-Condição: IRRF calculado < 0
-Ação: Alerta + zerar valor
-Motivo: Impossível IRRF negativo
-```
-
-**5. Variação Salarial Grande:**
-```
-Condição: Salário mês atual > 150% mês anterior
-Ação: Alerta + solicitar confirmação
-Motivo: Possível erro digitação
-```
-
-**6. Funcionário Sem Eventos:**
-```
-Condição: Funcionário ativo sem eventos no mês
-Ação: Alerta amarelo
-Motivo: Verificar afastamento ou esquecimento
-```
-
-**Configurar:**
-1. RH > Configurações > Alertas
-2. Escolher tipo de alerta
-3. Definir condição (valor, percentual)
-4. Escolher ação:
-   - Alerta visual
-   - E-mail
-   - Bloquear processamento
-   - Ajuste automático
-5. Salvar
-
-**No Processamento:**
-- Sistema valida regras
-- Exibe alertas em tela
-- Permite correção antes de continuar
-- Log de alertas para auditoria
-
-**Exemplo prático:**
-```
-Processando 150 funcionários:
-
-⚠️ ALERTAS ENCONTRADOS:
-
-🔴 Urgente (2):
-- João Silva: 55h extras (limite 40h)
-- Maria Santos: Salário R$ 1.100 (piso R$ 1.320)
-
-🟡 Atenção (3):
-- Carlos Pereira: Sem eventos lançados este mês
-- Ana Costa: Aumento 80% vs mês anterior
-- Pedro Lima: 15 faltas (média 2 faltas/mês)
-
-Deseja continuar processamento? [Sim] [Corrigir]
-```
+- Crie um checklist mensal
+- Defina um responsável
+- Estabeleça um prazo (ex: até dia 10 de cada mês)
+- Confira o DRE mês a mês para identificar falhas
 
 ---
 
 **📅 Última atualização**: Janeiro de 2025  
-**📦 Versão**: 1.0  
-**🎯 Público-alvo**: Usuários e administradores do módulo RH  
+**🎯 Público-alvo**: Usuários do módulo RH Sol.NET
 
 *Para dúvidas não cobertas neste FAQ, consulte a [Documentação Completa](Documentacao Folha de Pagamento.md) ou entre em contato com o suporte técnico.*

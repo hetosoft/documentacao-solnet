@@ -69,34 +69,33 @@ Manual completo para gestão de preços de venda
 
 ---
 
-### 👥 **[Módulo RH - Recursos Humanos](RH/)**
-Gestão completa de pessoal e folha de pagamento:
+### 👥 **[Módulo RH - Lançamentos de Recursos Humanos](RH/)**
+Controle interno de despesas com pessoal para integração com DRE:
 
 #### **📋 [Índice Completo](RH/)**
 Portal de navegação para toda documentação de RH
 
-#### **💼 [Documentação Folha de Pagamento](RH/Documentacao Folha de Pagamento.md)**
-- Visão geral e características do módulo
-- Cadastros essenciais (funcionários, cargos, departamentos)
-- Processo completo de lançamento da folha
-- Cálculos detalhados de INSS, IRRF e FGTS
-- Provisões automáticas (13º salário e férias)
-- Integração com contabilidade e DRE
-- Obrigações trabalhistas (eSocial, SEFIP, DIRF, RAIS)
-- Exemplos práticos e troubleshooting
+#### **💼 [Documentação de Lançamentos de Folha](RH/Documentacao Folha de Pagamento.md)**
+- Visão geral: o que o módulo faz e não faz
+- Fluxo de trabalho: contabilidade → lançamento → DRE
+- Cadastros simplificados (funcionários e departamentos)
+- Processo de lançamento de valores
+- Integração automática com DRE
+- Configuração de contas contábeis
+- Exemplos práticos de lançamentos
+- FAQ e troubleshooting
 
 #### **🚀 [Guia Rápido](RH/Guia Rapido.md)**
-- Atalhos de teclado e checklist mensal
-- Prazos e obrigações
-- Calculadora rápida (INSS, IRRF, FGTS)
-- Fluxos de trabalho essenciais
+- Checklist mensal de lançamentos
+- Tipos de lançamento (salários, encargos, provisões)
+- Fluxo rápido de registro de valores
+- Problemas comuns e soluções
 
 #### **❓ [FAQ - Perguntas Frequentes](RH/FAQ.md)**
-- Configuração e cadastros
-- Cálculos e processamento
-- Integrações e eSocial
-- Problemas comuns e soluções
-- Cenários específicos
+- Sobre o módulo e suas limitações
+- Como fazer lançamentos
+- Integração com DRE
+- Diferença entre módulo RH e sistema de folha completo
 
 ---
 
@@ -188,8 +187,6 @@ Contribua para melhorar esta documentação:
 | Finalizar processo | **F6** | Movimentação |
 | Transformar documento | **F7** | Movimentação |
 | Quitar financeiro | **F8** | Financeiro |
-| Processar folha | **F9** | RH |
-| Gerar holerite | **F10** | RH |
 
 ---
 

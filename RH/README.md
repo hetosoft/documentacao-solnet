@@ -4,327 +4,261 @@ permalink: /RH/
 ---
 # 👥 Índice: Documentação Módulo RH - Sol.NET ERP
 
+## 🎯 Sobre Este Módulo
+
+O **Módulo de Lançamentos de RH** do Sol.NET é uma ferramenta de **controle interno** para registrar valores da folha de pagamento e integrá-los ao DRE.
+
+### ⚠️ Importante Entender
+
+**Este módulo É:**
+- ✅ Ferramenta de lançamento de valores de RH
+- ✅ Integração com DRE para análise gerencial
+- ✅ Controle de despesas com pessoal por departamento
+
+**Este módulo NÃO É:**
+- ❌ Sistema completo de folha de pagamento
+- ❌ Calculadora de impostos e encargos
+- ❌ Emissor de holerites ou guias
+- ❌ Integrado com eSocial ou órgãos externos
+
+---
+
 ## 📋 Documentos Disponíveis
 
-### 💼 **[Documentação Folha de Pagamento](Documentacao Folha de Pagamento.md)**
-Guia completo do módulo de Recursos Humanos e Folha de Pagamento, incluindo:
-- Visão geral e características do módulo
-- Cadastros essenciais (funcionários, cargos, departamentos)
-- Processo completo de lançamento da folha
-- Cálculos detalhados de INSS, IRRF e FGTS
-- Provisões automáticas (13º salário e férias)
-- Integração com contabilidade e DRE
-- Obrigações trabalhistas (eSocial, SEFIP, DIRF, RAIS)
-- Exemplos práticos de admissão, férias e rescisão
-- FAQ completo e troubleshooting
+### 💼 **[Documentação de Lançamentos de Folha](Documentacao Folha de Pagamento.md)**
+Guia completo do módulo de lançamentos de RH:
+- Visão geral e propósito do módulo
+- Diferença entre o que o módulo faz e não faz
+- Fluxo de trabalho (contabilidade → lançamento → DRE)
+- Cadastros básicos (funcionários e departamentos)
+- Processo de lançamento passo a passo
+- Configuração de contas contábeis
+- Exemplos práticos detalhados
+- FAQ e troubleshooting
 
 ### 🚀 **[Guia Rápido](Guia Rapido.md)**
 Referência rápida para operações do dia a dia:
-- Atalhos de teclado essenciais
-- Checklist mensal da folha
-- Prazos e obrigações
-- Soluções rápidas para problemas comuns
-- Fluxo de trabalho simplificado
+- Checklist mensal de lançamentos
+- Tipos de lançamento (salários, encargos, provisões)
+- Fluxo rápido de lançamento
+- Exemplo prático completo
+- Problemas comuns e soluções
+- Dicas produtivas
 
 ### ❓ **[FAQ - Perguntas Frequentes](FAQ.md)**
-Respostas para dúvidas comuns organizadas por categoria:
-- Configuração de cadastros
-- Cálculos e processamento
-- Integrações contábeis
-- eSocial e obrigações acessórias
-- Problemas comuns e soluções
-- Cenários específicos
+Respostas para dúvidas comuns:
+- Sobre o módulo e suas limitações
+- Como fazer lançamentos
+- Valores e cálculos (feitos pela contabilidade)
+- Integração com DRE
+- Cadastros necessários
+- Problemas técnicos e cenários específicos
+
+---
+
+## 🔄 Como Funciona
+
+```mermaid
+graph LR
+    A[Contabilidade<br/>Processa Folha] --> B[Fornece<br/>Resumo]
+    B --> C[Usuário Lança<br/>no Sol.NET]
+    C --> D[Integra com<br/>DRE]
+    D --> E[Relatórios<br/>Gerenciais]
+```
+
+**Fluxo típico:**
+1. Escritório contábil processa a folha de pagamento completa
+2. Contabilidade fornece resumo com valores totais
+3. Usuário lança esses valores no módulo RH do Sol.NET
+4. Sistema integra automaticamente com o DRE
+5. Empresa analisa despesas com pessoal nos relatórios
 
 ---
 
 ## 🎯 Por Onde Começar
 
-### **👤 Novo no Módulo RH**
-1. Comece com a **[Documentação Folha de Pagamento](Documentacao Folha de Pagamento.md)** - seção "Visão Geral"
-2. Entenda os **Cadastros Essenciais** antes de processar
-3. Siga o **Fluxo de Trabalho passo a passo**
-4. Pratique com exemplos de **Admissão** e **Processamento Mensal**
+### **👤 Novo Usuário**
+1. Leia **[Documentação Completa](Documentacao Folha de Pagamento.md)** - seção "Visão Geral"
+2. Entenda o que o módulo faz e o que não faz
+3. Compreenda o fluxo: contabilidade → lançamento → DRE
+4. Pratique com o **[Guia Rápido](Guia Rapido.md)**
 
 ### **🔧 Administrador/Configurador**
-1. **Cadastros Base**: Configure cargos, departamentos e sindicatos
-2. **Funcionários**: Cadastre colaboradores com dados contábeis corretos
-3. **Eventos**: Configure rubricas da folha (salários, descontos, benefícios)
-4. **Integração**: Configure contas contábeis e centros de custo
-5. **eSocial**: Configure certificado digital e ambiente
+1. Configure **Departamentos/Centros de Custo**
+2. Defina **Contas Contábeis** para cada tipo de lançamento
+3. Cadastre **Funcionários** (opcional, apenas para controle)
+4. Estabeleça **Procedimento Mensal** com a equipe
 
 ### **⚡ Usuário Experiente**
-1. Use o **[Guia Rápido](Guia Rapido.md)** como referência diária
+1. Use o **[Guia Rápido](Guia Rapido.md)** como referência
 2. Consulte **[FAQ](FAQ.md)** para situações específicas
-3. Explore **Relatórios Gerenciais** para análises avançadas
-4. Configure **Alertas Automáticos** para exceções
+3. Padronize lançamentos para ganhar agilidade
 
 ---
 
-## 🧭 Navegação Rápida por Funcionalidade
+## 💰 Tipos de Lançamento
 
-### **👥 Cadastros e Configuração**
-- [Cadastro de Funcionários](Documentacao Folha de Pagamento.md#-cadastro-de-funcionários)
-- [Cadastro de Cargos](Documentacao Folha de Pagamento.md#-cadastro-de-cargos)
-- [Cadastro de Departamentos](Documentacao Folha de Pagamento.md#-cadastro-de-departamentos)
-- [Cadastro de Sindicatos](Documentacao Folha de Pagamento.md#-cadastro-de-sindicatos)
+### **Principais Categorias**
 
-### **💰 Folha de Pagamento**
-- [Fluxo de Trabalho Completo](Documentacao Folha de Pagamento.md#-fluxo-de-trabalho)
-- [Tipos de Eventos](Documentacao Folha de Pagamento.md#-tipos-de-eventos-da-folha)
-- [Cálculos e Fórmulas](Documentacao Folha de Pagamento.md#-cálculos-e-fórmulas)
-- [Provisões Mensais](Documentacao Folha de Pagamento.md#-provisões-mensais)
-- [Checklist Mensal](Documentacao Folha de Pagamento.md#-checklist-mensal-da-folha-de-pagamento)
+| Categoria | Conta Débito | Conta Crédito | Fonte do Valor |
+|-----------|--------------|---------------|----------------|
+| Salários | 6.2.01 | 2.1.2.01 | Contabilidade |
+| Encargos Sociais | 6.2.02 | 2.1.2.02 | Contabilidade |
+| Benefícios | 6.2.03 | 2.1.2.04 | Contabilidade |
+| Provisão 13º | 6.2.04 | 2.1.3.01 | Contabilidade |
+| Provisão Férias | 6.2.05 | 2.1.3.02 | Contabilidade |
 
-### **🔗 Integrações**
-- [Integração com Contabilidade](Documentacao Folha de Pagamento.md#-integração-com-contabilidade)
-- [Lançamentos Automáticos no DRE](Documentacao Folha de Pagamento.md#-lançamentos-automáticos-no-dre)
-- [Estrutura de Contas Sugerida](Documentacao Folha de Pagamento.md#-estrutura-de-contas-sugerida)
-
-### **📄 Obrigações Trabalhistas**
-- [eSocial - Eventos Principais](Documentacao Folha de Pagamento.md#️-esocial---eventos-principais)
-- [SEFIP - FGTS](Documentacao Folha de Pagamento.md#-sefip---sistema-empresa-de-recolhimento-do-fgts)
-- [DIRF - Imposto de Renda](Documentacao Folha de Pagamento.md#-dirf---declaração-do-imposto-de-renda-retido-na-fonte)
-- [RAIS - Relação Anual](Documentacao Folha de Pagamento.md#-rais---relação-anual-de-informações-sociais)
-
-### **💡 Exemplos e Casos Práticos**
-- [Exemplo: Admissão de Funcionário](Documentacao Folha de Pagamento.md#-exemplo-1-admissão-de-novo-funcionário)
-- [Exemplo: Processamento de Férias](Documentacao Folha de Pagamento.md#-exemplo-2-processamento-de-férias)
-- [Exemplo: Rescisão de Contrato](Documentacao Folha de Pagamento.md#-exemplo-3-rescisão-de-contrato)
-
-### **🆘 Suporte e Problemas**
-- [FAQ Completo](Documentacao Folha de Pagamento.md#-faq---perguntas-frequentes)
-- [Troubleshooting](Documentacao Folha de Pagamento.md#-troubleshooting---solução-de-problemas)
-- [Melhores Práticas](Documentacao Folha de Pagamento.md#-melhores-práticas)
+**Importante:** Todos os valores são informados pela contabilidade. O Sol.NET apenas registra.
 
 ---
 
-## 📊 Mapa de Conceitos do Módulo RH
+## 📋 Checklist Mensal Simplificado
 
-```mermaid
-mindmap
-  root)Módulo RH(
-    Cadastros Base
-      Funcionários
-      Cargos
-      Departamentos
-      Sindicatos
-    Folha de Pagamento
-      Eventos Vencimentos
-      Eventos Descontos
-      Processamento
-      Holerites
-    Encargos e Provisões
-      INSS
-      FGTS
-      IRRF
-      13º Salário
-      Férias
-    Obrigações
-      eSocial
-      SEFIP
-      DIRF
-      RAIS
-    Integrações
-      Contabilidade
-      DRE
-      Financeiro
-      Centro Custos
+```
+Início do Mês:
+[ ] Solicitar resumo da folha à contabilidade
+
+Meio do Mês (até dia 15):
+[ ] Receber valores por categoria
+[ ] Conferir se estão separados por departamento
+
+Até dia 20:
+[ ] Lançar valores no Sol.NET
+[ ] Conferir integração com DRE
+[ ] Validar totais
+
+Final do Mês:
+[ ] Analisar relatórios gerenciais
+[ ] Comparar com meses anteriores
 ```
 
 ---
 
-## 🔄 Fluxo Mensal Típico
+## 📊 Exemplo Rápido
 
-```mermaid
-graph TD
-    A[Início do Mês] --> B[Conferir Cadastros]
-    B --> C[Lançar Eventos Variáveis]
-    C --> D[Importar Ponto]
-    D --> E[Processar Folha]
-    E --> F[Conferir Cálculos]
-    F --> G{OK?}
-    G -->|Não| H[Ajustar]
-    H --> E
-    G -->|Sim| I[Gerar Holerites]
-    I --> J[Lançamentos Contábeis]
-    J --> K[Processar Provisões]
-    K --> L[Gerar eSocial/SEFIP]
-    L --> M[Criar Títulos a Pagar]
-    M --> N[Pagar Salários]
-    N --> O[Recolher Encargos]
+**Resumo da Contabilidade (Março/2024):**
+```
+Salários:        R$ 40.000,00
+Encargos:        R$ 11.200,00
+Benefícios:      R$  3.000,00
+Provisão 13º:    R$  3.333,33
+Provisão Férias: R$  4.444,44
+──────────────────────────────
+Total:           R$ 61.977,77
 ```
 
----
+**Lançamentos no Sol.NET:**
+- 5 lançamentos (um por categoria)
+- Data: 31/03/2024
+- Total lançado: R$ 61.977,77
 
-## 💡 Dicas de Produtividade
-
-### **Atalhos Úteis no Módulo RH**
-
-| Funcionalidade | Atalho | Descrição |
-|---------------|--------|-----------|
-| Novo funcionário | **F4** | Abre cadastro novo |
-| Processar folha | **F9** | Inicia processamento |
-| Gerar holerite | **F10** | Emite holerite |
-| Consulta rápida | **F2** | Busca funcionário |
-| Lançar evento | **F6** | Adiciona evento |
-| Salvar | **F5** | Salva alterações |
-| Imprimir | **F8** | Imprime relatório |
-
-### **Fluxos Otimizados**
-1. **Processamento Rápido**: Use filtros por departamento para processar em lotes
-2. **Eventos Recorrentes**: Configure templates para eventos que se repetem
-3. **Validação Automática**: Ative alertas para valores fora do padrão
-4. **Backup Automático**: Configure backup diário das folhas processadas
+**Resultado:**
+- Valores aparecem no DRE de Março
+- Análise de despesas com pessoal disponível
+- Comparativo com meses anteriores
 
 ---
 
-## 📅 Calendário de Obrigações
+## ❓ Perguntas Mais Comuns
 
-### **Mensal**
-- **Dia 5**: Pagamento de salários
-- **Dia 7**: Envio SEFIP e recolhimento FGTS
-- **Dia 15**: Fechamento eSocial (eventos periódicos)
-- **Dia 20**: Recolhimento INSS (GPS)
-- **Último dia útil 2º decêndio**: Recolhimento IRRF
+**O Sol.NET calcula INSS e IRRF?**  
+→ Não. Valores são calculados pela contabilidade e apenas lançados no sistema.
 
-### **Anual**
-- **28/Fevereiro**: Entrega de Informes de Rendimentos
-- **Último dia útil Fevereiro**: Entrega DIRF
-- **22/Março**: Entrega RAIS
-- **30/Novembro**: Pagamento 1ª parcela 13º salário
-- **20/Dezembro**: Pagamento 2ª parcela 13º salário
+**Preciso cadastrar todos os funcionários?**  
+→ Não obrigatório. Cadastre apenas se quiser controle interno de nomes.
 
----
+**Como emito holerites?**  
+→ O Sol.NET não emite holerites. Use o sistema da contabilidade.
 
-## 📈 Indicadores e Análises
+**O sistema envia dados para o eSocial?**  
+→ Não. Sol.NET não tem integração com órgãos externos.
 
-### **KPIs Principais**
-- **Custo Total com Pessoal**: Despesa mensal completa
-- **Custo por Funcionário**: Média por colaborador
-- **Percentual sobre Receita**: Custo RH ÷ Receita Bruta
-- **Taxa de Turnover**: Rotatividade de pessoal
-- **Horas Extras**: Volume e custo mensal
-- **Absenteísmo**: Taxa de faltas e afastamentos
+**Posso importar dados do ponto eletrônico?**  
+→ Não. Sol.NET não tem módulo de ponto.
 
-### **Relatórios Gerenciais**
-- Custo por Departamento
-- Evolução Salarial
-- Análise de Benefícios
-- Projeção de Provisões
-- Comparativo Orçado x Realizado
+**Como sei quais valores lançar?**  
+→ A contabilidade deve fornecer um resumo mensal com valores por categoria.
 
 ---
 
-## 🎓 Treinamento Recomendado
+## 🔗 Navegação Rápida
 
-### **Curso Básico - RH/Folha de Pagamento (24 horas)**
-- **Módulo 1**: Cadastros e configurações iniciais (6h)
-- **Módulo 2**: Processamento mensal da folha (6h)
-- **Módulo 3**: eSocial e obrigações acessórias (6h)
-- **Módulo 4**: Relatórios e análises gerenciais (6h)
+### **Por Tarefa**
 
-### **Curso Avançado (40 horas)**
-Inclui curso básico +
-- Cálculos complexos (rescisões, férias coletivas, dissídios)
-- Integração contábil avançada e rateios
-- Customização de relatórios e holerites
-- Auditoria e conformidade fiscal
-- Otimização de processos e automações
+**Fazer Lançamentos Mensais:**
+- [Processo Completo](Documentacao Folha de Pagamento.md#-lançamento-de-valores-da-folha)
+- [Guia Rápido](Guia Rapido.md#-fluxo-rápido-de-lançamento)
+- [Exemplo Prático](Guia Rapido.md#-exemplo-prático)
 
----
+**Configurar o Sistema:**
+- [Cadastrar Departamentos](Documentacao Folha de Pagamento.md#-cadastro-de-departamentoscentros-de-custo)
+- [Definir Contas Contábeis](Documentacao Folha de Pagamento.md#-vinculação-de-contas-contábeis)
 
-## 🔧 Configurações Essenciais
+**Resolver Problemas:**
+- [Troubleshooting](Documentacao Folha de Pagamento.md#-troubleshooting)
+- [FAQ Completo](FAQ.md)
+- [Problemas Comuns](Guia Rapido.md#️-problemas-comuns)
 
-### **Primeiro Setup - Checklist**
-- [ ] **Empresa**: Dados cadastrais, CNPJ, CNAE
-- [ ] **Certificado Digital**: Configurar para eSocial
-- [ ] **Plano de Contas**: Estrutura contábil para RH
-- [ ] **Centros de Custo**: Departamentos definidos
-- [ ] **Cargos**: Funções da empresa cadastradas
-- [ ] **Eventos**: Rubricas da folha configuradas
-- [ ] **Sindicatos**: Entidades e contribuições
-- [ ] **Parâmetros**: Horários, DSR, arredondamentos
-- [ ] **Integração**: Vínculos contábeis configurados
-
-### **Validação da Configuração**
-- [ ] **Teste com 1 funcionário**: Processar folha de teste
-- [ ] **Conferir cálculos**: INSS, IRRF, FGTS
-- [ ] **Validar integração**: Lançamentos no DRE
-- [ ] **Gerar eSocial de teste**: Ambiente de homologação
-- [ ] **Emitir holerite**: Verificar layout
+**Analisar Resultados:**
+- [Integração com DRE](Documentacao Folha de Pagamento.md#-integração-com-dre)
+- [Relatórios](Documentacao Folha de Pagamento.md#-relatórios)
 
 ---
 
 ## 📚 Documentação Relacionada
 
 ### **Módulos Integrados**
-- **[Financeiro - DRE](../Financeiro/Documentacao DRE.md)**: Integração contábil da folha
-- **[Financeiro - Portadores](../Financeiro/Documentacao Portadores.md)**: Pagamento de salários
-- **[Movimentação](../Movimentacao/)**: Para empresas com comissionamento
+- **[Financeiro - DRE](../Financeiro/Documentacao DRE.md)**: Como o DRE funciona e como RH se integra
+- **[Financeiro - Portadores](../Financeiro/Documentacao Portadores.md)**: Para pagamento de salários
 
-### **Legislação de Referência**
-- CLT - Consolidação das Leis do Trabalho
-- Instruções Normativas RFB - INSS e IRRF
-- Manual do eSocial - Versão S-1.0
-- Resolução CAIXA - SEFIP e FGTS
+### **Conceitos Importantes**
+- **Plano de Contas**: Estrutura de contas contábeis
+- **Centro de Custos**: Alocação por departamento
+- **Regime de Competência**: Lançamento por período de referência
 
 ---
 
-## 📞 Suporte Especializado
+## 💡 Dicas Importantes
 
-### **Canais de Atendimento**
-- **Chat online**: Disponível no sistema (F12)
-- **E-mail**: suporte.rh@solnet.com.br
-- **Telefone**: 0800-xxx-xxxx (ramal 3)
-- **Base de conhecimento**: Central de ajuda online
+### **Para Novos Usuários**
+1. **Entenda as limitações**: O módulo não processa folha, apenas registra valores
+2. **Parceria com contabilidade**: Essencial para fornecer valores corretos
+3. **Padronize processos**: Defina um fluxo mensal fixo
+4. **Confira sempre**: Valide lançamentos no DRE após salvar
 
-### **Recursos Adicionais**
-- **Vídeos tutoriais**: Canal Sol.NET no YouTube
-- **Webinars mensais**: Novidades e legislação
-- **Comunidade**: Fórum de usuários RH
-- **Newsletter**: Alertas de mudanças na legislação
-
----
-
-## 🆘 Suporte Emergencial
-
-### **Problemas Críticos Durante Fechamento**
-Se encontrar problemas críticos durante o processamento da folha:
-
-1. **Não finalize** o processamento se houver dúvidas
-2. **Documente** o erro com prints e mensagens
-3. **Contate** o suporte prioritário: suporte.urgente@solnet.com.br
-4. **Informe**: Empresa, competência, erro específico
-5. **Aguarde** orientação antes de continuar
-
-### **Horário Estendido (Final do Mês)**
-- Dias 20 a 5: Suporte estendido até 20h
-- Sábados (dia 1 a 7): Suporte das 8h às 14h
-- Plantão emergencial: WhatsApp (xx) xxxxx-xxxx
+### **Para Administradores**
+1. **Configure contas padrão**: Agiliza lançamentos futuros
+2. **Organize por departamento**: Permite análises gerenciais
+3. **Estabeleça responsáveis**: Defina quem lança e quem confere
+4. **Documente o processo**: Mantenha manual interno atualizado
 
 ---
 
-## 🔐 Segurança e Compliance
+## 🆘 Suporte
 
-### **LGPD - Proteção de Dados**
-- Dados pessoais criptografados
-- Acesso controlado por perfil
-- Auditoria completa de acessos
-- Direito ao esquecimento implementado
-- Relatório de dados pessoais disponível
+### **Dúvidas Sobre:**
 
-### **Auditoria e Rastreabilidade**
-- Log de todas as alterações em cadastros
-- Histórico de processamentos preservado
-- Identificação de usuário em cada ação
-- Relatórios de auditoria disponíveis
-- Backup automático diário
+**Lançamentos no Sol.NET**  
+→ Consulte esta documentação ou suporte técnico Sol.NET
+
+**Valores da Folha de Pagamento**  
+→ Entre em contato com sua contabilidade/escritório contábil
+
+**Obrigações Fiscais e Trabalhistas**  
+→ Consulte seu contador responsável
+
+### **Canais de Suporte**
+- **Documentação Online**: Este portal
+- **Suporte Técnico Sol.NET**: Para questões do sistema
+- **Contabilidade**: Para questões de valores e cálculos
 
 ---
 
 **📅 Última atualização**: Janeiro de 2025  
-**📦 Versão**: 1.0  
-**🎯 Público-alvo**: Profissionais de RH, Departamento Pessoal e Administradores  
+**📦 Versão**: 2.0  
+**🎯 Público-alvo**: Usuários responsáveis por lançamentos de RH  
 **👥 Contribuidores**: Equipe de Documentação Sol.NET
 
-*Este índice organiza toda a documentação do Módulo RH, proporcionando navegação eficiente e acesso rápido às informações mais relevantes para cada tipo de usuário.*
+---
+
+*Este índice organiza a documentação do Módulo de Lançamentos de RH, ferramenta de controle interno para integração de despesas com pessoal ao DRE. Para processamento completo de folha de pagamento, consulte seu escritório contábil.*
