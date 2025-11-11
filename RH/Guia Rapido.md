@@ -4,228 +4,222 @@ permalink: /RH/guia-rapido/
 ---
 # 🚀 Guia Rápido: Lançamentos de RH
 
+## ⚠️ Regra Fundamental
+
+**Todo lançamento de RH deve estar vinculado a um funcionário específico.**
+
+Não é possível lançar valores totais sem associar a funcionários individuais.
+
+---
+
 ## 📋 Checklist Mensal
 
-### **Receber Informações da Contabilidade**
+### **1. Cadastrar Funcionários (se ainda não cadastrados)**
 ```
-[ ] Solicitar resumo da folha de pagamento do mês
-[ ] Conferir valores totais por categoria
-[ ] Verificar separação por departamento
+[ ] Verificar se todos os funcionários estão cadastrados
+[ ] Completar dados faltantes (CPF, departamento, contas)
+[ ] Configurar centro de custo e contas contábeis
+[ ] Validar status (Ativo/Inativo)
+```
+
+### **2. Receber Informações da Contabilidade**
+```
+[ ] Solicitar planilha DETALHADA por funcionário
+[ ] Conferir valores de cada funcionário
+[ ] Validar tipos de lançamento (salários, encargos, benefícios)
 [ ] Confirmar competência (mês/ano)
 ```
 
-### **Lançar no Sol.NET**
+### **3. Lançar por Funcionário**
 ```
-[ ] Acessar Menu RH → Lançamentos de Folha
-[ ] Lançar Salários por departamento
-[ ] Lançar Encargos Sociais
-[ ] Lançar Benefícios (se houver)
-[ ] Lançar Provisões (13º e Férias)
-[ ] Salvar lançamentos
+[ ] Acessar RH → Lançamentos de Folha
+[ ] Para cada funcionário:
+    [ ] Criar novo lançamento vinculado ao funcionário
+    [ ] Lançar salário
+    [ ] Lançar encargos
+    [ ] Lançar benefícios (se houver)
+    [ ] Lançar descontos
+    [ ] Salvar
+[ ] Repetir para TODOS os funcionários
 ```
 
-### **Conferir**
+### **4. Conferir**
 ```
 [ ] Gerar DRE do período
-[ ] Verificar se valores aparecem nas contas corretas
-[ ] Conferir totalização por centro de custo
-[ ] Validar com resumo da contabilidade
+[ ] Verificar totalização por departamento
+[ ] Comparar com total geral da contabilidade
+[ ] Validar alocação por centro de custo
 ```
 
 ---
 
-## 💰 Tipos de Lançamento
+## 🔄 Fluxo de Lançamento
 
-### **Salários**
-```
-Conta Débito: 6.2.01 - Salários
-Conta Crédito: 2.1.2.01 - Salários a Pagar
-Valor: Conforme informado pela contabilidade
-```
+### **Para Cada Funcionário:**
 
-### **Encargos Sociais (INSS + FGTS)**
-```
-Conta Débito: 6.2.02 - Encargos Sociais
-Conta Crédito: 2.1.2.02 - Encargos a Recolher
-Valor: Conforme informado pela contabilidade
-```
+1. **Acessar Lançamentos:**
+   - Menu: RH → Lançamentos de Folha → Novo
 
-### **Benefícios (VT/VR/Plano Saúde)**
-```
-Conta Débito: 6.2.03 - Benefícios
-Conta Crédito: 2.1.2.04 - Benefícios a Pagar
-Valor: Conforme informado pela contabilidade
-```
+2. **Vincular Funcionário:**
+   - **Selecionar funcionário** (campo obrigatório)
+   - Competência: MM/AAAA
 
-### **Provisão 13º Salário**
-```
-Conta Débito: 6.2.04 - Provisão 13º
-Conta Crédito: 2.1.3.01 - Provisão 13º a Pagar
-Valor: 1/12 do custo anual (conforme contabilidade)
-```
+3. **Lançar Valores:**
+   - Salário base
+   - Horas extras / Comissões
+   - Encargos patronais (INSS, FGTS)
+   - Benefícios
+   - Descontos
 
-### **Provisão Férias**
-```
-Conta Débito: 6.2.05 - Provisão Férias
-Conta Crédito: 2.1.3.02 - Provisão Férias a Pagar
-Valor: 1/12 do custo anual + 1/3 (conforme contabilidade)
-```
-
----
-
-## 🔄 Fluxo Rápido de Lançamento
-
-### **Passo 1: Preparar**
-- Tenha em mãos o resumo da contabilidade
-- Identifique valores por categoria
-- Separe por departamento se aplicável
-
-### **Passo 2: Lançar**
-1. Menu: **RH → Lançamentos de Folha**
-2. **Novo Lançamento**
-3. Preencher:
-   - Data: Último dia do mês de competência
-   - Histórico: "Folha de Pagamento - MM/AAAA"
-   - Centro de Custo: Departamento
-   - Conta Débito: Conta de despesa
-   - Conta Crédito: Conta de passivo
-   - Valor: Conforme contabilidade
 4. **Salvar**
 
-### **Passo 3: Conferir**
-1. Menu: **Financeiro → DRE**
-2. Selecionar período
-3. Verificar valores nas contas
-4. Comparar total com resumo da contabilidade
+5. **Próximo Funcionário:**
+   - Repetir passos 1-4
 
 ---
 
-## 📊 Exemplo Prático
+## 📊 Exemplo Rápido
 
-### Resumo da Contabilidade (Março/2024):
+### Planilha da Contabilidade (Março/2024):
+
 ```
-Salários Brutos:        R$ 40.000,00
-Encargos (INSS + FGTS): R$ 11.200,00
-Benefícios (VT/VR):     R$  3.000,00
-Provisão 13º:           R$  3.333,33
-Provisão Férias:        R$  4.444,44
-──────────────────────────────────
-Total:                  R$ 61.977,77
+FUNCIONÁRIO: João Silva (Mat. 001)
+─────────────────────────────────
+Salário: R$ 5.000,00
+INSS Patronal: R$ 1.000,00
+FGTS: R$ 400,00
+
+FUNCIONÁRIO: Maria Santos (Mat. 002)
+─────────────────────────────────
+Salário: R$ 3.500,00
+Comissões: R$ 1.200,00
+INSS Patronal: R$ 940,00
+FGTS: R$ 376,00
+
+FUNCIONÁRIO: Pedro Costa (Mat. 003)
+─────────────────────────────────
+Salário: R$ 4.000,00
+INSS Patronal: R$ 800,00
+FGTS: R$ 320,00
 ```
 
 ### Lançamentos no Sol.NET:
 
-**Lançamento 1:**
+**Lançamento 1 - João Silva:**
 ```
-Data: 31/03/2024
-Histórico: Folha de Pagamento - Março/2024
-D - 6.2.01 Salários → R$ 40.000,00
-C - 2.1.2.01 Salários a Pagar → R$ 40.000,00
+Funcionário: João Silva (selecionado)
+Competência: 03/2024
+
+Salário: R$ 5.000,00
+D - 6.2.01 Salários
+C - 2.1.2.01 Salários a Pagar
+
+INSS: R$ 1.000,00
+D - 6.2.02 Encargos
+C - 2.1.2.02 Encargos a Recolher
+
+FGTS: R$ 400,00
+D - 6.2.02 Encargos
+C - 2.1.2.03 FGTS a Recolher
 ```
 
-**Lançamento 2:**
+**Lançamento 2 - Maria Santos:**
 ```
-Data: 31/03/2024
-Histórico: Encargos sobre Folha - Março/2024
-D - 6.2.02 Encargos Sociais → R$ 11.200,00
-C - 2.1.2.02 Encargos a Recolher → R$ 11.200,00
+Funcionário: Maria Santos (selecionado)
+Competência: 03/2024
+
+Salário: R$ 3.500,00
+Comissões: R$ 1.200,00
+INSS: R$ 940,00
+FGTS: R$ 376,00
 ```
 
-**Lançamento 3:**
+**Lançamento 3 - Pedro Costa:**
 ```
-Data: 31/03/2024
-Histórico: Benefícios - Março/2024
-D - 6.2.03 Benefícios → R$ 3.000,00
-C - 2.1.2.04 Benefícios a Pagar → R$ 3.000,00
+Funcionário: Pedro Costa (selecionado)
+Competência: 03/2024
+
+Salário: R$ 4.000,00
+INSS: R$ 800,00
+FGTS: R$ 320,00
 ```
 
-**Lançamento 4:**
-```
-Data: 31/03/2024
-Histórico: Provisão 13º - Março/2024
-D - 6.2.04 Provisão 13º → R$ 3.333,33
-C - 2.1.3.01 Provisão 13º a Pagar → R$ 3.333,33
-```
+**Total no DRE:** Soma automática dos 3 funcionários
 
-**Lançamento 5:**
-```
-Data: 31/03/2024
-Histórico: Provisão Férias - Março/2024
-D - 6.2.05 Provisão Férias → R$ 4.444,44
-C - 2.1.3.02 Provisão Férias a Pagar → R$ 4.444,44
-```
+---
 
-**Total lançado:** R$ 61.977,77 ✓
+## 💡 Tipos de Lançamento por Funcionário
+
+| Tipo | Vinculação | Exemplo |
+|------|-----------|---------|
+| Salários | Obrigatória ao funcionário | João Silva: R$ 5.000 |
+| Encargos | Obrigatória ao funcionário | João Silva: R$ 1.000 |
+| Benefícios | Obrigatória ao funcionário | João Silva: R$ 300 |
+| Provisões | Obrigatória ao funcionário | João Silva: R$ 416,67 |
 
 ---
 
 ## ⚠️ Problemas Comuns
 
-### **Valores não aparecem no DRE**
-**Causa:** Conta contábil errada ou período diferente  
-**Solução:** Verifique a conta e a competência do lançamento
+### **Não consigo salvar o lançamento**
+**Causa:** Funcionário não selecionado  
+**Solução:** Selecione o funcionário antes de salvar (campo obrigatório)
+
+### **Funcionário não aparece na lista**
+**Causa:** Funcionário não cadastrado ou inativo  
+**Solução:** Cadastre o funcionário ou ative-o em RH → Cadastros → Funcionários
+
+### **Valores aparecem no departamento errado**
+**Causa:** Centro de custo incorreto no cadastro do funcionário  
+**Solução:** Edite o cadastro do funcionário e corrija o centro de custo
 
 ### **Total diferente da contabilidade**
-**Causa:** Faltou lançar alguma categoria  
-**Solução:** Compare item por item com o resumo fornecido
+**Causa:** Faltou lançar algum funcionário  
+**Solução:** Compare lista de funcionários lançados com planilha da contabilidade
 
-### **Lançamento duplicado**
-**Causa:** Salvou o mesmo lançamento duas vezes  
-**Solução:** Exclua um dos lançamentos duplicados
-
-### **Centro de custo errado**
-**Causa:** Selecionou departamento incorreto  
-**Solução:** Edite o lançamento e corrija o centro de custo
+### **Contabilidade só fornece valores totais**
+**Causa:** Falta de comunicação sobre necessidade de detalhamento  
+**Solução:** Solicite planilha detalhada por funcionário - é essencial para o Sol.NET
 
 ---
 
-## 💡 Dicas Produtivas
+## 🎯 Dicas Importantes
 
-### **Padronize Históricos**
-Use sempre o mesmo padrão:
-- "Folha de Pagamento - MM/AAAA"
-- "Encargos sobre Folha - MM/AAAA"
-- "Provisão 13º - MM/AAAA"
+### **1. Cadastre TODOS os Funcionários Primeiro**
+Antes de começar os lançamentos, certifique-se que todos os funcionários da folha estão cadastrados.
 
-### **Lance na Mesma Data**
-Use sempre o último dia do mês de competência:
-- Facilita filtros e consultas
-- Organiza melhor o DRE
+### **2. Configure Contas no Cadastro**
+Vincule as contas contábeis no cadastro do funcionário. Isso agiliza os lançamentos.
 
-### **Separe por Departamento**
-Se a empresa tem vários departamentos:
-- Solicite valores separados da contabilidade
-- Lance com centro de custo diferente
-- Permite análise gerencial por área
+### **3. Organize por Departamento**
+Ao lançar, processe primeiro todos de um departamento, depois outro. Facilita a conferência.
 
-### **Provisione Mensalmente**
-Não esqueça de provisionar 13º e férias todo mês:
-- Distribui o custo ao longo do ano
-- DRE mais realista
-- Evita "surpresas" no mês de pagamento
+### **4. Padronize Descrições**
+Use sempre as mesmas descrições:
+- "Salário Base"
+- "INSS Patronal"
+- "FGTS"
+- "Comissões"
+
+### **5. Confira Funcionário por Funcionário**
+Antes de passar para o próximo, confira se todos os valores do funcionário foram lançados.
 
 ---
 
-## 📞 Dúvidas Frequentes
+## 📞 Precisa de Ajuda?
 
-**Preciso cadastrar todos os funcionários?**  
-→ Não obrigatório. Cadastre apenas se quiser controle interno de nomes.
+**Não consigo cadastrar funcionário:**  
+→ Consulte [Documentação Completa - Cadastro de Funcionários](Documentacao Folha de Pagamento.md#-cadastro-de-funcionários-pessoa-rh)
 
-**O sistema calcula os valores?**  
-→ Não. Lance os valores informados pela contabilidade.
+**Dúvidas sobre vinculação:**  
+→ Consulte [FAQ](FAQ.md)
 
-**Como emito holerites?**  
-→ O Sol.NET não emite holerites. Use o sistema da contabilidade.
-
-**O sistema envia dados para o governo?**  
-→ Não. Sol.NET não tem integração com órgãos externos.
-
-**Posso lançar valores estimados?**  
-→ Sim, se a contabilidade atrasar. Ajuste depois com valores reais.
+**Contabilidade não fornece dados por funcionário:**  
+→ Explique que o Sol.NET exige vinculação individual
 
 ---
 
 **📅 Última atualização**: Janeiro de 2025  
-**🎯 Público-alvo**: Usuários do módulo RH Sol.NET
+**🎯 Lembre-se: Cada lançamento = Um funcionário específico**
 
 *Para informações detalhadas, consulte a [Documentação Completa](Documentacao Folha de Pagamento.md).*

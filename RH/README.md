@@ -6,14 +6,21 @@ permalink: /RH/
 
 ## 🎯 Sobre Este Módulo
 
-O **Módulo de Lançamentos de RH** do Sol.NET é uma ferramenta de **controle interno** para registrar valores da folha de pagamento e integrá-los ao DRE.
+O **Módulo de Lançamentos de RH** do Sol.NET é uma ferramenta de **controle interno** para registrar valores da folha de pagamento **por funcionário** e integrá-los ao DRE.
 
-### ⚠️ Importante Entender
+### ⚠️ Regra Fundamental
+
+**TODO LANÇAMENTO DE RH DEVE ESTAR VINCULADO A UM FUNCIONÁRIO ESPECÍFICO**
+
+Não é possível lançar valores totais sem associação a funcionários individuais.
+
+### O Que Este Módulo É
 
 **Este módulo É:**
-- ✅ Ferramenta de lançamento de valores de RH
+- ✅ Ferramenta de lançamento de valores por funcionário
 - ✅ Integração com DRE para análise gerencial
-- ✅ Controle de despesas com pessoal por departamento
+- ✅ Controle detalhado de despesas com pessoal
+- ✅ Sistema de cadastro de funcionários
 
 **Este módulo NÃO É:**
 - ❌ Sistema completo de folha de pagamento
@@ -27,32 +34,36 @@ O **Módulo de Lançamentos de RH** do Sol.NET é uma ferramenta de **controle i
 
 ### 💼 **[Documentação de Lançamentos de Folha](Documentacao Folha de Pagamento.md)**
 Guia completo do módulo de lançamentos de RH:
+- **Cadastro de Funcionários (Pessoa RH)** - Seção ampliada e detalhada
+  - Todos os campos e suas finalidades
+  - Importância da vinculação de contas contábeis
+  - Como cadastrar passo a passo
+  - Gestão de funcionários ativos e inativos
 - Visão geral e propósito do módulo
-- Diferença entre o que o módulo faz e não faz
-- Fluxo de trabalho (contabilidade → lançamento → DRE)
-- Cadastros básicos (funcionários e departamentos)
-- Processo de lançamento passo a passo
+- Fluxo de trabalho por funcionário
+- Processo de lançamento individual
+- Tipos de lançamentos por funcionário
 - Configuração de contas contábeis
 - Exemplos práticos detalhados
 - FAQ e troubleshooting
 
 ### 🚀 **[Guia Rápido](Guia Rapido.md)**
 Referência rápida para operações do dia a dia:
+- Checklist para cadastro de funcionários
 - Checklist mensal de lançamentos
-- Tipos de lançamento (salários, encargos, provisões)
-- Fluxo rápido de lançamento
-- Exemplo prático completo
+- Fluxo de lançamento por funcionário
+- Exemplo prático com múltiplos funcionários
 - Problemas comuns e soluções
-- Dicas produtivas
+- Dicas para trabalhar com muitos funcionários
 
 ### ❓ **[FAQ - Perguntas Frequentes](FAQ.md)**
 Respostas para dúvidas comuns:
-- Sobre o módulo e suas limitações
-- Como fazer lançamentos
-- Valores e cálculos (feitos pela contabilidade)
-- Integração com DRE
-- Cadastros necessários
+- **Sobre vinculação obrigatória a funcionários**
+- Cadastro de funcionários detalhado
+- Como fazer lançamentos individuais
+- Diferença entre módulo RH e sistema de folha completo
 - Problemas técnicos e cenários específicos
+- Como trabalhar quando contabilidade fornece só totais
 
 ---
 
@@ -60,124 +71,139 @@ Respostas para dúvidas comuns:
 
 ```mermaid
 graph LR
-    A[Contabilidade<br/>Processa Folha] --> B[Fornece<br/>Resumo]
-    B --> C[Usuário Lança<br/>no Sol.NET]
-    C --> D[Integra com<br/>DRE]
-    D --> E[Relatórios<br/>Gerenciais]
+    A[Contabilidade<br/>Calcula Folha] --> B[Fornece Valores<br/>por Funcionário]
+    B --> C[Cadastrar<br/>Funcionários]
+    C --> D[Lançar por<br/>Funcionário]
+    D --> E[Sistema<br/>Totaliza]
+    E --> F[Integra DRE]
 ```
 
-**Fluxo típico:**
+**Fluxo detalhado:**
 1. Escritório contábil processa a folha de pagamento completa
-2. Contabilidade fornece resumo com valores totais
-3. Usuário lança esses valores no módulo RH do Sol.NET
-4. Sistema integra automaticamente com o DRE
-5. Empresa analisa despesas com pessoal nos relatórios
+2. Contabilidade fornece planilha com **valores individuais de cada funcionário**
+3. **Cadastrar todos os funcionários** no Sol.NET (se ainda não cadastrados)
+4. **Lançar valores de cada funcionário** individualmente
+5. Sistema totaliza automaticamente por departamento
+6. Integração automática com DRE
+7. Análise de despesas com pessoal nos relatórios
 
 ---
 
-## 🎯 Por Onde Começar
+## 👥 Cadastro de Funcionários - Essencial
 
-### **👤 Novo Usuário**
-1. Leia **[Documentação Completa](Documentacao Folha de Pagamento.md)** - seção "Visão Geral"
-2. Entenda o que o módulo faz e o que não faz
-3. Compreenda o fluxo: contabilidade → lançamento → DRE
-4. Pratique com o **[Guia Rápido](Guia Rapido.md)**
+### Por Que é Importante
 
-### **🔧 Administrador/Configurador**
-1. Configure **Departamentos/Centros de Custo**
-2. Defina **Contas Contábeis** para cada tipo de lançamento
-3. Cadastre **Funcionários** (opcional, apenas para controle)
-4. Estabeleça **Procedimento Mensal** com a equipe
+**Sem funcionários cadastrados, não é possível fazer lançamentos.**
 
-### **⚡ Usuário Experiente**
-1. Use o **[Guia Rápido](Guia Rapido.md)** como referência
-2. Consulte **[FAQ](FAQ.md)** para situações específicas
-3. Padronize lançamentos para ganhar agilidade
+Todo lançamento precisa estar vinculado a um funcionário específico cadastrado no sistema.
 
----
+### Informações Principais do Cadastro
 
-## 💰 Tipos de Lançamento
+| Categoria | Campos Importantes |
+|-----------|-------------------|
+| **Identificação** | Nome, CPF, Matrícula |
+| **Trabalhista** | Admissão, Cargo, Departamento, Status |
+| **Contábil** | Centro de Custo, Contas (Salário, Encargos, Benefícios) |
+| **Complementar** | Endereço, Contatos, Observações |
 
-### **Principais Categorias**
+### Acesso ao Cadastro
 
-| Categoria | Conta Débito | Conta Crédito | Fonte do Valor |
-|-----------|--------------|---------------|----------------|
-| Salários | 6.2.01 | 2.1.2.01 | Contabilidade |
-| Encargos Sociais | 6.2.02 | 2.1.2.02 | Contabilidade |
-| Benefícios | 6.2.03 | 2.1.2.04 | Contabilidade |
-| Provisão 13º | 6.2.04 | 2.1.3.01 | Contabilidade |
-| Provisão Férias | 6.2.05 | 2.1.3.02 | Contabilidade |
+**Menu:** RH → Cadastros → Funcionários
 
-**Importante:** Todos os valores são informados pela contabilidade. O Sol.NET apenas registra.
+Veja detalhes completos em: [Cadastro de Pessoa RH](Documentacao Folha de Pagamento.md#-cadastro-de-funcionários-pessoa-rh)
 
 ---
 
-## 📋 Checklist Mensal Simplificado
+## 💰 Lançamentos por Funcionário
+
+### Processo Mensal
+
+**Para empresa com 10 funcionários:**
+
+1. **Receber da contabilidade:**
+   - Planilha com 10 linhas (uma por funcionário)
+   - Valores individuais de cada um
+
+2. **Fazer 10 conjuntos de lançamentos:**
+   - Funcionário 1: Salário + Encargos + Benefícios
+   - Funcionário 2: Salário + Encargos + Benefícios
+   - ...
+   - Funcionário 10: Salário + Encargos + Benefícios
+
+3. **Sistema totaliza automaticamente:**
+   - Por departamento
+   - Por conta contábil
+   - Aparece consolidado no DRE
+
+### Exemplo de Lançamento
 
 ```
-Início do Mês:
-[ ] Solicitar resumo da folha à contabilidade
+FUNCIONÁRIO: João Silva (Mat. 001)
+─────────────────────────────────────
+Lançamento 1:
+  Salário: R$ 5.000,00
+  D - 6.2.01 Salários
+  C - 2.1.2.01 Salários a Pagar
 
-Meio do Mês (até dia 15):
-[ ] Receber valores por categoria
-[ ] Conferir se estão separados por departamento
+Lançamento 2:
+  INSS Patronal: R$ 1.000,00
+  D - 6.2.02 Encargos
+  C - 2.1.2.02 Encargos a Recolher
 
-Até dia 20:
-[ ] Lançar valores no Sol.NET
-[ ] Conferir integração com DRE
-[ ] Validar totais
-
-Final do Mês:
-[ ] Analisar relatórios gerenciais
-[ ] Comparar com meses anteriores
+Lançamento 3:
+  FGTS: R$ 400,00
+  D - 6.2.02 Encargos
+  C - 2.1.2.03 FGTS a Recolher
 ```
+
+**Repetir para todos os outros funcionários.**
 
 ---
 
-## 📊 Exemplo Rápido
+## 📋 Checklist Simplificado
 
-**Resumo da Contabilidade (Março/2024):**
+### **Início (Uma Vez)**
 ```
-Salários:        R$ 40.000,00
-Encargos:        R$ 11.200,00
-Benefícios:      R$  3.000,00
-Provisão 13º:    R$  3.333,33
-Provisão Férias: R$  4.444,44
-──────────────────────────────
-Total:           R$ 61.977,77
+[ ] Cadastrar todos os funcionários
+[ ] Configurar contas contábeis de cada um
+[ ] Definir centro de custo de cada um
+[ ] Validar cadastros completos
 ```
 
-**Lançamentos no Sol.NET:**
-- 5 lançamentos (um por categoria)
-- Data: 31/03/2024
-- Total lançado: R$ 61.977,77
-
-**Resultado:**
-- Valores aparecem no DRE de Março
-- Análise de despesas com pessoal disponível
-- Comparativo com meses anteriores
+### **Mensal**
+```
+[ ] Receber planilha detalhada da contabilidade (por funcionário)
+[ ] Para cada funcionário:
+    [ ] Criar lançamento vinculado ao funcionário
+    [ ] Lançar salário
+    [ ] Lançar encargos
+    [ ] Lançar benefícios
+    [ ] Salvar
+[ ] Conferir total no DRE
+[ ] Comparar com total da contabilidade
+```
 
 ---
 
 ## ❓ Perguntas Mais Comuns
 
-**O Sol.NET calcula INSS e IRRF?**  
-→ Não. Valores são calculados pela contabilidade e apenas lançados no sistema.
+**Posso lançar valores totais sem vincular a funcionários?**  
+→ **NÃO**. Vinculação é obrigatória.
 
 **Preciso cadastrar todos os funcionários?**  
-→ Não obrigatório. Cadastre apenas se quiser controle interno de nomes.
+→ **SIM**. Sem cadastro não há lançamento.
+
+**A contabilidade só me dá valores totais, e agora?**  
+→ Solicite planilha detalhada por funcionário. É essencial.
+
+**Quantos lançamentos faço por mês?**  
+→ Um conjunto de lançamentos para **cada funcionário**.
+
+**O sistema calcula os valores?**  
+→ Não. Você lança os valores calculados pela contabilidade.
 
 **Como emito holerites?**  
-→ O Sol.NET não emite holerites. Use o sistema da contabilidade.
-
-**O sistema envia dados para o eSocial?**  
-→ Não. Sol.NET não tem integração com órgãos externos.
-
-**Posso importar dados do ponto eletrônico?**  
-→ Não. Sol.NET não tem módulo de ponto.
-
-**Como sei quais valores lançar?**  
-→ A contabilidade deve fornecer um resumo mensal com valores por categoria.
+→ Sol.NET não emite. Use sistema da contabilidade.
 
 ---
 
@@ -185,52 +211,44 @@ Total:           R$ 61.977,77
 
 ### **Por Tarefa**
 
-**Fazer Lançamentos Mensais:**
-- [Processo Completo](Documentacao Folha de Pagamento.md#-lançamento-de-valores-da-folha)
-- [Guia Rápido](Guia Rapido.md#-fluxo-rápido-de-lançamento)
-- [Exemplo Prático](Guia Rapido.md#-exemplo-prático)
+**Cadastrar Funcionários:**
+- [Guia Completo de Cadastro](Documentacao Folha de Pagamento.md#-cadastro-de-funcionários-pessoa-rh)
+- [Campos Obrigatórios](Documentacao Folha de Pagamento.md#informações-do-cadastro-de-pessoa-rh)
+- [Configurar Contas Contábeis](Documentacao Folha de Pagamento.md#configurações-contábeis)
 
-**Configurar o Sistema:**
-- [Cadastrar Departamentos](Documentacao Folha de Pagamento.md#-cadastro-de-departamentoscentros-de-custo)
-- [Definir Contas Contábeis](Documentacao Folha de Pagamento.md#-vinculação-de-contas-contábeis)
+**Fazer Lançamentos:**
+- [Processo Completo](Documentacao Folha de Pagamento.md#-lançamento-de-valores-da-folha-por-funcionário)
+- [Guia Rápido](Guia Rapido.md#-fluxo-de-lançamento)
+- [Exemplos Práticos](Documentacao Folha de Pagamento.md#-exemplos-práticos)
 
 **Resolver Problemas:**
 - [Troubleshooting](Documentacao Folha de Pagamento.md#-troubleshooting)
 - [FAQ Completo](FAQ.md)
 - [Problemas Comuns](Guia Rapido.md#️-problemas-comuns)
 
-**Analisar Resultados:**
-- [Integração com DRE](Documentacao Folha de Pagamento.md#-integração-com-dre)
-- [Relatórios](Documentacao Folha de Pagamento.md#-relatórios)
-
 ---
 
 ## 📚 Documentação Relacionada
 
 ### **Módulos Integrados**
-- **[Financeiro - DRE](../Financeiro/Documentacao DRE.md)**: Como o DRE funciona e como RH se integra
+- **[Financeiro - DRE](../Financeiro/Documentacao DRE.md)**: Como o DRE funciona e totaliza os valores
 - **[Financeiro - Portadores](../Financeiro/Documentacao Portadores.md)**: Para pagamento de salários
-
-### **Conceitos Importantes**
-- **Plano de Contas**: Estrutura de contas contábeis
-- **Centro de Custos**: Alocação por departamento
-- **Regime de Competência**: Lançamento por período de referência
 
 ---
 
 ## 💡 Dicas Importantes
 
 ### **Para Novos Usuários**
-1. **Entenda as limitações**: O módulo não processa folha, apenas registra valores
-2. **Parceria com contabilidade**: Essencial para fornecer valores corretos
-3. **Padronize processos**: Defina um fluxo mensal fixo
-4. **Confira sempre**: Valide lançamentos no DRE após salvar
+1. **Cadastre todos os funcionários primeiro** - não há como lançar sem isso
+2. **Entenda a vinculação obrigatória** - cada lançamento = um funcionário
+3. **Solicite dados detalhados** - contabilidade deve fornecer valores por funcionário
+4. **Organize o trabalho** - lance departamento por departamento
 
 ### **Para Administradores**
-1. **Configure contas padrão**: Agiliza lançamentos futuros
-2. **Organize por departamento**: Permite análises gerenciais
-3. **Estabeleça responsáveis**: Defina quem lança e quem confere
-4. **Documente o processo**: Mantenha manual interno atualizado
+1. **Treine bem a equipe** - vinculação a funcionário é conceito-chave
+2. **Padronize com contabilidade** - formato de planilha detalhada
+3. **Configure contas nos cadastros** - agiliza lançamentos
+4. **Estabeleça checklist** - evita esquecer funcionários
 
 ---
 
@@ -238,27 +256,26 @@ Total:           R$ 61.977,77
 
 ### **Dúvidas Sobre:**
 
-**Lançamentos no Sol.NET**  
-→ Consulte esta documentação ou suporte técnico Sol.NET
+**Cadastro de Funcionários**  
+→ [Documentação Completa - Seção Cadastro](Documentacao Folha de Pagamento.md#-cadastro-de-funcionários-pessoa-rh)
 
-**Valores da Folha de Pagamento**  
-→ Entre em contato com sua contabilidade/escritório contábil
+**Vinculação de Lançamentos**  
+→ [FAQ - Vinculação](FAQ.md#-sobre-vinculação-a-funcionários)
 
-**Obrigações Fiscais e Trabalhistas**  
-→ Consulte seu contador responsável
+**Valores Individuais**  
+→ Entre em contato com sua contabilidade
 
-### **Canais de Suporte**
-- **Documentação Online**: Este portal
-- **Suporte Técnico Sol.NET**: Para questões do sistema
-- **Contabilidade**: Para questões de valores e cálculos
+**Sistema Sol.NET**  
+→ Suporte técnico Sol.NET
 
 ---
 
 **📅 Última atualização**: Janeiro de 2025  
-**📦 Versão**: 2.0  
+**📦 Versão**: 3.0  
 **🎯 Público-alvo**: Usuários responsáveis por lançamentos de RH  
-**👥 Contribuidores**: Equipe de Documentação Sol.NET
+**👥 Contribuidores**: Equipe de Documentação Sol.NET  
+**⚠️ Lembre-se: Cada lançamento deve estar vinculado a um funcionário específico**
 
 ---
 
-*Este índice organiza a documentação do Módulo de Lançamentos de RH, ferramenta de controle interno para integração de despesas com pessoal ao DRE. Para processamento completo de folha de pagamento, consulte seu escritório contábil.*
+*Este índice organiza a documentação do Módulo de Lançamentos de RH. O ponto central é o **Cadastro de Funcionários** e a **vinculação obrigatória** de cada lançamento a um funcionário específico. Para processamento completo de folha de pagamento, consulte seu escritório contábil.*

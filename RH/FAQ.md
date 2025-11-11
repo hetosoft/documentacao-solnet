@@ -4,285 +4,250 @@ permalink: /RH/faq/
 ---
 # ❓ FAQ - Perguntas Frequentes: Lançamentos de RH
 
+## 🎯 Regra Fundamental
+
+**⚠️ TODO LANÇAMENTO DE RH DEVE ESTAR VINCULADO A UM FUNCIONÁRIO ESPECÍFICO**
+
+Não é possível lançar valores totais sem associação a funcionários individuais.
+
+---
+
 ## 📑 Índice
 
-- [🎯 Sobre o Módulo](#-sobre-o-módulo)
+- [🎯 Sobre Vinculação a Funcionários](#-sobre-vinculação-a-funcionários)
+- [👥 Cadastro de Funcionários](#-cadastro-de-funcionários)
 - [📝 Lançamentos](#-lançamentos)
-- [�� Valores e Cálculos](#-valores-e-cálculos)
+- [💰 Valores](#-valores)
 - [🔗 Integração com DRE](#-integração-com-dre)
-- [👥 Cadastros](#-cadastros)
 - [🛠️ Problemas Técnicos](#️-problemas-técnicos)
 
 ---
 
-## 🎯 Sobre o Módulo
+## 🎯 Sobre Vinculação a Funcionários
 
-### **P: O que é o módulo RH do Sol.NET?**
-**R:** É um módulo para **lançamento de valores** da folha de pagamento, com objetivo de integrar as despesas de RH com o DRE. Não é um sistema completo de folha de pagamento.
+### **P: Posso lançar valores totais da folha sem vincular a funcionários?**
+**R:** **NÃO**. Todo lançamento no módulo RH do Sol.NET **deve estar vinculado a um funcionário específico**. Esta é uma característica obrigatória do sistema.
 
-### **P: O que o módulo RH FAZ?**
+### **P: Por que preciso vincular cada lançamento a um funcionário?**
 **R:** 
-- ✅ Registra valores de folha de pagamento
-- ✅ Integra com DRE automaticamente
-- ✅ Permite controle por centro de custo/departamento
-- ✅ Gera relatórios de despesas com pessoal
+- O sistema foi projetado para controle detalhado por funcionário
+- Permite análises individuais e por departamento
+- Facilita relatórios gerenciais específicos
+- Mantém rastreabilidade dos custos
 
-### **P: O que o módulo RH NÃO FAZ?**
+### **P: Posso lançar um valor total para todo o departamento?**
+**R:** **NÃO**. Você deve lançar individualmente para cada funcionário do departamento. O sistema então totaliza automaticamente por departamento no DRE.
+
+### **P: A contabilidade me passou só valores totais. E agora?**
+**R:** Solicite à contabilidade uma **planilha detalhada com valores individuais de cada funcionário**. Explique que o Sol.NET exige essa informação para funcionar corretamente. Não há como contornar esta exigência.
+
+### **P: Quantos lançamentos preciso fazer por mês?**
+**R:** Um conjunto de lançamentos (salário, encargos, benefícios) **para cada funcionário** da folha. Exemplo: empresa com 10 funcionários = 10 conjuntos de lançamentos.
+
+---
+
+## 👥 Cadastro de Funcionários
+
+### **P: Preciso cadastrar todos os funcionários antes de lançar?**
+**R:** **SIM, obrigatoriamente**. Você não conseguirá fazer lançamentos sem ter os funcionários cadastrados, pois cada lançamento precisa estar vinculado a um funcionário existente.
+
+### **P: Quais informações são obrigatórias no cadastro?**
+**R:** Informações essenciais:
+- Nome completo
+- CPF (identificação única)
+- Matrícula
+- Departamento/Setor
+- Centro de Custo
+- Contas Contábeis (Salário, Encargos, Benefícios)
+- Status (Ativo/Inativo)
+
+### **P: Como cadastro um funcionário?**
 **R:**
-- ❌ Cálculo de INSS, IRRF, FGTS
-- ❌ Processamento de folha de pagamento
-- ❌ Emissão de holerites
-- ❌ Integração com eSocial ou órgãos externos
-- ❌ Geração de guias de impostos
-- ❌ Controle de ponto eletrônico
-- ❌ Cálculo de férias ou rescisões
+1. Menu RH → Cadastros → Funcionários
+2. Clicar em "Novo"
+3. Preencher dados pessoais (nome, CPF, matrícula)
+4. Preencher dados trabalhistas (admissão, cargo, departamento)
+5. Configurar contas contábeis e centro de custo
+6. Salvar
 
-### **P: Preciso de um contador para usar o módulo RH?**
-**R:** Sim. A contabilidade (escritório contábil) processa a folha completa e fornece os valores que você lança no Sol.NET.
+Veja detalhes em: [Cadastro de Funcionários](Documentacao Folha de Pagamento.md#-cadastro-de-funcionários-pessoa-rh)
 
-### **P: O Sol.NET substitui um sistema de folha de pagamento?**
-**R:** Não. O Sol.NET serve apenas para controle gerencial interno. Para processamento completo de folha, use um sistema especializado ou contrate uma contabilidade.
+### **P: Preciso cadastrar funcionários demitidos?**
+**R:** Sim, mas altere o status para "Inativo" e informe a data de demissão. Mantenha o cadastro para histórico.
+
+### **P: Posso ter dois funcionários com mesmo nome?**
+**R:** Sim, cada funcionário é identificado unicamente por CPF e Matrícula, não pelo nome.
+
+### **P: O que acontece se eu não configurar as contas contábeis no cadastro?**
+**R:** Os lançamentos não saberão para quais contas do DRE devem ir. Configure sempre as contas contábeis no cadastro do funcionário.
 
 ---
 
 ## 📝 Lançamentos
 
-### **P: Como faço um lançamento de folha no Sol.NET?**
+### **P: Como faço um lançamento de folha?**
 **R:**
-1. Receba o resumo da contabilidade com valores por categoria
-2. Menu RH → Lançamentos de Folha → Novo
-3. Lance cada categoria (salários, encargos, benefícios)
-4. Salve os lançamentos
-5. Confira no DRE
+1. Menu RH → Lançamentos de Folha → Novo
+2. **Selecionar o funcionário** (obrigatório)
+3. Informar competência (mês/ano)
+4. Lançar valores (salário, encargos, benefícios)
+5. Salvar
+6. **Repetir para cada funcionário**
 
-### **P: Preciso lançar valor por valor de cada funcionário?**
-**R:** Não. Lance apenas os **valores totais** por categoria e departamento. Exemplo:
-- Total Salários Administrativo: R$ 50.000,00
-- Total Encargos: R$ 14.000,00
+### **P: Preciso lançar funcionário por funcionário?**
+**R:** **SIM**. Cada funcionário da folha precisa ter seus lançamentos individuais. Não há atalho para lançamento em lote.
 
-Não é necessário detalhar por funcionário individual.
+### **P: Posso fazer um lançamento sem selecionar funcionário?**
+**R:** **NÃO**. O sistema não permitirá salvar. A vinculação ao funcionário é campo obrigatório.
 
-### **P: Com que frequência devo fazer lançamentos?**
-**R:** Mensalmente, após receber as informações da contabilidade referentes à folha do mês.
+### **P: Como sei quais valores lançar para cada funcionário?**
+**R:** A contabilidade deve fornecer uma planilha detalhada do tipo:
+```
+Funcionário: João Silva
+- Salário: R$ 5.000,00
+- INSS: R$ 1.000,00
+- FGTS: R$ 400,00
 
-### **P: Posso lançar valores estimados?**
-**R:** Sim. Se a contabilidade atrasar, você pode lançar valores estimados baseados em meses anteriores. Depois ajuste com os valores reais.
+Funcionário: Maria Santos
+- Salário: R$ 3.500,00
+- INSS: R$ 700,00
+- FGTS: R$ 280,00
+...
+```
 
-### **P: Como corrijo um lançamento errado?**
-**R:**
-1. Menu RH → Lançamentos de Folha
-2. Localize o lançamento
-3. Edite ou exclua
-4. Faça o lançamento correto
-5. Regere o DRE para atualizar
+### **P: Quantos lançamentos faço por funcionário?**
+**R:** Depende da folha. Tipicamente:
+- 1 lançamento de salário
+- 1 lançamento de INSS patronal
+- 1 lançamento de FGTS
+- Lançamentos adicionais: comissões, horas extras, benefícios (conforme o caso)
 
-### **P: Posso excluir lançamentos de meses anteriores?**
-**R:** Tecnicamente sim, mas não é recomendado. Mantenha histórico de pelo menos 12 meses para análises comparativas.
+### **P: Posso editar um lançamento já feito?**
+**R:** Sim. Localize o lançamento em RH → Lançamentos, edite os valores e salve.
 
-### **P: Qual data devo usar nos lançamentos?**
-**R:** Use o **último dia do mês de competência**. Exemplo: Para folha de março/2024, use data 31/03/2024.
+### **P: Como corrijo um lançamento feito no funcionário errado?**
+**R:** Você precisa:
+1. Excluir o lançamento incorreto
+2. Criar novo lançamento vinculado ao funcionário correto
 
 ---
 
-## 💰 Valores e Cálculos
+## 💰 Valores
 
-### **P: O Sol.NET calcula INSS, IRRF e FGTS automaticamente?**
-**R:** **Não**. O Sol.NET não faz cálculos tributários. Você lança os valores que a contabilidade calculou e informou.
+### **P: O Sol.NET calcula os valores automaticamente?**
+**R:** **NÃO**. O Sol.NET não calcula INSS, IRRF, FGTS ou qualquer outro valor. Você lança os valores que a contabilidade calculou e informou.
 
-### **P: Como sei quais valores lançar?**
-**R:** A contabilidade deve fornecer um resumo mensal do tipo:
-```
-Salários: R$ 50.000,00
-Encargos INSS: R$ 11.000,00
-FGTS: R$ 4.000,00
-Benefícios: R$ 3.000,00
-Provisão 13º: R$ 4.166,67
-Provisão Férias: R$ 5.555,56
-```
+### **P: Preciso saber quanto cada funcionário ganha?**
+**R:** Não necessariamente para o cadastro inicial, mas sim para os lançamentos mensais. A contabilidade deve fornecer os valores exatos de cada funcionário.
 
-Lance esses valores exatamente como informados.
+### **P: Os valores variam de funcionário para funcionário?**
+**R:** Sim, cada funcionário tem seus próprios valores de salário, encargos e benefícios. Por isso cada um precisa ter lançamentos individuais.
 
-### **P: Preciso separar INSS de FGTS?**
-**R:** Depende da sua necessidade gerencial. Você pode:
-- Lançar tudo junto como "Encargos Sociais"
-- Ou separar em contas diferentes (INSS, FGTS)
-
-Consulte sua contabilidade sobre a melhor prática.
-
-### **P: O que são provisões de 13º e férias?**
-**R:** São valores que você lança mensalmente (1/12 do custo anual) para distribuir o impacto ao longo do ano. Assim o DRE fica mais realista.
-
-**Exemplo:**
-- Custo anual de 13º: R$ 50.000
-- Provisão mensal: R$ 50.000 ÷ 12 = R$ 4.166,67
-
-### **P: Sou obrigado a provisionar 13º e férias mensalmente?**
-**R:** Não é obrigatório no Sol.NET, mas é uma boa prática gerencial. Consulte sua contabilidade.
-
-### **P: Como calculo os valores de provisão?**
-**R:** Não calcule. A contabilidade deve informar os valores corretos considerando todas as variáveis (médias, encargos, etc.).
+### **P: Como lanço provisões (13º e férias)?**
+**R:** Também **por funcionário**:
+- Calcule 1/12 do salário + encargos de cada funcionário
+- Lance individualmente para cada um
+- O sistema totaliza no DRE
 
 ---
 
 ## 🔗 Integração com DRE
 
-### **P: Os lançamentos de RH aparecem automaticamente no DRE?**
-**R:** Sim. Quando você lança com as contas contábeis corretas, os valores aparecem automaticamente no DRE do período.
+### **P: Como os lançamentos por funcionário aparecem no DRE?**
+**R:** O sistema soma automaticamente todos os lançamentos:
+- Funcionários do mesmo departamento
+- Na mesma conta contábil
+- Do mesmo período
 
-### **P: Em que contas os lançamentos aparecem no DRE?**
-**R:** Nas contas de despesa que você configurou:
-```
-6.2.01 - Salários
-6.2.02 - Encargos Sociais
-6.2.03 - Benefícios
-6.2.04 - Provisão 13º
-6.2.05 - Provisão Férias
-```
+Resultado: total por departamento no DRE.
 
-### **P: Como vejo as despesas de RH separadas por departamento?**
-**R:** 
-1. Lance os valores com centro de custo diferente para cada departamento
-2. No DRE, filtre ou visualize por centro de custo
-3. O sistema mostrará os valores separados
+### **P: Posso ver despesas por funcionário individual no DRE?**
+**R:** O DRE mostra totais por conta e centro de custo. Para detalhamento por funcionário, use os relatórios específicos de RH.
 
-### **P: Valores não aparecem no DRE, o que fazer?**
+### **P: Valores aparecem no departamento errado, como corrijo?**
+**R:** O departamento vem do cadastro do funcionário. Corrija:
+1. RH → Cadastros → Funcionários
+2. Edite o funcionário
+3. Corrija o centro de custo
+4. Próximos lançamentos irão para o centro correto
+
+### **P: O total no DRE não bate com a contabilidade**
 **R:** Verifique:
-- A conta contábil usada está no plano de contas?
-- O período do DRE corresponde à competência do lançamento?
-- O lançamento foi salvo corretamente?
-- A conta está vinculada a um agrupamento DRE?
-
-### **P: Posso fazer lançamentos direto no módulo Financeiro?**
-**R:** Sim. Em vez de usar RH → Lançamentos de Folha, você pode usar Financeiro → Lançamentos Contábeis. O efeito no DRE é o mesmo.
-
----
-
-## 👥 Cadastros
-
-### **P: Preciso cadastrar todos os funcionários no Sol.NET?**
-**R:** Não é obrigatório. O cadastro de funcionários no Sol.NET é simplificado e serve apenas para controle interno. Cadastre se quiser ter uma lista de nomes e departamentos.
-
-### **P: Quais informações são necessárias no cadastro?**
-**R:** Mínimo:
-- Nome do funcionário
-- Departamento/Centro de custo
-- Cargo (opcional)
-- Status (Ativo/Inativo)
-
-Não é necessário CPF, RG, dados bancários, etc.
-
-### **P: Preciso cadastrar dependentes?**
-**R:** Não. O Sol.NET não processa cálculos de IRRF ou salário família, então não precisa de informações de dependentes.
-
-### **P: Como organizo funcionários por departamento?**
-**R:**
-1. Primeiro cadastre os departamentos: RH → Cadastros → Departamentos
-2. Depois vincule cada funcionário a um departamento
-3. Use isso para separar custos no DRE
-
-### **P: O cadastro no Sol.NET precisa estar igual ao da contabilidade?**
-**R:** Não necessariamente. Como você lança valores totais (não individuais), o cadastro detalhado fica com a contabilidade. No Sol.NET é apenas para controle interno.
+- Lançou todos os funcionários?
+- Valores individuais estão corretos?
+- Não há lançamentos duplicados?
+- Competência está correta?
 
 ---
 
 ## 🛠️ Problemas Técnicos
 
-### **P: Lançamento aparece duplicado no DRE**
-**R:** Você salvou o mesmo lançamento duas vezes. Solução:
-1. RH → Lançamentos de Folha
-2. Localize o duplicado
-3. Exclua um deles
-4. Regere o DRE
+### **P: Erro ao salvar: "Funcionário não informado"**
+**R:** Você esqueceu de selecionar o funcionário. Selecione no campo apropriado antes de salvar.
 
-### **P: Total lançado diferente do informado pela contabilidade**
-**R:** Confira:
-1. Some todos os lançamentos do período
-2. Compare categoria por categoria com o resumo da contabilidade
-3. Verifique se não esqueceu de lançar alguma categoria
-4. Confirme se não há lançamentos duplicados
-
-### **P: Valores aparecendo no departamento/centro de custo errado**
-**R:**
-1. Edite o lançamento
-2. Corrija o campo "Centro de Custo"
-3. Salve
-4. Regere o DRE
-
-### **P: Não consigo excluir um lançamento**
+### **P: Funcionário não aparece na lista para seleção**
 **R:** Possíveis causas:
-- Período já fechado contabilmente
-- Falta de permissão de usuário
-- Lançamento vinculado a outro módulo
+- Funcionário não cadastrado → Cadastre primeiro
+- Funcionário inativo → Ative em Cadastros
+- Filtro ativo → Remova filtros de pesquisa
 
-Consulte o administrador do sistema.
+### **P: Não consigo editar dados do funcionário**
+**R:** Verifique:
+- Tem permissão para editar cadastros?
+- Funcionário não está em uso em lançamento em edição?
+- Sistema não está em modo somente leitura?
 
-### **P: Como desfaço todos os lançamentos de um mês?**
+### **P: Total por departamento está errado**
+**R:** Confira:
+1. Centro de custo de cada funcionário está correto?
+2. Todos os funcionários do departamento foram lançados?
+3. Não há funcionários do departamento em centro de custo errado?
+
+### **P: Valores duplicados no DRE**
+**R:** Você lançou o mesmo funcionário duas vezes. Exclua os lançamentos duplicados.
+
+### **P: Como desfaço todos os lançamentos do mês?**
 **R:** 
-1. RH → Lançamentos de Folha
-2. Filtre pela competência (mês/ano)
-3. Selecione todos os lançamentos
-4. Exclua em lote (se disponível) ou um por um
-5. Refaça os lançamentos corretos
-
-### **P: Posso importar lançamentos de uma planilha?**
-**R:** Depende da versão do Sol.NET. Consulte a documentação técnica ou suporte para verificar se há funcionalidade de importação.
+1. RH → Lançamentos
+2. Filtre por competência
+3. Exclua lançamento por lançamento (de cada funcionário)
+4. Refaça os lançamentos corretos
 
 ---
 
 ## 🎯 Cenários Específicos
 
-### **P: Como lanço o 13º salário (1ª e 2ª parcela)?**
-**R:** Há duas abordagens:
+### **P: Funcionário mudou de departamento no meio do mês**
+**R:** 
+- Atualize o cadastro com o novo departamento
+- Lançamentos futuros irão para o novo centro de custo
+- Lançamentos anteriores permanecem no centro antigo
 
-**Opção 1 - Com Provisão:**
-- Todo mês: Provisiona 1/12 do custo
-- Novembro (1ª parcela): Baixa 50% da provisão
-- Dezembro (2ª parcela): Baixa 50% restante + encargos
-
-**Opção 2 - Sem Provisão:**
-- Novembro: Lança 50% do 13º
-- Dezembro: Lança 50% restante + encargos
-
-Consulte sua contabilidade sobre qual usar.
-
-### **P: Como lanço férias pagas?**
-**R:** Similar ao 13º:
-- Se provisiona: Baixa da provisão quando paga
-- Se não provisiona: Lança como despesa no mês de pagamento
-
-A contabilidade deve informar os valores e forma de lançamento.
-
-### **P: Como lanço rescisões?**
-**R:** Lance as verbas rescisórias como despesa do mês:
-```
-D - 6.2.06 - Rescisões e Indenizações
-C - 2.1.2.05 - Rescisões a Pagar
-Valor: Conforme informado pela contabilidade
-```
-
-### **P: Empresa tem múltiplas filiais, como organizar?**
+### **P: Funcionário foi admitido no meio do mês**
 **R:**
-1. Crie centros de custo para cada filial
-2. Lance valores separadamente por filial
-3. No DRE, filtre por centro de custo para análise individual
-4. Ou visualize consolidado de todas as filiais
+1. Cadastre o funcionário
+2. Lance os valores proporcionais informados pela contabilidade
+3. Valores proporcionais já calculados pela contabilidade
 
-### **P: Como faço para comparar custo de RH mês a mês?**
+### **P: Funcionário foi demitido no meio do mês**
 **R:**
-1. Menu Financeiro → DRE
-2. Selecione "DRE Comparativo"
-3. Escolha os períodos (ex: últimos 6 meses)
-4. O sistema mostra evolução das despesas com pessoal
+1. Lance os valores até a demissão (informados pela contabilidade)
+2. Lance verbas rescisórias (se houver)
+3. Altere status para "Inativo" e informe data de demissão
 
-### **P: Como calculo o percentual de RH sobre a receita?**
+### **P: Empresa tem 100 funcionários. Preciso lançar os 100?**
+**R:** **SIM**. Cada um dos 100 funcionários precisa ter seus lançamentos individuais. É trabalhoso, mas é assim que o sistema funciona.
+
+### **P: Posso importar de uma planilha Excel?**
+**R:** Verifique com o suporte técnico se há funcionalidade de importação. Se houver, ainda assim cada linha da planilha representará um funcionário.
+
+### **P: Como facilito o trabalho com muitos funcionários?**
 **R:**
-1. Gere o DRE do período
-2. Visualize:
-   - Total de Receitas: R$ X
-   - Total Despesas RH: R$ Y
-3. Calcule: (Y ÷ X) × 100 = percentual
-
-Muitos DREs já mostram isso automaticamente como "Análise Vertical".
+- Organize a planilha da contabilidade por ordem alfabética
+- Lance na mesma ordem
+- Use checklist para marcar funcionários já lançados
+- Divida o trabalho por departamento
+- Confira totais por departamento antes de passar para o próximo
 
 ---
 
@@ -290,25 +255,32 @@ Muitos DREs já mostram isso automaticamente como "Análise Vertical".
 
 ### **P: Qual a melhor forma de organizar os lançamentos?**
 **R:**
-- Use históricos padronizados
-- Separe por departamento/centro de custo
-- Provisione mensalmente 13º e férias
-- Confira sempre o DRE após lançar
-- Mantenha documentação (resumo da contabilidade)
+1. Cadastre todos os funcionários primeiro
+2. Configure contas contábeis no cadastro
+3. Organize planilha da contabilidade por departamento
+4. Lance departamento por departamento
+5. Confira total de cada departamento antes de passar ao próximo
+6. Confira total geral no final
 
-### **P: Devo lançar na data de pagamento ou competência?**
-**R:** Use a data de **competência** (último dia do mês de referência da folha), não a data de pagamento. Isso garante que o DRE reflita corretamente as despesas do período.
-
-### **P: Como garantir que não esqueço de lançar nenhum mês?**
+### **P: Como evito erros?**
 **R:**
-- Crie um checklist mensal
-- Defina um responsável
-- Estabeleça um prazo (ex: até dia 10 de cada mês)
-- Confira o DRE mês a mês para identificar falhas
+- Confira nome e matrícula antes de lançar
+- Use checklist dos funcionários
+- Lance em ambiente silencioso
+- Peça segunda pessoa para conferir
+- Compare totais por departamento com contabilidade
+
+### **P: Como preparo a contabilidade para fornecer dados corretos?**
+**R:** Explique que precisa de:
+- Planilha com nome e matrícula de cada funcionário
+- Valores individuais de cada um
+- Separado por tipo (salário, encargos, benefícios)
+- Total por funcionário e total geral
 
 ---
 
 **📅 Última atualização**: Janeiro de 2025  
-**🎯 Público-alvo**: Usuários do módulo RH Sol.NET
+**🎯 Público-alvo**: Usuários do módulo RH Sol.NET  
+**⚠️ Lembre-se: Vinculação a funcionário é OBRIGATÓRIA**
 
-*Para dúvidas não cobertas neste FAQ, consulte a [Documentação Completa](Documentacao Folha de Pagamento.md) ou entre em contato com o suporte técnico.*
+*Para informações detalhadas sobre cadastro de funcionários, consulte a [Documentação Completa - Cadastro de Pessoa RH](Documentacao Folha de Pagamento.md#-cadastro-de-funcionários-pessoa-rh).*
