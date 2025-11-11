@@ -69,6 +69,42 @@ Manual completo para gestão de preços de venda
 
 ---
 
+### 👥 **[Módulo RH - Lançamentos de Recursos Humanos](RH/)**
+Controle interno de despesas com pessoal para integração com DRE:
+
+#### **📋 [Índice Completo](RH/)**
+Portal de navegação para toda documentação de RH
+
+#### **💼 [Documentação de Lançamentos de Folha](RH/Documentacao Folha de Pagamento.md)**
+- Visão geral: o que o módulo faz e não faz
+- Cadastro detalhado de funcionários (Pessoa RH)
+- Fluxo de trabalho: contabilidade → lançamento → DRE
+- Configuração de contas contábeis
+- Vinculação obrigatória a funcionários
+- Exemplos práticos de lançamentos
+
+#### **📅 [Processo Mensal de Lançamento](RH/Processo Mensal.md)**
+- Formulário de Lançamento RH detalhado
+- Processo passo a passo mês a mês
+- Como registrar valores de cada funcionário
+- Conferência e validação
+- Relatórios e dicas de produtividade
+
+#### **🚀 [Guia Rápido](RH/Guia Rapido.md)**
+- Checklist mensal de lançamentos
+- Tipos de lançamento (salários, encargos, provisões)
+- Fluxo rápido de registro de valores
+- Problemas comuns e soluções
+
+#### **❓ [FAQ - Perguntas Frequentes](RH/FAQ.md)**
+- Sobre o módulo e suas limitações
+- Vinculação obrigatória a funcionários
+- Como fazer lançamentos individuais
+- Integração com DRE
+- Diferença entre módulo RH e sistema de folha completo
+
+---
+
 ## 🎯 Por Onde Começar
 
 ### **👤 Novo no Sol.NET?**
@@ -100,6 +136,12 @@ Manual completo para gestão de preços de venda
 - [Configuração de Portadores](Financeiro/Documentacao Portadores.md)
 - [Controle Financeiro em Movimentações](Movimentacao/faq/#-controle-financeiro)
 - [Processo de Quitação](Movimentacao/guia-rapido/#-atalhos-essenciais)
+
+#### **👥 Gestão de Pessoal**
+- [Folha de Pagamento Completa](RH/Documentacao Folha de Pagamento.md)
+- [Guia Rápido RH](RH/Guia Rapido.md)
+- [Integração RH com DRE](Financeiro/Documentacao DRE.md#-recursos-humanos-rh)
+- [FAQ RH](RH/FAQ.md)
 
 #### **📊 Operações Comerciais**  
 - [Fluxo de Trabalho Completo](Movimentacao/documentacao/#-fluxo-de-trabalho---passo-a-passo)
