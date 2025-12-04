@@ -337,7 +337,7 @@ Sistema compensa:
 
 ### **Chat no Sistema:**
 ```
-Ícone 💬 no canto inferior direito
+Ícone de chat no sistema Sol.NET
 Atendimento: Seg-Sex 8h-18h
 Resposta média: 5 minutos
 ```
@@ -404,7 +404,7 @@ Ou acesse: docs.solnet.com.br/reforma
 **📅 Última atualização**: Dezembro de 2024  
 **📦 Versão**: 2.0 (Workflows Sol.NET)  
 **🎯 Público-alvo**: Usuários operacionais Sol.NET  
-**⏱️ Tempo de leitura**: ~5 minutos
+**⏱️ Tempo de leitura**: ~15 minutos
 
 ---
 

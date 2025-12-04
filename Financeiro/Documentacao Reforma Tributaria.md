@@ -1014,7 +1014,7 @@ Recomendação: Precificar considerando menor carga
 
 ### **Q: E se a legislação mudar as alíquotas?**
 **R:** Sol.NET atualiza automaticamente:
-- Equipe monitora legislação 24/7
+- Equipe monitora legislação continuamente
 - Atualizações disponibilizadas imediatamente
 - Notificação no sistema
 - Histórico de alíquotas mantido (auditoria)
