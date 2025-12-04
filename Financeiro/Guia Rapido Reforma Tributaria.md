@@ -1,314 +1,413 @@
 ---
-title: "Guia Rápido - Reforma Tributária"
+title: "Guia Rápido - Reforma Tributária Sol.NET"
 permalink: /Financeiro/guia-rapido-reforma-tributaria/
 ---
 # ⚡ Guia Rápido: Reforma Tributária - Sol.NET
 
-## 🎯 Resumo Executivo
+## 🎯 Resumo para Usuários Sol.NET
 
-### **O que muda?**
+### **O que muda no sistema?**
 ```
-5 TRIBUTOS        →        2 TRIBUTOS
-PIS + COFINS + IPI  →  CBS (Federal)
-ICMS + ISS          →  IBS (Estadual/Municipal)
+📊 Tributos: 5 → 2
+   PIS + COFINS + IPI  →  CBS (Federal)
+   ICMS + ISS          →  IBS (Estadual/Municipal)
+
+📋 Cadastros: NCM obrigatório com classificação tributária
+
+🧮 Cálculo: Automático CBS/IBS em Movimentação
+
+💰 Crédito: Aproveitamento automático (crédito pleno)
 ```
 
-### **Quando?**
-- **2026**: Teste (0,9% CBS + 0,1% IBS)
-- **2027**: CBS substitui PIS/COFINS
-- **2029-2032**: Transição gradual ICMS/ISS → IBS
+### **Cronograma:**
+- **2026**: Teste no Sol.NET (0,9% CBS + 0,1% IBS)
+- **2027**: CBS substitui PIS/COFINS automaticamente
+- **2029-2032**: Sistema calcula tributos antigos + novos
 - **2033**: Só CBS + IBS
 
-### **Principal benefício:**
-✅ **CRÉDITO PLENO** - Desconto total de tributos pagos nas compras
-
 ---
 
-## ⏱️ Checklist de Preparação
+## ⚡ Workflows Rápidos Sol.NET
 
-### **🔧 Preparação Sistemas (2025-2026)**
-- [ ] Atualizar cadastro de produtos com NCM/NBS corretos
-- [ ] Revisar plano de contas para novos tributos
-- [ ] Testar cálculos com alíquotas estimadas
-- [ ] Validar integrações fiscais (NFe, NFSe)
-- [ ] Configurar CBS e IBS no Sol.NET (quando disponível)
-- [ ] Ativar CBS/IBS de teste no sistema
-- [ ] Gerar documentos fiscais no novo padrão
-- [ ] Validar cálculos e relatórios
-- [ ] Treinar usuários finais
-- [ ] Reportar dúvidas ao suporte Sol.NET
+### **1. Configurar NCM (Fazer UMA VEZ)**
 
-### **🔄 Transição (2027-2032)**
-- [ ] Migrar para CBS em 2027 (substituir PIS/COFINS)
-- [ ] Acompanhar redução gradual ICMS/ISS
-- [ ] Controlar créditos no período duplo
-- [ ] Ajustar precificação conforme necessário
-- [ ] Monitorar legislação complementar
-
----
-
-## 📊 Tabela Rápida de Alíquotas (Estimadas)
-
-| Categoria | CBS | IBS | Total | Exemplos |
-|-----------|-----|-----|-------|----------|
-| **Padrão** | 8,5%-9,5% | 17,5%-18,5% | ~26,5%-27,5% | Maioria produtos/serviços |
-| **Reduzida (60%)** | ~5,1% | ~10,5% | ~15,6%-16,8% | Cesta básica, saúde, educação |
-| **Zero** | 0% | 0% | 0% | Transporte público, livros |
-| **Exportação** | 0% | 0% | 0% | Todos exportados |
-
-> ⚠️ **Atenção**: Valores estimados. Alíquotas exatas serão definidas por lei complementar.
-
----
-
-## 🧮 Cálculo Simplificado
-
-### **Como calcular tributos na reforma:**
-
-**Passo 1: Valor da operação**
 ```
-Venda = R$ 1.000,00
-```
+Menu → Cadastros → Fiscal → NCM (Ctrl+Alt+N)
 
-**Passo 2: Aplicar alíquotas**
-```
-CBS (8,5%) = R$ 85,00
-IBS (17,5%) = R$ 175,00
-Total tributos = R$ 260,00
-```
+Novo (F4):
+1. Código NCM: [8 dígitos]
+2. Descrição: [auto-preenche]
+3. Classificação: Padrão / Reduzida / Zero
+4. CBS%: [auto-preenche conforme classificação]
+5. IBS%: [auto-preenche conforme classificação]
+6. Salvar (F5)
 
-**Passo 3: Deduzir créditos** (NOVIDADE!)
-```
-Compras com tributos: R$ 600,00
-CBS pago na compra (8,5%) = R$ 51,00
-IBS pago na compra (17,5%) = R$ 105,00
-Total créditos = R$ 156,00
-```
-
-**Passo 4: Tributo líquido**
-```
-Tributo a pagar = R$ 260,00 - R$ 156,00 = R$ 104,00
-Carga efetiva = 10,4% sobre a venda
-(Tributo apenas sobre valor agregado de R$ 400!)
-```
-
-### **⚡ Fórmula Rápida:**
-```
-Tributo Líquido = (Valor Venda - Valor Compra) × (CBS% + IBS%)
+✅ Vincular produtos:
+   Cadastros → Produtos → Aba Fiscal → Campo NCM
 ```
 
 ---
 
-## 🏪 Exemplos por Segmento
+### **2. Lançar Compra (Gera Crédito)**
 
-### **Comércio Varejista**
 ```
-💡 Principal impacto: Crédito pleno em mercadorias
+Menu → Movimentação → Nova (F4)
 
-Antes (2024):
-├─ Compra: R$ 70 + R$ 15 tributos (crédito limitado ~R$ 8)
-├─ Venda: R$ 100 + R$ 21 tributos
-└─ Custo tributário: ~R$ 13
+Cabeçalho:
+├─ Tipo: Compra
+├─ Fornecedor: [F2]
+├─ Data: [hoje]
+└─ Continuar → Items (F9)
 
-Depois (2033):
-├─ Compra: R$ 70 + R$ 18 tributos (CRÉDITO PLENO R$ 18)
-├─ Venda: R$ 100 + R$ 26 tributos
-└─ Custo tributário: R$ 8 (só sobre margem de R$ 30)
+Item:
+├─ Produto: [F2 buscar]
+├─ Quantidade: [informar]
+├─ Valor Unit: [informar]
+└─ Sistema calcula CBS/IBS automaticamente
 
-✅ Benefício: ~R$ 5 por operação
-```
-
-### **Indústria**
-```
-💡 Principal impacto: Crédito total insumos + fim IPI
-
-Antes (2024):
-├─ Matéria-prima: R$ 100 + tributos R$ 26 (crédito parcial)
-├─ Produto final: R$ 300 + tributos R$ 78
-└─ Custo: ~R$ 60
-
-Depois (2033):
-├─ Matéria-prima: R$ 100 + tributos R$ 26 (CRÉDITO R$ 26)
-├─ Produto final: R$ 300 + tributos R$ 78
-└─ Custo: R$ 52 (só sobre valor agregado)
-
-✅ Benefício: ~R$ 8 + simplificação operacional
-```
-
-### **Prestação de Serviços**
-```
-💡 Principal impacto: Crédito sobre insumos (antes negado)
-
-Antes (2024):
-├─ Serviço: R$ 500
-├─ ISS+PIS+COFINS: R$ 28
-└─ Sem crédito de materiais/equipamentos
-
-Depois (2033):
-├─ Serviço: R$ 500
-├─ CBS+IBS: R$ 39 (alíquota padrão)
-├─ Créditos: ~R$ 8 (materiais, equipamentos)
-└─ Líquido: R$ 31
-
-⚠️ Leve aumento, mas com benefício de créditos
+Finalizar (F6)
+📊 Créditos registrados automaticamente
 ```
 
 ---
 
-## 🚀 Atalhos e Dicas Sol.NET
+### **3. Lançar Venda (Usa Crédito)**
 
-### **⌨️ Atalhos Úteis**
-
-| Função | Atalho | Quando usar |
-|--------|--------|-------------|
-| Simulador impacto | **F11** | Testar cenários reforma |
-| Config. tributos | **Ctrl+T** | Ajustar CBS/IBS |
-| Consulta NCM | **F2** | Validar classificação |
-| Relatório créditos | **F9** | Acompanhar aproveitamento |
-| Análise comparativa | **Shift+F11** | Antes × Depois reforma |
-
-> 💡 **Nota**: Atalhos disponíveis em versões futuras do Sol.NET
-
-### **📍 Menu Rápido**
 ```
-Financeiro
-  └─ Reforma Tributária
-      ├─ Simulador de Impacto
-      ├─ Configuração CBS/IBS
-      ├─ Relatório de Créditos
-      ├─ Análise Comparativa
-      └─ Guia de Transição
+Menu → Movimentação → Nova (F4)
+
+Cabeçalho:
+├─ Tipo: Venda
+├─ Cliente: [F2]
+├─ UF Destino: [importante para IBS]
+└─ Continuar → Items (F9)
+
+Item:
+├─ Produto: [F2]
+├─ Quantidade: [informar]
+├─ Valor Unit: [informar]
+└─ Sistema:
+    1. Calcula CBS/IBS
+    2. Busca créditos automaticamente
+    3. Mostra tributo líquido
+
+Finalizar (F6) → Gerar NFe (F10)
+📊 Créditos aproveitados automaticamente
 ```
 
 ---
 
-## 🎯 Produtos com Alíquotas Especiais
+### **4. Consultar Créditos Acumulados**
 
-### **Alíquota Reduzida (60% da padrão)**
-✅ Arroz, feijão, farinha, leite, pão, açúcar (cesta básica)  
+```
+Menu → Fiscal → Controle de Créditos
+
+Visualizar:
+├─ Saldo CBS disponível
+├─ Saldo IBS disponível
+├─ Origem dos créditos (por NF)
+└─ Compensações realizadas
+
+Filtrar: Período / Tipo / Situação
+Exportar: PDF / Excel
+```
+
+---
+
+### **5. Apurar Período (Mensal)**
+
+```
+Menu → Fiscal → Apuração CBS/IBS
+
+Competência: [mês/ano]
+
+Sistema gera:
+├─ Total Débitos (vendas)
+├─ Total Créditos (compras)
+├─ Saldo a Recolher
+└─ Guias de pagamento
+
+Gerar Guias (F10)
+Imprimir / Enviar banco
+```
+
+---
+
+## 📊 Tabela Rápida - Alíquotas Sol.NET
+
+| Classificação | CBS | IBS | Total | Produtos |
+|---------------|-----|-----|-------|----------|
+| **Padrão** | 8,5% | 17,5% | 26% | Maioria |
+| **Reduzida** | 5,4% | 10,5% | 15,9% | Cesta básica, saúde |
+| **Zero** | 0% | 0% | 0% | Livros, exportação |
+
+> 💡 Sistema usa classificação do NCM para aplicar alíquota correta
+
+---
+
+## 🧮 Cálculo no Sol.NET (Automático)
+
+### **O que o sistema faz:**
+
+**Entrada (Compra):**
+```
+Produto: R$ 100
+Sistema calcula:
+├─ CBS (8,5%): R$ 8,50 → CRÉDITO
+├─ IBS (17,5%): R$ 17,50 → CRÉDITO
+└─ Total crédito: R$ 26,00 (registrado)
+```
+
+**Saída (Venda):**
+```
+Produto: R$ 150
+Sistema calcula:
+├─ CBS (8,5%): R$ 12,75 → DÉBITO
+├─ IBS (17,5%): R$ 26,25 → DÉBITO
+├─ Total débito: R$ 39,00
+│
+Sistema compensa:
+├─ Débito: R$ 39,00
+├─ Crédito: R$ 26,00 (da compra)
+└─ A recolher: R$ 13,00 (só sobre margem!)
+```
+
+**💡 Você não faz nada**: Sistema gerencia tudo automaticamente!
+
+---
+
+## ⌨️ Atalhos Sol.NET - Reforma Tributária
+
+| Atalho | Função | Onde usar |
+|--------|--------|-----------|
+| **Ctrl+Alt+N** | Cadastro NCM | Cadastros → Fiscal |
+| **F2** | Buscar produto/cliente | Em qualquer campo |
+| **F4** | Novo registro | Movimentação, Cadastros |
+| **F5** | Salvar | Qualquer tela de edição |
+| **F6** | Finalizar movimento | Cabeçalho movimentação |
+| **F9** | Editar items | Na movimentação |
+| **F10** | Gerar NFe | Após finalizar movimento |
+| **F12** | Consulta rápida | Vários contextos |
+
+---
+
+## 🎯 Classificações Tributárias - Produtos Comuns
+
+### **Alíquota Reduzida (15,9% total):**
+✅ Arroz, feijão, farinha, leite, pão, açúcar, sal  
 ✅ Medicamentos essenciais (lista Anvisa)  
-✅ Dispositivos médicos e acessibilidade  
+✅ Fraldas, absorventes  
+✅ Produtos agropecuários in natura  
 ✅ Serviços de saúde e educação  
-✅ Produtos agropecuários selecionados  
 
-### **Alíquota Zero**
+### **Alíquota Zero (0%):**
 ✅ Transporte público coletivo  
 ✅ Livros, jornais, periódicos  
-✅ Produtos hortifrutigranjeiros in natura  
-✅ Ovos, leite natural  
-✅ Medicamentos doenças graves (via Anvisa)  
-
-### **Isenções**
+✅ Frutas e verduras in natura  
+✅ Ovos  
 ✅ Exportações (todas)  
-✅ Programa habitacional popular  
-✅ Produtos de reciclagem/economia circular  
+
+### **Alíquota Padrão (26%):**
+✅ Demais produtos e serviços  
+✅ Bebidas alcoólicas  
+✅ Cosméticos e perfumaria  
+✅ Eletrônicos  
+✅ Vestuário  
 
 ---
 
-## ❓ Dúvidas Rápidas
+## 🚨 Validações Importantes
 
-**Q: Vou pagar mais impostos?**  
-**R:** Não necessariamente. Depende do setor e aproveitamento de créditos. Use o simulador Sol.NET.
+### **Antes de Finalizar Movimento:**
 
-**Q: Simples Nacional acaba?**  
-**R:** NÃO. Continua com CBS e IBS incluídos na guia única.
+**✅ Verificar:**
+- [ ] Todos os items têm NCM configurado
+- [ ] Alíquotas CBS/IBS estão corretas
+- [ ] UF Destino preenchida (para IBS)
+- [ ] Cliente/Fornecedor com dados completos
 
-**Q: Quando preciso mudar meu sistema?**  
-**R:** Sol.NET fará atualizações automáticas. Você só precisa validar cadastros de produtos (NCM/NBS).
-
-**Q: Benefícios fiscais que tenho hoje continuam?**  
-**R:** Gradualmente reduzidos até 2032. Extintos em 2033 (salvo exceções da reforma).
-
-**Q: Como aproveitar créditos?**  
-**R:** Automático no Sol.NET. Basta ter documentos fiscais corretos das compras.
-
----
-
-## 🔴 Erros Comuns a Evitar
-
-### ❌ **Não classificar produtos corretamente**
-**Impacto**: Alíquota errada aplicada  
-**Solução**: Revisar NCM/NBS de todos os produtos AGORA
-
-### ❌ **Ignorar créditos disponíveis**
-**Impacto**: Pagar mais tributos que o necessário  
-**Solução**: Validar todas as notas de compra e aproveitamento
-
-### ❌ **Não ajustar preços**
-**Impacto**: Margem de lucro reduzida ou preços não competitivos  
-**Solução**: Usar simulador Sol.NET para recalcular precificação
-
-### ❌ **Achar que pode deixar "para depois"**
-**Impacto**: Correria e erros na hora da implementação  
-**Solução**: Preparar desde já, mesmo com transição só em 2026
-
-### ❌ **Confiar em alíquotas estimadas para decisões finais**
-**Impacto**: Planejamento impreciso  
-**Solução**: Aguardar publicação oficial e ajustar quando confirmado
+**❌ Sistema bloqueia se:**
+- Item sem NCM (após 2027)
+- Alíquota inválida para o NCM
+- Dados obrigatórios faltando
+- CST incompatível com operação
 
 ---
 
-## 📞 Suporte Rápido
+## 💡 Dicas Práticas
 
-### **🆘 Em caso de dúvidas:**
+### **📌 Configuração Inicial:**
+1. **Priorize cesta básica**: Configure primeiro produtos com alíquota reduzida (maior impacto)
+2. **Use relatório**: `Fiscal → Validação NCM` lista produtos pendentes
+3. **Copie NCM similar**: Use produto já configurado como modelo
 
-**Chat Sol.NET**: Suporte online no sistema  
-**E-mail**: reforma.tributaria@solnet.com.br  
-**Telefone**: 0800-xxx-xxxx (ramal 2)  
-**Documentação completa**: [Reforma Tributária - Guia Completo](Documentacao Reforma Tributaria.md)
+### **📌 Operação Diária:**
+1. **Deixe automático**: Não altere cálculos sem necessidade
+2. **Monitore créditos**: Consulte semanalmente saldo disponível
+3. **Documente ajustes**: Se alterar manualmente, anote o motivo
 
-### **📚 Materiais complementares:**
-- [FAQ Detalhado](Documentacao Reforma Tributaria.md#-faq---perguntas-frequentes)
-- [Exemplos Práticos](Documentacao Reforma Tributaria.md#-exemplos-práticos)
-- [Cronograma Completo](Documentacao Reforma Tributaria.md#-cronograma-de-implementação)
-
----
-
-## 📅 Marcos Importantes
-
-| Data | Evento | Ação necessária |
-|------|--------|-----------------|
-| **2024-2025** | Preparação | Mapear produtos e simular |
-| **2026** | Teste | Validar sistema e treinar |
-| **Jan/2027** | CBS entra | Substituir PIS/COFINS |
-| **Jan/2029** | IBS inicia | Começar transição ICMS/ISS |
-| **Jan/2033** | Regime pleno | Operar só CBS+IBS |
+### **📌 Controle Mensal:**
+1. **Apure dia 25**: Dá tempo de corrigir problemas
+2. **Confira notas**: Todas as compras geraram crédito?
+3. **Exporte relatório**: Envie para contador antes do fechamento
 
 ---
 
-## 💡 Dica de Ouro
+## 🔴 Problemas Comuns - Soluções Rápidas
 
-> **A grande vantagem da reforma é o CRÉDITO PLENO!**  
-> Quanto mais você compra para produzir/revender, mais crédito acumula.  
-> Isso reduz drasticamente a carga tributária sobre sua margem.  
-> 
-> **Foque em**: Documentação perfeita de compras + Aproveitamento máximo de créditos
+### **❌ "Item sem NCM configurado"**
+**Solução:**
+```
+1. Cadastros → Produtos → Buscar produto
+2. Aba Fiscal → Campo NCM
+3. Selecionar NCM (F2)
+4. Salvar (F5)
+```
 
 ---
 
-## 🎓 Próximos Passos
+### **❌ "Alíquota diferente da esperada"**
+**Solução:**
+```
+1. Verificar classificação do NCM
+2. Cadastros → Fiscal → NCM → Editar
+3. Conferir campo "Classificação Tributária"
+4. Ajustar se necessário
+5. Salvar e refazer movimento
+```
 
-### **1. Entenda o básico** ✅
-Você já está aqui! Continue com:
+---
 
-### **2. Leia a documentação completa** 📖
-[Documentação Reforma Tributária](Documentacao Reforma Tributaria.md)
+### **❌ "Créditos não aproveitados"**
+**Solução:**
+```
+1. Fiscal → Controle de Créditos
+2. Verificar se compras estão registradas
+3. Conferir notas de entrada finalizadas
+4. Se ok, reprocessar movimento:
+   - Editar venda → Salvar novamente
+5. Se persistir: Suporte Sol.NET
+```
 
-### **3. Simule seu cenário** 🧮
-Use ferramentas Sol.NET quando disponíveis
+---
 
-### **4. Capacite sua equipe** 👥
-Webinars e treinamentos Sol.NET
+### **❌ "NFe rejeitada - tributos"**
+**Solução:**
+```
+1. Conferir alíquotas CBS/IBS no item
+2. Verificar CST configurado
+3. Validar UF Destino no cabeçalho
+4. Refazer NFe (F10)
+5. Erro persiste: Ver log detalhado (F12)
+```
 
-### **5. Acompanhe atualizações** 📡
-Legislação em constante evolução
+---
+
+## 📅 Checklist Mensal - Rotina Fiscal
+
+### **🗓️ Até dia 5:**
+- [ ] Lançar todas as compras do mês anterior
+- [ ] Conferir se geraram créditos corretamente
+- [ ] Validar notas fiscais de entrada
+
+### **🗓️ Até dia 15:**
+- [ ] Lançar todas as vendas do mês anterior
+- [ ] Verificar aproveitamento de créditos
+- [ ] Conferir documentos fiscais de saída
+
+### **🗓️ Até dia 20:**
+- [ ] Acessar `Fiscal → Apuração CBS/IBS`
+- [ ] Gerar relatório do período
+- [ ] Conferir saldos a recolher
+- [ ] Gerar guias de pagamento
+
+### **🗓️ Até dia 25:**
+- [ ] Pagar guias CBS (Receita Federal)
+- [ ] Pagar guias IBS (Comitê Gestor)
+- [ ] Arquivar comprovantes
+
+### **🗓️ Até dia 30:**
+- [ ] Exportar relatórios para contabilidade
+- [ ] Backup de dados fiscais
+- [ ] Revisar pendências para próximo mês
+
+---
+
+## 🆘 Suporte Rápido
+
+### **Chat no Sistema:**
+```
+Ícone 💬 no canto inferior direito
+Atendimento: Seg-Sex 8h-18h
+Resposta média: 5 minutos
+```
+
+### **E-mail Fiscal:**
+```
+📧 suporte.fiscal@solnet.com.br
+Anexar: Print do erro + Código do movimento
+Resposta: Até 24h
+```
+
+### **Telefone Urgente:**
+```
+📞 Consulte portal do cliente
+Ramal: Suporte Fiscal (opção 2)
+Horário: Comercial
+```
+
+### **Documentação Completa:**
+```
+📚 Menu Sol.NET → Ajuda → Reforma Tributária
+Ou acesse: docs.solnet.com.br/reforma
+```
+
+---
+
+## 🎓 Treinamentos Disponíveis
+
+### **Webinars Mensais:**
+- 🗓️ Toda 3ª terça-feira do mês
+- ⏰ 14h - 15h30
+- 📋 Inscrição: Portal do cliente
+- 💻 Online (Teams)
+
+### **Vídeos Tutoriais:**
+- ▶️ Configurar NCM (5min)
+- ▶️ Lançar compra com crédito (8min)
+- ▶️ Lançar venda usando crédito (10min)
+- ▶️ Apurar período mensal (12min)
+- ▶️ Resolver problemas comuns (15min)
+
+### **Certificação:**
+- 🏆 Curso completo: 4h (EAD)
+- 🏆 Certificado Sol.NET
+- 🏆 Gratuito para clientes
+
+---
+
+## 🔗 Links Úteis
+
+### **Documentação Relacionada:**
+- 📖 [Guia Completo Reforma](Documentacao Reforma Tributaria.md)
+- ❓ [FAQ Detalhado](FAQ Reforma Tributaria.md)
+- 📊 [Módulo Financeiro](README.md)
+- 📦 [Movimentação](../Movimentacao/README.md)
+
+### **Recursos Externos:**
+- 🏛️ [Reforma Tributária (Gov)](https://reformatributaria.gov.br)
+- 🏛️ [Comitê Gestor IBS](https://ibs.gov.br)
+- 📚 [NCM - Tabela Completa](https://www.gov.br/receitafederal/ncm)
 
 ---
 
 **📅 Última atualização**: Dezembro de 2024  
-**📦 Versão**: 1.0 (Guia Rápido)  
-**🎯 Público-alvo**: Usuários práticos Sol.NET  
-**⏱️ Tempo de leitura**: ~10 minutos
+**📦 Versão**: 2.0 (Workflows Sol.NET)  
+**🎯 Público-alvo**: Usuários operacionais Sol.NET  
+**⏱️ Tempo de leitura**: ~5 minutos
 
 ---
 
-> **🚀 Lembre-se**: A reforma tributária é uma **oportunidade** de simplificação e potencial economia. Com planejamento adequado e o Sol.NET ao seu lado, sua empresa estará pronta para aproveitar os benefícios!
+> **⚡ Lembre-se**: Este é um guia rápido. Para informações detalhadas, consulte a [Documentação Completa](Documentacao Reforma Tributaria.md).
+
+> **🚀 Sol.NET gerencia tudo automaticamente!** Você só precisa: configurar NCM uma vez, lançar movimentos normalmente, e consultar relatórios. O sistema cuida de cálculos, créditos e apuração.
