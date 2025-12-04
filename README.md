@@ -35,6 +35,15 @@ Controle completo da gestão financeira da empresa:
 - Remessa eletrônica e automação bancária
 - Comissões e validações automáticas
 
+#### 🏛️ **[Reforma Tributária](Financeiro/Documentacao Reforma Tributaria.md)** ⭐ NOVO
+- Guia completo da Reforma Tributária Brasileira (EC 132/2023)
+- Mudanças: 5 tributos → 2 tributos (CBS e IBS)
+- Cronograma de implementação (2026-2033)
+- Impacto por tipo de empresa e setor
+- Crédito pleno e não cumulatividade
+- Preparação no Sol.NET
+- [Guia Rápido](Financeiro/Guia Rapido Reforma Tributaria.md) | [FAQ](Financeiro/FAQ Reforma Tributaria.md)
+
 ---
 
 ### 📦 **[Módulo Movimentação](Movimentacao/)**
@@ -136,6 +145,13 @@ Portal de navegação para toda documentação de RH
 - [Configuração de Portadores](Financeiro/Documentacao Portadores.md)
 - [Controle Financeiro em Movimentações](Movimentacao/faq/#-controle-financeiro)
 - [Processo de Quitação](Movimentacao/guia-rapido/#-atalhos-essenciais)
+
+#### **🏛️ Reforma Tributária** ⭐ DESTAQUE
+- [Guia Completo Reforma Tributária](Financeiro/Documentacao Reforma Tributaria.md)
+- [Guia Rápido - Preparação](Financeiro/Guia Rapido Reforma Tributaria.md)
+- [FAQ - Dúvidas Frequentes](Financeiro/FAQ Reforma Tributaria.md)
+- [Cronograma 2026-2033](Financeiro/Documentacao Reforma Tributaria.md#-cronograma-de-implementação)
+- [Impacto por Setor](Financeiro/Documentacao Reforma Tributaria.md#-impactos-por-tipo-de-empresa)
 
 #### **👥 Gestão de Pessoal**
 - [Folha de Pagamento Completa](RH/Documentacao Folha de Pagamento.md)

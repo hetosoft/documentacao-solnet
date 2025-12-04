@@ -26,6 +26,37 @@ Manual técnico para gerenciamento de instrumentos de pagamento:
 - Hetobank e pagamentos digitais
 - Troubleshooting e melhores práticas
 
+### 🏛️ **[Reforma Tributária - Guia Completo](Documentacao Reforma Tributaria.md)**
+Documentação completa sobre a Reforma Tributária Brasileira (EC 132/2023):
+- Entenda as mudanças: 5 tributos → 2 tributos (CBS e IBS)
+- Cronograma de implementação (2026-2033)
+- Alíquotas e regimes especiais
+- Não cumulatividade plena (crédito total)
+- Impactos por tipo de empresa
+- Preparação no Sol.NET
+- Exemplos práticos detalhados
+- FAQ completo
+
+### ⚡ **[Guia Rápido - Reforma Tributária](Guia Rapido Reforma Tributaria.md)**
+Referência rápida para adaptação à reforma tributária:
+- Checklist de preparação
+- Tabela de alíquotas estimadas
+- Cálculos simplificados
+- Exemplos por segmento
+- Atalhos Sol.NET
+- Dicas práticas
+
+### ❓ **[FAQ - Reforma Tributária](FAQ Reforma Tributaria.md)**
+Respostas para as dúvidas mais frequentes sobre a reforma:
+- Perguntas gerais sobre a reforma
+- Tributos e alíquotas (CBS e IBS)
+- Créditos tributários (como aproveitar)
+- Impacto por tipo de empresa
+- Preparação e sistemas
+- Cronograma e transição
+- Situações específicas
+- Estratégias e planejamento
+
 ---
 
 ## 🎯 Por Onde Começar
@@ -35,18 +66,21 @@ Manual técnico para gerenciamento de instrumentos de pagamento:
 2. Entenda a **estrutura do Plano de Contas** no Sol.NET
 3. Configure **Agrupamentos DRE** básicos para sua empresa
 4. Explore **exemplos práticos** do seu segmento
+5. **Importante**: Leia sobre a **[Reforma Tributária](Documentacao Reforma Tributaria.md)** para preparar sua empresa
 
 ### **🔧 Administrador/Configurador**
 1. **DRE**: Configure agrupamentos e integração com outros módulos
 2. **Portadores**: Configure instrumentos de pagamento e cobrança
 3. **Plano de Contas**: Estruture contas para análises gerenciais
 4. **Centro de Custos**: Implemente controle departamental
+5. **Reforma Tributária**: Prepare-se para mudanças (2026-2033)
 
 ### **⚡ Usuário Experiente**
 1. Use **relatórios comparativos** para análises evolutivas
 2. Configure **automatização** de lançamentos
 3. Explore **integrações avançadas** com BI
 4. Otimize **performance** dos relatórios
+5. **Planejamento estratégico**: Simule impactos da reforma tributária
 
 ---
 
@@ -75,6 +109,15 @@ Manual técnico para gerenciamento de instrumentos de pagamento:
 - [Carnês](Documentacao Portadores.md#2-carnê-tipo-1)
 - [Convênios](Documentacao Portadores.md#4-convênio-tipo-3)
 - [PIX Integrado](Documentacao Portadores.md#seção-pix---pagamentos-instantâneos)
+
+### **🏛️ Reforma Tributária**
+- [Guia Completo](Documentacao Reforma Tributaria.md) - Tudo sobre CBS e IBS
+- [Guia Rápido](Guia Rapido Reforma Tributaria.md) - Checklist e ações práticas
+- [FAQ](FAQ Reforma Tributaria.md) - Dúvidas frequentes
+- [Cronograma](Documentacao Reforma Tributaria.md#-cronograma-de-implementação) - 2026-2033
+- [Impacto por Setor](Documentacao Reforma Tributaria.md#-impactos-por-tipo-de-empresa)
+- [Créditos Tributários](Documentacao Reforma Tributaria.md#-principais-conceitos) - Não cumulatividade plena
+- [Preparação Sol.NET](Documentacao Reforma Tributaria.md#-preparação-no-solnet)
 
 ### **🆘 Suporte e Problemas**
 - [FAQ DRE](Documentacao DRE.md#-faq---perguntas-frequentes)
