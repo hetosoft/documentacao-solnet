@@ -20,6 +20,7 @@ plugins:
   - jekyll-readme-index            # usa README.md como index.html nas pastas
   - jekyll-relative-links          # reescreve links .md -> .html no build
   - jemoji                         # suporte a emojis
+  - jekyll-seo-tag                 # otimização SEO
 
 # Configurações específicas dos plugins
 readme_index:
