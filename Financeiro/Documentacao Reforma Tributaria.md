@@ -57,6 +57,7 @@ A **Reforma Tributária Brasileira** representa a maior mudança no sistema trib
 ## 🔄 Mudanças nos Tributos
 
 ### **Tributos Extintos**
+
 | Tributo | Tipo | Responsável | Status |
 |---------|------|-------------|--------|
 | **PIS** | Federal | União | Extinto em 2027 → CBS |
