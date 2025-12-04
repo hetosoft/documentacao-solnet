@@ -265,7 +265,7 @@ Use a página de teste:
 
 1. **Verifique a sintaxe** - Use o [Mermaid Live Editor](https://mermaid.live/)
 2. **Backticks corretos** - Devem ser três ` antes e depois
-3. **Identação** - Mermaid é sensível a espaços
+3. **Indentação** - Mermaid é sensível a espaços
 4. **Aguarde deploy** - GitHub Pages pode levar alguns minutos
 
 ### Diagrama aparece cortado?
