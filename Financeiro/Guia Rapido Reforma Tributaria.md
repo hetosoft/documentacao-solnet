@@ -26,22 +26,12 @@ ICMS + ISS          →  IBS (Estadual/Municipal)
 
 ## ⏱️ Checklist de Preparação
 
-### **📋 Ações Imediatas (2024-2025)**
-- [ ] Mapear todos os produtos/serviços por categoria tributária
-- [ ] Identificar classificação NCM/NBS de cada item
-- [ ] Calcular carga tributária atual vs. estimada (reforma)
-- [ ] Listar benefícios fiscais que empresa possui hoje
-- [ ] Simular impacto na margem de lucro
-- [ ] Capacitar equipe fiscal sobre as mudanças
-
 ### **🔧 Preparação Sistemas (2025-2026)**
 - [ ] Atualizar cadastro de produtos com NCM/NBS corretos
 - [ ] Revisar plano de contas para novos tributos
 - [ ] Testar cálculos com alíquotas estimadas
 - [ ] Validar integrações fiscais (NFe, NFSe)
 - [ ] Configurar CBS e IBS no Sol.NET (quando disponível)
-
-### **🧪 Fase de Teste (2026)**
 - [ ] Ativar CBS/IBS de teste no sistema
 - [ ] Gerar documentos fiscais no novo padrão
 - [ ] Validar cálculos e relatórios
