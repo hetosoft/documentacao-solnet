@@ -113,6 +113,39 @@ Portal de navegação para toda documentação de RH
 
 ---
 
+### 🛒 **[Módulo Self Checkout](SelfCheckout/)**
+Sistema de autoatendimento para checkout de produtos:
+
+#### **📋 [Índice Completo](SelfCheckout/)**
+Portal de navegação para toda documentação do Self Checkout
+
+#### **📖 [Documentação de Instalação](SelfCheckout/Documentacao Instalacao.md)**
+- Pré-requisitos de hardware e software
+- Instalação das DLLs Skia para renderização gráfica
+- Instalação das fontes Poppins
+- Configuração da balança Toledo Prix R7
+- Configuração do módulo no Sol.NET
+- Testes e verificação completa
+- Solução de problemas comuns
+- Checklist final de instalação
+
+#### **🚀 [Guia Rápido](SelfCheckout/Guia Rapido.md)**
+- Checklist resumido de instalação
+- Passos essenciais de configuração
+- Comandos e atalhos principais
+- Soluções rápidas para problemas comuns
+- Scripts de automação
+
+#### **❓ [FAQ - Perguntas Frequentes](SelfCheckout/FAQ.md)**
+- Instalação e configuração
+- Problemas com DLLs e fontes
+- Integração com balança Toledo
+- Operação do Self Checkout
+- Integração com Sol.NET
+- Manutenção e atualizações
+
+---
+
 ## 🎯 Por Onde Começar
 
 ### **👤 Novo no Sol.NET?**

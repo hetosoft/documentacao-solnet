@@ -1,0 +1,239 @@
+---
+title: "Índice: Documentação Self Checkout Sol.NET"
+permalink: /SelfCheckout/
+---
+# 🛒 Índice: Documentação Self Checkout Sol.NET
+
+## 📋 Documentos Disponíveis
+
+### 📖 **[Documentação de Instalação](Documentacao Instalacao.md)**
+Guia completo para instalação e configuração do Self Checkout, incluindo:
+- Pré-requisitos de hardware e software
+- Instalação das DLLs Skia para renderização gráfica
+- Instalação das fontes Poppins
+- Configuração da balança Toledo Prix R7
+- Configuração do módulo no Sol.NET
+- Testes e verificação completa
+- Solução de problemas comuns
+- Checklist final de instalação
+
+### 🚀 **[Guia Rápido](Guia Rapido.md)**
+Referência rápida para instalação e operação:
+- Checklist resumido de instalação
+- Passos essenciais de configuração
+- Comandos e atalhos principais
+- Soluções rápidas para problemas comuns
+
+### ❓ **[FAQ - Perguntas Frequentes](FAQ.md)**
+Respostas para dúvidas comuns organizadas por categoria:
+- Instalação e configuração
+- Problemas com DLLs e fontes
+- Integração com balança
+- Operação do Self Checkout
+- Integração com Sol.NET
+- Manutenção e atualizações
+
+---
+
+## 🎯 Por Onde Começar
+
+### **👤 Técnico de Suporte - Primeira Instalação**
+1. Leia a **[Documentação de Instalação](Documentacao Instalacao.md)** completa
+2. Verifique todos os **pré-requisitos** antes de iniciar
+3. Siga o processo passo a passo
+4. Use o **checklist final** para validação
+5. Consulte o **[FAQ](FAQ.md)** para dúvidas específicas
+
+### **🔧 Instalação Rápida - Técnico Experiente**
+1. Use o **[Guia Rápido](Guia Rapido.md)** como referência
+2. Baixe e instale os componentes necessários
+3. Configure a balança conforme especificado
+4. Execute testes de validação
+5. Consulte **[FAQ](FAQ.md)** se necessário
+
+### **⚡ Resolução de Problemas**
+1. Consulte a seção **Solução de Problemas** na **[Documentação de Instalação](Documentacao Instalacao.md)**
+2. Verifique o **[FAQ](FAQ.md)** para problemas conhecidos
+3. Use o **[Guia Rápido](Guia Rapido.md)** para verificações básicas
+4. Entre em contato com suporte técnico se necessário
+
+---
+
+## 🔍 Busca Rápida por Tópico
+
+### **Instalação**
+- [Pré-requisitos do Sistema](Documentacao Instalacao.md#-pré-requisitos-do-sistema)
+- [Instalação das DLLs Skia](Documentacao Instalacao.md#passo-1-instalação-das-dlls-skia)
+- [Instalação das Fontes Poppins](Documentacao Instalacao.md#passo-2-instalação-das-fontes-poppins)
+- [Checklist Final](Documentacao Instalacao.md#-checklist-final-de-instalação)
+
+### **Configuração**
+- [Configuração da Balança Toledo](Documentacao Instalacao.md#passo-3-configuração-da-balança-toledo-prix-r7)
+- [Configuração do Self Checkout no Sol.NET](Documentacao Instalacao.md#passo-4-configuração-do-self-checkout-no-solnet)
+- [Teste de Comunicação](Documentacao Instalacao.md#-validação)
+
+### **Problemas**
+- [DLLs Skia não encontradas](Documentacao Instalacao.md#-problema-dlls-skia-não-encontradas)
+- [Fontes Poppins não aparecem](Documentacao Instalacao.md#-problema-fontes-poppins-não-aparecem)
+- [Balança não comunica](Documentacao Instalacao.md#-problema-balança-não-comunica)
+- [Self Checkout não inicia](Documentacao Instalacao.md#-problema-self-checkout-não-inicia)
+- [Produtos pesáveis não funcionam](Documentacao Instalacao.md#-problema-produtos-pesáveis-não-funcionam)
+
+### **Testes**
+- [Checklist de Testes](Documentacao Instalacao.md#-testes-e-verificação)
+- [Teste de Interface](Documentacao Instalacao.md#-checklist-de-testes)
+- [Teste de Balança](Documentacao Instalacao.md#-checklist-de-testes)
+- [Teste de Integração](Documentacao Instalacao.md#-checklist-de-testes)
+
+---
+
+## 📊 Visão Geral do Sistema
+
+O Self Checkout Sol.NET é um sistema completo de autoatendimento que integra:
+
+```mermaid
+mindmap
+  root)Self Checkout Sol.NET(
+    Componentes
+      DLLs Skia
+      Fontes Poppins
+      Balança Toledo R7
+      Leitor Código Barras
+    Configuração
+      Porta COM
+      Protocolo TRN 2
+      Métodos Pagamento
+      Impressora Fiscal
+    Operação
+      Leitura Produtos
+      Pesagem Automática
+      Processamento Pagamento
+      Emissão Cupom
+    Integração
+      Estoque Sol.NET
+      Financeiro
+      Documentos Fiscais
+      Relatórios
+```
+
+---
+
+## 💡 Componentes Essenciais
+
+### 🖼️ **DLLs Skia**
+- **Função**: Renderização gráfica de alta qualidade
+- **Download**: [DLLs skia.zip](https://github.com/user-attachments/files/25111774/DLLs.skia.zip)
+- **Destino**: Diretório de instalação do Self Checkout
+- **Crítico**: Interface não carrega sem essas bibliotecas
+
+### 🔤 **Fontes Poppins**
+- **Função**: Interface visual moderna e legível
+- **Download**: [Poppins.zip](https://github.com/user-attachments/files/25111757/Poppins.zip)
+- **Destino**: Windows Fonts (instalação para todos os usuários)
+- **Impacto**: Layout pode ficar desconfigurado sem as fontes
+
+### ⚖️ **Balança Toledo Prix R7**
+- **Função**: Pesagem de produtos no autoatendimento
+- **Manual**: [Manual do Usuário R7](https://github.com/user-attachments/files/25111795/Manual_do_Usurio_R7_Rev1.pdf)
+- **Configuração crítica**: 6º parâmetro = "TRN 2"
+- **Comunicação**: Porta serial (COM) com Baud Rate 9600
+
+---
+
+## 🚀 Fluxo de Instalação Resumido
+
+1. **Preparação**
+   - ✅ Verificar pré-requisitos
+   - ✅ Baixar componentes necessários
+   - ✅ Preparar balança e periféricos
+
+2. **Instalação de Software**
+   - ✅ Copiar DLLs Skia
+   - ✅ Instalar fontes Poppins
+   - ✅ Verificar .NET Framework
+
+3. **Configuração de Hardware**
+   - ✅ Configurar balança (TRN 2)
+   - ✅ Conectar porta serial/USB
+   - ✅ Testar comunicação
+
+4. **Configuração no Sol.NET**
+   - ✅ Acessar módulo Self Checkout
+   - ✅ Configurar todas as abas
+   - ✅ Testar conexões
+
+5. **Testes e Validação**
+   - ✅ Teste de interface
+   - ✅ Teste de balança
+   - ✅ Teste de fluxo completo
+   - ✅ Teste de integração
+
+---
+
+## 📁 Downloads Necessários
+
+Todos os arquivos necessários para instalação:
+
+| Componente | Link | Descrição |
+|------------|------|-----------|
+| **DLLs Skia** | [Baixar](https://github.com/user-attachments/files/25111774/DLLs.skia.zip) | Bibliotecas de renderização gráfica |
+| **Fontes Poppins** | [Baixar](https://github.com/user-attachments/files/25111757/Poppins.zip) | Fonte utilizada na interface |
+| **Manual Balança** | [Baixar](https://github.com/user-attachments/files/25111795/Manual_do_Usurio_R7_Rev1.pdf) | Manual Toledo Prix R7 Rev1 |
+
+---
+
+## 🆘 Suporte e Ajuda
+
+### **📖 Documentação**
+- **Instalação completa**: [Documentacao Instalacao.md](Documentacao Instalacao.md)
+- **Guia rápido**: [Guia Rapido.md](Guia Rapido.md)
+- **FAQ**: [FAQ.md](FAQ.md)
+
+### **🔧 Problemas Comuns**
+- Consulte a seção de **Solução de Problemas** na documentação de instalação
+- Verifique o **FAQ** para problemas conhecidos
+- Entre em contato com suporte técnico Hetosoft
+
+### **📞 Contato**
+- Para suporte técnico especializado
+- Mantenha em mãos: versão do Sol.NET, descrição do problema
+- Forneça prints ou logs de erro quando possível
+
+---
+
+## 📝 Notas Importantes
+
+### ⚠️ **Atenção**
+- Sempre instale as fontes Poppins **para todos os usuários**
+- Configure o **6º parâmetro** da balança como **TRN 2** (essencial)
+- Verifique a porta COM correta antes de configurar
+- Execute testes completos antes de colocar em produção
+
+### 💡 **Dicas**
+- Anote todas as configurações específicas do terminal
+- Mantenha backup dos arquivos de configuração
+- Documente a porta COM utilizada para cada terminal
+- Treine a equipe antes de liberar para uso
+
+---
+
+## 🔄 Próximos Passos
+
+### **📈 Após a Instalação**
+1. Realize treinamento com a equipe
+2. Configure backup automático
+3. Estabeleça rotina de manutenção
+4. Monitore logs de operação
+5. Acompanhe atualizações do sistema
+
+### **💬 Feedback**
+- Contribua com sugestões para melhorar esta documentação
+- Relate problemas não documentados
+- Compartilhe boas práticas de instalação
+
+---
+
+**📅 Última atualização**: Fevereiro de 2026  
+**📦 Versão**: 1.0  
+**🎯 Público-alvo**: Equipe de suporte e técnicos de implantação  
+**👨‍💻 Elaborado por**: Equipe Hetosoft - Documentação Sol.NET
