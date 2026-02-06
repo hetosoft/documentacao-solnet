@@ -12,7 +12,9 @@ Guia completo para instalação e configuração do Self Checkout, incluindo:
 - Instalação das DLLs Skia para renderização gráfica
 - Instalação das fontes Poppins
 - Configuração da balança Toledo Prix R7
-- Configuração do módulo no Sol.NET
+- Configuração inicial do servidor (primeiro acesso)
+- Configurações padrão no Cadastro de Empresas (Sol.NET)
+- Configuração de dispositivos no Self Checkout
 - Testes e verificação completa
 - Solução de problemas comuns
 - Checklist final de instalação
@@ -69,7 +71,9 @@ Respostas para dúvidas comuns organizadas por categoria:
 
 ### **Configuração**
 - [Configuração da Balança Toledo](Documentacao Instalacao.md#passo-3-configuração-da-balança-toledo-prix-r7)
-- [Configuração do Self Checkout no Sol.NET](Documentacao Instalacao.md#passo-4-configuração-do-self-checkout-no-solnet)
+- [Configuração Inicial do Servidor](Documentacao Instalacao.md#passo-4-configuração-inicial-do-self-checkout)
+- [Configurações Padrão no Sol.NET](Documentacao Instalacao.md#passo-5-configuração-no-solnet---cadastro-de-empresas)
+- [Configuração de Dispositivos](Documentacao Instalacao.md#passo-6-configuração-de-dispositivos-no-self-checkout)
 - [Teste de Comunicação](Documentacao Instalacao.md#-validação)
 
 ### **Problemas**
@@ -89,7 +93,7 @@ Respostas para dúvidas comuns organizadas por categoria:
 
 ## 📊 Visão Geral do Sistema
 
-O Self Checkout Sol.NET é um sistema completo de autoatendimento que integra:
+O Self Checkout é uma **aplicação separada** que faz parte do ecossistema Sol.NET e integra:
 
 ```mermaid
 mindmap
@@ -136,7 +140,7 @@ mindmap
 - **Função**: Pesagem de produtos no autoatendimento
 - **Manual**: [Manual do Usuário R7](https://github.com/user-attachments/files/25111795/Manual_do_Usurio_R7_Rev1.pdf)
 - **Configuração crítica**: 6º parâmetro = "TRN 2"
-- **Comunicação**: Porta serial (COM) com Baud Rate 9600
+- **Comunicação**: Porta serial (COM) com Baud Rate 2400
 
 ---
 
@@ -153,16 +157,26 @@ mindmap
    - ✅ Verificar .NET Framework
 
 3. **Configuração de Hardware**
-   - ✅ Configurar balança (TRN 2)
+   - ✅ Configurar balança (TRN 2, Baud Rate 2400)
    - ✅ Conectar porta serial/USB
    - ✅ Testar comunicação
 
-4. **Configuração no Sol.NET**
-   - ✅ Acessar módulo Self Checkout
-   - ✅ Configurar todas as abas
-   - ✅ Testar conexões
+4. **Configuração Inicial do Self Checkout**
+   - ✅ Configuração do Servidor (primeiro acesso)
+   - ✅ Testar conexão com banco de dados
+   - ✅ Confirmar carga de dados do BD
 
-5. **Testes e Validação**
+5. **Configurações Padrão no Sol.NET**
+   - ✅ Cadastro de Empresas
+   - ✅ Definir tipo de movimento e série fiscal
+   - ✅ Configurar métodos de pagamento padrão
+
+6. **Configuração de Dispositivos no Self Checkout**
+   - ✅ Configurar balança (porta COM, TRN 2, Baud 2400)
+   - ✅ Configurar outros dispositivos
+   - ✅ Testar cada dispositivo
+
+7. **Testes e Validação**
    - ✅ Teste de interface
    - ✅ Teste de balança
    - ✅ Teste de fluxo completo

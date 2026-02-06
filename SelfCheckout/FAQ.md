@@ -31,8 +31,8 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 ### P: Para onde devo copiar as DLLs do Skia?
 
 **R:** As DLLs devem ser copiadas para o diretório de instalação do Self Checkout:
-- **Caminho padrão**: `C:\Program Files\Hetosoft\Sol.NET\SelfCheckout\`
-- **Alternativa**: Diretório onde o executável do Self Checkout está localizado
+- Diretório onde o executável do Self Checkout está localizado
+- Use o local de instalação do sistema
 
 **Importante**: As DLLs devem estar na mesma pasta que o arquivo `.exe` do Self Checkout.
 
@@ -87,7 +87,7 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 1. **DLLs não estão no lugar correto**
    - Verifique se as DLLs estão no mesmo diretório do executável
-   - Caminho esperado: `C:\Program Files\Hetosoft\Sol.NET\SelfCheckout\`
+   - Use o local de instalação do sistema
 
 2. **DLLs de arquitetura incorreta**
    - Use a versão 64 bits das DLLs para Windows 64 bits
@@ -151,20 +151,20 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 **1. Configuração da balança:**
 - [ ] 6º parâmetro = TRN 2 ✓
-- [ ] Baud Rate = 9600
+- [ ] Baud Rate = 2400
 - [ ] Cabo conectado firmemente
 
-**2. Configuração do Self Checkout:**
+**2. Configuração de Dispositivos no Self Checkout:**
 - [ ] Porta COM correta configurada
 - [ ] Protocolo = TRN 2
-- [ ] Baud Rate = 9600
+- [ ] Baud Rate = 2400
 - [ ] Teste de conexão executado
 
 **3. Drivers:**
 - [ ] Driver USB-Serial instalado (se aplicável)
 - [ ] Porta reconhecida no Gerenciador de Dispositivos
 
-**Teste:** Menu → Configurações → Testar Balança
+**Teste:** Configuração Dispositivos → Balança → Testar
 
 **Referência:** [Problema: Balança não comunica](Documentacao Instalacao.md#-problema-balança-não-comunica)
 
@@ -224,9 +224,9 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 - Unidade de medida = KG ou G
 - Código de barras deve começar com prefixo configurado
 
-**2. No Self Checkout:**
+**2. Configuração de Dispositivos no Self Checkout:**
 - Configurar prefixo de produtos pesáveis (geralmente "2")
-- Aba: Produtos → Prefixo produtos pesáveis
+- Acesse: Configuração Dispositivos → Produtos → Prefixo produtos pesáveis
 
 **3. Código de barras:**
 - Formato típico: `2XXXXXYYYY` onde:
@@ -240,25 +240,25 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 ### P: Posso configurar múltiplas formas de pagamento?
 
-**R:** Sim! Configure na aba "Pagamento":
+**R:** Sim! Configure as formas de pagamento padrão no **Cadastro de Empresas** do Sol.NET:
 - ✅ Dinheiro (cálculo automático de troco)
 - ✅ Cartão de Crédito/Débito (com ou sem integração TEF)
 - ✅ PIX (conforme configuração do Sol.NET)
 - ✅ Vale/Ticket (se configurado)
 - ✅ Múltiplas formas na mesma venda
 
-**Importante:** Integração com TEF requer configuração adicional e equipamento compatível.
+**Importante:** Integração com TEF requer configuração adicional na Configuração de Dispositivos do Self Checkout e equipamento compatível.
 
 ---
 
 ### P: Como funciona a integração com o Sol.NET?
 
-**R:** O Self Checkout integra em tempo real:
+**R:** O Self Checkout é uma **aplicação separada** que integra com o Sol.NET em tempo real:
 
 **Vendas:**
 - Cada venda finalizada é registrada como movimento no Sol.NET
-- Tipo de movimento configurável
-- Série fiscal configurável
+- Tipo de movimento configurável no Cadastro de Empresas
+- Série fiscal configurável no Cadastro de Empresas
 
 **Estoque:**
 - Atualização automática ao finalizar venda

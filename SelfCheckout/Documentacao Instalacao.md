@@ -2,7 +2,9 @@
 
 ## 🎯 Visão Geral
 
-O **Self Checkout** é um módulo do Sol.NET ERP que permite aos clientes realizarem autoatendimento em operações de checkout, proporcionando maior agilidade e autonomia no processo de compra. Este documento fornece instruções completas para instalação e configuração do sistema.
+O **Self Checkout** é uma aplicação que faz parte do ecossistema Sol.NET ERP, permitindo aos clientes realizarem autoatendimento em operações de checkout, proporcionando maior agilidade e autonomia no processo de compra. Este documento fornece instruções completas para instalação e configuração do sistema.
+
+**Importante:** O Self Checkout não é o Sol.NET, mas uma aplicação separada que se integra com o sistema principal.
 
 ### Principais Características:
 - ✅ **Interface intuitiva** para autoatendimento
@@ -48,17 +50,13 @@ As bibliotecas Skia são essenciais para renderização gráfica de alta qualida
 2. **Extraia o conteúdo** do arquivo ZIP
 
 #### 📂 Instalação:
-1. **Localize o diretório de instalação** do Self Checkout Sol.NET
-   - Caminho padrão: `C:\Program Files\Hetosoft\Sol.NET\SelfCheckout\`
-   - Ou conforme definido durante a instalação do Sol.NET
+1. **Localize o diretório de instalação** do Self Checkout
+   - Conforme definido durante a instalação do sistema
+   - Exemplo de estrutura: `[Local de instalação do sistema]\`
 
 2. **Copie as DLLs** para o diretório do aplicativo:
-   ```
-   C:\Program Files\Hetosoft\Sol.NET\SelfCheckout\
-   ├── libSkiaSharp.dll
-   ├── SkiaSharp.dll
-   └── [outras DLLs do pacote]
-   ```
+   - Coloque as DLLs no mesmo diretório do executável do Self Checkout
+   - Arquivos necessários: `libSkiaSharp.dll`, `SkiaSharp.dll` e outras DLLs do pacote
 
 3. **Verifique as permissões**:
    - As DLLs devem ter permissão de leitura e execução
@@ -157,7 +155,7 @@ A balança é essencial para pesagem de produtos no Self Checkout.
 
 4. **Configure parâmetros adicionais**:
    - **Porta de Comunicação**: Verifique qual porta serial (COM1, COM2, etc.) está sendo usada
-   - **Baud Rate**: 9600 bps (padrão) ou conforme especificação do sistema
+   - **Baud Rate**: 2400 bps
    - **Paridade**: Nenhuma (N)
    - **Bits de Dados**: 8
    - **Bits de Parada**: 1
@@ -185,63 +183,114 @@ A balança é essencial para pesagem de produtos no Self Checkout.
 **Teste de Comunicação:**
 1. **Coloque um peso** sobre a balança
 2. **Verifique se o display** mostra o peso corretamente
-3. **No software Self Checkout**:
-   - Acesse a tela de teste de balança (Menu → Configurações → Testar Balança)
+3. **No Self Checkout**:
+   - Acesse a Configuração de Dispositivos → Balança → Testar
    - Verifique se o peso é exibido corretamente no sistema
    - Teste múltiplas pesagens para confirmar estabilidade
 
 **Resolução de Problemas:**
-- Se o peso não aparecer: Verifique porta COM configurada no Self Checkout
+- Se o peso não aparecer: Verifique porta COM configurada na Configuração de Dispositivos do Self Checkout
 - Se peso incorreto: Calibre a balança conforme manual
-- Se comunicação instável: Verifique cabos e ajuste Baud Rate
+- Se comunicação instável: Verifique cabos e configuração do Baud Rate (deve ser 2400)
 
 ---
 
-### Passo 4: Configuração do Self Checkout no Sol.NET
+### Passo 4: Configuração Inicial do Self Checkout
 
-Após instalar os componentes físicos e de software, configure o módulo no sistema Sol.NET.
+Após instalar os componentes físicos e de software, configure o Self Checkout.
 
-#### 🖥️ Acesso ao Módulo:
+#### 🚀 Primeiro Acesso - Configuração do Servidor
 
-1. **Abra o Sol.NET ERP** como administrador
-2. **Navegue até**: Menu → Configurações → Módulos → Self Checkout
-3. Ou use o atalho direto se disponível na tela inicial
+Ao abrir o Self Checkout pela primeira vez (ou quando não configurado), você será direcionado para a tela de **Configuração do Servidor**.
 
-#### ⚙️ Configurações Principais:
+**Esta é a primeira tela que o suporte encontrará ao iniciar um Self Checkout não configurado.**
 
-**Aba: Geral**
-- **Nome do Terminal**: Identificação única (ex: "Self Checkout 01")
+1. **Configure a conexão com o banco de dados**:
+   - Servidor/Host do banco de dados
+   - Nome do banco de dados
+   - Credenciais de acesso
+   - Porta de conexão
+
+2. **Teste a conexão** antes de prosseguir
+
+3. **Salve as configurações**
+
+**Importante:** O Self Checkout só pode ser iniciado após o banco de dados receber a "carga" de dados do Sol.NET.
+
+---
+
+### Passo 5: Configuração no Sol.NET - Cadastro de Empresas
+
+As **configurações padrão do Self Checkout** são definidas no Sol.NET através do **Cadastro de Empresas**.
+
+#### 🖥️ Acesso:
+
+1. **Abra o Sol.NET ERP**
+2. **Navegue até**: Cadastro de Empresas
+3. Localize a seção de configurações do Self Checkout
+
+#### ⚙️ Configurações Padrão:
+
+No Cadastro de Empresas, configure:
 - **Empresa Padrão**: Selecione a empresa/filial vinculada
 - **Tipo de Movimento**: Configure o tipo de movimento para vendas do Self Checkout
 - **Série de Documentos**: Defina a série fiscal para cupons/notas
+- **Métodos de Pagamento Padrão**: Defina quais métodos estarão disponíveis
+- **Regras de Negócio**: Configure validações e permissões específicas
 
-**Aba: Balança**
+#### 💾 Salvar Configurações:
+1. **Revise todas as configurações**
+2. **Salve** (geralmente F5)
+3. As configurações serão aplicadas ao Self Checkout
+
+---
+
+### Passo 6: Configuração de Dispositivos no Self Checkout
+
+Após a configuração inicial do servidor e das configurações padrão no Sol.NET, é necessário configurar os **dispositivos periféricos** no próprio Self Checkout.
+
+**Os dispositivos não são configurados no Sol.NET**, pois cada terminal pode ter dispositivos diferentes.
+
+#### 🖥️ Acesso à Configuração de Dispositivos:
+
+1. **Abra o Self Checkout**
+2. **Acesse**: Menu de Configurações → Dispositivos
+   - Ou use o atalho/opção de configuração disponível
+
+#### ⚙️ Dispositivos a Configurar:
+
+**Balança:**
 - **Porta COM**: Selecione a porta onde a balança está conectada (ex: COM3)
 - **Protocolo**: TRN 2 (conforme configurado na balança)
-- **Baud Rate**: 9600 (ou conforme configurado)
+- **Baud Rate**: 2400
 - **Timeout**: 5000 ms (padrão)
-- **Teste**: Clique em "Testar Conexão" para validar
+- **Teste**: Use a função de teste para validar a comunicação
 
-**Aba: Interface**
+**Leitor de Código de Barras:**
+- Configure o leitor conforme o modelo
+- Teste a leitura de códigos
+
+**Impressora Fiscal:**
+- Configure impressora para cupom fiscal
+- Defina porta e modelo
+
+**Terminal de Pagamento (TEF):**
+- Configure se houver integração TEF
+- Defina modelo e parâmetros de comunicação
+
+**Outras Configurações:**
 - **Tema**: Selecione o tema visual (claro/escuro)
 - **Tamanho da Fonte**: Médio (ajuste conforme tamanho da tela)
 - **Modo Tela Cheia**: Ativado (recomendado para terminais dedicados)
 - **Tempo de Inatividade**: 120 segundos (retorna à tela inicial)
-
-**Aba: Pagamento**
-- **Métodos Disponíveis**: Selecione (Dinheiro, Cartão, PIX, etc.)
-- **Integração TEF**: Configure se houver terminal de pagamento
-- **Impressora Fiscal**: Configure impressora para cupom fiscal
-
-**Aba: Produtos**
 - **Busca por Código de Barras**: Ativada
 - **Exibir Imagens**: Ativado (melhora experiência do cliente)
 - **Produtos Pesáveis**: Configurar prefixo (ex: produtos que começam com "2")
 
 #### 💾 Salvar Configurações:
-1. **Revise todas as configurações**
-2. **Clique em "Salvar" ou pressione F5**
-3. **Teste a configuração** antes de usar em produção
+1. **Revise todas as configurações de dispositivos**
+2. **Salve as configurações**
+3. **Teste cada dispositivo** individualmente antes de usar em produção
 
 ---
 
@@ -341,7 +390,11 @@ Antes de colocar o Self Checkout em produção, realize testes completos:
 
 2. **Verifique configuração da balança**:
    - 6º parâmetro deve estar em "TRN 2"
-   - Baud Rate deve ser 9600 (ou conforme configurado)
+   - Baud Rate deve ser 2400
+
+3. **Verifique configuração no Self Checkout**:
+   - Acesse Configuração de Dispositivos → Balança
+   - Confirme porta COM, protocolo TRN 2 e Baud Rate 2400
 
 3. **Teste o cabo**:
    - Verifique se o cabo serial está bem conectado
@@ -364,8 +417,9 @@ Antes de colocar o Self Checkout em produção, realize testes completos:
    - Versão 4.7.2 ou superior instalada
    - Atualize se necessário
 
-2. **Verifique conexão com Sol.NET**:
-   - Sistema principal deve estar rodando
+2. **Verifique conexão com banco de dados**:
+   - Banco de dados deve estar acessível
+   - Verifique se a "carga" de dados foi realizada
    - Rede/conexão com banco de dados funcionando
 
 3. **Arquivos de configuração**:
@@ -386,12 +440,12 @@ Antes de colocar o Self Checkout em produção, realize testes completos:
 
 **Solução:**
 1. **Verifique prefixo de produtos pesáveis**:
-   - Configuração: Aba Produtos → Prefixo (geralmente "2")
+   - Configuração de Dispositivos no Self Checkout → Produtos → Prefixo (geralmente "2")
    - Código de barras deve começar com o prefixo configurado
 
 2. **Teste a balança**:
-   - Use a função de teste de balança
-   - Confirme que peso está sendo lido
+   - Use a função de teste na Configuração de Dispositivos → Balança
+   - Confirme que peso está sendo lido corretamente
 
 3. **Cadastro de produtos**:
    - No Sol.NET, produto deve estar marcado como "Pesável"
@@ -439,13 +493,27 @@ Use este checklist para garantir que todos os passos foram concluídos:
 
 - [ ] **Balança configurada**
   - [ ] 6º parâmetro configurado como "TRN 2"
+  - [ ] Baud Rate configurado como 2400
   - [ ] Conexão física estabelecida
   - [ ] Teste de comunicação bem-sucedido
 
-- [ ] **Self Checkout configurado**
-  - [ ] Todas as abas de configuração preenchidas
-  - [ ] Porta COM da balança configurada
-  - [ ] Métodos de pagamento definidos
+- [ ] **Configuração Inicial do Self Checkout**
+  - [ ] Configuração do Servidor realizada (primeiro acesso)
+  - [ ] Conexão com banco de dados testada
+  - [ ] Carga de dados do BD confirmada
+
+- [ ] **Configurações Padrão no Sol.NET**
+  - [ ] Cadastro de Empresas configurado
+  - [ ] Tipo de movimento definido
+  - [ ] Série fiscal configurada
+  - [ ] Métodos de pagamento padrão definidos
+
+- [ ] **Configuração de Dispositivos no Self Checkout**
+  - [ ] Balança configurada (porta COM, protocolo TRN 2, Baud Rate 2400)
+  - [ ] Leitor de código de barras configurado
+  - [ ] Impressora fiscal configurada
+  - [ ] TEF configurado (se aplicável)
+  - [ ] Prefixo de produtos pesáveis definido
 
 - [ ] **Testes realizados**
   - [ ] Teste completo de interface

@@ -10,10 +10,8 @@
 ### 🔧 2. Instalação de Componentes
 
 **DLLs Skia:**
-```cmd
-# Copiar DLLs para o diretório do Self Checkout
-C:\Program Files\Hetosoft\Sol.NET\SelfCheckout\
-```
+- Copiar DLLs para o diretório de instalação do Self Checkout
+- Colocar no mesmo diretório do executável
 
 **Fontes Poppins:**
 - Botão direito nos arquivos `.ttf` → "Instalar para todos os usuários"
@@ -24,25 +22,44 @@ C:\Program Files\Hetosoft\Sol.NET\SelfCheckout\
 | Item | Configuração |
 |------|--------------|
 | **6º Parâmetro** | **TRN 2** ⚠️ CRÍTICO |
-| **Baud Rate** | 9600 |
+| **Baud Rate** | **2400** |
 | **Porta** | Anotar número (ex: COM3) |
 | **Paridade** | Nenhuma (N) |
 | **Bits Dados** | 8 |
 | **Bits Parada** | 1 |
 
-### 🖥️ 4. Configuração Sol.NET
+### 🖥️ 4. Configuração Inicial - Servidor
 
-**Acesso:** Menu → Configurações → Módulos → Self Checkout
+**Primeiro acesso:** Configuração do Servidor (aparece automaticamente)
 
-**Abas Obrigatórias:**
+- [ ] Configurar conexão com banco de dados
+- [ ] Testar conexão
+- [ ] Confirmar que a carga de dados foi realizada
 
-| Aba | Configurações Essenciais |
-|-----|-------------------------|
-| **Geral** | Nome terminal, Empresa, Tipo movimento |
-| **Balança** | Porta COM, Protocolo TRN 2, Baud 9600 |
-| **Interface** | Tela cheia ✓, Tema, Fonte |
-| **Pagamento** | Métodos disponíveis, TEF (se houver) |
-| **Produtos** | Código barras ✓, Prefixo pesáveis |
+### 🏢 5. Configuração Padrão - Sol.NET
+
+**Acesso:** Cadastro de Empresas no Sol.NET
+
+| Item | Configuração |
+|------|--------------|
+| **Empresa** | Selecionar empresa/filial |
+| **Tipo Movimento** | Definir tipo para vendas |
+| **Série Fiscal** | Configurar série de documentos |
+| **Métodos Pagamento** | Definir padrões disponíveis |
+
+### 🔧 6. Configuração Dispositivos - Self Checkout
+
+**Acesso:** Menu Configurações → Dispositivos no Self Checkout
+
+**Dispositivos Essenciais:**
+
+| Dispositivo | Configurações |
+|-------------|---------------|
+| **Balança** | Porta COM, Protocolo TRN 2, Baud 2400 |
+| **Leitor Barras** | Conforme modelo |
+| **Impressora Fiscal** | Porta e modelo |
+| **TEF** | Se aplicável |
+| **Produtos** | Prefixo pesáveis (ex: "2") |
 
 ---
 
@@ -56,7 +73,7 @@ C:\Program Files\Hetosoft\Sol.NET\SelfCheckout\
    - [ ] Gráficos nítidos
 
 2. **Balança**
-   - [ ] Teste: Menu → Config → Testar Balança
+   - [ ] Teste: Configuração Dispositivos → Balança → Testar
    - [ ] Peso aparece em tempo real
    - [ ] Peso estável (não oscila muito)
 
@@ -72,12 +89,8 @@ C:\Program Files\Hetosoft\Sol.NET\SelfCheckout\
 
 ### ❌ Erro: "SkiaSharp.dll não encontrada"
 **Solução:**
-```cmd
-# Verificar se DLLs estão no diretório correto
-dir "C:\Program Files\Hetosoft\Sol.NET\SelfCheckout\*.dll"
-
-# Executar como Administrador
-```
+- Verificar se DLLs estão no diretório do executável Self Checkout
+- Executar como Administrador
 
 ### ❌ Fontes não aparecem
 **Solução:**
@@ -96,21 +109,24 @@ dir C:\Windows\Fonts\Poppins*
 
 2. **Verificar configuração balança:**
    - 6º parâmetro = TRN 2 ✓
+   - Baud Rate = 2400 ✓
 
-3. **Testar no Sol.NET:**
-   - Config → Balança → Porta = [número correto]
-   - Clicar em "Testar Conexão"
+3. **Testar no Self Checkout:**
+   - Configuração Dispositivos → Balança
+   - Porta COM = [número correto]
+   - Protocolo = TRN 2, Baud = 2400
+   - Clicar em "Testar"
 
 ### ❌ Peso não aparece
 **Checklist:**
 - [ ] Cabo conectado firmemente
-- [ ] Porta COM correta no Self Checkout
-- [ ] Balança configurada (TRN 2)
+- [ ] Porta COM correta configurada
+- [ ] Balança configurada (TRN 2, Baud 2400)
 - [ ] Driver USB-Serial instalado (se usar adaptador)
 
 ### ❌ Produtos pesáveis não funcionam
 **Verificar:**
-1. Prefixo configurado (geralmente "2")
+1. Prefixo configurado na Configuração de Dispositivos (geralmente "2")
 2. Produto marcado como "Pesável" no Sol.NET
 3. Unidade de medida = KG ou G
 4. Código de barras inicia com prefixo
@@ -141,8 +157,8 @@ pause
 ### PowerShell - Verificação de Componentes
 
 ```powershell
-# Verificar DLLs Skia
-$dllPath = "C:\Program Files\Hetosoft\Sol.NET\SelfCheckout"
+# Verificar DLLs Skia no diretório de instalação
+$dllPath = "[Local de instalação do Self Checkout]"
 if (Test-Path "$dllPath\SkiaSharp.dll") {
     Write-Host "✓ SkiaSharp.dll encontrada" -ForegroundColor Green
 } else {
