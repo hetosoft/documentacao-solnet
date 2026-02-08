@@ -225,9 +225,11 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
    - Se a venda foi registrada
    - Se estoque foi atualizado
 
-5. **Relate ao suporte**
-   - Forneça logs de erro
-   - Descreva o cenário
+5. **Documente o problema**
+   - Registre logs de erro
+   - Descreva o cenário completo
+   - Anote versões e configurações
+   - Mantenha histórico para referência futura
 
 ---
 
@@ -280,5 +282,5 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 **📅 Última atualização**: Fevereiro de 2026  
 **📦 Versão**: 1.0  
-**🎯 Público-alvo**: Equipe de suporte e usuários finais  
-**💬 Contribuições**: Envie novas perguntas para atualização deste FAQ
+**🎯 Público-alvo**: Equipe de suporte técnico  
+**💬 Contribuições**: Documente novos problemas e soluções para atualização contínua

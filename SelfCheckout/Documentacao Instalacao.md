@@ -375,10 +375,10 @@ Antes de colocar o Self Checkout em produção, realize testes completos:
 - **Manual da Balança Toledo**: Consulte documentação específica do modelo
 - **Documentação Sol.NET**: Consulte outros módulos do sistema
 
-### 📞 Suporte Técnico:
-- Para dúvidas ou problemas não cobertos neste guia
-- Mantenha em mãos: número de série do produto, versão do Sol.NET
-- Descreva o problema com detalhes e prints se possível
+### 📋 Documentação de Problemas:
+- Mantenha registro de problemas encontrados e soluções aplicadas
+- Anote: número de série do produto, versão do Sol.NET, configurações específicas
+- Documente com detalhes e prints para referência futura e atualização desta base de conhecimento
 
 ### 🔄 Atualizações:
 - Mantenha o Self Checkout sempre atualizado

@@ -56,7 +56,7 @@ Respostas para dúvidas comuns organizadas por categoria:
 1. Consulte a seção **Solução de Problemas** na **[Documentação de Instalação](Documentacao Instalacao.md)**
 2. Verifique o **[FAQ](FAQ.md)** para problemas conhecidos
 3. Use o **[Guia Rápido](Guia Rapido.md)** para verificações básicas
-4. Entre em contato com suporte técnico se necessário
+4. Documente problemas não resolvidos para referência futura
 
 ---
 
@@ -193,17 +193,17 @@ Todos os arquivos necessários para instalação:
 
 ---
 
-## 🆘 Suporte e Ajuda
+## 📚 Recursos e Referências
 
-### **📖 Documentação**
+### **📖 Documentação Disponível**
 - **Instalação completa**: [Documentacao Instalacao.md](Documentacao Instalacao.md)
 - **Guia rápido**: [Guia Rapido.md](Guia Rapido.md)
 - **FAQ**: [FAQ.md](FAQ.md)
 
-### **🔧 Problemas Comuns**
+### **🔧 Resolução de Problemas**
 - Consulte a seção de **Solução de Problemas** na documentação de instalação
-- Verifique o **FAQ** para problemas conhecidos
-- Entre em contato com suporte técnico Hetosoft
+- Verifique o **FAQ** para problemas conhecidos e suas soluções
+- Documente novos problemas encontrados para atualização desta base de conhecimento
 
 ---
 
