@@ -8,20 +8,9 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 ## 🔧 Instalação e Configuração
 
-### P: Quais são os pré-requisitos mínimos para instalar o Self Checkout?
-
-**R:** 
-- **Hardware**: Processador Intel Core i3 ou superior, 4 GB RAM, 500 MB espaço livre
-- **Software**: Windows 10 64 bits, .NET Framework 4.7.2+, Sol.NET ERP instalado
-- **Periféricos**: Balança Toledo Prix R7 (ou compatível), leitor de código de barras (recomendado)
-
-**Referência:** [Pré-requisitos do Sistema](Documentacao Instalacao.md#-pré-requisitos-do-sistema)
-
----
-
 ### P: Onde baixo os arquivos necessários para instalação?
 
-**R:** Links diretos para download:
+**R:** Verifique a pasta padrão de arquivos úteis, no caminho de instalação do Sol.NET. Caso não encontre pode utilizar os links diretos para download:
 - **DLLs Skia**: [DLLs skia.zip](https://github.com/user-attachments/files/25111774/DLLs.skia.zip)
 - **Fontes Poppins**: [Poppins.zip](https://github.com/user-attachments/files/25111757/Poppins.zip)
 - **Manual Balança**: [Manual Toledo R7](https://github.com/user-attachments/files/25111795/Manual_do_Usurio_R7_Rev1.pdf)
@@ -57,9 +46,8 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 ### P: Por que preciso configurar o 6º parâmetro da balança como "TRN 2"?
 
-**R:** O protocolo "TRN 2" é o padrão de comunicação que o Self Checkout Sol.NET utiliza para se comunicar com a balança Toledo. Sem esta configuração:
+**R:** O protocolo "TRN 2" é o padrão de comunicação que o Self Checkout Sol.NET utiliza para se comunicar com a balança Toledo. Este parametro diz para a balança enviar qualquer alteração de peso que houver, sem que haja a necessidade da aplicação ficar fazendo a leitura. Sem esta configuração:
 - O Self Checkout não conseguirá ler o peso
-- Produtos pesáveis não funcionarão
 - Haverá erros de timeout na comunicação
 
 **CRÍTICO:** Esta é a configuração mais importante da balança.
@@ -68,14 +56,12 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 ---
 
-### P: Posso usar outra marca de balança que não seja Toledo?
+### P: Posso usar qualquer marca de balança?
 
-**R:** O Self Checkout foi desenvolvido para balanças Toledo com protocolo TRN 2. Outras marcas **podem** funcionar se:
+**R:** O Self Checkout foi desenvolvido para balanças com protocolo TRN 2. Qualquer marcas **pode** funcionar se:
 - Suportarem o protocolo TRN 2
 - Tiverem comunicação serial compatível
 - Forem testadas e validadas
-
-**Recomendação:** Entre em contato com o suporte Hetosoft para validar compatibilidade antes de adquirir balanças de outras marcas.
 
 ---
 
@@ -170,27 +156,6 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 ---
 
-### P: O peso fica oscilando muito, não estabiliza
-
-**R:** Possíveis causas:
-
-1. **Calibração da balança**
-   - Balança precisa ser calibrada conforme manual
-   - Use peso padrão certificado
-
-2. **Ambiente**
-   - Corrente de ar afetando a balança
-   - Vibração da superfície
-   - Interferência elétrica
-
-3. **Configuração de estabilidade**
-   - Ajuste o timeout no Self Checkout (padrão 5000ms)
-   - Verifique configurações de estabilização na balança
-
-**Solução:** Consulte o manual da balança para procedimento de calibração.
-
----
-
 ### P: Uso adaptador USB-Serial, há alguma configuração especial?
 
 **R:** Sim, algumas considerações:
@@ -205,7 +170,6 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 3. **Compatibilidade:**
    - Alguns adaptadores baratos podem ter problemas
-   - Prefira marcas conhecidas (FTDI, Prolific, etc.)
 
 4. **Teste:**
    - Teste comunicação antes de finalizar instalação
@@ -215,45 +179,15 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 ## 🛒 Operação do Self Checkout
 
-### P: Como configurar produtos pesáveis?
-
-**R:** Três requisitos:
-
-**1. No cadastro do produto (Sol.NET):**
-- Marcar produto como "Pesável"
-- Unidade de medida = KG ou G
-- Código de barras deve começar com prefixo configurado
-
-**2. Configuração de Dispositivos no Self Checkout:**
-- Configurar prefixo de produtos pesáveis (geralmente "2")
-- Acesse: Configuração Dispositivos → Produtos → Prefixo produtos pesáveis
-
-**3. Código de barras:**
-- Formato típico: `2XXXXXYYYY` onde:
-  - `2` = prefixo de pesável
-  - `XXXXX` = código do produto
-  - `YYYY` = peso ou preço (dependendo da configuração)
-
-**Referência:** [Problema: Produtos pesáveis não funcionam](Documentacao Instalacao.md#-problema-produtos-pesáveis-não-funcionam)
-
----
-
 ### P: Posso configurar múltiplas formas de pagamento?
 
-**R:** Sim! Configure as formas de pagamento padrão no **Cadastro de Empresas** do Sol.NET:
-- ✅ Dinheiro (cálculo automático de troco)
-- ✅ Cartão de Crédito/Débito (com ou sem integração TEF)
-- ✅ PIX (conforme configuração do Sol.NET)
-- ✅ Vale/Ticket (se configurado)
-- ✅ Múltiplas formas na mesma venda
-
-**Importante:** Integração com TEF requer configuração adicional na Configuração de Dispositivos do Self Checkout e equipamento compatível.
+**R:** Não! A aplicação foi desenvolvida para pagamento integral da venda.
 
 ---
 
 ### P: Como funciona a integração com o Sol.NET?
 
-**R:** O Self Checkout é uma **aplicação separada** que integra com o Sol.NET em tempo real:
+**R:** O Self Checkout é uma **aplicação separada** que integra com o Sol.NET através do Sync_PDV, assim como Sol.NET_PDV, e o processamento das operações são feitos no servidor através do Sync_SRV:
 
 **Vendas:**
 - Cada venda finalizada é registrada como movimento no Sol.NET
@@ -265,60 +199,8 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 - Respeita regras de estoque do Sol.NET
 
 **Financeiro:**
-- Gera contas a receber (se configurado)
-- Integra com portadores de pagamento
+- Gera contas a receber
 - Registro de quitações
-
-**Fiscal:**
-- Emissão de cupom fiscal conforme legislação
-- Numeração sequencial controlada
-- Integração com impressora fiscal
-
----
-
-## 🔄 Manutenção e Atualizações
-
-### P: Com que frequência devo fazer manutenção no Self Checkout?
-
-**R:** Rotina recomendada:
-
-**Diariamente:**
-- Verificar logs de erro
-- Testar comunicação com balança
-- Verificar impressora fiscal
-
-**Semanalmente:**
-- Limpeza física (tela, leitor, teclado)
-- Verificar espaço em disco
-- Backup de configurações
-
-**Mensalmente:**
-- Verificar atualizações do Sol.NET
-- Revisar logs para problemas recorrentes
-- Calibração da balança (se necessário)
-
----
-
-### P: Como atualizo o Self Checkout?
-
-**R:** Processo de atualização:
-
-1. **Verifique compatibilidade**
-   - Versão do Self Checkout compatível com Sol.NET
-   - Verifique notas de release
-
-2. **Backup**
-   - Faça backup das configurações
-   - Anote todas as configurações específicas
-
-3. **Atualize em horário de baixo movimento**
-   - Preferencialmente fora do horário comercial
-
-4. **Teste antes de liberar**
-   - Execute todos os testes de validação
-   - Verifique integração com Sol.NET
-
-**IMPORTANTE:** Entre em contato com suporte antes de atualizar versões principais.
 
 ---
 
@@ -332,7 +214,7 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 2. **Se continuar travado:**
    - Anote o que estava acontecendo
-   - Tire foto da tela (se possível)
+   - Tire print da tela (se possível)
    - Feche pelo Gerenciador de Tarefas
 
 3. **Reinicie o aplicativo**
@@ -349,96 +231,13 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 ---
 
-## 🔐 Segurança e Permissões
-
-### P: Preciso executar o Self Checkout como Administrador?
-
-**R:** Não necessariamente, mas depende:
-
-**Primeira execução:**
-- Pode requerer privilégios de administrador
-- Para criação de arquivos de configuração
-
-**Uso diário:**
-- Usuário padrão deve funcionar
-- Se configurado corretamente durante instalação
-
-**Se precisar sempre de Admin:**
-- Verifique permissões da pasta de instalação
-- Ajuste permissões para usuários padrão poderem executar
-
----
-
-### P: Como proteger as configurações do Self Checkout?
-
-**R:** Boas práticas:
-
-1. **Backup regular**
-   - Copie arquivos de configuração periodicamente
-   - Mantenha em local seguro
-
-2. **Documentação**
-   - Anote todas as configurações específicas
-   - Porta COM, IPs, senhas, etc.
-
-3. **Controle de acesso**
-   - Defina permissões adequadas no Windows
-   - Limite acesso às configurações
-
-4. **Senha no Sol.NET**
-   - Configure senha para acesso ao menu de configurações
-   - Não compartilhe com usuários finais
-
----
-
-## 📞 Suporte
-
-### P: Quando devo entrar em contato com o suporte técnico?
-
-**R:** Entre em contato se:
-
-❌ **Problemas não resolvidos pela documentação**
-- Consultou FAQ, Guia de Instalação e Guia Rápido
-- Tentou soluções sugeridas sem sucesso
-
-❌ **Erros críticos**
-- Self Checkout não inicia
-- Perda de dados
-- Problemas de integração com Sol.NET
-
-❌ **Dúvidas sobre compatibilidade**
-- Hardware não listado na documentação
-- Versões específicas de software
-
-✅ **ANTES de contatar, tenha em mãos:**
-- Versão do Sol.NET e Self Checkout
-- Versão do Windows
-- Descrição detalhada do problema
-- Prints de erros
-- Logs (se disponíveis)
-- Configurações anotadas (porta COM, etc.)
-
----
-
 ### P: Onde encontro os logs de erro do Self Checkout?
 
 **R:** Localização padrão dos logs:
 
 ```
-C:\ProgramData\Hetosoft\Sol.NET\SelfCheckout\Logs\
+.\Sol.NET\Arquivos\Geral\Logs\Sol.NET_SelfCheckout\
 ```
-
-**Ou:**
-
-```
-C:\Users\[Usuario]\AppData\Local\Hetosoft\Sol.NET\SelfCheckout\Logs\
-```
-
-**Como enviar para suporte:**
-1. Navegue até a pasta de logs
-2. Localize os arquivos mais recentes
-3. Compacte em ZIP
-4. Envie junto com descrição do problema
 
 ---
 
@@ -451,24 +250,17 @@ C:\Users\[Usuario]\AppData\Local\Hetosoft\Sol.NET\SelfCheckout\Logs\
 - **Primeira instalação**: 1-2 horas (incluindo testes)
 - **Instalação em múltiplos terminais**: 20-30 min/terminal (após primeiro)
 
-**Dica:** Prepare um pendrive com todos os arquivos necessários para agilizar.
-
 ---
 
-### P: Posso usar o Self Checkout em modo offline?
+### P: O Self Checkout funciona em modo offline?
 
-**R:** **Não.** O Self Checkout requer conexão constante com o Sol.NET para:
-- Consultar produtos e preços
-- Atualizar estoque em tempo real
-- Registrar vendas
-- Integrar financeiro
+**R:** **Sim, e não.** 
+- No sentido de depender de uma conexão com o servidor, o Self Checkout utiliza a mesma dinâmica do Sol.NET_PDV. As informações de cadastros e configurações são obtidas do servidor através do Sync_PDV. 
+- As vendas são registradas localmente **sem que haja necessidade de conexão ininterrupta com o servidor**.
+- Porém, como o único meio de pagamento é o TEF, que depende de conexão com a internet, neste sentido, não pode ser utilizado offline.
 
 **Em caso de queda de conexão:**
-- Sistema alertará o usuário
-- Vendas em andamento podem ser perdidas
-- Não é possível continuar operando
-
-**Recomendação:** Mantenha conexão estável e redundante.
+- Se uma venda estiver em andamento e não for possível finalizar o pagamento no Self Checkout, o supervisor pode liberar a venda sem pagamento para que seja feito via POS.
 
 ---
 

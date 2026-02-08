@@ -32,7 +32,7 @@
 
 **Primeiro acesso:** Configuração do Servidor (aparece automaticamente)
 
-- [ ] Configurar conexão com banco de dados
+- [ ] Configurar conexão com servidor
 - [ ] Testar conexão
 - [ ] Confirmar que a carga de dados foi realizada
 
@@ -45,7 +45,6 @@
 | **Empresa** | Selecionar empresa/filial |
 | **Tipo Movimento** | Definir tipo para vendas |
 | **Série Fiscal** | Configurar série de documentos |
-| **Métodos Pagamento** | Definir padrões disponíveis |
 
 ### 🔧 6. Configuração Dispositivos - Self Checkout
 
@@ -58,8 +57,7 @@
 | **Balança** | Porta COM, Protocolo TRN 2, Baud 2400 |
 | **Leitor Barras** | Conforme modelo |
 | **Impressora Fiscal** | Porta e modelo |
-| **TEF** | Se aplicável |
-| **Produtos** | Prefixo pesáveis (ex: "2") |
+| **Pinpad** | Drivers, se necessário |
 
 ---
 
@@ -124,60 +122,6 @@ dir C:\Windows\Fonts\Poppins*
 - [ ] Balança configurada (TRN 2, Baud 2400)
 - [ ] Driver USB-Serial instalado (se usar adaptador)
 
-### ❌ Produtos pesáveis não funcionam
-**Verificar:**
-1. Prefixo configurado na Configuração de Dispositivos (geralmente "2")
-2. Produto marcado como "Pesável" no Sol.NET
-3. Unidade de medida = KG ou G
-4. Código de barras inicia com prefixo
-
----
-
-## 🎯 Configuração em Múltiplos Terminais
-
-### Script Batch - Instalação Automática Fontes
-
-```batch
-@echo off
-echo Instalando fontes Poppins para todos os usuarios...
-
-cd /d "C:\Temp\Poppins"
-
-for %%f in (*.ttf *.otf) do (
-    echo Instalando %%f...
-    copy "%%f" "C:\Windows\Fonts\" /Y
-    reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "Poppins (%%~nf)" /t REG_SZ /d "%%f" /f
-)
-
-echo.
-echo Instalacao concluida!
-pause
-```
-
-### PowerShell - Verificação de Componentes
-
-```powershell
-# Verificar DLLs Skia no diretório de instalação
-$dllPath = "[Local de instalação do Self Checkout]"
-if (Test-Path "$dllPath\SkiaSharp.dll") {
-    Write-Host "✓ SkiaSharp.dll encontrada" -ForegroundColor Green
-} else {
-    Write-Host "✗ SkiaSharp.dll NAO encontrada" -ForegroundColor Red
-}
-
-# Verificar Fontes Poppins
-$fonts = Get-ChildItem "C:\Windows\Fonts\Poppins*"
-if ($fonts) {
-    Write-Host "✓ Fontes Poppins instaladas: $($fonts.Count)" -ForegroundColor Green
-} else {
-    Write-Host "✗ Fontes Poppins NAO encontradas" -ForegroundColor Red
-}
-
-# Listar portas COM disponíveis
-Write-Host "`nPortas COM disponiveis:"
-Get-WmiObject Win32_SerialPort | Select-Object DeviceID, Description
-```
-
 ---
 
 ## 📋 Checklist Pré-Produção
@@ -205,67 +149,6 @@ Get-WmiObject Win32_SerialPort | Select-Object DeviceID, Description
   - [ ] Porta COM anotada
   - [ ] Configurações específicas documentadas
   - [ ] Equipe treinada
-  - [ ] Procedimentos de backup definidos
-
----
-
-## ⌨️ Atalhos Úteis (Sol.NET)
-
-| Atalho | Função |
-|--------|--------|
-| **F5** | Salvar configurações |
-| **ESC** | Cancelar/Voltar |
-| **Alt + F4** | Fechar aplicativo |
-
----
-
-## 📞 Suporte Rápido
-
-### Informações Necessárias para Suporte
-
-Antes de contatar, tenha em mãos:
-- ✅ Versão do Sol.NET
-- ✅ Versão do Windows
-- ✅ Número da porta COM usada
-- ✅ Modelo da balança
-- ✅ Mensagem de erro completa (print)
-- ✅ Log de erro (se disponível)
-
-### Links Úteis
-- **[Documentação Completa](Documentacao Instalacao.md)** - guia detalhado
-- **[FAQ](FAQ.md)** - perguntas frequentes
-- **[Índice](README.md)** - visão geral
-
----
-
-## 💡 Dicas de Produtividade
-
-### Para Instaladores
-
-1. **Crie um pendrive** com todos os arquivos necessários:
-   - DLLs Skia
-   - Fontes Poppins
-   - Scripts de instalação
-   - Documentação offline
-
-2. **Use checklist impresso** para cada instalação
-
-3. **Documente configurações** específicas de cada terminal
-
-4. **Tire fotos** das configurações da balança
-
-5. **Teste TUDO** antes de liberar para produção
-
-### Para Suporte
-
-1. **Sempre verifique primeiro**:
-   - Porta COM configurada
-   - 6º parâmetro da balança = TRN 2
-   - DLLs e fontes instaladas
-
-2. **Mantenha backup** dos arquivos de configuração
-
-3. **Documente problemas** novos para atualizar FAQ
 
 ---
 

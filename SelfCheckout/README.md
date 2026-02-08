@@ -8,12 +8,11 @@ permalink: /SelfCheckout/
 
 ### 📖 **[Documentação de Instalação](Documentacao Instalacao.md)**
 Guia completo para instalação e configuração do Self Checkout, incluindo:
-- Pré-requisitos de hardware e software
 - Instalação das DLLs Skia para renderização gráfica
 - Instalação das fontes Poppins
-- Configuração da balança Toledo Prix R7
-- Configuração inicial do servidor (primeiro acesso)
+- Configuração da balança R7
 - Configurações padrão no Cadastro de Empresas (Sol.NET)
+- Configuração inicial do servidor (primeiro acesso)
 - Configuração de dispositivos no Self Checkout
 - Testes e verificação completa
 - Solução de problemas comuns
@@ -101,12 +100,11 @@ mindmap
     Componentes
       DLLs Skia
       Fontes Poppins
-      Balança Toledo R7
+      Balança R7
       Leitor Código Barras
     Configuração
       Porta COM
       Protocolo TRN 2
-      Métodos Pagamento
       Impressora Fiscal
     Operação
       Leitura Produtos
@@ -154,7 +152,6 @@ mindmap
 2. **Instalação de Software**
    - ✅ Copiar DLLs Skia
    - ✅ Instalar fontes Poppins
-   - ✅ Verificar .NET Framework
 
 3. **Configuração de Hardware**
    - ✅ Configurar balança (TRN 2, Baud Rate 2400)
@@ -208,11 +205,6 @@ Todos os arquivos necessários para instalação:
 - Verifique o **FAQ** para problemas conhecidos
 - Entre em contato com suporte técnico Hetosoft
 
-### **📞 Contato**
-- Para suporte técnico especializado
-- Mantenha em mãos: versão do Sol.NET, descrição do problema
-- Forneça prints ou logs de erro quando possível
-
 ---
 
 ## 📝 Notas Importantes
@@ -225,20 +217,10 @@ Todos os arquivos necessários para instalação:
 
 ### 💡 **Dicas**
 - Anote todas as configurações específicas do terminal
-- Mantenha backup dos arquivos de configuração
-- Documente a porta COM utilizada para cada terminal
+- Documente em chamada a porta COM utilizada para cada terminal
 - Treine a equipe antes de liberar para uso
 
 ---
-
-## 🔄 Próximos Passos
-
-### **📈 Após a Instalação**
-1. Realize treinamento com a equipe
-2. Configure backup automático
-3. Estabeleça rotina de manutenção
-4. Monitore logs de operação
-5. Acompanhe atualizações do sistema
 
 ### **💬 Feedback**
 - Contribua com sugestões para melhorar esta documentação
