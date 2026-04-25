@@ -113,6 +113,35 @@ Portal de navegação para toda documentação de RH
 
 ---
 
+### 🌱 **[Módulo Agronômico - Receituário Agronômico](Agronomico/)** ⭐ NOVO
+Emissão de receituário agronômico em conformidade com o MAPA:
+
+#### **📋 [Índice Completo](Agronomico/)**
+Portal de navegação para toda documentação do Módulo Agronômico
+
+#### **📖 [Documentação Receituário Agronômico](Agronomico/Documentacao Receituario Agronomico.md)**
+- Cadastros de apoio (culturas, diagnósticos, formulados, configuração de bula, embalagens)
+- Cadastros administrativos (profissionais, ART/TRT, locais de aplicação)
+- Emissão integrada à Movimentação (atalho **F9**) e emissão avulsa
+- Validações automáticas (bula digital, saldo e validade de ART, vínculo cliente↔local, empresa↔ART)
+- Cancelamento com estorno automático de saldo de ART
+- Impressão via ReportBuilder no modelo legal
+
+#### **🚀 [Guia Rápido](Agronomico/Guia Rapido.md)**
+- Checklist de configuração inicial
+- Fluxo diário de emissão pelo F9
+- Atalhos e pesquisas úteis
+- Soluções para os erros mais comuns
+
+#### **❓ [FAQ - Perguntas Frequentes](Agronomico/FAQ.md)**
+- Quem pode assinar (CREA × CFTA)
+- Saldo/validade de ART
+- Bloqueios por bula incompatível ou dose fora do permitido
+- Cancelamento e estorno
+- Conformidade legal e relação com órgãos estaduais
+
+---
+
 ### 🛒 **[Self Checkout](SelfCheckout/)**
 Aplicação de autoatendimento que faz parte do ecossistema Sol.NET:
 
@@ -192,6 +221,13 @@ Portal de navegação para toda documentação do Self Checkout
 - [Guia Rápido RH](RH/Guia Rapido.md)
 - [Integração RH com DRE](Financeiro/Documentacao DRE.md#-recursos-humanos-rh)
 - [FAQ RH](RH/FAQ.md)
+
+#### **🌱 Receituário Agronômico**
+- [Documentação Completa](Agronomico/Documentacao Receituario Agronomico.md)
+- [Guia Rápido](Agronomico/Guia Rapido.md)
+- [FAQ](Agronomico/FAQ.md)
+- [Configuração de Bula Digital](Agronomico/Documentacao Receituario Agronomico.md#-configuração-de-bula-bula-digital)
+- [Gestão de ART/TRT](Agronomico/Documentacao Receituario Agronomico.md#-cadastro-de-arttrt)
 
 #### **📊 Operações Comerciais**  
 - [Fluxo de Trabalho Completo](Movimentacao/documentacao/#-fluxo-de-trabalho---passo-a-passo)
