@@ -1,48 +1,35 @@
 # 📚 Documentação Sol.NET ERP
 
-## 🎯 Bem-vindo ao Centro de Documentação
-
-Este é o **portal principal** para toda a documentação do **Sol.NET ERP**, o sistema integrado de gestão empresarial. Aqui você encontrará guias completos, referências rápidas e soluções para otimizar sua experiência com o sistema.
-
-### 🏢 Sobre o Sol.NET ERP
-**Sol.NET** é uma solução completa de ERP (Enterprise Resource Planning) desenvolvida pela Hetosoft, projetada para atender empresas de todos os portes com funcionalidades integradas para gestão comercial, financeira, fiscal e operacional.
-
-### 📍 Principais Características:
-- ✅ **Sistema Integrado**: Todos os módulos conectados em tempo real
-- ✅ **Interface Intuitiva**: Design focado na experiência do usuário
-- ✅ **Conformidade Fiscal**: Atualizado com a legislação brasileira
-- ✅ **Relatórios Avançados**: Business Intelligence integrado
-- ✅ **Suporte Multi-empresa**: Gestão de múltiplas filiais
-- ✅ **API Robusta**: Integração com sistemas terceiros
+Portal central da documentação do **Sol.NET**, o ERP da Hetosoft. Use o menu lateral para navegar por todos os módulos a qualquer momento — abaixo está um resumo de cada um para você encontrar o ponto de partida certo.
 
 ---
 
-## 🗂️ Módulos Disponíveis
+## 🗂️ Módulos
 
-### 💰 **[Módulo Financeiro](Financeiro/)**
-Controle completo da gestão financeira da empresa:
+### 💰 [Financeiro](Financeiro/)
+DRE, portadores e Reforma Tributária.
+- [Documentação DRE](Financeiro/Documentacao DRE.md)
+- [Portadores e meios de pagamento](Financeiro/Documentacao Portadores.md)
+- [Reforma Tributária no Sol.NET](Financeiro/Documentacao Reforma Tributaria.md) ⭐
 
-#### 📊 **[Documentação DRE](Financeiro/Documentacao DRE.md)**
-- Demonstração do Resultado do Exercício completa
-- Integração com Plano de Contas e módulos AP/AR, Caixa, RH
-- Configuração de Agrupamentos DRE
-- Exemplos práticos por segmento empresarial
-- Análises gerenciais e indicadores de rentabilidade
+### 📦 [Movimentação](Movimentacao/)
+Operações comerciais, tipos de movimento e precificação.
+- [Documentação Movimentação](Movimentacao/Documentacao Movimentacao.md)
+- [Guia Rápido](Movimentacao/Guia Rapido.md) · [FAQ](Movimentacao/FAQ.md)
+- [Preço de Venda — Guia do Usuário](Movimentacao/Preco de Venda - Guia do Usuario.md)
 
-#### 📖 **[Documentação de Portadores](Financeiro/Documentacao Portadores.md)**
-- Configuração de bancos e instrumentos de pagamento
-- Boletos, carnês, convênios e integrações PIX  
-- Remessa eletrônica e automação bancária
-- Comissões e validações automáticas
+### 👥 [RH — Lançamentos](RH/)
+Controle interno de despesas com pessoal para integração com o DRE.
+- [Folha de Pagamento](RH/Documentacao Folha de Pagamento.md)
+- [Processo Mensal](RH/Processo Mensal.md)
+- [Guia Rápido](RH/Guia Rapido.md) · [FAQ](RH/FAQ.md)
 
-#### 🏛️ **[Reforma Tributária no Sol.NET](Financeiro/Documentacao Reforma Tributaria.md)** ⭐ DESTAQUE
-- **Como usar o Sol.NET** com a Reforma Tributária (EC 132/2023)
-- **Cadastro de NCM**: Classificações e alíquotas CBS/IBS
-- **Movimentação**: Cálculo automático e controle de créditos
-- **Exemplos práticos**: Workflows completos no sistema
-- **Período de transição**: 2026-2033 gerenciado automaticamente
-- [Guia Rápido Sol.NET](Financeiro/Guia Rapido Reforma Tributaria.md) | [FAQ](Financeiro/FAQ Reforma Tributaria.md)
+### 🌱 [Agronômico](Agronomico/) ⭐ NOVO
+Receituário Agronômico em conformidade com o MAPA.
+- [Documentação Receituário](Agronomico/Documentacao Receituario Agronomico.md)
+- [Guia Rápido](Agronomico/Guia Rapido.md) · [FAQ](Agronomico/FAQ.md)
 
+<<<<<<< Updated upstream
 ---
 
 ### 📦 **[Módulo Movimentação](Movimentacao/)**
@@ -145,17 +132,22 @@ Portal de navegação para toda documentação do Self Checkout
 - Operação do Self Checkout
 - Integração com Sol.NET
 - Manutenção e atualizações
+=======
+### 🛒 [Self Checkout](SelfCheckout/)
+Aplicação de autoatendimento integrada ao Sol.NET.
+- [Documentação de Instalação](SelfCheckout/Documentacao Instalacao.md)
+- [Guia Rápido](SelfCheckout/Guia Rapido.md) · [FAQ](SelfCheckout/FAQ.md)
+>>>>>>> Stashed changes
 
 ---
 
 ## 🎯 Por Onde Começar
 
-### **👤 Novo no Sol.NET?**
-1. **Comece aqui**: Leia esta página para entender a estrutura geral
-2. **Escolha seu módulo**: Acesse a documentação do módulo que você utilizará
-3. **Guia rápido**: Use os guias rápidos para operações do dia a dia
-4. **Dúvidas**: Consulte as seções de FAQ para respostas específicas
+- **👤 Novo usuário** — comece pelo módulo que vai usar e leia, na ordem: Documentação → Guia Rápido → FAQ.
+- **🔧 Administrador / configurador** — vá direto às seções de **configuração** dentro de cada Documentação e use os FAQs para cenários específicos.
+- **⚡ Usuário experiente** — os **Guias Rápidos** funcionam como referência de bolso para o dia a dia.
 
+<<<<<<< Updated upstream
 ### **🔧 Administrador/Configurador?**
 1. **Documentação completa**: Foque nas seções de configuração avançada
 2. **Tipos e regras**: Configure tipos de movimento e regras de negócio  
@@ -207,6 +199,9 @@ Portal de navegação para toda documentação do Self Checkout
 - [Solução de Problemas](Movimentacao/documentacao/#-solu%C3%A7%C3%A3o-de-problemas-comuns)  
 - [FAQ Completo](Movimentacao/faq/)
 - [Problemas Comuns](Movimentacao/guia-rapido/#-problemas-comuns---solu%C3%A7%C3%B5es-r%C3%A1pidas)
+=======
+> 🔎 Toda tela do Sol.NET é aberta pela **pesquisa universal (F1)**, digitando o nome ou o código (`ID_FORMULARIO`) da tela.
+>>>>>>> Stashed changes
 
 ---
 
@@ -216,48 +211,6 @@ Portal de navegação para toda documentação do Self Checkout
 
 ---
 
-## 🚀 Melhorias Planejadas  
-
-### **💭 Feedback Contínuo**
-Contribua para melhorar esta documentação:
-- Relate dúvidas não esclarecidas
-- Sugira exemplos adicionais
-- Informe correções necessárias  
-- Compartilhe casos de uso específicos
-
----
-
-## 🔗 Links Importantes
-
-### **📚 Recursos Adicionais**
-- **[Suporte Técnico](#)**: Central de atendimento (em breve)
-- **[Changelog](#)**: Histórico de atualizações (em breve)
-- **[Comunidade](#)**: Fórum de usuários (em breve)
-
-### **⚡ Atalhos Úteis**
-
-| Funcionalidade | Atalho | Módulo |
-|---------------|--------|---------|
-| Novo movimento | **F4** | Movimentação |
-| Salvar alterações | **F5** | Geral |
-| Finalizar processo | **F6** | Movimentação |
-| Transformar documento | **F7** | Movimentação |
-| Quitar financeiro | **F8** | Financeiro |
-
----
-
-## 📞 Suporte
-
-### **🏢 Hetosoft - Desenvolvimento e Suporte**
-- **Sistema**: Sol.NET ERP
-- **Documentação**: Portal de usuários
-- **Atualizações**: Contínuas conforme demanda
-
-### **📧 Contato**
-Para sugestões sobre esta documentação ou solicitação de novos conteúdos, entre em contato através dos canais oficiais da Hetosoft.
-
----
-
-**📅 Última atualização**: Janeiro de 2025  
-**📦 Versão**: 2.0  
+**📅 Última atualização**: Abril de 2026  
+**📦 Versão**: 2.1  
 **🎯 Público-alvo**: Usuários finais, administradores e configuradores Sol.NET
