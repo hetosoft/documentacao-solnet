@@ -389,9 +389,9 @@ Ou acesse: docs.solnet.com.br/reforma
 ## 🔗 Links Úteis
 
 ### **Documentação Relacionada:**
-- 📖 [Guia Completo Reforma](Documentacao Reforma Tributaria.md)
-- ❓ [FAQ Detalhado](FAQ Reforma Tributaria.md)
-- 📊 [Módulo Financeiro](README.md)
+- 📖 [Guia Completo Reforma](documentacao_reforma_tributaria.md)
+- ❓ [FAQ Detalhado](faq_reforma_tributaria.md)
+- 📊 [Módulo Financeiro](../Financeiro/README.md)
 - 📦 [Movimentação](../Movimentacao/README.md)
 
 ### **Recursos Externos:**
@@ -408,6 +408,6 @@ Ou acesse: docs.solnet.com.br/reforma
 
 ---
 
-> **⚡ Lembre-se**: Este é um guia rápido. Para informações detalhadas, consulte a [Documentação Completa](Documentacao Reforma Tributaria.md).
+> **⚡ Lembre-se**: Este é um guia rápido. Para informações detalhadas, consulte a [Documentação Completa](documentacao_reforma_tributaria.md).
 
 > **🚀 Sol.NET gerencia tudo automaticamente!** Você só precisa: configurar NCM uma vez, lançar movimentos normalmente, e consultar relatórios. O sistema cuida de cálculos, créditos e apuração.

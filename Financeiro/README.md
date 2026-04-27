@@ -4,243 +4,73 @@ permalink: /Financeiro/
 ---
 # 💰 Índice: Documentação Módulo Financeiro Sol.NET
 
+Documentação dos recursos centrais do módulo financeiro do Sol.NET: DRE e Portadores. Para temas tributários (Reforma Tributária / CBS / IBS), consulte o **[Módulo Fiscal](../Fiscal/README.md)**.
+
+---
+
 ## 📋 Documentos Disponíveis
 
-### 📊 **[Documentação DRE](Documentacao DRE.md)**
-Guia completo para Demonstração do Resultado do Exercício, incluindo:
-- Conceitos fundamentais do DRE
-- Estruturação do Plano de Contas
-- Integração com módulos AP/AR, Caixa e RH
+### 📊 [Documentação DRE](documentacao_dre.md)
+Guia completo da Demonstração do Resultado do Exercício:
+- Conceitos fundamentais e estrutura do Plano de Contas
 - Configuração de Agrupamentos DRE
+- Integração com AP/AR, Caixa e RH
 - Exemplos práticos por segmento (comércio, indústria, serviços)
-- Fluxo completo passo a passo
-- FAQ e solução de problemas
-- Melhores práticas e otimização
+- DRE Comparativo, por Centro de Custo e indicadores de rentabilidade
+- FAQ e troubleshooting
 
-### 📄 **[Documentação de Portadores](Documentacao Portadores.md)**
-Manual técnico para gerenciamento de instrumentos de pagamento:
-- Configuração de bancos e boletos
-- Integração PIX e remessa eletrônica
-- Carnês, notas promissórias e convênios
-- Comissões e validações automáticas
-- Hetobank e pagamentos digitais
-- Troubleshooting e melhores práticas
-
-### 🏛️ **[Reforma Tributária - Guia Completo](Documentacao Reforma Tributaria.md)**
-Documentação completa sobre a Reforma Tributária Brasileira (EC 132/2023):
-- Entenda as mudanças: 5 tributos → 2 tributos (CBS e IBS)
-- Cronograma de implementação (2026-2033)
-- Alíquotas e regimes especiais
-- Não cumulatividade plena (crédito total)
-- Impactos por tipo de empresa
-- Preparação no Sol.NET
-- Exemplos práticos detalhados
-- FAQ completo
-
-### ⚡ **[Guia Rápido - Reforma Tributária](Guia Rapido Reforma Tributaria.md)**
-Referência rápida para adaptação à reforma tributária:
-- Checklist de preparação
-- Tabela de alíquotas estimadas
-- Cálculos simplificados
-- Exemplos por segmento
-- Atalhos Sol.NET
-- Dicas práticas
-
-### ❓ **[FAQ - Reforma Tributária](FAQ Reforma Tributaria.md)**
-Respostas para as dúvidas mais frequentes sobre a reforma:
-- Perguntas gerais sobre a reforma
-- Tributos e alíquotas (CBS e IBS)
-- Créditos tributários (como aproveitar)
-- Impacto por tipo de empresa
-- Preparação e sistemas
-- Cronograma e transição
-- Situações específicas
-- Estratégias e planejamento
+### 📄 [Documentação de Portadores](documentacao_portadores.md)
+Manual de instrumentos de pagamento e cobrança:
+- Configuração de bancos, boletos e carnês
+- PIX integrado e remessa eletrônica
+- Convênios e Hetobank
+- Comissões, validações e troubleshooting
 
 ---
 
 ## 🎯 Por Onde Começar
 
-### **👤 Novo no Módulo Financeiro**
-1. Comece com a **[Documentação DRE](Documentacao DRE.md)** - seção "O que é DRE"
-2. Entenda a **estrutura do Plano de Contas** no Sol.NET
-3. Configure **Agrupamentos DRE** básicos para sua empresa
-4. Explore **exemplos práticos** do seu segmento
-5. **Importante**: Leia sobre a **[Reforma Tributária](Documentacao Reforma Tributaria.md)** para preparar sua empresa
-
-### **🔧 Administrador/Configurador**
-1. **DRE**: Configure agrupamentos e integração com outros módulos
-2. **Portadores**: Configure instrumentos de pagamento e cobrança
-3. **Plano de Contas**: Estruture contas para análises gerenciais
-4. **Centro de Custos**: Implemente controle departamental
-5. **Reforma Tributária**: Prepare-se para mudanças (2026-2033)
-
-### **⚡ Usuário Experiente**
-1. Use **relatórios comparativos** para análises evolutivas
-2. Configure **automatização** de lançamentos
-3. Explore **integrações avançadas** com BI
-4. Otimize **performance** dos relatórios
-5. **Planejamento estratégico**: Simule impactos da reforma tributária
+- **👤 Novo no módulo** — comece pela [Documentação DRE](documentacao_dre.md), entenda o Plano de Contas, configure agrupamentos básicos e veja os exemplos do seu segmento.
+- **🔧 Administrador / configurador** — foque na configuração de agrupamentos DRE, integração entre módulos e na seção de configuração de [Portadores](documentacao_portadores.md).
+- **⚡ Usuário experiente** — use os relatórios comparativos do DRE e os controles avançados de Portadores como referência.
 
 ---
 
-## 🧭 Navegação Rápida por Funcionalidade
+## 🧭 Navegação por Funcionalidade
 
-### **📊 Análises Gerenciais**
-- [DRE por Centro de Custo](Documentacao DRE.md#-dre-por-centro-de-custo)
-- [Indicadores de Rentabilidade](Documentacao DRE.md#indicadores-calculados)
-- [Análises Comparativas](Documentacao DRE.md#-dre-comparativo)
-- [Margem de Lucro por Produto](Documentacao DRE.md#p-como-analisar-a-margem-de-lucro-por-produto)
+### 📊 Análises Gerenciais
+- [DRE por Centro de Custo](documentacao_dre.md#-dre-por-centro-de-custo)
+- [Indicadores de Rentabilidade](documentacao_dre.md#indicadores-calculados)
+- [DRE Comparativo](documentacao_dre.md#-dre-comparativo)
+- [Margem de Lucro por Produto](documentacao_dre.md#p-como-analisar-a-margem-de-lucro-por-produto)
 
-### **⚙️ Configuração e Setup**
-- [Estruturação do Plano de Contas](Documentacao DRE.md#-estrutura-hierárquica)
-- [Criação de Agrupamentos DRE](Documentacao DRE.md#-configuração-de-agrupamentos)
-- [Configuração de Portadores](Documentacao Portadores.md#-estrutura-da-interface-abas-e-funcionalidades)
-- [Integração com Módulos](Documentacao DRE.md#-integração-com-módulos-do-solnet)
+### ⚙️ Configuração e Setup
+- [Estruturação do Plano de Contas](documentacao_dre.md#-estrutura-hierárquica)
+- [Agrupamentos DRE](documentacao_dre.md#-configuração-de-agrupamentos)
+- [Configuração de Portadores](documentacao_portadores.md#-estrutura-da-interface-abas-e-funcionalidades)
+- [Integração com Módulos](documentacao_dre.md#-integração-com-módulos-do-solnet)
 
-### **🔄 Integrações**
-- [Contas a Pagar e Receber](Documentacao DRE.md#-contas-a-pagar-e-receber)
-- [Caixa Geral](Documentacao DRE.md#-caixa-geral)
-- [Recursos Humanos (RH)](Documentacao DRE.md#-recursos-humanos-rh)
-- [Boletos e PIX](Documentacao Portadores.md#1-aba-boleto---configurações-bancárias)
+### 💳 Instrumentos de Pagamento
+- [Boletos Bancários](documentacao_portadores.md#1-boleto-tipo-0)
+- [Carnês](documentacao_portadores.md#2-carnê-tipo-1)
+- [Convênios](documentacao_portadores.md#4-convênio-tipo-3)
+- [PIX Integrado](documentacao_portadores.md#seção-pix---pagamentos-instantâneos)
 
-### **💳 Instrumentos de Pagamento**
-- [Boletos Bancários](Documentacao Portadores.md#1-boleto-tipo-0)
-- [Carnês](Documentacao Portadores.md#2-carnê-tipo-1)
-- [Convênios](Documentacao Portadores.md#4-convênio-tipo-3)
-- [PIX Integrado](Documentacao Portadores.md#seção-pix---pagamentos-instantâneos)
-
-### **🏛️ Reforma Tributária**
-- [Guia Completo](Documentacao Reforma Tributaria.md) - Tudo sobre CBS e IBS
-- [Guia Rápido](Guia Rapido Reforma Tributaria.md) - Checklist e ações práticas
-- [FAQ](FAQ Reforma Tributaria.md) - Dúvidas frequentes
-- [Cronograma](Documentacao Reforma Tributaria.md#-cronograma-de-implementação) - 2026-2033
-- [Impacto por Setor](Documentacao Reforma Tributaria.md#-impactos-por-tipo-de-empresa)
-- [Créditos Tributários](Documentacao Reforma Tributaria.md#-principais-conceitos) - Não cumulatividade plena
-- [Preparação Sol.NET](Documentacao Reforma Tributaria.md#-preparação-no-solnet)
-
-### **🆘 Suporte e Problemas**
-- [FAQ DRE](Documentacao DRE.md#-faq---perguntas-frequentes)
-- [Troubleshooting DRE](Documentacao DRE.md#-troubleshooting---solução-de-problemas)
-- [Troubleshooting Portadores](Documentacao Portadores.md#-manutenção-e-troubleshooting)
-- [Melhores Práticas](Documentacao DRE.md#-melhores-práticas)
+### 🆘 Suporte e Problemas
+- [FAQ DRE](documentacao_dre.md#-faq---perguntas-frequentes)
+- [Troubleshooting DRE](documentacao_dre.md#-troubleshooting---solução-de-problemas)
+- [Troubleshooting Portadores](documentacao_portadores.md#-manutenção-e-troubleshooting)
 
 ---
 
-## 🚀 Exemplos por Segmento
+## 🔗 Módulos Relacionados
 
-### **🏪 Comércio**
-- **DRE**: [Loja de Roupas](Documentacao DRE.md#-exemplo-1-empresa-comercial)
-- **Portadores**: Boletos com PIX para vendas a prazo
-- **Controle**: Margem por filial e produto
-
-### **🏭 Indústria**  
-- **DRE**: [Fábrica de Móveis](Documentacao DRE.md#-exemplo-2-indústria)
-- **Custos**: Controle por centro de produção
-- **Análises**: Custo por produto fabricado
-
-### **🏥 Serviços**
-- **DRE**: [Clínica Médica](Documentacao DRE.md#-exemplo-3-prestação-de-serviços)
-- **Convênios**: Gestão de convênios médicos
-- **Receitas**: Análise por especialidade
+- **[Fiscal](../Fiscal/README.md)** — Reforma Tributária (CBS / IBS), cronograma, créditos.
+- **[RH](../RH/README.md)** — Lançamentos de folha que alimentam o DRE.
+- **[Movimentação](../Movimentacao/README.md)** — Documentos fiscais e quitações que afetam o financeiro.
 
 ---
 
-## 📈 Relatórios Principais
-
-### **Demonstrativos Contábeis**
-- **DRE Gerencial**: Análise de resultados simplificada
-- **DRE Legal**: Formato conforme legislação
-- **DRE Comparativo**: Evolução temporal
-- **DRE por Centro**: Análise departamental
-
-### **Controles Financeiros**
-- **Fluxo de Caixa**: Projetado com base no DRE
-- **Margem de Contribuição**: Por produto/serviço
-- **Análise Vertical**: Participação % de cada item
-- **Evolução de Custos**: Controle de eficiência
-
-### **Relatórios de Portadores**
-- **Posição de Cobrança**: Status dos títulos
-- **Remessa Bancária**: Arquivos para bancos
-- **Conciliação PIX**: Pagamentos instantâneos
-- **Comissões**: Relatório por portador
-
----
-
-## 🔧 Configurações Essenciais
-
-### **Primeiro Setup - Checklist**
-- [ ] **Plano de Contas**: Estrutura hierárquica definida
-- [ ] **Agrupamentos DRE**: Receitas, custos e despesas configurados
-- [ ] **Centros de Custo**: Departamentos/áreas definidos
-- [ ] **Portadores**: Instrumentos de pagamento configurados
-- [ ] **Integrações**: Módulos conectados (AP/AR, RH, Caixa)
-
-### **Validação da Configuração**
-- [ ] **Teste DRE**: Geração com dados fictícios
-- [ ] **Lançamentos automáticos**: Validação da integração
-- [ ] **Relatórios**: Verificação de layout e dados
-- [ ] **Portadores**: Teste de boleto/PIX
-
----
-
-## 💡 Dicas de Produtividade
-
-### **Atalhos Úteis no Módulo Financeiro**
-
-| Funcionalidade | Atalho | Descrição |
-|---------------|--------|-----------|
-| Novo lançamento | **F4** | Lançamento contábil manual |
-| Gerar DRE | **F9** | Relatório DRE rápido |
-| Consulta conta | **F2** | Busca rápida no plano de contas |
-| Salvar | **F5** | Salva alterações |
-| Imprimir boleto | **F8** | Impressão direta |
-
-### **Fluxos Otimizados**
-1. **DRE Mensal**: Configure filtros salvos para agilizar
-2. **Lançamentos Recorrentes**: Use templates para despesas fixas
-3. **Remessa Bancária**: Configure envio automático
-4. **Backup**: Export automático de configurações
-
----
-
-## 🎓 Treinamento Recomendado
-
-### **Curso Básico - 16 horas**
-- **Módulo 1**: Conceitos de DRE (4h)
-- **Módulo 2**: Configuração básica (4h)
-- **Módulo 3**: Operação diária (4h)
-- **Módulo 4**: Relatórios e análises (4h)
-
-### **Curso Avançado - 32 horas**
-- **Inclui curso básico +**
-- **Portadores avançados**: PIX, remessa, integração
-- **Análises gerenciais**: BI, dashboards
-- **Troubleshooting**: Solução de problemas
-- **Customização**: Relatórios personalizados
-
----
-
-## 📞 Suporte Especializado
-
-### **Documentação Complementar**
-- **Vídeos tutoriais**: Canal Sol.NET no YouTube
-- **Webinars mensais**: Novidades e dicas avançadas
-- **Comunidade**: Fórum de usuários Sol.NET
-- **Templates**: Modelos por segmento de empresa
-
-### **Suporte Técnico**
-- **Chat online**: Disponível no sistema
-- **E-mail**: suporte.financeiro@solnet.com.br
-- **Telefone**: 0800-xxx-xxxx (ramal 2)
-- **Treinamento**: Agendamento de capacitação
-
----
-
-**📅 Última atualização**: Janeiro de 2025  
-**📦 Versão**: 1.0  
-**🎯 Público-alvo**: Usuários do Módulo Financeiro Sol.NET  
-**👥 Contribuidores**: Equipe de Documentação Sol.NET
-
-*Este índice organiza toda a documentação do Módulo Financeiro, proporcionando navegação eficiente e acesso rápido às informações mais relevantes para cada tipo de usuário.*
+**📅 Última atualização**: Abril de 2026  
+**📦 Versão**: 2.0  
+**🎯 Público-alvo**: Usuários do Módulo Financeiro Sol.NET

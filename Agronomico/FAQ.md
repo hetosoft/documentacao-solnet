@@ -2,7 +2,7 @@
 
 ## 🎯 Visão Geral
 
-Perguntas frequentes sobre o Módulo Agronômico do Sol.NET ERP. Para o passo a passo completo veja a **[Documentação Receituário Agronômico](Documentacao%20Receituario%20Agronomico.md)** e para o checklist diário veja o **[Guia Rápido](Guia%20Rapido.md)**.
+Perguntas frequentes sobre o Módulo Agronômico do Sol.NET ERP. Para o passo a passo completo veja a **[Documentação Receituário Agronômico](documentacao_receituario_agronomico.md)** e para o checklist diário veja o **[Guia Rápido](guia_rapido.md)**.
 
 ---
 
@@ -229,8 +229,8 @@ Pelo canal oficial Hetosoft. Inclua: print da mensagem de erro, número da recei
 
 ## 🔗 Documentação Complementar
 
-- **[Documentação Receituário Agronômico](Documentacao%20Receituario%20Agronomico.md)** — referência completa
-- **[Guia Rápido](Guia%20Rapido.md)** — checklist diário
+- **[Documentação Receituário Agronômico](documentacao_receituario_agronomico.md)** — referência completa
+- **[Guia Rápido](guia_rapido.md)** — checklist diário
 - **[Índice do Módulo](README.md)**
 - **[Portal Sol.NET](../README.md)**
 

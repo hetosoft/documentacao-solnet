@@ -31,7 +31,7 @@ A Emenda Constitucional 132/2023 substitui **5 tributos** (PIS, COFINS, IPI, ICM
 
 **Principal benefício**: Crédito pleno (não cumulatividade total) - você desconta **integralmente** os tributos pagos nas compras.
 
-> 📚 Para detalhes da reforma, consulte: [FAQ](FAQ Reforma Tributaria.md) | [Guia Rápido](Guia Rapido Reforma Tributaria.md)
+> 📚 Para detalhes da reforma, consulte: [FAQ](faq_reforma_tributaria.md) | [Guia Rápido](guia_rapido_reforma_tributaria.md)
 
 ---
 
@@ -1041,8 +1041,8 @@ Recomendação: Precificar considerando menor carga
 - 📺 **Webinars**: Calendário mensal de treinamentos
 
 **Materiais Complementares:**
-- 📚 [Guia Rápido Reforma Tributária](Guia Rapido Reforma Tributaria.md)
-- ❓ [FAQ Completo](FAQ Reforma Tributaria.md)
+- 📚 [Guia Rápido Reforma Tributária](guia_rapido_reforma_tributaria.md)
+- ❓ [FAQ Completo](faq_reforma_tributaria.md)
 - 🎓 Vídeos tutoriais (portal do cliente)
 - 📊 Cases práticos por segmento
 
@@ -1075,6 +1075,6 @@ Recomendação: Precificar considerando menor carga
 
 ---
 
-> **💡 Importante**: Esta documentação foca em **como usar o Sol.NET** para a reforma tributária. Para entender a reforma em si, consulte o [FAQ completo](FAQ Reforma Tributaria.md) e fontes oficiais do governo.
+> **💡 Importante**: Esta documentação foca em **como usar o Sol.NET** para a reforma tributária. Para entender a reforma em si, consulte o [FAQ completo](faq_reforma_tributaria.md) e fontes oficiais do governo.
 
 > **🤝 Conte com o Sol.NET**: Sistema 100% preparado para a transição tributária. Atualizações automáticas, suporte especializado e documentação sempre atualizada.

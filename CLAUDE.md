@@ -15,9 +15,9 @@ This repository contains **end-user documentation only** for Sol.NET ERP (Hetoso
 The site is a Jekyll GitHub Pages site served from the `main` branch at https://hetosoft.github.io/documentacao-solnet.
 
 - `_config.yml` — Jekyll config. Uses `kramdown` with GFM input and `permalink: pretty` (URLs end without `.html`). Plugins: `jekyll-optional-front-matter`, `jekyll-readme-index` (each folder's `README.md` becomes that folder's `index.html`), `jekyll-relative-links` (rewrites `.md` links to `.html` at build time), `jemoji`, `jekyll-seo-tag`.
-- `_layouts/default.html` — wraps every page and includes Mermaid support.
+- `_layouts/default.html` — wraps every page, defines the persistent left sidebar (with full module navigation) and includes Mermaid support. The sidebar is fixed on desktop (≥ 900 px) and collapses into a hamburger drawer on mobile. When you add or move a document, **also update the sidebar markup in `_layouts/default.html`**.
 - `_includes/mermaid.html` — loads Mermaid.js v10.9.1 from jsDelivr with `securityLevel: 'antiscript'`. **Do not lower this security level** — it was deliberately chosen over the default.
-- There is no local preview script committed. Treat edits as published content; verify Mermaid changes against `TESTE_MERMAID.md` after deploy.
+- There is no local preview script committed. Treat edits as published content; verify Mermaid changes against `teste_mermaid.md` after deploy.
 
 ## Content Architecture
 
@@ -26,11 +26,11 @@ Top-level is a portal (`README.md`) that links into module folders. Each module 
 | File | Role |
 |------|------|
 | `README.md` | Section index (rendered as the folder's landing page via `jekyll-readme-index`). |
-| `Documentacao <Tema>.md` | Full reference for the module. |
-| `Guia Rapido.md` | Shortcut/checklist reference for daily operation. |
-| `FAQ.md` | Categorized Q&A. |
+| `documentacao_<tema>.md` | Full reference for the module. |
+| `guia_rapido.md` (or `guia_rapido_<tema>.md` when the module covers multiple themes) | Shortcut/checklist reference for daily operation. |
+| `faq.md` (or `faq_<tema>.md` when needed) | Categorized Q&A. |
 
-Modules present today: `Financeiro/`, `Movimentacao/`, `RH/`, `SelfCheckout/`. Cross-module subjects (e.g. Reforma Tributária) live inside the most relevant module folder with their own Documentacao/Guia Rapido/FAQ trio.
+Modules present today: `Financeiro/`, `Fiscal/`, `Movimentacao/`, `RH/`, `Agronomico/`, `SelfCheckout/`. Tributary topics (Reforma Tributária / CBS / IBS) live in **`Fiscal/`** — keep them there even if they touch finance, and cross-link from `Financeiro/README.md` when relevant.
 
 Section `README.md` files use Jekyll front matter to set a clean permalink, e.g.:
 
@@ -43,12 +43,22 @@ permalink: /Financeiro/
 
 Keep front matter when editing these index files — removing it breaks the public URL.
 
-## File Naming Conventions
+## File Naming Conventions (snake_case)
 
-- Use **spaces** in filenames, not hyphens or underscores (e.g. `Documentacao DRE.md`, `Guia Rapido.md`). URLs that link to these files must URL-encode spaces as `%20`.
-- Capitalize the first letter of each significant word.
-- `README.md` is reserved for folder indexes.
-- Assets go in `/Assets/` at the repo root.
+**All `.md` files use `snake_case`:** lowercase only, words separated by underscores, no spaces, no accents, no diacritics, no hyphens. This produces clean, ASCII-only URLs that survive any browser, copy-paste, or CMS without percent-encoding.
+
+- ✅ `documentacao_dre.md`, `guia_rapido.md`, `faq_reforma_tributaria.md`, `tabela_de_preco_fallback_preco_base.md`
+- ❌ `Documentacao DRE.md`, `Guia-Rapido.md`, `Atualização de Custo.md`, `FAQ.md`
+
+Two exceptions, kept as-is by convention:
+- `README.md` — folder index (Jekyll/`jekyll-readme-index` convention).
+- `CLAUDE.md` — this file (Claude Code convention).
+
+**Folders** stay in their current PascalCase / capitalized form (`Financeiro/`, `Fiscal/`, `Movimentacao/`, `RH/`, `Agronomico/`, `SelfCheckout/`) so the public permalinks (`/Financeiro/`, `/Fiscal/`, etc.) are stable. Do not rename folders without coordinated permalink and sidebar updates.
+
+When you rename a file, **always**: (1) update every Markdown link to it across the repo (search both the literal name and any `%20`-encoded form), (2) update the sidebar in `_layouts/default.html`, and (3) update the section `README.md` of the affected folder.
+
+Assets go in `/Assets/` at the repo root (capitalized for legacy reasons; do not rename without auditing references).
 
 ## Document Style (enforced across the portal)
 
@@ -85,19 +95,21 @@ Toda tela do Sol.NET é acessada pela **tela de pesquisa universal**, aberta com
 
 ## Links Between Documents
 
-- Use **relative `.md` links** between files (e.g. `[DRE](Financeiro/Documentacao DRE.md)`). `jekyll-relative-links` rewrites them to `.html` at build time, so both the GitHub repo view and the Pages site work.
+- Use **relative `.md` links** between files (e.g. `[DRE](Financeiro/documentacao_dre.md)` from the root, or `[Reforma Tributária](../Fiscal/documentacao_reforma_tributaria.md)` from another module). `jekyll-relative-links` rewrites them to `.html` at build time, so both the GitHub repo view and the Pages site work.
 - Anchors use kramdown's `auto_ids` — lowercase, hyphenated, emoji stripped. Test anchor links after renaming a heading.
-- The portal `README.md` and every section `README.md` are the canonical entry points — when adding a new document, link it from the relevant index.
+- The portal `README.md` and every section `README.md` are the canonical entry points — when adding a new document, link it from the relevant index **and** add it to the sidebar in `_layouts/default.html`.
+- Because filenames are now ASCII snake_case, links should not contain `%20` or other percent-encoded characters. If you see one, it's a leftover from before the rename — fix it.
 
 ## Mermaid Diagrams
 
 Mermaid is enabled site-wide. Fenced ```` ```mermaid ```` blocks render automatically on Pages but show as source on github.com's raw view.
 
-- Reference `GUIA_MERMAID.md` for supported diagram types and syntax examples already in use.
-- Before committing a new diagram, validate it on https://mermaid.live/ or by adding an example to `TESTE_MERMAID.md` — Mermaid is whitespace-sensitive and fails silently on syntax errors.
-- Existing diagrams live in `RH/README.md`, `Movimentacao/README.md`, and `Financeiro/Documentacao Reforma Tributaria.md`; match their style.
+- Reference `guia_mermaid.md` for supported diagram types and syntax examples already in use.
+- Before committing a new diagram, validate it on https://mermaid.live/ or by adding an example to `teste_mermaid.md` — Mermaid is whitespace-sensitive and fails silently on syntax errors.
+- Existing diagrams live in `RH/README.md`, `Movimentacao/README.md`, and `Fiscal/documentacao_reforma_tributaria.md`; match their style.
 
 ## Git Workflow
 
 - Commit messages in this repo are written in Portuguese (see `git log`). Match that style.
 - This is a documentation repo — **never** add source code, binaries, or developer tooling config here. If a request would require those, it likely belongs in `ProjetosSol.NET` instead; flag it rather than creating scaffolding here.
+- Massive renames (like the snake_case migration) should be committed as a single rename commit (so `git log --follow` continues working) followed by a separate commit for content changes.

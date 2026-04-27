@@ -242,11 +242,6 @@
     </style>
   </head>
   <body>
-    {%- comment -%}
-      Monta a árvore de navegação. URLs já vêm pré-codificadas (espaços em %20,
-      caracteres acentuados em UTF-8 percent-encoded) porque o Jekyll com
-      permalink: pretty mantém o filename como slug.
-    {%- endcomment -%}
     {%- assign current = page.url -%}
 
     <div class="sn-layout" id="sn-layout">
@@ -265,11 +260,18 @@
             <summary class="sn-sidebar__group-summary">💰 Financeiro</summary>
             <ul class="sn-sidebar__items">
               <li><a href="{{ '/Financeiro/' | relative_url }}">Visão geral</a></li>
-              <li><a href="{{ '/Financeiro/Documentacao%20DRE/' | relative_url }}">Documentação DRE</a></li>
-              <li><a href="{{ '/Financeiro/Documentacao%20Portadores/' | relative_url }}">Portadores</a></li>
-              <li><a href="{{ '/Financeiro/Documentacao%20Reforma%20Tributaria/' | relative_url }}">Reforma Tributária — Documentação</a></li>
-              <li><a href="{{ '/Financeiro/Guia%20Rapido%20Reforma%20Tributaria/' | relative_url }}">Reforma Tributária — Guia Rápido</a></li>
-              <li><a href="{{ '/Financeiro/FAQ%20Reforma%20Tributaria/' | relative_url }}">Reforma Tributária — FAQ</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_dre/' | relative_url }}">Documentação DRE</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_portadores/' | relative_url }}">Portadores</a></li>
+            </ul>
+          </details>
+
+          <details class="sn-sidebar__group" data-sn-group="fiscal">
+            <summary class="sn-sidebar__group-summary">🏛️ Fiscal</summary>
+            <ul class="sn-sidebar__items">
+              <li><a href="{{ '/Fiscal/' | relative_url }}">Visão geral</a></li>
+              <li><a href="{{ '/Fiscal/documentacao_reforma_tributaria/' | relative_url }}">Reforma Tributária — Documentação</a></li>
+              <li><a href="{{ '/Fiscal/guia_rapido_reforma_tributaria/' | relative_url }}">Reforma Tributária — Guia Rápido</a></li>
+              <li><a href="{{ '/Fiscal/faq_reforma_tributaria/' | relative_url }}">Reforma Tributária — FAQ</a></li>
             </ul>
           </details>
 
@@ -277,12 +279,12 @@
             <summary class="sn-sidebar__group-summary">📦 Movimentação</summary>
             <ul class="sn-sidebar__items">
               <li><a href="{{ '/Movimentacao/' | relative_url }}">Visão geral</a></li>
-              <li><a href="{{ '/Movimentacao/Documentacao%20Movimentacao/' | relative_url }}">Documentação Movimentação</a></li>
-              <li><a href="{{ '/Movimentacao/Guia%20Rapido/' | relative_url }}">Guia Rápido</a></li>
-              <li><a href="{{ '/Movimentacao/FAQ/' | relative_url }}">FAQ</a></li>
-              <li><a href="{{ '/Movimentacao/Preco%20de%20Venda%20-%20Guia%20do%20Usuario/' | relative_url }}">Preço de Venda — Guia</a></li>
-              <li><a href="{{ '/Movimentacao/Tabela%20de%20Preco%20-%20Fallback%20Preco%20Base/' | relative_url }}">Tabela de Preço — Fallback</a></li>
-              <li><a href="{{ '/Movimentacao/Atualiza%C3%A7%C3%A3o%20de%20Custo%20Autom%C3%A1tica%20Sol.NET/' | relative_url }}">Atualização de Custo Automática</a></li>
+              <li><a href="{{ '/Movimentacao/documentacao_movimentacao/' | relative_url }}">Documentação Movimentação</a></li>
+              <li><a href="{{ '/Movimentacao/guia_rapido/' | relative_url }}">Guia Rápido</a></li>
+              <li><a href="{{ '/Movimentacao/faq/' | relative_url }}">FAQ</a></li>
+              <li><a href="{{ '/Movimentacao/preco_de_venda_guia_do_usuario/' | relative_url }}">Preço de Venda — Guia</a></li>
+              <li><a href="{{ '/Movimentacao/tabela_de_preco_fallback_preco_base/' | relative_url }}">Tabela de Preço — Fallback</a></li>
+              <li><a href="{{ '/Movimentacao/atualizacao_de_custo_automatica/' | relative_url }}">Atualização de Custo Automática</a></li>
             </ul>
           </details>
 
@@ -290,10 +292,10 @@
             <summary class="sn-sidebar__group-summary">👥 RH</summary>
             <ul class="sn-sidebar__items">
               <li><a href="{{ '/RH/' | relative_url }}">Visão geral</a></li>
-              <li><a href="{{ '/RH/Documentacao%20Folha%20de%20Pagamento/' | relative_url }}">Folha de Pagamento</a></li>
-              <li><a href="{{ '/RH/Processo%20Mensal/' | relative_url }}">Processo Mensal</a></li>
-              <li><a href="{{ '/RH/Guia%20Rapido/' | relative_url }}">Guia Rápido</a></li>
-              <li><a href="{{ '/RH/FAQ/' | relative_url }}">FAQ</a></li>
+              <li><a href="{{ '/RH/documentacao_folha_de_pagamento/' | relative_url }}">Folha de Pagamento</a></li>
+              <li><a href="{{ '/RH/processo_mensal/' | relative_url }}">Processo Mensal</a></li>
+              <li><a href="{{ '/RH/guia_rapido/' | relative_url }}">Guia Rápido</a></li>
+              <li><a href="{{ '/RH/faq/' | relative_url }}">FAQ</a></li>
             </ul>
           </details>
 
@@ -301,9 +303,9 @@
             <summary class="sn-sidebar__group-summary">🌱 Agronômico</summary>
             <ul class="sn-sidebar__items">
               <li><a href="{{ '/Agronomico/' | relative_url }}">Visão geral</a></li>
-              <li><a href="{{ '/Agronomico/Documentacao%20Receituario%20Agronomico/' | relative_url }}">Receituário Agronômico</a></li>
-              <li><a href="{{ '/Agronomico/Guia%20Rapido/' | relative_url }}">Guia Rápido</a></li>
-              <li><a href="{{ '/Agronomico/FAQ/' | relative_url }}">FAQ</a></li>
+              <li><a href="{{ '/Agronomico/documentacao_receituario_agronomico/' | relative_url }}">Receituário Agronômico</a></li>
+              <li><a href="{{ '/Agronomico/guia_rapido/' | relative_url }}">Guia Rápido</a></li>
+              <li><a href="{{ '/Agronomico/faq/' | relative_url }}">FAQ</a></li>
             </ul>
           </details>
 
@@ -311,16 +313,16 @@
             <summary class="sn-sidebar__group-summary">🛒 Self Checkout</summary>
             <ul class="sn-sidebar__items">
               <li><a href="{{ '/SelfCheckout/' | relative_url }}">Visão geral</a></li>
-              <li><a href="{{ '/SelfCheckout/Documentacao%20Instalacao/' | relative_url }}">Documentação de Instalação</a></li>
-              <li><a href="{{ '/SelfCheckout/Guia%20Rapido/' | relative_url }}">Guia Rápido</a></li>
-              <li><a href="{{ '/SelfCheckout/FAQ/' | relative_url }}">FAQ</a></li>
+              <li><a href="{{ '/SelfCheckout/documentacao_instalacao/' | relative_url }}">Documentação de Instalação</a></li>
+              <li><a href="{{ '/SelfCheckout/guia_rapido/' | relative_url }}">Guia Rápido</a></li>
+              <li><a href="{{ '/SelfCheckout/faq/' | relative_url }}">FAQ</a></li>
             </ul>
           </details>
 
           <details class="sn-sidebar__group" data-sn-group="recursos">
             <summary class="sn-sidebar__group-summary">📐 Recursos</summary>
             <ul class="sn-sidebar__items">
-              <li><a href="{{ '/GUIA_MERMAID/' | relative_url }}">Guia Mermaid</a></li>
+              <li><a href="{{ '/guia_mermaid/' | relative_url }}">Guia Mermaid</a></li>
             </ul>
           </details>
         </nav>

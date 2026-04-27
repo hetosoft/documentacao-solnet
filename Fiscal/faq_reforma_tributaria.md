@@ -763,9 +763,9 @@ Conferência:
 **R:** **Recursos Sol.NET**:
 
 **📚 Documentação:**
-- [Guia Completo Reforma Tributária](Documentacao Reforma Tributaria.md)
-- [Guia Rápido Reforma](Guia Rapido Reforma Tributaria.md)
-- [FAQ Reforma](FAQ Reforma Tributaria.md) (esta página)
+- [Guia Completo Reforma Tributária](documentacao_reforma_tributaria.md)
+- [Guia Rápido Reforma](guia_rapido_reforma_tributaria.md)
+- [FAQ Reforma](faq_reforma_tributaria.md) (esta página)
 
 **🎓 Treinamentos:**
 - Webinars mensais sobre reforma (calendário no sistema)

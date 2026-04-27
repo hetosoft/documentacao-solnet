@@ -2,7 +2,7 @@
 
 ## 🎯 Visão Geral
 
-Referência objetiva para emitir, cancelar e administrar receituários agronômicos no Sol.NET. Para o passo a passo completo, consulte a **[Documentação Receituário Agronômico](Documentacao%20Receituario%20Agronomico.md)**.
+Referência objetiva para emitir, cancelar e administrar receituários agronômicos no Sol.NET. Para o passo a passo completo, consulte a **[Documentação Receituário Agronômico](documentacao_receituario_agronomico.md)**.
 
 ---
 
@@ -201,8 +201,8 @@ Acesso pelo botão **Relatórios** dentro da tela do Receituário (habilitado ap
 
 ## 🔗 Próximos Passos
 
-- **Detalhes completos** → [Documentação Receituário Agronômico](Documentacao%20Receituario%20Agronomico.md)
-- **Dúvidas específicas** → [FAQ](FAQ.md)
+- **Detalhes completos** → [Documentação Receituário Agronômico](documentacao_receituario_agronomico.md)
+- **Dúvidas específicas** → [FAQ](faq.md)
 - **Voltar ao módulo** → [Índice do Módulo Agronômico](README.md)
 - **Portal Sol.NET** → [Documentação Geral](../README.md)
 

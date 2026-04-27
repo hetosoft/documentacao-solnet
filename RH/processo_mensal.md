@@ -578,9 +578,9 @@ Antes de finalizar:
 
 ## 🔗 Documentação Relacionada
 
-- **[Cadastro de Funcionários](Documentacao Folha de Pagamento.md#-cadastro-de-funcionários-pessoa-rh)**: Como cadastrar funcionários
-- **[Guia Rápido](Guia Rapido.md)**: Referência rápida para lançamentos
-- **[FAQ](FAQ.md)**: Perguntas frequentes sobre lançamentos
+- **[Cadastro de Funcionários](documentacao_folha_de_pagamento.md#-cadastro-de-funcionários-pessoa-rh)**: Como cadastrar funcionários
+- **[Guia Rápido](guia_rapido.md)**: Referência rápida para lançamentos
+- **[FAQ](faq.md)**: Perguntas frequentes sobre lançamentos
 
 ---
 

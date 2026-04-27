@@ -209,10 +209,10 @@ Antes de passar para o próximo, confira se todos os valores do funcionário for
 ## 📞 Precisa de Ajuda?
 
 **Não consigo cadastrar funcionário:**  
-→ Consulte [Documentação Completa - Cadastro de Funcionários](Documentacao Folha de Pagamento.md#-cadastro-de-funcionários-pessoa-rh)
+→ Consulte [Documentação Completa - Cadastro de Funcionários](documentacao_folha_de_pagamento.md#-cadastro-de-funcionários-pessoa-rh)
 
 **Dúvidas sobre vinculação:**  
-→ Consulte [FAQ](FAQ.md)
+→ Consulte [FAQ](faq.md)
 
 **Contabilidade não fornece dados por funcionário:**  
 → Explique que o Sol.NET exige vinculação individual
@@ -222,4 +222,4 @@ Antes de passar para o próximo, confira se todos os valores do funcionário for
 **📅 Última atualização**: Janeiro de 2025  
 **🎯 Lembre-se: Cada lançamento = Um funcionário específico**
 
-*Para informações detalhadas, consulte a [Documentação Completa](Documentacao Folha de Pagamento.md).*
+*Para informações detalhadas, consulte a [Documentação Completa](documentacao_folha_de_pagamento.md).*

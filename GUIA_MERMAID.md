@@ -200,7 +200,7 @@ gantt
 
 1. **Mantenha simples** - Evite diagramas muito complexos
 2. **Use labels descritivos** - Facilita a compreensão
-3. **Teste antes de publicar** - Use a página TESTE_MERMAID.md
+3. **Teste antes de publicar** - Use a página teste_mermaid.md
 4. **Cores e estilos** - Mermaid suporta customização via CSS
 5. **Comentários** - Use `%%` para comentários no código Mermaid
 
@@ -225,7 +225,7 @@ Antes de adicionar à documentação, teste em:
 
 ### No Repositório:
 Use a página de teste:
-- `TESTE_MERMAID.md` - Exemplos funcionais
+- `teste_mermaid.md` - Exemplos funcionais
 
 ---
 
@@ -280,9 +280,9 @@ Use a página de teste:
 
 ### Diagramas Existentes:
 
-1. **[RH/README.md](../RH/README.md)** - Fluxo de trabalho RH
-2. **[Movimentacao/README.md](../Movimentacao/README.md)** - Sistema de Movimentação
-3. **[Financeiro/Documentacao Reforma Tributaria.md](../Financeiro/Documentacao%20Reforma%20Tributaria.md)** - Timeline da reforma
+1. **[RH/README.md](RH/README.md)** - Fluxo de trabalho RH
+2. **[Movimentacao/README.md](Movimentacao/README.md)** - Sistema de Movimentação
+3. **[Fiscal/documentacao_reforma_tributaria.md](Fiscal/documentacao_reforma_tributaria.md)** - Timeline da reforma
 
 ---
 
