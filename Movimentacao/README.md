@@ -41,6 +41,15 @@ Entenda como o sistema recalcula custos e integra com a precificação:
 - Impactos na aba Preços e margens
 - Checklist e exemplos práticos
 
+### 💸 **[Cashback PDV](documentacao_cashback_pdv.md)**
+Vendas finalizadas no PDV gerando crédito de cashback automaticamente:
+- Pré-requisitos (tipo de movimento `É PDV`, regra cadastrada, Monitor de Integração)
+- Configuração da regra (percentual, limite, validade, validar tag pessoa)
+- Aba Cashback no cadastro de pessoas (Utilizar Cashback, Pessoa Beneficiária, extrato)
+- Configuração geral `Agrupar Cashback`
+- Fluxo de estorno e devolução com cashback processado
+- Status de processamento e exemplos práticos
+
 ---
 
 ## 🎯 Por Onde Começar
