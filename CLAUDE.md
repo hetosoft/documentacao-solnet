@@ -104,8 +104,7 @@ Toda tela do Sol.NET é acessada pela **tela de pesquisa universal**, aberta com
 
 Mermaid is enabled site-wide. Fenced ```` ```mermaid ```` blocks render automatically on Pages but show as source on github.com's raw view.
 
-- Reference `guia_mermaid.md` for supported diagram types and syntax examples already in use.
-- Before committing a new diagram, validate it on https://mermaid.live/ or by adding an example to `teste_mermaid.md` — Mermaid is whitespace-sensitive and fails silently on syntax errors.
+- Before committing a new diagram, validate it on https://mermaid.live/ or by adding an example to `teste_mermaid.md` (excluded from publication via `_config.yml`) — Mermaid is whitespace-sensitive and fails silently on syntax errors.
 - Existing diagrams live in `RH/README.md`, `Movimentacao/README.md`, and `Fiscal/documentacao_reforma_tributaria.md`; match their style.
 
 ## Git Workflow
