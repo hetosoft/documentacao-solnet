@@ -1,9 +1,40 @@
 <!-- Mermaid JS para renderização de diagramas -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>
-  mermaid.initialize({ 
-    startOnLoad: true,
+  // O kramdown (GFM) transforma blocos ```mermaid em
+  // <pre><code class="language-mermaid">...</code></pre>, mas o Mermaid
+  // procura por elementos com classe "mermaid". Por isso convertemos
+  // os blocos antes de inicializar e chamamos mermaid.run() manualmente.
+  mermaid.initialize({
+    startOnLoad: false,
     theme: 'default',
     securityLevel: 'antiscript'
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var seletores = [
+      'pre > code.language-mermaid',
+      'pre > code.mermaid'
+    ];
+    var blocos = document.querySelectorAll(seletores.join(','));
+
+    blocos.forEach(function (codeEl) {
+      var preEl = codeEl.parentNode;
+      var div = document.createElement('div');
+      div.className = 'mermaid';
+      // textContent preserva o código original sem interpretar HTML
+      div.textContent = codeEl.textContent;
+      preEl.parentNode.replaceChild(div, preEl);
+    });
+
+    try {
+      if (typeof mermaid !== 'undefined' && typeof mermaid.run === 'function') {
+        mermaid.run({ querySelector: '.mermaid' });
+      } else if (typeof mermaid !== 'undefined' && typeof mermaid.init === 'function') {
+        mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+      }
+    } catch (e) {
+      console.error('Falha ao renderizar diagramas Mermaid:', e);
+    }
   });
 </script>
