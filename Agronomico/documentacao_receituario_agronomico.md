@@ -160,9 +160,7 @@ Cadastra cada defensivo comercializado, com base no **registro MAPA**.
 
 ### 📦 Embalagens e Tipos de Embalagem
 
-Permitem registrar as embalagens em que cada produto é vendido. **Tipos de Embalagem** (frasco, bombona, saco, big bag, etc.) e **Embalagens** específicas (com volume/peso) ficam vinculados ao **Formulado** correspondente — o cadastro é feito a partir da própria tela `Cadastro Formulado Agronômico` (código **140**), na aba/abas de embalagens.
-
-A embalagem entra na receita para o cálculo correto da quantidade total a entregar ao produtor rural.
+Permitem registrar as embalagens em que cada produto é vendido. **Tipos de Embalagem** (frasco, bombona, saco, big bag, etc.) e **Embalagens** específicas ficam vinculados ao **Produto** correspondente.
 
 ---
 
@@ -420,15 +418,15 @@ A receita é emitida normalmente, mas o gestor já é avisado.
 **"Local de aplicação não pertence ao cliente."**
 → Verifique se o local foi cadastrado para o cliente correto. Edite o cadastro se necessário.
 
-**Para mais perguntas, consulte o [FAQ completo](FAQ.md).**
+**Para mais perguntas, consulte o [FAQ completo](faq.md).**
 
 ---
 
 ## 🔗 Documentação Complementar
 
-- **[Guia Rápido](Guia%20Rapido.md)** — checklist e atalhos
-- **[FAQ](FAQ.md)** — perguntas frequentes
-- **[Movimentação](../Movimentacao/Documentacao%20Movimentacao.md)** — fluxo da venda
+- **[Guia Rápido](guia_rapido.md)** — checklist e atalhos
+- **[FAQ](faq.md)** — perguntas frequentes
+- **[Movimentação](../Movimentacao/documentacao_movimentacao.md)** — fluxo da venda
 - **[Portal de Documentação](../README.md)** — visão geral do Sol.NET
 
 ---

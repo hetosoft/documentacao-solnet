@@ -591,8 +591,8 @@ Repita para todos os funcionários.
 
 ### Documentação Relacionada
 
-- **[Módulo Financeiro - DRE](../Financeiro/Documentacao DRE.md)**: Como o DRE funciona
-- **[Plano de Contas](../Financeiro/Documentacao DRE.md#-estrutura-hierárquica)**: Estrutura contábil
+- **[Módulo Financeiro - DRE](../Financeiro/documentacao_dre.md)**: Como o DRE funciona
+- **[Plano de Contas](../Financeiro/documentacao_dre.md#-estrutura-hierárquica)**: Estrutura contábil
 
 ### Contato
 

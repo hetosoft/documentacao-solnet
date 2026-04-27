@@ -25,7 +25,7 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 **Importante**: As DLLs devem estar na mesma pasta que o arquivo `.exe` do Self Checkout.
 
-**Referência:** [Instalação das DLLs Skia](Documentacao Instalacao.md#passo-1-instalação-das-dlls-skia)
+**Referência:** [Instalação das DLLs Skia](documentacao_instalacao.md#passo-1-instalação-das-dlls-skia)
 
 ---
 
@@ -40,7 +40,7 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 **IMPORTANTE:** Sempre instale "para todos os usuários" para que o Self Checkout possa acessar as fontes.
 
-**Referência:** [Instalação das Fontes Poppins](Documentacao Instalacao.md#passo-2-instalação-das-fontes-poppins)
+**Referência:** [Instalação das Fontes Poppins](documentacao_instalacao.md#passo-2-instalação-das-fontes-poppins)
 
 ---
 
@@ -52,7 +52,7 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 **CRÍTICO:** Esta é a configuração mais importante da balança.
 
-**Referência:** [Configuração da Balança](Documentacao Instalacao.md#passo-3-configuração-da-balança-toledo-prix-r7)
+**Referência:** [Configuração da Balança](documentacao_instalacao.md#passo-3-configuração-da-balança-toledo-prix-r7)
 
 ---
 
@@ -83,7 +83,7 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
    - Execute o Self Checkout como Administrador
    - Verifique permissões de leitura/execução nas DLLs
 
-**Referência:** [Problema: DLLs Skia não encontradas](Documentacao Instalacao.md#-problema-dlls-skia-não-encontradas)
+**Referência:** [Problema: DLLs Skia não encontradas](documentacao_instalacao.md#-problema-dlls-skia-não-encontradas)
 
 ---
 
@@ -107,7 +107,7 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 # Botão direito nos arquivos .ttf → Instalar para todos os usuários
 ```
 
-**Referência:** [Problema: Fontes Poppins não aparecem](Documentacao Instalacao.md#-problema-fontes-poppins-não-aparecem)
+**Referência:** [Problema: Fontes Poppins não aparecem](documentacao_instalacao.md#-problema-fontes-poppins-não-aparecem)
 
 ---
 
@@ -152,7 +152,7 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 **Teste:** Configuração Dispositivos → Balança → Testar
 
-**Referência:** [Problema: Balança não comunica](Documentacao Instalacao.md#-problema-balança-não-comunica)
+**Referência:** [Problema: Balança não comunica](documentacao_instalacao.md#-problema-balança-não-comunica)
 
 ---
 
@@ -269,8 +269,8 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 ## 🔗 Links Úteis
 
 ### Documentação Relacionada
-- **[Documentação Completa de Instalação](Documentacao Instalacao.md)**
-- **[Guia Rápido](Guia Rapido.md)**
+- **[Documentação Completa de Instalação](documentacao_instalacao.md)**
+- **[Guia Rápido](guia_rapido.md)**
 - **[Índice do Módulo](README.md)**
 
 ### Downloads

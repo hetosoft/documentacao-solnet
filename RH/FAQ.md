@@ -70,7 +70,7 @@ Não é possível lançar valores totais sem associação a funcionários indivi
 5. Configurar contas contábeis e centro de custo
 6. Salvar
 
-Veja detalhes em: [Cadastro de Funcionários](Documentacao Folha de Pagamento.md#-cadastro-de-funcionários-pessoa-rh)
+Veja detalhes em: [Cadastro de Funcionários](documentacao_folha_de_pagamento.md#-cadastro-de-funcionários-pessoa-rh)
 
 ### **P: Preciso cadastrar funcionários demitidos?**
 **R:** Sim, mas altere o status para "Inativo" e informe a data de demissão. Mantenha o cadastro para histórico.
@@ -283,4 +283,4 @@ Resultado: total por departamento no DRE.
 **🎯 Público-alvo**: Usuários do módulo RH Sol.NET  
 **⚠️ Lembre-se: Vinculação a funcionário é OBRIGATÓRIA**
 
-*Para informações detalhadas sobre cadastro de funcionários, consulte a [Documentação Completa - Cadastro de Pessoa RH](Documentacao Folha de Pagamento.md#-cadastro-de-funcionários-pessoa-rh).*
+*Para informações detalhadas sobre cadastro de funcionários, consulte a [Documentação Completa - Cadastro de Pessoa RH](documentacao_folha_de_pagamento.md#-cadastro-de-funcionários-pessoa-rh).*

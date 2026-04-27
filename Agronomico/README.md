@@ -34,7 +34,7 @@ O Sol.NET aplica essas validações automaticamente ao emitir o receituário.
 
 ## 📋 Documentos Disponíveis
 
-### 📖 **[Documentação Receituário Agronômico](Documentacao%20Receituario%20Agronomico.md)**
+### 📖 **[Documentação Receituário Agronômico](documentacao_receituario_agronomico.md)**
 Guia completo do módulo:
 - Conceitos básicos: ART, profissional, bula, formulado
 - Cadastros de apoio: culturas, diagnósticos (alvos), formulados, configuração de bula
@@ -46,7 +46,7 @@ Guia completo do módulo:
 - Impressão (ReportBuilder)
 - Alertas de saldo
 
-### 🚀 **[Guia Rápido](Guia%20Rapido.md)**
+### 🚀 **[Guia Rápido](guia_rapido.md)**
 Referência objetiva para o dia a dia:
 - Como o gatilho automático na Movimentação funciona
 - Checklist diário de emissão
@@ -54,7 +54,7 @@ Referência objetiva para o dia a dia:
 - Soluções rápidas para os erros mais comuns
 - Ordem recomendada de cadastros iniciais
 
-### ❓ **[FAQ - Perguntas Frequentes](FAQ.md)**
+### ❓ **[FAQ - Perguntas Frequentes](faq.md)**
 Respostas para dúvidas comuns:
 - Quem pode assinar (CREA × CFTA)
 - Saldo de ART acabou: o que fazer?
@@ -184,73 +184,31 @@ Todas as telas do Sol.NET — inclusive as do Módulo Agronômico — são abert
 ### **Por tarefa**
 
 **Configurar o módulo pela primeira vez:**
-- [Pré-requisitos e ordem de cadastros](Documentacao%20Receituario%20Agronomico.md#-pré-requisitos-e-ordem-recomendada)
-- [Cadastro de Profissionais](Documentacao%20Receituario%20Agronomico.md#-cadastro-de-profissionais)
-- [Cadastro de ART/TRT](Documentacao%20Receituario%20Agronomico.md#-cadastro-de-arttrt)
+- [Pré-requisitos e ordem de cadastros](documentacao_receituario_agronomico.md#-pré-requisitos-e-ordem-recomendada)
+- [Cadastro de Profissionais](documentacao_receituario_agronomico.md#-cadastro-de-profissionais)
+- [Cadastro de ART/TRT](documentacao_receituario_agronomico.md#-cadastro-de-arttrt)
 
 **Emitir receituário:**
-- [Emissão integrada à Movimentação (gatilho automático)](Documentacao%20Receituario%20Agronomico.md#-emissão-integrada-à-movimentação-gatilho-automático)
-- [Emissão avulsa](Documentacao%20Receituario%20Agronomico.md#-emissão-avulsa)
-- [Validações automáticas](Documentacao%20Receituario%20Agronomico.md#-validações-automáticas)
+- [Emissão integrada à Movimentação (gatilho automático)](documentacao_receituario_agronomico.md#-emissão-integrada-à-movimentação-gatilho-automático)
+- [Emissão avulsa](documentacao_receituario_agronomico.md#-emissão-avulsa)
+- [Validações automáticas](documentacao_receituario_agronomico.md#-validações-automáticas)
 
 **Resolver problemas:**
-- [Cancelamento de receituário](Documentacao%20Receituario%20Agronomico.md#-cancelamento-de-receituário)
-- [Mensagens de erro comuns](Guia%20Rapido.md#-problemas-comuns)
-- [FAQ](FAQ.md)
+- [Cancelamento de receituário](documentacao_receituario_agronomico.md#-cancelamento-de-receituário)
+- [Mensagens de erro comuns](guia_rapido.md#-problemas-comuns)
+- [FAQ](faq.md)
 
 ---
 
 ## 📚 Documentação Relacionada
 
 - **[Movimentação](../Movimentacao/)**: Como funciona o lançamento da venda que dispara o receituário
-- **[Cadastro de Produtos](../Movimentacao/Documentacao%20Movimentacao.md)**: Vínculo entre o produto comercial e o formulado agronômico
-- **[Portadores Financeiros](../Financeiro/Documentacao%20Portadores.md)**: Recebimento da venda associada à receita
+- **[Cadastro de Produtos](../Movimentacao/documentacao_movimentacao.md)**: Vínculo entre o produto comercial e o formulado agronômico
+- **[Portadores Financeiros](../Financeiro/documentacao_portadores.md)**: Recebimento da venda associada à receita
 
 ---
 
 ## 💡 Dicas Importantes
 
 ### **Para usuários de balcão**
-1. **Não saia da Movimentação para emitir** — em movimentos fiscais, o Sol.NET abre o Receituário automaticamente
-2. **Confira a empresa ativa** — a ART que vai ser sugerida é a da empresa logada
-3. **Confirme o local de aplicação** — clientes com várias fazendas precisam escolher a correta
-4. **Imprima na hora** — o cliente precisa sair com as vias do receituário
-
-### **Para administradores**
-1. **Mantenha as bulas atualizadas** — produtos novos e renovações de registro mudam doses
-2. **Monitore o saldo de ART** — solicite reposição com antecedência (renovação no conselho leva tempo)
-3. **Padronize o cadastro de locais** — evite duplicidade para o mesmo talhão
-4. **Treine a equipe sobre o que é off-label** — o sistema bloqueia, mas o vendedor precisa entender o motivo
-
----
-
-## 🆘 Suporte
-
-### **Dúvidas sobre:**
-
-**Cadastros de apoio (culturas, alvos, formulados, bulas)**
-→ [Documentação Completa - Cadastros de Apoio](Documentacao%20Receituario%20Agronomico.md#-cadastros-de-apoio)
-
-**ART e profissionais**
-→ [Documentação Completa - Cadastros Administrativos](Documentacao%20Receituario%20Agronomico.md#-cadastros-administrativos)
-
-**Bloqueios na emissão**
-→ [Guia Rápido - Problemas Comuns](Guia%20Rapido.md#-problemas-comuns)
-
-**Bula desatualizada / produto novo do MAPA**
-→ Cadastre/ajuste na tela **Configuração de Bula** (abra pela pesquisa F1)
-
-**Sistema Sol.NET**
-→ Suporte técnico Hetosoft
-
----
-
-**📅 Última atualização**: Abril de 2026
-**📦 Versão**: 1.0
-**🎯 Público-alvo**: Vendedores de revenda agropecuária, responsáveis técnicos, administradores Sol.NET
-**👥 Contribuidores**: Equipe de Documentação Sol.NET
-**⚠️ Lembre-se: receita sem ART válida e bula compatível é bloqueada pelo sistema**
-
----
-
-*Este índice organiza a documentação do Módulo Agronômico (Receituário Agronômico) do Sol.NET. Foco no fluxo do MAPA: profissional habilitado → ART com saldo → produto registrado → bula digital → emissão e impressão.*
+1. **Não saia da Movimentação para emitir** — em movimentos fiscais,

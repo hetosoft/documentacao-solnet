@@ -6,7 +6,7 @@ permalink: /SelfCheckout/
 
 ## 📋 Documentos Disponíveis
 
-### 📖 **[Documentação de Instalação](Documentacao Instalacao.md)**
+### 📖 **[Documentação de Instalação](documentacao_instalacao.md)**
 Guia completo para instalação e configuração do Self Checkout, incluindo:
 - Instalação das DLLs Skia para renderização gráfica
 - Instalação das fontes Poppins
@@ -18,14 +18,14 @@ Guia completo para instalação e configuração do Self Checkout, incluindo:
 - Solução de problemas comuns
 - Checklist final de instalação
 
-### 🚀 **[Guia Rápido](Guia Rapido.md)**
+### 🚀 **[Guia Rápido](guia_rapido.md)**
 Referência rápida para instalação e operação:
 - Checklist resumido de instalação
 - Passos essenciais de configuração
 - Comandos e atalhos principais
 - Soluções rápidas para problemas comuns
 
-### ❓ **[FAQ - Perguntas Frequentes](FAQ.md)**
+### ❓ **[FAQ - Perguntas Frequentes](faq.md)**
 Respostas para dúvidas comuns organizadas por categoria:
 - Instalação e configuração
 - Problemas com DLLs e fontes
@@ -39,23 +39,23 @@ Respostas para dúvidas comuns organizadas por categoria:
 ## 🎯 Por Onde Começar
 
 ### **👤 Técnico de Suporte - Primeira Instalação**
-1. Leia a **[Documentação de Instalação](Documentacao Instalacao.md)** completa
+1. Leia a **[Documentação de Instalação](documentacao_instalacao.md)** completa
 2. Verifique todos os **pré-requisitos** antes de iniciar
 3. Siga o processo passo a passo
 4. Use o **checklist final** para validação
-5. Consulte o **[FAQ](FAQ.md)** para dúvidas específicas
+5. Consulte o **[FAQ](faq.md)** para dúvidas específicas
 
 ### **🔧 Instalação Rápida - Técnico Experiente**
-1. Use o **[Guia Rápido](Guia Rapido.md)** como referência
+1. Use o **[Guia Rápido](guia_rapido.md)** como referência
 2. Baixe e instale os componentes necessários
 3. Configure a balança conforme especificado
 4. Execute testes de validação
-5. Consulte **[FAQ](FAQ.md)** se necessário
+5. Consulte **[FAQ](faq.md)** se necessário
 
 ### **⚡ Resolução de Problemas**
-1. Consulte a seção **Solução de Problemas** na **[Documentação de Instalação](Documentacao Instalacao.md)**
-2. Verifique o **[FAQ](FAQ.md)** para problemas conhecidos
-3. Use o **[Guia Rápido](Guia Rapido.md)** para verificações básicas
+1. Consulte a seção **Solução de Problemas** na **[Documentação de Instalação](documentacao_instalacao.md)**
+2. Verifique o **[FAQ](faq.md)** para problemas conhecidos
+3. Use o **[Guia Rápido](guia_rapido.md)** para verificações básicas
 4. Documente problemas não resolvidos para referência futura
 
 ---
@@ -63,30 +63,30 @@ Respostas para dúvidas comuns organizadas por categoria:
 ## 🔍 Busca Rápida por Tópico
 
 ### **Instalação**
-- [Pré-requisitos do Sistema](Documentacao Instalacao.md#-pré-requisitos-do-sistema)
-- [Instalação das DLLs Skia](Documentacao Instalacao.md#passo-1-instalação-das-dlls-skia)
-- [Instalação das Fontes Poppins](Documentacao Instalacao.md#passo-2-instalação-das-fontes-poppins)
-- [Checklist Final](Documentacao Instalacao.md#-checklist-final-de-instalação)
+- [Pré-requisitos do Sistema](documentacao_instalacao.md#-pré-requisitos-do-sistema)
+- [Instalação das DLLs Skia](documentacao_instalacao.md#passo-1-instalação-das-dlls-skia)
+- [Instalação das Fontes Poppins](documentacao_instalacao.md#passo-2-instalação-das-fontes-poppins)
+- [Checklist Final](documentacao_instalacao.md#-checklist-final-de-instalação)
 
 ### **Configuração**
-- [Configuração da Balança Toledo](Documentacao Instalacao.md#passo-3-configuração-da-balança-toledo-prix-r7)
-- [Configuração Inicial do Servidor](Documentacao Instalacao.md#passo-4-configuração-inicial-do-self-checkout)
-- [Configurações Padrão no Sol.NET](Documentacao Instalacao.md#passo-5-configuração-no-solnet---cadastro-de-empresas)
-- [Configuração de Dispositivos](Documentacao Instalacao.md#passo-6-configuração-de-dispositivos-no-self-checkout)
-- [Teste de Comunicação](Documentacao Instalacao.md#-validação)
+- [Configuração da Balança Toledo](documentacao_instalacao.md#passo-3-configuração-da-balança-toledo-prix-r7)
+- [Configuração Inicial do Servidor](documentacao_instalacao.md#passo-4-configuração-inicial-do-self-checkout)
+- [Configurações Padrão no Sol.NET](documentacao_instalacao.md#passo-5-configuração-no-solnet---cadastro-de-empresas)
+- [Configuração de Dispositivos](documentacao_instalacao.md#passo-6-configuração-de-dispositivos-no-self-checkout)
+- [Teste de Comunicação](documentacao_instalacao.md#-validação)
 
 ### **Problemas**
-- [DLLs Skia não encontradas](Documentacao Instalacao.md#-problema-dlls-skia-não-encontradas)
-- [Fontes Poppins não aparecem](Documentacao Instalacao.md#-problema-fontes-poppins-não-aparecem)
-- [Balança não comunica](Documentacao Instalacao.md#-problema-balança-não-comunica)
-- [Self Checkout não inicia](Documentacao Instalacao.md#-problema-self-checkout-não-inicia)
-- [Produtos pesáveis não funcionam](Documentacao Instalacao.md#-problema-produtos-pesáveis-não-funcionam)
+- [DLLs Skia não encontradas](documentacao_instalacao.md#-problema-dlls-skia-não-encontradas)
+- [Fontes Poppins não aparecem](documentacao_instalacao.md#-problema-fontes-poppins-não-aparecem)
+- [Balança não comunica](documentacao_instalacao.md#-problema-balança-não-comunica)
+- [Self Checkout não inicia](documentacao_instalacao.md#-problema-self-checkout-não-inicia)
+- [Produtos pesáveis não funcionam](documentacao_instalacao.md#-problema-produtos-pesáveis-não-funcionam)
 
 ### **Testes**
-- [Checklist de Testes](Documentacao Instalacao.md#-testes-e-verificação)
-- [Teste de Interface](Documentacao Instalacao.md#-checklist-de-testes)
-- [Teste de Balança](Documentacao Instalacao.md#-checklist-de-testes)
-- [Teste de Integração](Documentacao Instalacao.md#-checklist-de-testes)
+- [Checklist de Testes](documentacao_instalacao.md#-testes-e-verificação)
+- [Teste de Interface](documentacao_instalacao.md#-checklist-de-testes)
+- [Teste de Balança](documentacao_instalacao.md#-checklist-de-testes)
+- [Teste de Integração](documentacao_instalacao.md#-checklist-de-testes)
 
 ---
 
@@ -196,9 +196,9 @@ Todos os arquivos necessários para instalação:
 ## 📚 Recursos e Referências
 
 ### **📖 Documentação Disponível**
-- **Instalação completa**: [Documentacao Instalacao.md](Documentacao Instalacao.md)
-- **Guia rápido**: [Guia Rapido.md](Guia Rapido.md)
-- **FAQ**: [FAQ.md](FAQ.md)
+- **Instalação completa**: [documentacao_instalacao.md](documentacao_instalacao.md)
+- **Guia rápido**: [guia_rapido.md](guia_rapido.md)
+- **FAQ**: [faq.md](faq.md)
 
 ### **🔧 Resolução de Problemas**
 - Consulte a seção de **Solução de Problemas** na documentação de instalação
