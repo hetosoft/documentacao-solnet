@@ -50,6 +50,16 @@ Vendas finalizadas no PDV gerando crédito de cashback automaticamente:
 - Fluxo de estorno e devolução com cashback processado
 - Status de processamento e exemplos práticos
 
+### 🏭 **[Produção](Producao/)**
+Módulo de produção interna de produtos (fórmula → execução → movimentos):
+- Telas: Fórmulas de Produtos (`143`) e Produção de Produtos (`144`) na pesquisa F1
+- Cadastro da fórmula (composição, embalagem, perda, fator de conversão)
+- Execução com status `Em Espera` → `Em Produção` → `Finalizado` / `Cancelado`
+- Geração automática dos 3 movimentos (Saída, Entrada e Perda) ao finalizar
+- Cálculo do custo do produto acabado a partir dos ingredientes consumidos
+- Pré-requisitos: três tipos de movimento dedicados, situação e local de estoque
+- Vínculos entre movimentos e regras de cancelamento
+
 ---
 
 ## 🎯 Por Onde Começar
