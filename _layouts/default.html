@@ -5,26 +5,433 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    
+
     {% include mermaid.html %}
 
     {% seo %}
+
+    <style>
+      /* ========================================================
+         Layout com sidebar persistente
+         ======================================================== */
+      :root {
+        --sn-sidebar-width: 280px;
+        --sn-sidebar-bg: #f6f8fa;
+        --sn-sidebar-border: #d0d7de;
+        --sn-sidebar-text: #1f2328;
+        --sn-sidebar-muted: #57606a;
+        --sn-sidebar-accent: #0969da;
+        --sn-sidebar-active-bg: #ddf4ff;
+        --sn-sidebar-hover-bg: #eaeef2;
+        --sn-topbar-height: 52px;
+      }
+
+      html, body { margin: 0; }
+
+      .sn-layout {
+        display: flex;
+        min-height: 100vh;
+        align-items: stretch;
+      }
+
+      /* ---------- Sidebar ---------- */
+      .sn-sidebar {
+        width: var(--sn-sidebar-width);
+        flex: 0 0 var(--sn-sidebar-width);
+        background: var(--sn-sidebar-bg);
+        border-right: 1px solid var(--sn-sidebar-border);
+        position: sticky;
+        top: 0;
+        max-height: 100vh;
+        overflow-y: auto;
+        font-size: 14px;
+        color: var(--sn-sidebar-text);
+      }
+
+      .sn-sidebar__brand {
+        display: block;
+        padding: 18px 20px 14px;
+        text-decoration: none;
+        color: var(--sn-sidebar-text);
+        border-bottom: 1px solid var(--sn-sidebar-border);
+      }
+      .sn-sidebar__brand-title {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 1.2;
+      }
+      .sn-sidebar__brand-sub {
+        font-size: 12px;
+        color: var(--sn-sidebar-muted);
+        margin-top: 2px;
+      }
+
+      .sn-sidebar__nav {
+        padding: 8px 0 24px;
+      }
+
+      .sn-sidebar__home {
+        display: block;
+        padding: 8px 20px;
+        text-decoration: none;
+        color: var(--sn-sidebar-text);
+        font-weight: 500;
+        border-left: 3px solid transparent;
+      }
+      .sn-sidebar__home:hover { background: var(--sn-sidebar-hover-bg); }
+      .sn-sidebar__home.is-active {
+        background: var(--sn-sidebar-active-bg);
+        border-left-color: var(--sn-sidebar-accent);
+      }
+
+      .sn-sidebar__group {
+        border: none;
+      }
+      .sn-sidebar__group-summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 8px 20px;
+        font-weight: 600;
+        color: var(--sn-sidebar-text);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        user-select: none;
+      }
+      .sn-sidebar__group-summary::-webkit-details-marker { display: none; }
+      .sn-sidebar__group-summary::before {
+        content: "▸";
+        font-size: 10px;
+        color: var(--sn-sidebar-muted);
+        transition: transform 0.15s ease;
+        display: inline-block;
+        width: 10px;
+      }
+      .sn-sidebar__group[open] > .sn-sidebar__group-summary::before {
+        transform: rotate(90deg);
+      }
+      .sn-sidebar__group-summary:hover {
+        background: var(--sn-sidebar-hover-bg);
+      }
+
+      .sn-sidebar__items {
+        list-style: none;
+        margin: 0;
+        padding: 2px 0 6px;
+      }
+      .sn-sidebar__items li { margin: 0; }
+      .sn-sidebar__items a {
+        display: block;
+        padding: 6px 20px 6px 41px;
+        text-decoration: none;
+        color: var(--sn-sidebar-text);
+        border-left: 3px solid transparent;
+        line-height: 1.35;
+      }
+      .sn-sidebar__items a:hover { background: var(--sn-sidebar-hover-bg); }
+      .sn-sidebar__items a.is-active {
+        background: var(--sn-sidebar-active-bg);
+        border-left-color: var(--sn-sidebar-accent);
+        font-weight: 600;
+        color: var(--sn-sidebar-accent);
+      }
+
+      .sn-sidebar__footer {
+        padding: 12px 20px 20px;
+        font-size: 11px;
+        color: var(--sn-sidebar-muted);
+        border-top: 1px solid var(--sn-sidebar-border);
+        margin-top: 8px;
+      }
+      .sn-sidebar__footer a { color: var(--sn-sidebar-muted); text-decoration: underline; }
+
+      /* ---------- Conteúdo ---------- */
+      .sn-content {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+      .sn-content .container-lg {
+        max-width: 980px;
+      }
+
+      /* ---------- Topbar (apenas mobile) ---------- */
+      .sn-topbar {
+        display: none;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        height: var(--sn-topbar-height);
+        background: #ffffff;
+        border-bottom: 1px solid var(--sn-sidebar-border);
+        align-items: center;
+        gap: 12px;
+        padding: 0 14px;
+      }
+      .sn-topbar__toggle {
+        background: transparent;
+        border: 1px solid var(--sn-sidebar-border);
+        border-radius: 6px;
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+      }
+      .sn-topbar__toggle span,
+      .sn-topbar__toggle span::before,
+      .sn-topbar__toggle span::after {
+        content: "";
+        display: block;
+        width: 18px;
+        height: 2px;
+        background: var(--sn-sidebar-text);
+        position: relative;
+      }
+      .sn-topbar__toggle span::before {
+        position: absolute;
+        top: -6px;
+      }
+      .sn-topbar__toggle span::after {
+        position: absolute;
+        top: 6px;
+      }
+      .sn-topbar__title {
+        font-weight: 600;
+        font-size: 15px;
+        color: var(--sn-sidebar-text);
+        text-decoration: none;
+      }
+
+      .sn-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 40;
+      }
+
+      /* ---------- Mobile (< 900px) ---------- */
+      @media (max-width: 899px) {
+        .sn-topbar { display: flex; }
+
+        .sn-sidebar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 100vh;
+          max-height: 100vh;
+          z-index: 60;
+          transform: translateX(-100%);
+          transition: transform 0.2s ease;
+          box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+        }
+        .sn-layout.is-open .sn-sidebar { transform: translateX(0); }
+        .sn-layout.is-open .sn-backdrop { display: block; }
+
+        .sn-content { width: 100%; }
+        .sn-content .container-lg { padding-left: 16px; padding-right: 16px; }
+      }
+
+      /* Ajustes finos para o conteúdo markdown dentro do novo layout */
+      .sn-content .markdown-body {
+        margin-top: 24px;
+        margin-bottom: 24px;
+      }
+    </style>
   </head>
   <body>
-    <div class="container-lg px-3 my-5 markdown-body">
-      {% if site.title and site.title != page.title %}
-      <h1><a href="{{ "/" | absolute_url }}">{{ site.title }}</a></h1>
-      {% endif %}
+    {%- comment -%}
+      Monta a árvore de navegação. URLs já vêm pré-codificadas (espaços em %20,
+      caracteres acentuados em UTF-8 percent-encoded) porque o Jekyll com
+      permalink: pretty mantém o filename como slug.
+    {%- endcomment -%}
+    {%- assign current = page.url -%}
 
-      {{ content }}
+    <div class="sn-layout" id="sn-layout">
+      <button type="button" class="sn-backdrop" aria-label="Fechar menu" data-sn-close></button>
 
-      {% if site.github.private != true and site.github.license %}
-      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
-        Este site é open source. {% github_edit_link "Melhorar esta página" %}.
+      <aside class="sn-sidebar" id="sn-sidebar" aria-label="Menu de navegação">
+        <a href="{{ '/' | relative_url }}" class="sn-sidebar__brand">
+          <div class="sn-sidebar__brand-title">📚 Documentação Sol.NET</div>
+          <div class="sn-sidebar__brand-sub">Portal de usuários — Hetosoft</div>
+        </a>
+
+        <nav class="sn-sidebar__nav">
+          <a href="{{ '/' | relative_url }}" class="sn-sidebar__home{% if current == '/' or current == '/index.html' %} is-active{% endif %}">🏠 Início</a>
+
+          <details class="sn-sidebar__group" data-sn-group="financeiro">
+            <summary class="sn-sidebar__group-summary">💰 Financeiro</summary>
+            <ul class="sn-sidebar__items">
+              <li><a href="{{ '/Financeiro/' | relative_url }}">Visão geral</a></li>
+              <li><a href="{{ '/Financeiro/Documentacao%20DRE/' | relative_url }}">Documentação DRE</a></li>
+              <li><a href="{{ '/Financeiro/Documentacao%20Portadores/' | relative_url }}">Portadores</a></li>
+              <li><a href="{{ '/Financeiro/Documentacao%20Reforma%20Tributaria/' | relative_url }}">Reforma Tributária — Documentação</a></li>
+              <li><a href="{{ '/Financeiro/Guia%20Rapido%20Reforma%20Tributaria/' | relative_url }}">Reforma Tributária — Guia Rápido</a></li>
+              <li><a href="{{ '/Financeiro/FAQ%20Reforma%20Tributaria/' | relative_url }}">Reforma Tributária — FAQ</a></li>
+            </ul>
+          </details>
+
+          <details class="sn-sidebar__group" data-sn-group="movimentacao">
+            <summary class="sn-sidebar__group-summary">📦 Movimentação</summary>
+            <ul class="sn-sidebar__items">
+              <li><a href="{{ '/Movimentacao/' | relative_url }}">Visão geral</a></li>
+              <li><a href="{{ '/Movimentacao/Documentacao%20Movimentacao/' | relative_url }}">Documentação Movimentação</a></li>
+              <li><a href="{{ '/Movimentacao/Guia%20Rapido/' | relative_url }}">Guia Rápido</a></li>
+              <li><a href="{{ '/Movimentacao/FAQ/' | relative_url }}">FAQ</a></li>
+              <li><a href="{{ '/Movimentacao/Preco%20de%20Venda%20-%20Guia%20do%20Usuario/' | relative_url }}">Preço de Venda — Guia</a></li>
+              <li><a href="{{ '/Movimentacao/Tabela%20de%20Preco%20-%20Fallback%20Preco%20Base/' | relative_url }}">Tabela de Preço — Fallback</a></li>
+              <li><a href="{{ '/Movimentacao/Atualiza%C3%A7%C3%A3o%20de%20Custo%20Autom%C3%A1tica%20Sol.NET/' | relative_url }}">Atualização de Custo Automática</a></li>
+            </ul>
+          </details>
+
+          <details class="sn-sidebar__group" data-sn-group="rh">
+            <summary class="sn-sidebar__group-summary">👥 RH</summary>
+            <ul class="sn-sidebar__items">
+              <li><a href="{{ '/RH/' | relative_url }}">Visão geral</a></li>
+              <li><a href="{{ '/RH/Documentacao%20Folha%20de%20Pagamento/' | relative_url }}">Folha de Pagamento</a></li>
+              <li><a href="{{ '/RH/Processo%20Mensal/' | relative_url }}">Processo Mensal</a></li>
+              <li><a href="{{ '/RH/Guia%20Rapido/' | relative_url }}">Guia Rápido</a></li>
+              <li><a href="{{ '/RH/FAQ/' | relative_url }}">FAQ</a></li>
+            </ul>
+          </details>
+
+          <details class="sn-sidebar__group" data-sn-group="agronomico">
+            <summary class="sn-sidebar__group-summary">🌱 Agronômico</summary>
+            <ul class="sn-sidebar__items">
+              <li><a href="{{ '/Agronomico/' | relative_url }}">Visão geral</a></li>
+              <li><a href="{{ '/Agronomico/Documentacao%20Receituario%20Agronomico/' | relative_url }}">Receituário Agronômico</a></li>
+              <li><a href="{{ '/Agronomico/Guia%20Rapido/' | relative_url }}">Guia Rápido</a></li>
+              <li><a href="{{ '/Agronomico/FAQ/' | relative_url }}">FAQ</a></li>
+            </ul>
+          </details>
+
+          <details class="sn-sidebar__group" data-sn-group="selfcheckout">
+            <summary class="sn-sidebar__group-summary">🛒 Self Checkout</summary>
+            <ul class="sn-sidebar__items">
+              <li><a href="{{ '/SelfCheckout/' | relative_url }}">Visão geral</a></li>
+              <li><a href="{{ '/SelfCheckout/Documentacao%20Instalacao/' | relative_url }}">Documentação de Instalação</a></li>
+              <li><a href="{{ '/SelfCheckout/Guia%20Rapido/' | relative_url }}">Guia Rápido</a></li>
+              <li><a href="{{ '/SelfCheckout/FAQ/' | relative_url }}">FAQ</a></li>
+            </ul>
+          </details>
+
+          <details class="sn-sidebar__group" data-sn-group="recursos">
+            <summary class="sn-sidebar__group-summary">📐 Recursos</summary>
+            <ul class="sn-sidebar__items">
+              <li><a href="{{ '/GUIA_MERMAID/' | relative_url }}">Guia Mermaid</a></li>
+            </ul>
+          </details>
+        </nav>
+
+        <div class="sn-sidebar__footer">
+          Sol.NET ERP — Hetosoft<br>
+          {% if site.github.repository_url %}
+            <a href="{{ site.github.repository_url }}">Repositório</a>
+          {% endif %}
+        </div>
+      </aside>
+
+      <div class="sn-content">
+        <header class="sn-topbar">
+          <button type="button" class="sn-topbar__toggle" aria-label="Abrir menu" aria-controls="sn-sidebar" data-sn-toggle>
+            <span></span>
+          </button>
+          <a href="{{ '/' | relative_url }}" class="sn-topbar__title">📚 Documentação Sol.NET</a>
+        </header>
+
+        <div class="container-lg px-3 my-5 markdown-body">
+          {{ content }}
+
+          {% if site.github.private != true and site.github.license %}
+          <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+            Este site é open source. {% github_edit_link "Melhorar esta página" %}.
+          </div>
+          {% endif %}
+        </div>
       </div>
-      {% endif %}
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/5.0.0/anchor.min.js" integrity="sha512-TQt5428mXbr25GYHhFUB6nhedHQDLnlLbM/AFaDxLE0sPFzn/CloFlKKNBJe+rH13VKvVqe6DZqr1L1C0dv6OA==" crossorigin="anonymous"></script>
     <script>anchors.add();</script>
+
+    <script>
+      // Sidebar: marca o item ativo, expande a seção correspondente
+      // e gerencia o toggle no mobile.
+      (function () {
+        var layout = document.getElementById('sn-layout');
+        var sidebar = document.getElementById('sn-sidebar');
+        if (!layout || !sidebar) return;
+
+        // Normaliza o caminho atual (sem trailing slash, decodificado)
+        function normalize(p) {
+          try { p = decodeURIComponent(p); } catch (e) {}
+          if (p.length > 1 && p.charAt(p.length - 1) === '/') {
+            p = p.substring(0, p.length - 1);
+          }
+          return p.toLowerCase();
+        }
+
+        var currentPath = normalize(window.location.pathname);
+        var activeLink = null;
+        var bestLength = -1;
+
+        var links = sidebar.querySelectorAll('.sn-sidebar__items a, .sn-sidebar__home');
+        links.forEach(function (a) {
+          var hrefPath;
+          try { hrefPath = new URL(a.href, window.location.href).pathname; }
+          catch (e) { return; }
+          hrefPath = normalize(hrefPath);
+          if (hrefPath === currentPath) {
+            // match exato vence sempre
+            activeLink = a;
+            bestLength = Infinity;
+          } else if (
+            bestLength !== Infinity &&
+            hrefPath !== '' && hrefPath !== '/' &&
+            (currentPath === hrefPath || currentPath.indexOf(hrefPath + '/') === 0) &&
+            hrefPath.length > bestLength
+          ) {
+            // fallback: prefixo mais longo (útil para subpastas)
+            activeLink = a;
+            bestLength = hrefPath.length;
+          }
+        });
+
+        if (activeLink) {
+          activeLink.classList.add('is-active');
+          var group = activeLink.closest('details.sn-sidebar__group');
+          if (group) group.setAttribute('open', '');
+        }
+
+        // Toggle mobile
+        var toggle = layout.querySelector('[data-sn-toggle]');
+        var backdrop = layout.querySelector('[data-sn-close]');
+        if (toggle) {
+          toggle.addEventListener('click', function () {
+            layout.classList.toggle('is-open');
+          });
+        }
+        if (backdrop) {
+          backdrop.addEventListener('click', function () {
+            layout.classList.remove('is-open');
+          });
+        }
+        // Fecha ao clicar em um link no mobile (UX)
+        sidebar.addEventListener('click', function (ev) {
+          var t = ev.target;
+          while (t && t !== sidebar) {
+            if (t.tagName === 'A') {
+              if (window.matchMedia('(max-width: 899px)').matches) {
+                layout.classList.remove('is-open');
+              }
+              return;
+            }
+            t = t.parentNode;
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
