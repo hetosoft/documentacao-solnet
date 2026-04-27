@@ -1,0 +1,2 @@
+# Claude Code — local-only settings (NEVER commit; may contain tokens)
+.claude/settings.local.json
