@@ -57,8 +57,31 @@ The `.github/copilot-instructions.md` file codifies the house style. Key rules t
 - Every document opens with `# 📄 [Título] - Sol.NET` and uses emojis as section markers. Match the existing emoji vocabulary rather than inventing new ones.
 - Structure: `## 🎯 Visão Geral` → main sections → `## 💡 Exemplos Práticos` → `## ❓ FAQ / Problemas Comuns` → metadata footer (`**Última atualização**`, `**Versão**`, `**Público-alvo**`).
 - Prefer lists to tables; tables that do appear should stay narrow enough to read on mobile.
-- When referring to the system use **"Sol.NET"** or **"Sol.NET ERP"**; modules are **"Módulo <Nome>"**; keyboard shortcuts use plain form (`F4`, `Ctrl+S`); menu paths use `Menu > Submenu > Opção`; field names go in quotes.
+- When referring to the system use **"Sol.NET"** or **"Sol.NET ERP"**; modules are **"Módulo <Nome>"**; keyboard shortcuts use plain form (`F1`, `Ctrl+S`) **only when validated against the source code** (see *Atalhos de Teclado* below); screens are referenced by name + numeric code accessed via the F1 search (see *Acesso a Telas* below); field names go in quotes.
 - When editing existing docs, add to existing sections rather than creating parallel ones, and keep the emoji/formatting pattern consistent with the file you're editing.
+
+## Atalhos de Teclado (Regra Obrigatória)
+
+**NUNCA** documente um atalho de teclado se não for possível **validá-lo no código-fonte do Sol.NET**. Atalhos populares (`F4`, `F5`, `F6`, `F9`, `Enter` etc.) variam de tela para tela e podem ter sido alterados ou removidos entre releases — escrever atalhos por suposição produz documentação que confunde o usuário e gera retrabalho de suporte.
+
+- A única referência de atalho confirmada de uso geral é **`F1`**, que abre a tela de pesquisa universal (ver *Acesso a Telas* abaixo). Pode ser usado em qualquer documento.
+- Para qualquer outro atalho, antes de citá-lo na doc, **localize o handler no código** (ex.: `KeyDown`, `KeyPress`, `ShortCut`, `OnShortCut`, ações em `TActionList` com `ShortCut = ...`) na tela em questão. Se não for possível validar (sandbox sem acesso ao GitHub, falta de tempo, etc.), **NÃO** cite o atalho.
+- Em vez de inventar atalhos, prefira frases como:
+  - *"Acesse a tela `X` (código `NNN` na pesquisa F1)"*
+  - *"Use a função `Y` da tela `X`"*
+  - *"Confirme/Salve pelo botão equivalente"*
+- Se a documentação atual já cita um atalho não validado, **remova ou substitua pela forma genérica** ao tocar no arquivo.
+
+## Acesso a Telas (Convenção Obrigatória)
+
+Toda tela do Sol.NET é acessada pela **tela de pesquisa universal**, aberta com o atalho **F1**. Cada tela tem um **código identificador** (numérico) que o usuário digita nessa pesquisa para abrir a função desejada.
+
+- **NUNCA** documente acesso a telas usando caminhos do tipo `Menu > Submenu > Opção`. O Sol.NET não usa essa navegação como padrão de uso.
+- **SEMPRE** referencie cada tela como: nome da tela + código identificador, indicando que o acesso é via pesquisa (F1). Exemplo: *"Tela `Receituário Agronômico` (código `142`) — abra pela pesquisa (F1) e digite o código ou parte do nome."*
+- A fonte canônica dos códigos é o arquivo **`Sol.NET/Form/uFrmProcessoAtualizacaoPrincipal.pas`** do repositório [ProjetosSol.NET](https://github.com/hetosoft/ProjetosSol.NET/blob/develop/Sol.NET/Form/uFrmProcessoAtualizacaoPrincipal.pas) (branch `develop`). Os códigos aparecem nos comandos `INSERT` na tabela `FORMULARIOS`; o parâmetro que carrega o código é **`ID_FORMULARIO`**, e o nome do formulário acompanha.
+- **Antes** de citar, criar ou alterar o código de qualquer tela na documentação, **consulte esse arquivo via `gh` (GitHub CLI) ou pelo navegador**. Não invente códigos e não confie em memória de versões anteriores: a tabela é atualizada a cada release.
+- Quando criar listas de telas relacionadas (ex.: "Cadastros do módulo X"), apresente em formato `Tela — código (ID_FORMULARIO) — descrição curta` e deixe claro que todas são abertas pela pesquisa (F1).
+- **Limitação atual do sandbox Cowork**: o domínio do GitHub e a rede do `gh` ainda não estão liberados pelo allowlist do ambiente onde o Claude executa. Enquanto isso não for liberado, peça ao usuário para colar o trecho relevante do `INSERT INTO FORMULARIOS` (ou os códigos manualmente) na conversa. Esta nota deve ser removida assim que o domínio for liberado.
 
 ## Links Between Documents
 

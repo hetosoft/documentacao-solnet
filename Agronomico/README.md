@@ -48,7 +48,7 @@ Guia completo do módulo:
 
 ### 🚀 **[Guia Rápido](Guia%20Rapido.md)**
 Referência objetiva para o dia a dia:
-- Atalho **F9** na Movimentação
+- Como o gatilho automático na Movimentação funciona
 - Checklist diário de emissão
 - Pré-cadastros obrigatórios
 - Soluções rápidas para os erros mais comuns
@@ -81,11 +81,35 @@ graph LR
 **Fluxo detalhado:**
 1. **Cadastros de apoio** (uma vez): culturas, alvos (diagnósticos), formulados, bulas digitais e embalagens
 2. **Cadastros administrativos** (por profissional/cliente): profissional responsável, blocos de ART/TRT, locais de aplicação
-3. **Emissão**: pelo menu próprio ou pelo atalho **F9** na tela de Movimentação
+3. **Emissão**:
+   - **Integrada (gatilho automático)**: ao avançar uma movimentação **fiscal** que contenha itens com formulado vinculado, o Sol.NET abre automaticamente a tela de Receituário
+   - **Avulsa**: abrir a tela `Receituário Agronômico` pela pesquisa (F1) e usar **Novo**
 4. **Validação automática**: bula (produto × cultura × alvo × dose), ART (saldo e validade), vínculo cliente↔local e empresa↔ART
 5. **Consumo do saldo** da ART e geração do número sequencial da receita
 6. **Impressão** do receituário no modelo oficial via ReportBuilder
 7. **Cancelamento** (quando necessário) restaura o saldo da ART
+
+---
+
+## 🧭 Como Acessar as Telas
+
+Todas as telas do Sol.NET — inclusive as do Módulo Agronômico — são abertas pela **tela de pesquisa universal**, acionada pelo atalho **F1**. Na pesquisa, digite o **código identificador** (`ID_FORMULARIO`) da tela ou parte do nome e confirme.
+
+| Tela | Código | Função |
+|------|:---:|---|
+| `Cadastro Cultura Agronômica` | **138** | Cadastro de culturas |
+| `Cadastro Diagnóstico Agronômico` | **139** | Cadastro de alvos biológicos |
+| `Cadastro Formulado Agronômico` | **140** | Defensivos + embalagens |
+| `Cadastro Config Bula Agronômico` | **141** | Bula digital |
+| `Profissionais Externos` | **135** | Responsáveis técnicos |
+| `Gestão ART/TRT` | **136** | Blocos de ART/TRT |
+| `Receituário Agronômico` | **142** | Emissão avulsa, consulta e cancelamento |
+| `Fórmulas de Produtos` | **143** | Fórmulas usadas em produção interna |
+| `Produção de Produtos` | **144** | Apontamento de produção |
+
+> 📚 Códigos extraídos de [`uFrmProcessoAtualizacaoPrincipal.pas`](https://github.com/hetosoft/ProjetosSol.NET/blob/develop/Sol.NET/Form/uFrmProcessoAtualizacaoPrincipal.pas) (`INSERT INTO FORMULARIOS`, parâmetro `ID_FORMULARIO`).
+
+> 💡 A **emissão integrada** à venda **não tem entrada própria pelo F1**: é o próprio Sol.NET que abre a tela do Receituário automaticamente quando uma movimentação fiscal contém itens que exigem receita.
 
 ---
 
@@ -120,10 +144,10 @@ graph LR
 [ ] Cadastrar locais de aplicação dos clientes ativos
 ```
 
-### **Por venda**
+### **Por venda (movimento fiscal com itens que exigem receita)**
 ```
-[ ] Lançar a movimentação normalmente
-[ ] Pressionar F9 ou usar o botão de receituário
+[ ] Lançar a movimentação fiscal normalmente
+[ ] Avançar no fluxo — Sol.NET abre o Receituário automaticamente
 [ ] Confirmar profissional e ART (sistema sugere)
 [ ] Confirmar local de aplicação
 [ ] Conferir doses e área tratada (calculadas automaticamente)
@@ -148,7 +172,7 @@ graph LR
 → **Sim.** O cancelamento estorna o número e devolve o saldo para a ART de origem.
 
 **Preciso emitir uma receita sem nota fiscal?**
-→ É possível. A emissão **não exige protocolo de NF-e**. A vinculação à movimentação é opcional para casos de venda; em campo, o receituário pode ser avulso.
+→ A emissão **não exige protocolo de NF-e autorizado**, mas para a **emissão e impressão** definitivas o receituário precisa estar **vinculado a uma movimentação**. No fluxo avulso, é possível **lançar/cadastrar** a receita sem vínculo (útil em campo) e completar a vinculação à movimentação antes de emitir/imprimir.
 
 **Como recebo aviso de que uma ART está acabando?**
 → Configure a "Quantidade de Aviso" na ART. O Sol.NET alerta na tela ao emitir e exibe ARTs próximas do esgotamento.
@@ -165,7 +189,7 @@ graph LR
 - [Cadastro de ART/TRT](Documentacao%20Receituario%20Agronomico.md#-cadastro-de-arttrt)
 
 **Emitir receituário:**
-- [Emissão integrada à Movimentação (F9)](Documentacao%20Receituario%20Agronomico.md#-emissão-integrada-à-movimentação)
+- [Emissão integrada à Movimentação (gatilho automático)](Documentacao%20Receituario%20Agronomico.md#-emissão-integrada-à-movimentação-gatilho-automático)
 - [Emissão avulsa](Documentacao%20Receituario%20Agronomico.md#-emissão-avulsa)
 - [Validações automáticas](Documentacao%20Receituario%20Agronomico.md#-validações-automáticas)
 
@@ -187,7 +211,7 @@ graph LR
 ## 💡 Dicas Importantes
 
 ### **Para usuários de balcão**
-1. **F9 é seu atalho** — não saia da Movimentação para emitir
+1. **Não saia da Movimentação para emitir** — em movimentos fiscais, o Sol.NET abre o Receituário automaticamente
 2. **Confira a empresa ativa** — a ART que vai ser sugerida é a da empresa logada
 3. **Confirme o local de aplicação** — clientes com várias fazendas precisam escolher a correta
 4. **Imprima na hora** — o cliente precisa sair com as vias do receituário
@@ -214,7 +238,7 @@ graph LR
 → [Guia Rápido - Problemas Comuns](Guia%20Rapido.md#-problemas-comuns)
 
 **Bula desatualizada / produto novo do MAPA**
-→ Cadastre/ajuste em **Cadastros > Agronômico > Configuração de Bula**
+→ Cadastre/ajuste na tela **Configuração de Bula** (abra pela pesquisa F1)
 
 **Sistema Sol.NET**
 → Suporte técnico Hetosoft

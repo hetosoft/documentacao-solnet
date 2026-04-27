@@ -122,15 +122,15 @@ Portal de navegação para toda documentação do Módulo Agronômico
 #### **📖 [Documentação Receituário Agronômico](Agronomico/Documentacao Receituario Agronomico.md)**
 - Cadastros de apoio (culturas, diagnósticos, formulados, configuração de bula, embalagens)
 - Cadastros administrativos (profissionais, ART/TRT, locais de aplicação)
-- Emissão integrada à Movimentação (atalho **F9**) e emissão avulsa
+- Emissão integrada à Movimentação (gatilho automático em movimentos fiscais) e emissão avulsa
 - Validações automáticas (bula digital, saldo e validade de ART, vínculo cliente↔local, empresa↔ART)
 - Cancelamento com estorno automático de saldo de ART
 - Impressão via ReportBuilder no modelo legal
 
 #### **🚀 [Guia Rápido](Agronomico/Guia Rapido.md)**
 - Checklist de configuração inicial
-- Fluxo diário de emissão pelo F9
-- Atalhos e pesquisas úteis
+- Fluxo diário com o gatilho automático na Movimentação
+- Pesquisa de telas (F1) e códigos `ID_FORMULARIO`
 - Soluções para os erros mais comuns
 
 #### **❓ [FAQ - Perguntas Frequentes](Agronomico/FAQ.md)**
