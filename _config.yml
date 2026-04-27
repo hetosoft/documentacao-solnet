@@ -3,8 +3,16 @@ description: "Portal de documentação do Sol.NET ERP"
 url: "https://hetosoft.github.io"
 baseurl: "/documentacao-solnet"
 
-# Gera URLs amigáveis (sem .html no final)
+# `permalink: pretty` afeta apenas posts.
+# Para páginas, o default abaixo gera URLs sem `.html` (ex.: /Financeiro/documentacao_dre/).
 permalink: pretty
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      permalink: /:path/:basename/
 
 # Markdown engine e compatibilidade com GFM
 markdown: kramdown
@@ -30,3 +38,8 @@ readme_index:
 relative_links:
   enabled: true
   collections: true
+
+# Arquivos não publicados
+exclude:
+  - teste_mermaid.md
+  - CLAUDE.md
