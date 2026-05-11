@@ -24,7 +24,7 @@ O **Módulo Portadores** é um componente essencial do sistema Sol.NET ERP, resp
 
 ### Organização da Interface
 
-O módulo é organizado através do **Cadastro de Portadores** (código `[A CONFIRMAR]` na pesquisa F1), que centraliza todas as configurações e funcionalidades relacionadas ao gerenciamento de instrumentos de pagamento. A interface possui duas visualizações principais:
+O módulo é organizado através do **Cadastro de Portadores** (código `12` na pesquisa F1), que centraliza todas as configurações e funcionalidades relacionadas ao gerenciamento de instrumentos de pagamento. A interface possui duas visualizações principais:
 
 - **Visualização de Consulta**: Lista todos os portadores cadastrados com informações resumidas
 - **Visualização de Cadastro**: Permite criação e edição detalhada de portadores através de abas especializadas
@@ -557,19 +557,6 @@ O sistema mantém controle automático de:
 - Ajustar o valor da parcela para atender ao mínimo exigido
 - Ou ajustar a configuração do portador se o limite estiver inadequado
 
-### Logs e Auditoria
-
-O sistema mantém automaticamente um log detalhado de todas as alterações realizadas nos portadores, incluindo:
-- Data e hora de cada modificação
-- Usuário responsável pela alteração
-- Tipo de operação realizada (criação, edição, exclusão)
-- Histórico de valores alterados
-
-**Acesso aos Logs:**
-- Abra a pesquisa universal (F1), digite **Auditoria** (código `[A CONFIRMAR]`) e abra a tela de logs.
-- Filtrar por "Portadores" para ver apenas mudanças em portadores
-- Consultar histórico específico por portador
-
 ### Backup e Restore
 
 **Informações Incluídas no Backup:**
@@ -657,10 +644,9 @@ O sistema mantém automaticamente um log detalhado de todas as alterações real
 
 Para dúvidas técnicas ou problemas específicos:
 
-1. **Consulte os logs**: abra a pesquisa universal (F1) e digite **Auditoria** (código `[A CONFIRMAR]`); filtre por "Portadores".
-2. **Verifique configurações**: Duplo-clique no portador para editar
-3. **Teste isolado**: Use ambiente de homologação quando disponível  
-4. **Documente casos**: Contribua com novos cenários de uso
+1. **Verifique configurações**: Duplo-clique no portador para editar
+2. **Teste isolado**: Use ambiente de homologação quando disponível  
+3. **Documente casos**: Contribua com novos cenários de uso
 
 ---
 
