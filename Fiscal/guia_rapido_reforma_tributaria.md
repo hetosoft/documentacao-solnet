@@ -1,6 +1,6 @@
 ---
 title: "Guia Rápido - Reforma Tributária Sol.NET"
-permalink: /Financeiro/guia-rapido-reforma-tributaria/
+permalink: /Fiscal/guia_rapido_reforma_tributaria/
 ---
 # ⚡ Guia Rápido: Reforma Tributária - Sol.NET
 
@@ -31,41 +31,38 @@ permalink: /Financeiro/guia-rapido-reforma-tributaria/
 
 ### **1. Configurar NCM (Fazer UMA VEZ)**
 
+- Abra a pesquisa universal (F1) e acesse a tela de Cadastro de NCM
+- Crie um novo registro:
 ```
-Menu → Cadastros → Fiscal → NCM (Ctrl+Alt+N)
-
-Novo (F4):
 1. Código NCM: [8 dígitos]
 2. Descrição: [auto-preenche]
 3. Classificação: Padrão / Reduzida / Zero
 4. CBS%: [auto-preenche conforme classificação]
 5. IBS%: [auto-preenche conforme classificação]
-6. Salvar (F5)
-
-✅ Vincular produtos:
-   Cadastros → Produtos → Aba Fiscal → Campo NCM
+6. Salve pelo botão equivalente
 ```
+
+✅ Vincular produtos: Abra a pesquisa universal (F1), acesse Cadastro de Produtos → aba Fiscal → campo NCM
 
 ---
 
 ### **2. Lançar Compra (Gera Crédito)**
 
+- Abra a pesquisa universal (F1) e acesse a tela de Movimentação
 ```
-Menu → Movimentação → Nova (F4)
-
 Cabeçalho:
 ├─ Tipo: Compra
-├─ Fornecedor: [F2]
+├─ Fornecedor: [buscar pelo nome]
 ├─ Data: [hoje]
-└─ Continuar → Items (F9)
+└─ Prossiga para lançamento de itens
 
 Item:
-├─ Produto: [F2 buscar]
+├─ Produto: [buscar pelo nome]
 ├─ Quantidade: [informar]
 ├─ Valor Unit: [informar]
 └─ Sistema calcula CBS/IBS automaticamente
 
-Finalizar (F6)
+Finalize pelo botão equivalente
 📊 Créditos registrados automaticamente
 ```
 
@@ -73,17 +70,16 @@ Finalizar (F6)
 
 ### **3. Lançar Venda (Usa Crédito)**
 
+- Abra a pesquisa universal (F1) e acesse a tela de Movimentação
 ```
-Menu → Movimentação → Nova (F4)
-
 Cabeçalho:
 ├─ Tipo: Venda
-├─ Cliente: [F2]
+├─ Cliente: [buscar pelo nome]
 ├─ UF Destino: [importante para IBS]
-└─ Continuar → Items (F9)
+└─ Prossiga para lançamento de itens
 
 Item:
-├─ Produto: [F2]
+├─ Produto: [buscar pelo nome]
 ├─ Quantidade: [informar]
 ├─ Valor Unit: [informar]
 └─ Sistema:
@@ -91,7 +87,7 @@ Item:
     2. Busca créditos automaticamente
     3. Mostra tributo líquido
 
-Finalizar (F6) → Gerar NFe (F10)
+Finalize pelo botão equivalente → Use a função de Gerar NFe disponível na tela
 📊 Créditos aproveitados automaticamente
 ```
 
@@ -99,9 +95,8 @@ Finalizar (F6) → Gerar NFe (F10)
 
 ### **4. Consultar Créditos Acumulados**
 
+- Abra a pesquisa universal (F1) e acesse a tela de Controle de Créditos CBS/IBS
 ```
-Menu → Fiscal → Controle de Créditos
-
 Visualizar:
 ├─ Saldo CBS disponível
 ├─ Saldo IBS disponível
@@ -116,9 +111,8 @@ Exportar: PDF / Excel
 
 ### **5. Apurar Período (Mensal)**
 
+- Abra a pesquisa universal (F1) e acesse a tela de Apuração CBS/IBS
 ```
-Menu → Fiscal → Apuração CBS/IBS
-
 Competência: [mês/ano]
 
 Sistema gera:
@@ -127,7 +121,7 @@ Sistema gera:
 ├─ Saldo a Recolher
 └─ Guias de pagamento
 
-Gerar Guias (F10)
+Use a função de Gerar Guias disponível na tela
 Imprimir / Enviar banco
 ```
 
@@ -176,18 +170,17 @@ Sistema compensa:
 
 ---
 
-## ⌨️ Atalhos Sol.NET - Reforma Tributária
+## ⌨️ Acesso às Telas - Reforma Tributária
 
-| Atalho | Função | Onde usar |
-|--------|--------|-----------|
-| **Ctrl+Alt+N** | Cadastro NCM | Cadastros → Fiscal |
-| **F2** | Buscar produto/cliente | Em qualquer campo |
-| **F4** | Novo registro | Movimentação, Cadastros |
-| **F5** | Salvar | Qualquer tela de edição |
-| **F6** | Finalizar movimento | Cabeçalho movimentação |
-| **F9** | Editar items | Na movimentação |
-| **F10** | Gerar NFe | Após finalizar movimento |
-| **F12** | Consulta rápida | Vários contextos |
+Todas as telas do Sol.NET são acessadas pela **pesquisa universal** (F1). Digite o nome ou parte do nome da tela desejada para abri-la diretamente.
+
+**Telas mais usadas no contexto da reforma:**
+- Busque "NCM" para acessar o cadastro de NCM
+- Busque "Movimentação" para lançar compras e vendas
+- Busque "Apuração CBS" para apurar o período mensal
+- Busque "Créditos" para consultar o controle de créditos tributários
+- Busque "Validação NCM" para identificar produtos sem classificação fiscal
+- Busque "Impacto Reforma" para acessar o relatório comparativo
 
 ---
 
@@ -238,7 +231,7 @@ Sistema compensa:
 
 ### **📌 Configuração Inicial:**
 1. **Priorize cesta básica**: Configure primeiro produtos com alíquota reduzida (maior impacto)
-2. **Use relatório**: `Fiscal → Validação NCM` lista produtos pendentes
+2. **Use relatório**: Abra a pesquisa universal (F1) e acesse a tela de Validação NCM para listar produtos pendentes
 3. **Copie NCM similar**: Use produto já configurado como modelo
 
 ### **📌 Operação Diária:**
@@ -258,10 +251,10 @@ Sistema compensa:
 ### **❌ "Item sem NCM configurado"**
 **Solução:**
 ```
-1. Cadastros → Produtos → Buscar produto
-2. Aba Fiscal → Campo NCM
-3. Selecionar NCM (F2)
-4. Salvar (F5)
+1. Abra a pesquisa universal (F1) e acesse Cadastro de Produtos
+2. Busque o produto pelo nome
+3. Aba Fiscal → Campo NCM → selecione o NCM correto
+4. Salve pelo botão equivalente
 ```
 
 ---
@@ -269,11 +262,11 @@ Sistema compensa:
 ### **❌ "Alíquota diferente da esperada"**
 **Solução:**
 ```
-1. Verificar classificação do NCM
-2. Cadastros → Fiscal → NCM → Editar
-3. Conferir campo "Classificação Tributária"
-4. Ajustar se necessário
-5. Salvar e refazer movimento
+1. Abra a pesquisa universal (F1) e acesse o Cadastro de NCM
+2. Localize o NCM e edite o registro
+3. Confira o campo "Classificação Tributária"
+4. Ajuste se necessário e salve pelo botão equivalente
+5. Refaça o movimento
 ```
 
 ---
@@ -281,11 +274,11 @@ Sistema compensa:
 ### **❌ "Créditos não aproveitados"**
 **Solução:**
 ```
-1. Fiscal → Controle de Créditos
-2. Verificar se compras estão registradas
-3. Conferir notas de entrada finalizadas
-4. Se ok, reprocessar movimento:
-   - Editar venda → Salvar novamente
+1. Abra a pesquisa universal (F1) e acesse Controle de Créditos
+2. Verifique se as compras estão registradas
+3. Confira as notas de entrada finalizadas
+4. Se estiver correto, reprocesse o movimento:
+   - Abra a venda e salve novamente pelo botão equivalente
 5. Se persistir: Suporte Sol.NET
 ```
 
@@ -294,11 +287,11 @@ Sistema compensa:
 ### **❌ "NFe rejeitada - tributos"**
 **Solução:**
 ```
-1. Conferir alíquotas CBS/IBS no item
-2. Verificar CST configurado
-3. Validar UF Destino no cabeçalho
-4. Refazer NFe (F10)
-5. Erro persiste: Ver log detalhado (F12)
+1. Confira as alíquotas CBS/IBS no item
+2. Verifique o CST configurado
+3. Valide a UF Destino no cabeçalho
+4. Refaça a NFe pela função de emissão disponível na tela
+5. Se o erro persistir: consulte o log detalhado via suporte Sol.NET
 ```
 
 ---
@@ -316,7 +309,7 @@ Sistema compensa:
 - [ ] Conferir documentos fiscais de saída
 
 ### **🗓️ Até dia 20:**
-- [ ] Acessar `Fiscal → Apuração CBS/IBS`
+- [ ] Abra a pesquisa universal (F1) e acesse a tela de Apuração CBS/IBS
 - [ ] Gerar relatório do período
 - [ ] Conferir saldos a recolher
 - [ ] Gerar guias de pagamento
@@ -358,8 +351,8 @@ Horário: Comercial
 
 ### **Documentação Completa:**
 ```
-📚 Menu Sol.NET → Ajuda → Reforma Tributária
-Ou acesse: docs.solnet.com.br/reforma
+📚 Acesse: docs.solnet.com.br/reforma
+Ou consulte a documentação disponível no portal do cliente
 ```
 
 ---
@@ -401,8 +394,8 @@ Ou acesse: docs.solnet.com.br/reforma
 
 ---
 
-**📅 Última atualização**: Dezembro de 2024  
-**📦 Versão**: 2.0 (Workflows Sol.NET)  
+**📅 Última atualização**: Abril de 2026  
+**📦 Versão**: 2.1 (Workflows Sol.NET)  
 **🎯 Público-alvo**: Usuários operacionais Sol.NET  
 **⏱️ Tempo de leitura**: ~15 minutos
 

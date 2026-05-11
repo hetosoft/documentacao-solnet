@@ -1,6 +1,6 @@
 ---
 title: "Reforma Tributária - Guia Completo Sol.NET"
-permalink: /Financeiro/reforma-tributaria/
+permalink: /Fiscal/documentacao_reforma_tributaria/
 ---
 # 🏛️ Reforma Tributária no Sol.NET ERP
 
@@ -41,7 +41,7 @@ A Emenda Constitucional 132/2023 substitui **5 tributos** (PIS, COFINS, IPI, ICM
 
 O cadastro de NCM (Nomenclatura Comum do Mercosul) é **essencial** para a correta aplicação de CBS e IBS, pois cada código NCM define a alíquota tributária aplicável.
 
-**Menu**: `Cadastros → Fiscal → NCM (Nomenclatura Comum Mercosul)`
+**Acesso**: Abra a pesquisa universal (F1) e busque pelo nome ou código da tela de NCM.
 
 #### **Campos do Cadastro de NCM:**
 
@@ -80,31 +80,26 @@ O cadastro de NCM (Nomenclatura Comum do Mercosul) é **essencial** para a corre
 #### **Passo a Passo: Configurar NCM**
 
 **1. Acessar Cadastro:**
-```
-Menu → Cadastros → Fiscal → NCM
-Atalho: Ctrl+Alt+N
-```
+- Abra a pesquisa universal (F1) e busque pela tela de cadastro de NCM.
 
-**2. Novo Registro (F4):**
-- Informar código NCM (8 dígitos)
-- Sistema busca descrição automaticamente (base IBGE)
-- Validar/ajustar descrição
+**2. Criar Novo Registro:**
+- Informe o código NCM (8 dígitos)
+- O sistema busca a descrição automaticamente (base IBGE)
+- Valide/ajuste a descrição
 
 **3. Configurar Tributação Reforma:**
-- Selecionar "Classificação Tributária"
-- Sistema sugere alíquotas conforme classificação
-- Ajustar se necessário (casos especiais)
-- Definir vigência (data início)
+- Selecione "Classificação Tributária"
+- O sistema sugere alíquotas conforme a classificação
+- Ajuste se necessário (casos especiais)
+- Defina a vigência (data início)
 
 **4. Vincular Produtos:**
 - Todos os produtos devem ter NCM vinculado
-- Menu: `Cadastros → Produtos → Aba Fiscal`
-- Campo "NCM": Selecionar da lista cadastrada
+- Acesse a tela de Cadastro de Produtos (pesquisa F1) e, na aba Fiscal, selecione o NCM cadastrado
 
 **5. Validar:**
-- Relatório: `Fiscal → Validação NCM`
-- Lista produtos sem NCM ou com configuração incompleta
-- Corrigir antes da vigência da reforma
+- Use o relatório de Validação NCM (pesquisa F1) para listar produtos sem NCM ou com configuração incompleta
+- Corrija antes da vigência da reforma
 
 #### **⚠️ Atenção:**
 
@@ -129,7 +124,7 @@ Atalho: Ctrl+Alt+N
 
 O módulo de **Movimentação** é onde os tributos CBS e IBS são **calculados automaticamente** com base nas configurações de NCM e tipo de operação.
 
-**Menu**: `Movimentação → Nova Movimentação (F4)`
+**Acesso**: Abra a pesquisa universal (F1) e busque pela tela de Movimentação.
 
 #### **Como o Sol.NET Calcula CBS/IBS:**
 
@@ -266,7 +261,7 @@ Apuração: Separada por tributo
 
 A tela de **Itens da Movimentação** oferece controle granular sobre cada produto/serviço, permitindo ajustes e visualização detalhada dos tributos.
 
-**Menu**: `Movimentação → Editar Items (F9 no cabeçalho)`
+**Acesso**: A partir da tela de Movimentação (aberta via pesquisa F1), acesse a seção de itens pelo botão correspondente.
 
 #### **Aba "Tributos" nos Items:**
 
@@ -330,7 +325,7 @@ Embora o sistema calcule automaticamente, é possível ajustar:
 2. Desmarcar "Calcular automaticamente" (se disponível)
 3. Alterar campo desejado (alíquota, base, CST)
 4. Sistema recalcula valores dependentes
-5. Salvar
+5. Salvar pelo botão equivalente
 
 **⚠️ Cuidado**: Ajustes manuais podem causar divergências fiscais. Sempre documente o motivo do ajuste.
 
@@ -362,7 +357,7 @@ O Sol.NET valida cada item:
 
 Um dos **maiores benefícios da reforma** é o crédito pleno. O Sol.NET gerencia automaticamente a apuração e aproveitamento de créditos.
 
-**Menu**: `Fiscal → Apuração CBS/IBS → Controle de Créditos`
+**Acesso**: Abra a pesquisa universal (F1) e busque pela tela de Controle de Créditos CBS/IBS.
 
 #### **Como Funciona:**
 
@@ -409,7 +404,7 @@ Total a Recolher: R$ 1.300,00
 
 #### **Relatório de Créditos:**
 
-**Acessar**: `Fiscal → Relatórios → Controle de Créditos CBS/IBS`
+**Acesso**: Abra a pesquisa universal (F1) e busque pela tela de Relatório de Créditos CBS/IBS.
 
 **Informações disponíveis:**
 - 📊 Saldo de créditos acumulados (CBS e IBS separados)
@@ -491,7 +486,7 @@ O Sol.NET oferece relatórios específicos para análise e gestão da reforma tr
 
 #### **1. Análise de Impacto Tributário**
 
-**Menu**: `Relatórios → Fiscal → Análise Impacto Reforma`
+**Acesso**: Abra a pesquisa universal (F1) e busque pela tela de Análise de Impacto da Reforma.
 
 **Comparativo: Carga Atual × Carga Reforma**
 
@@ -521,7 +516,7 @@ Diferença: -R$ 0,02 (-1,25%)
 
 #### **2. Relatório de Transição (2029-2032)**
 
-**Menu**: `Relatórios → Fiscal → Controle Transição`
+**Acesso**: Abra a pesquisa universal (F1) e busque pela tela de Controle de Transição.
 
 Mostra lado a lado tributos antigos e novos:
 
@@ -545,7 +540,7 @@ Projeção 2033: 26%
 
 #### **3. Apuração CBS/IBS**
 
-**Menu**: `Fiscal → Apuração → CBS e IBS`
+**Acesso**: Abra a pesquisa universal (F1) e busque pela tela de Apuração CBS/IBS.
 
 Equivalente à apuração de ICMS/PIS/COFINS:
 
@@ -618,25 +613,18 @@ Total a recolher: R$ 38.000,00
 
 ## 💻 Funcionalidades Sol.NET - Resumo
 
-### **Menu Rápido de Acesso:**
+### **Principais Telas do Módulo Fiscal:**
 
-```
-📂 Sol.NET ERP
-├─ Cadastros
-│   ├─ Fiscal → NCM (Ctrl+Alt+N)
-│   └─ Produtos → Aba Fiscal
-├─ Movimentação
-│   ├─ Nova Movimentação (F4)
-│   └─ Editar Items (F9)
-├─ Fiscal
-│   ├─ Apuração CBS/IBS
-│   ├─ Controle de Créditos
-│   └─ Validação NCM
-└─ Relatórios
-    ├─ Fiscal → Análise Impacto Reforma
-    ├─ Fiscal → Controle Transição
-    └─ Fiscal → Apuração Mensal
-```
+Todas as telas são acessadas pela pesquisa universal (F1). Busque pelo nome ou código da tela desejada:
+
+- **Cadastro de NCM** — configure NCM com classificações tributárias e alíquotas CBS/IBS
+- **Cadastro de Produtos** — vincule NCM a cada produto (aba Fiscal)
+- **Movimentação** — lançamento de compras e vendas com cálculo automático CBS/IBS
+- **Apuração CBS/IBS** — apuração mensal e geração de guias
+- **Controle de Créditos** — saldo e rastreabilidade de créditos tributários
+- **Validação NCM** — relatório de produtos sem NCM ou com configuração incompleta
+- **Análise de Impacto da Reforma** — comparativo de carga tributária atual vs. reforma
+- **Controle de Transição** — relatório lado a lado de tributos antigos e novos (2029-2032)
 
 ### **Atualizações Automáticas:**
 
@@ -652,40 +640,36 @@ O Sol.NET será atualizado progressivamente conforme cronograma da reforma:
 
 ---
 
-## 🎓 Exemplos Práticos no Sol.NET
+## 💡 Exemplos Práticos no Sol.NET
 
 ### **Exemplo 1: Cadastrar NCM e Configurar Produto**
 
 **Objetivo**: Configurar produto "Arroz Tipo 1" para reforma tributária
 
 **Passo 1 - Cadastrar NCM:**
+- Abra a pesquisa universal (F1) e acesse a tela de Cadastro de NCM
+- Crie um novo registro:
 ```
-Menu → Cadastros → Fiscal → NCM
-Atalho: Ctrl+Alt+N
-
-Novo (F4):
 ├─ Código NCM: 1006.30.21
 ├─ Descrição: Arroz semibranqueado ou branqueado
 ├─ Classificação Tributária: Reduzida (cesta básica)
 ├─ CBS Alíquota: 5,4% (60% padrão)
 ├─ IBS Alíquota: 10,5% (60% padrão)
-├─ Vigência Início: 01/01/2027
-└─ Salvar (F5)
+└─ Vigência Início: 01/01/2027
 ```
+Salve pelo botão equivalente.
 
 **Passo 2 - Vincular ao Produto:**
+- Abra a pesquisa universal (F1) e acesse a tela de Cadastro de Produtos
+- Busque "Arroz Tipo 1" e acesse a aba Fiscal:
 ```
-Menu → Cadastros → Produtos
-
-Buscar: "Arroz Tipo 1"
-Editar → Aba Fiscal:
 ├─ NCM: Selecionar "1006.30.21 - Arroz semibranqueado"
 ├─ Sistema preenche automaticamente:
 │   ├─ Classificação: Reduzida
 │   ├─ CBS: 5,4%
 │   └─ IBS: 10,5%
-└─ Salvar (F5)
 ```
+Salve pelo botão equivalente.
 
 **Resultado**: Produto configurado para cálculo automático de CBS/IBS em vendas e compras.
 
@@ -696,21 +680,21 @@ Editar → Aba Fiscal:
 **Objetivo**: Registrar compra de arroz gerando crédito tributário
 
 **Passo 1 - Nova Movimentação:**
+- Abra a pesquisa universal (F1) e acesse a tela de Movimentação
+- Crie uma nova movimentação:
 ```
-Menu → Movimentação → Nova (F4)
-
 Cabeçalho:
 ├─ Tipo Movimento: "Compra de Mercadorias"
 ├─ Fornecedor: "Distribuidora Grãos Ltda"
 ├─ Data Emissão: 10/01/2027
-├─ Nota Fiscal: 12345
-└─ Prosseguir → Items
+└─ Nota Fiscal: 12345
 ```
+Prossiga para o lançamento de itens.
 
 **Passo 2 - Lançar Item:**
 ```
-Items (F9):
-├─ Produto: "Arroz Tipo 1 - 5kg" (F2 buscar)
+Items:
+├─ Produto: "Arroz Tipo 1 - 5kg" (buscar pelo nome)
 ├─ Quantidade: 1000 unidades
 ├─ Valor Unitário: R$ 18,00
 ├─ Valor Total: R$ 18.000,00
@@ -728,15 +712,12 @@ Sistema calcula automaticamente:
     ├─ Alíquota: 10,5%
     ├─ Valor IBS: R$ 1.890,00
     └─ Situação: Crédito a Apropriar
-
-Confirmar (F5)
 ```
+Confirme o item pelo botão equivalente.
 
 **Passo 3 - Finalizar:**
+- Volte ao cabeçalho e finalize a movimentação pelo botão equivalente.
 ```
-Voltar ao cabeçalho
-Finalizar Movimentação (F6)
-
 Resumo:
 ├─ Valor Produtos: R$ 18.000,00
 ├─ CBS: R$ 972,00 (CRÉDITO)
@@ -754,20 +735,20 @@ Resumo:
 **Objetivo**: Vender arroz aproveitando créditos da compra anterior
 
 **Passo 1 - Nova Venda:**
+- Abra a pesquisa universal (F1) e acesse a tela de Movimentação
+- Crie uma nova movimentação:
 ```
-Menu → Movimentação → Nova (F4)
-
 Cabeçalho:
 ├─ Tipo Movimento: "Venda"
 ├─ Cliente: "Supermercado ABC Ltda"
 ├─ Data Emissão: 20/01/2027
-├─ UF Destino: SP
-└─ Prosseguir → Items
+└─ UF Destino: SP
 ```
+Prossiga para o lançamento de itens.
 
 **Passo 2 - Lançar Item:**
 ```
-Items (F9):
+Items:
 ├─ Produto: "Arroz Tipo 1 - 5kg"
 ├─ Quantidade: 800 unidades
 ├─ Valor Unitário: R$ 25,00
@@ -801,10 +782,8 @@ Total tributo líquido: R$ 318,00
 ```
 
 **Passo 3 - Gerar NFe:**
+- Finalize a movimentação pelo botão equivalente e gere a NFe pela função de emissão disponível na tela.
 ```
-Finalizar (F6)
-Gerar NFe (F10)
-
 DANFE mostrará:
 ├─ Valor Produtos: R$ 20.000,00
 ├─ CBS: R$ 1.080,00
@@ -816,7 +795,7 @@ DANFE mostrará:
     Tributo efetivo: R$ 318,00 (sobre valor agregado)"
 ```
 
-**Resultado**: 
+**Resultado**:
 - Cliente paga: R$ 23.180,00
 - Tributo efetivo: R$ 318,00 (só sobre a margem!)
 - Economia vs. sistema antigo: ~R$ 200,00
@@ -828,10 +807,9 @@ DANFE mostrará:
 **Objetivo**: Verificar saldo de créditos disponíveis para compensação
 
 **Passo 1 - Acessar Relatório:**
+- Abra a pesquisa universal (F1) e busque pela tela de Controle de Créditos.
+- Configure os filtros:
 ```
-Menu → Fiscal → Controle de Créditos
-
-Filtros:
 ├─ Período: 01/01/2027 a 31/01/2027
 ├─ Tipo: CBS e IBS
 └─ Situação: Todos
@@ -869,15 +847,14 @@ Saldo Total: R$ 0,00 (totalmente compensado)
 **Objetivo**: Comparar carga tributária antes e depois da reforma
 
 **Passo 1 - Acessar Simulador:**
+- Abra a pesquisa universal (F1) e busque pela tela de Análise de Impacto da Reforma.
+- Configure os filtros:
 ```
-Menu → Relatórios → Fiscal → Análise Impacto Reforma
-
-Filtros:
 ├─ Produto: "Arroz Tipo 1 - 5kg"
 ├─ Período Base: 2024 (cenário atual)
-├─ Período Reforma: 2033 (regime pleno)
-└─ Gerar Comparativo
+└─ Período Reforma: 2033 (regime pleno)
 ```
+Gere o comparativo pelo botão equivalente.
 
 **Passo 2 - Analisar Resultado:**
 ```
@@ -939,11 +916,7 @@ Recomendação: Precificar considerando menor carga
 ## ❓ FAQ Sol.NET - Perguntas Frequentes
 
 ### **Q: Como atualizo o Sol.NET para a reforma?**
-**R:** Atualizações automáticas via módulo de atualização:
-- Menu → Ajuda → Verificar Atualizações
-- Sistema baixa e instala automaticamente
-- Reiniciar após instalação
-- Sem custo adicional
+**R:** Atualizações via módulo de atualização do sistema. Abra a pesquisa universal (F1), busque pela tela de Verificação de Atualizações, e o sistema baixa e instala automaticamente. Reinicie após a instalação. Sem custo adicional.
 
 ---
 
@@ -952,7 +925,7 @@ Recomendação: Precificar considerando menor carga
 - Validar NCM existente
 - Adicionar classificação tributária
 - Sistema sugere alíquotas automaticamente
-- Use relatório "Validação NCM" para identificar pendências
+- Use o relatório de Validação NCM (pesquisa F1) para identificar pendências
 
 ---
 
@@ -999,7 +972,7 @@ Recomendação: Precificar considerando menor carga
 - Excel (análise)
 - XML (integração)
 - TXT (SPED)
-- Menu → Exportar em cada relatório
+- Use a função de exportar disponível em cada relatório
 
 ---
 
@@ -1068,8 +1041,8 @@ Recomendação: Precificar considerando menor carga
 
 ---
 
-**📅 Última atualização**: Dezembro de 2024  
-**📦 Versão**: 2.0 (Foco Sol.NET ERP)  
+**📅 Última atualização**: Abril de 2026  
+**📦 Versão**: 2.1 (Foco Sol.NET ERP)  
 **🎯 Público-alvo**: Usuários e administradores Sol.NET  
 **⚖️ Base legal**: Emenda Constitucional 132/2023
 

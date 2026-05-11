@@ -1,6 +1,6 @@
 ---
 title: "FAQ - Reforma Tributária"
-permalink: /Financeiro/faq-reforma-tributaria/
+permalink: /Fiscal/faq_reforma_tributaria/
 ---
 # ❓ FAQ: Reforma Tributária - Sol.NET
 
@@ -219,28 +219,21 @@ Venda produto: R$ 200 + R$ 52 tributos (CBS+IBS)
 **R:** **Automático e transparente**:
 
 **Passo 1: Compra**
-```
-Menu: Movimentação → Nova Compra
-└─ Lança nota fiscal fornecedor
-└─ Sistema calcula CBS e IBS pagos
-└─ Créditos registrados automaticamente
-```
+- Abra a pesquisa universal (F1) e acesse a tela de Movimentação
+- Lance a nota fiscal do fornecedor
+- Sistema calcula CBS e IBS pagos e registra créditos automaticamente
 
 **Passo 2: Venda**
-```
-Menu: Movimentação → Nova Venda
-└─ Sistema calcula CBS e IBS da venda
-└─ Deduz créditos acumulados automaticamente
-└─ Mostra tributo líquido a recolher
-```
+- Abra a pesquisa universal (F1) e acesse a tela de Movimentação
+- Sistema calcula CBS e IBS da venda
+- Deduz créditos acumulados automaticamente
+- Exibe tributo líquido a recolher
 
 **Passo 3: Apuração**
-```
-Menu: Fiscal → Apuração CBS/IBS
-└─ Relatório de créditos × débitos
-└─ Saldo a pagar ou crédito acumulado
-└─ Geração de guia de recolhimento
-```
+- Abra a pesquisa universal (F1) e acesse a tela de Apuração CBS/IBS
+- Consulte o relatório de créditos × débitos
+- Verifique o saldo a pagar ou crédito acumulado
+- Gere a guia de recolhimento pelo botão equivalente
 
 **Transparência total**: Todos os créditos rastreáveis por origem (nota fiscal).
 
@@ -404,7 +397,7 @@ Benefício: R$ 50 + simplificação
 1. **Revisar cadastro de produtos**
    - Conferir NCM/NBS de todos os itens
    - Classificar por categoria tributária (padrão/reduzida/zero)
-   - Menu: Cadastros → Produtos → Validação NCM
+   - Abra a pesquisa universal (F1) e acesse a tela de Validação NCM
    
 2. **Mapear fornecedores e clientes**
    - Dados cadastrais completos e atualizados
@@ -808,8 +801,8 @@ Conferência:
 
 ---
 
-**📅 Última atualização**: Dezembro de 2024  
-**📦 Versão FAQ**: 1.0  
+**📅 Última atualização**: Abril de 2026  
+**📦 Versão FAQ**: 1.1  
 **🎯 Público-alvo**: Usuários Sol.NET com dúvidas sobre Reforma Tributária  
 **📝 Total de perguntas**: 45
 
