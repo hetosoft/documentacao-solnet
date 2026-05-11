@@ -23,7 +23,7 @@ Todo acesso a telas é pela **pesquisa universal** — atalho **`F1`** — digit
 | Bancos | `9` | 🟡 em construção |
 | Agências | `10` | 🟡 em construção |
 | Contas Correntes | `11` | 🟡 em construção |
-| Portadores | `12` | 🟡 em construção |
+| [Portadores](documentacao_portadores.md) | `12` | 🟢 disponível |
 | Cadastro Caixa Geral | `13` | 🟡 em construção |
 | Plano de Contas | `14` | 🟡 em construção |
 | Centros de Custos | `15` | 🟡 em construção |
