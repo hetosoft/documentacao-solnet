@@ -2,612 +2,349 @@
 title: "Documentação: Módulo RH - Lançamentos de Folha de Pagamento - Sol.NET ERP"
 permalink: /RH/documentacao-folha-pagamento/
 ---
-# 💼 Documentação: Módulo RH - Lançamentos de Folha de Pagamento
+# 💼 Documentação: Módulo RH - Lançamentos de Folha de Pagamento - Sol.NET
 
 ## 🎯 Visão Geral
 
-O **Módulo de Lançamentos de RH** do Sol.NET ERP é uma ferramenta de **controle interno** que permite registrar os valores da folha de pagamento **por funcionário** para integração com o DRE (Demonstração do Resultado do Exercício).
+O **Módulo de Lançamentos de RH** do Sol.NET é uma ferramenta de **controle gerencial e contábil**: registra, por pessoa (funcionário), os valores que a folha de pagamento gera todo mês, vincula esses valores ao **Plano de Contas** e ao **Centro de Custo** corretos e — quando necessário — abre o título financeiro correspondente em **Contas a Pagar/Receber (ContasPR)** e o consolida no **DRE**.
 
-### ⚠️ Importante Compreender
+### ⚠️ O que o módulo FAZ
 
-**O que o módulo RH do Sol.NET FAZ:**
-- ✅ Registro de valores de folha **vinculados a cada funcionário**
-- ✅ Integração dos lançamentos de RH com o DRE
-- ✅ Controle interno detalhado por funcionário e departamento
-- ✅ Acompanhamento de despesas com pessoal
+- ✅ Registro contábil dos lançamentos de RH (débito/crédito) por pessoa, plano de contas e centro de custo
+- ✅ Integração automática com o DRE para análise das despesas com pessoal
+- ✅ Geração de títulos financeiros (Contas a Pagar) a partir do lançamento de RH
+- ✅ **Rateio** de um mesmo valor entre múltiplos planos de contas, centros de custo ou pessoas
+- ✅ **Configuração de lançamentos recorrentes** (modelos mensais por pessoa)
+- ✅ Importação de holerites via planilha Excel
 
-**O que o módulo RH do Sol.NET NÃO FAZ:**
-- ❌ Cálculo de INSS, IRRF ou FGTS
-- ❌ Processamento automático de folha de pagamento
-- ❌ Integração com órgãos externos (eSocial, SEFIP, Receita Federal)
-- ❌ Geração de guias de impostos ou encargos
-- ❌ Emissão de holerites
-- ❌ Controle de ponto eletrônico
+### ⚠️ O que o módulo NÃO FAZ
 
-### 🔄 Fluxo de Trabalho
+- ❌ Não calcula INSS, IRRF, FGTS ou qualquer encargo — os valores vêm prontos da contabilidade
+- ❌ Não processa folha de pagamento de ponta a ponta
+- ❌ Não integra com eSocial, SEFIP ou Receita Federal
+- ❌ Não gera guias de impostos
+- ❌ Não controla ponto eletrônico
+
+> Sol.NET é o sistema de **controle interno** que recebe os valores já calculados pela contabilidade externa e os organiza contabilmente. A folha em si continua sendo processada pelo escritório contábil ou por software dedicado.
+
+### 🔄 Fluxo geral
 
 ```mermaid
 graph LR
-    A[Contabilidade<br/>Calcula Folha] --> B[Fornece Valores<br/>por Funcionário]
-    B --> C[Cadastrar<br/>Funcionários]
-    C --> D[Lançar Valores<br/>por Funcionário]
-    D --> E[Integra com DRE]
-    E --> F[Relatórios Gerenciais]
+    A[Contabilidade<br/>Calcula a Folha] --> B[Envia valores<br/>por funcionário]
+    B --> C[Cadastrar<br/>Funcionário]
+    C --> D[Lançar valores em<br/>Cadastro de<br/>Lançamento de RH]
+    D --> E{Gerar título<br/>em ContasPR?}
+    E -->|Sim| F[ContasPR<br/>Contas a Pagar]
+    E -->|Não| G[Somente DRE]
+    F --> H[DRE]
+    G --> H
 ```
-
-**Processo típico:**
-1. A **contabilidade externa** processa a folha de pagamento completa
-2. A contabilidade fornece os **valores individuais de cada funcionário**
-3. Os **funcionários são cadastrados** no Sol.NET
-4. O usuário **lança os valores de cada funcionário** no módulo RH
-5. O sistema **integra automaticamente** com o DRE
-6. A empresa pode visualizar as **despesas com pessoal** nos relatórios gerenciais
 
 ---
 
-## 👥 Cadastro de Funcionários (Pessoa RH)
+## 🧭 Telas envolvidas
 
-### 📋 Importância do Cadastro
+Todas as telas do Sol.NET são abertas pela **pesquisa universal (atalho `F1`)**: digite o **código** ou parte do **nome** da tela.
 
-**ATENÇÃO:** Todo lançamento de RH no Sol.NET **deve estar vinculado a um funcionário específico**. Por isso, o cadastro completo de funcionários é **essencial** para o funcionamento do módulo.
-
-### Acessar o Cadastro
-
-**Menu:** RH → Cadastros → Funcionários
-
-### Informações do Cadastro de Pessoa RH
-
-O cadastro de funcionários no Sol.NET contém as seguintes informações:
-
-#### **Dados Pessoais**
-- **Nome Completo**: Nome do funcionário
-- **CPF**: Cadastro de Pessoa Física (para identificação)
-- **Matrícula**: Código interno do funcionário na empresa
-- **Data de Nascimento**: Para controle de idade e histórico
-- **Endereço**: Endereço residencial completo
-- **Telefone/Celular**: Contatos
-- **E-mail**: E-mail pessoal ou corporativo
-
-#### **Dados Trabalhistas**
-- **Data de Admissão**: Quando o funcionário foi contratado
-- **Data de Demissão**: Se aplicável (para funcionários inativos)
-- **Cargo/Função**: Função exercida pelo funcionário
-- **Departamento/Setor**: Área de atuação
-- **Centro de Custo**: Para alocação contábil das despesas
-- **Salário Base**: Salário contratual (para referência)
-- **Status**: Ativo ou Inativo
-
-#### **Configurações Contábeis**
-- **Conta Contábil de Salário**: Conta do plano de contas onde serão lançados os salários
-- **Conta Contábil de Encargos**: Conta para lançamento de encargos sociais
-- **Conta Contábil de Benefícios**: Conta para vale transporte, refeição, etc.
-- **Centro de Custo Padrão**: Centro de custo ao qual o funcionário está vinculado
-
-#### **Observações**
-- **Anotações Gerais**: Campo livre para observações sobre o funcionário
-
-### Como Cadastrar um Funcionário
-
-**Passo a passo:**
-
-1. **Acessar o Cadastro:**
-   - Menu RH → Cadastros → Funcionários
-   - Clicar em "Novo" ou pressionar o botão de inclusão
-
-2. **Preencher Dados Pessoais:**
-   - Nome completo do funcionário
-   - CPF (obrigatório para identificação única)
-   - Matrícula (código interno)
-   - Data de nascimento
-   - Endereço e contatos
-
-3. **Preencher Dados Trabalhistas:**
-   - Data de admissão
-   - Cargo/função
-   - Departamento/setor
-   - Centro de custo (importante para alocação no DRE)
-   - Salário base (referência)
-   - Status: Ativo
-
-4. **Configurar Contas Contábeis:**
-   - Definir conta de salário (ex: 6.2.01 - Salários Administrativo)
-   - Definir conta de encargos (ex: 6.2.02 - Encargos Sociais)
-   - Definir conta de benefícios (ex: 6.2.03 - Benefícios)
-   - Essas contas determinam onde os lançamentos aparecerão no DRE
-
-5. **Salvar o Cadastro**
-
-### Exemplo de Cadastro
-
-```
-Nome: João da Silva
-CPF: 123.456.789-00
-Matrícula: 001
-Data Admissão: 01/01/2023
-Cargo: Analista Financeiro
-Departamento: Administrativo
-Centro de Custo: 001 - Administrativo
-Salário Base: R$ 5.000,00
-Status: Ativo
-
-Contas Contábeis:
-- Salários: 6.2.01 - Salários Administrativo
-- Encargos: 6.2.02 - Encargos Administrativo
-- Benefícios: 6.2.03 - Benefícios Administrativo
-```
-
-### Gestão de Funcionários
-
-**Funcionários Ativos:**
-- Mantêm status "Ativo"
-- Recebem lançamentos mensais de folha
-- Aparecem nos relatórios
-
-**Funcionários Demitidos:**
-- Alterar status para "Inativo"
-- Informar data de demissão
-- Não recebem mais lançamentos regulares
-- Manter cadastro para histórico
+| Tela | Código (`F1`) | Para quê serve |
+|------|---------------|----------------|
+| **Cadastro de Pessoas** | `5` | Cadastrar/editar funcionários (classificação `Funcionário`), além de clientes, fornecedores, etc. |
+| **Cadastro de Lançamento de RH** | `84` | Tela principal: lançar mensalmente os valores de folha por funcionário |
+| **Configuração RH** | `222` | Cadastrar **modelos de lançamento recorrente** (ex.: salário mensal padrão de cada funcionário) |
+| **Holerite Excel** | `134` | Importar holerites a partir de planilha Excel |
+| **Pessoa Rateio** | `133` | Configurar rateios por pessoa que podem ser reaproveitados em lançamentos |
 
 ---
 
-## 💰 Lançamento de Valores da Folha por Funcionário
+## 👥 Cadastro do Funcionário
 
-### Processo de Lançamento
+### Onde cadastrar
 
-#### **Passo 1: Receber Informações da Contabilidade**
+No Sol.NET, **funcionário é um tipo de Pessoa**. Não existe uma tela específica de "Cadastro de Funcionários" — o registro é feito na própria tela `Cadastro de Pessoas`.
 
-A contabilidade deve fornecer um resumo **detalhado por funcionário**:
+Tela: **`Cadastro de Pessoas`** — código **`5`** (abra pela pesquisa `F1`).
 
-```
-FOLHA DE PAGAMENTO - MARÇO/2024
+### Marcando a pessoa como funcionário
 
-FUNCIONÁRIO: João da Silva (Mat. 001)
-───────────────────────────────────────
-Salário Bruto:           R$  5.000,00
-Horas Extras:            R$    300,00
-Comissões:               R$    500,00
-───────────────────────────────────────
-Total Vencimentos:       R$  5.800,00
+Ao criar (ou editar) um registro de Pessoa, marque a **classificação** como `Funcionário`. Isso permite que essa pessoa apareça nos filtros e listas internas do módulo RH (a pesquisa do `Cadastro de Lançamento de RH` filtra automaticamente por pessoas dessa classificação).
 
-Desconto INSS:           R$    638,00
-Desconto IRRF:           R$    185,00
-Vale Transporte:         R$    150,00
-Vale Refeição:           R$    200,00
-───────────────────────────────────────
-Total Descontos:         R$  1.173,00
+### Dados essenciais
 
-Líquido a Pagar:         R$  4.627,00
+Para que o lançamento de RH funcione corretamente, preencha pelo menos:
 
-Encargos Patronais:
-INSS Patronal:           R$  1.160,00
-FGTS:                    R$    464,00
-───────────────────────────────────────
-Total Encargos:          R$  1.624,00
+- **Dados pessoais**: nome, CPF, contato
+- **Classificação**: marcar como **`Funcionário`**
+- **Centro de Custo**: define em qual área a despesa do funcionário será alocada no DRE
 
-Benefícios Empresa:
-Vale Transporte:         R$    100,00
-Vale Refeição:           R$    300,00
-───────────────────────────────────────
-Total Benefícios:        R$    400,00
+Os demais campos (endereço, contatos, observações, datas) são úteis para gestão de RH mas não interferem na contabilização.
 
-───────────────────────────────────────
-CUSTO TOTAL (funcionário): R$  7.824,00
-```
+### Funcionários inativos
 
-#### **Passo 2: Lançar no Sol.NET por Funcionário**
-
-**Menu:** RH → Lançamentos de Folha
-
-**Importante:** Cada lançamento deve estar **vinculado ao funcionário específico**.
-
-**Lançamento para João da Silva (Mat. 001):**
-
-1. **Criar Novo Lançamento:**
-   - Competência: Março/2024
-   - **Funcionário: João da Silva (selecionar do cadastro)**
-
-2. **Lançar Salário:**
-   ```
-   Tipo: Vencimento
-   Descrição: Salário Base
-   Valor: R$ 5.000,00
-   Conta Débito: 6.2.01 - Salários (já configurada no cadastro)
-   Conta Crédito: 2.1.2.01 - Salários a Pagar
-   Centro de Custo: Administrativo (já vinculado ao funcionário)
-   ```
-
-3. **Lançar Horas Extras:**
-   ```
-   Tipo: Vencimento
-   Descrição: Horas Extras
-   Valor: R$ 300,00
-   Funcionário: João da Silva
-   ```
-
-4. **Lançar Encargos Patronais:**
-   ```
-   Tipo: Encargo
-   Descrição: INSS Patronal
-   Valor: R$ 1.160,00
-   Funcionário: João da Silva
-   Conta Débito: 6.2.02 - Encargos
-   ```
-
-5. **Repetir para cada evento** (comissões, benefícios, etc.)
-
-6. **Salvar Lançamentos**
-
-#### **Passo 3: Repetir para Cada Funcionário**
-
-O processo deve ser repetido para todos os funcionários da folha:
-- Maria Santos (Mat. 002)
-- Carlos Pereira (Mat. 003)
-- Ana Costa (Mat. 004)
-- ...e assim por diante
-
-#### **Passo 4: Conferir Integração com DRE**
-
-Após lançar todos os funcionários:
-1. Menu Financeiro → DRE
-2. Selecione período: Março/2024
-3. Confira se os valores aparecem nas contas corretas
-4. Verifique a totalização por centro de custo
-5. Compare com o total geral informado pela contabilidade
+Funcionários desligados podem ser mantidos no cadastro para preservar histórico. Marque o registro como inativo (ou ajuste a classificação) para que ele deixe de aparecer nas listas de seleção dos lançamentos mensais.
 
 ---
 
-## 📊 Tipos de Lançamentos por Funcionário
+## 💰 Tela `Cadastro de Lançamento de RH` (código 84)
 
-### Vencimentos (Valores Positivos)
+É a tela central do módulo. Cada **linha** registrada é um lançamento contábil vinculado a uma pessoa, com débito, crédito, plano de contas, centro de custo e competência.
 
-| Tipo | Descrição | Exemplo |
-|------|-----------|---------|
-| Salário Base | Remuneração contratual | R$ 5.000,00 |
-| Horas Extras | Adicional por horas excedentes | R$ 300,00 |
-| Comissões | Percentual sobre vendas | R$ 500,00 |
-| Gratificações | Prêmios e bonificações | R$ 200,00 |
-| Adicional Noturno | 20% sobre hora noturna | R$ 150,00 |
+Tela: **`Cadastro de Lançamento de RH`** — código **`84`** (abra pela pesquisa `F1`).
 
-### Descontos (Valores Negativos)
+### Estrutura do registro
 
-| Tipo | Descrição | Exemplo |
-|------|-----------|---------|
-| INSS Funcionário | Desconto conforme tabela | R$ 638,00 |
-| IRRF | Imposto de renda retido | R$ 185,00 |
-| Vale Transporte | Desconto de 6% | R$ 150,00 |
-| Vale Refeição | Coparticipação | R$ 200,00 |
-| Plano de Saúde | Desconto do funcionário | R$ 100,00 |
+Cada lançamento de RH guarda:
 
-### Encargos Patronais (Custo da Empresa)
+- **Competência** — mês/ano de referência (ex.: 03/2024)
+- **Pessoas** — funcionário ao qual o valor pertence (campo obrigatório; pesquisa por nome, código ou CPF)
+- **Data de Emissão** — data contábil do lançamento
+- **Valor** — em reais
+- **Plano de Contas** — conta contábil de despesa (lado do débito) ou de passivo (lado do crédito), conforme a natureza
+- **Centro de Custo** — área/departamento que recebe o custo
+- **Tipo de Conta** — tipo do lançamento (referencia o `Cadastro de Configuração RH`, código `222`, quando o lançamento usa um modelo recorrente)
+- **Operação** — natureza da operação contábil (débito/crédito)
+- **Nível** — agrupamento gerencial usado em relatórios
+- **Status** / **Fechamento** — controle de aberto/quitado/cancelado
+- **Observação** — texto livre
 
-| Tipo | Descrição | Exemplo |
-|------|-----------|---------|
-| INSS Patronal | 20% sobre salário | R$ 1.160,00 |
-| FGTS | 8% sobre salário | R$ 464,00 |
-| RAT/FAP | Risco ambiental | R$ 58,00 |
+> Diferente de um sistema de folha, o lançamento de RH no Sol.NET é **contábil linha a linha** (débito/crédito), não um holerite com rubricas pré-definidas. As "categorias" típicas (salário, encargo, benefício, desconto) viram **linhas separadas** vinculadas a planos de contas distintos.
 
-### Benefícios (Custo da Empresa)
+### Abas da tela
 
-| Tipo | Descrição | Exemplo |
-|------|-----------|---------|
-| Vale Transporte | Parte da empresa | R$ 100,00 |
-| Vale Refeição | Parte da empresa | R$ 300,00 |
-| Plano de Saúde | Parte da empresa | R$ 200,00 |
+A tela trabalha em abas. As principais:
+
+- **Pesquisar** — localiza lançamentos por competência, pessoa, plano de contas, centro de custo, status ou nível
+- **Registro → Principal** — formulário do lançamento atual (campos descritos acima)
+- **Registro → Vínculos** — informações de quitação e relação com ContasPR (registro de fechamento, status, vencimento)
+- **Registro → ContasPR - Manual** — gera/abre um título em **Contas a Pagar/Receber** a partir do lançamento (ex.: o salário a pagar vira um título no financeiro). Campos: `Tipo de Documento`, `Portador`, `Vencimento`, botão `Criar`
+- **Registro → Rateio** — divide o valor do lançamento entre múltiplas combinações de plano de contas / centro de custo / pessoa (ver `Rateio` abaixo)
+- **Registro → Lançamento em Massa** — permite inserir/excluir várias linhas de uma vez para acelerar o lançamento mensal
+
+### Rateio
+
+Quando um valor precisa ser **distribuído** entre vários planos de contas, centros de custo ou pessoas (ex.: o salário do diretor financeiro alocado parte em Administrativo e parte em Vendas), use a aba **Rateio** do registro:
+
+1. Informe o valor total na aba `Principal`.
+2. Vá em `Rateio` e clique em **Inserir** para adicionar uma linha de rateio (`Plano de Contas`, `Centro de Custo`, `Data`, `Valor`, `%`).
+3. Adicione quantas linhas forem necessárias. O sistema mostra `Total`, `Total do Rateio` e `Diferença` — a diferença precisa fechar em zero.
+4. Salve o lançamento.
+
+Se o mesmo padrão de rateio se repete por funcionário, ele pode ser pré-cadastrado na tela **`Pessoa Rateio`** (código `133`) e reaproveitado.
+
+### Geração de Contas a Pagar
+
+Quando o lançamento representa um valor que será efetivamente pago (líquido a pagar, encargos a recolher, vale a depositar), a aba **ContasPR - Manual** permite **gerar o título financeiro** no mesmo ato:
+
+- Preencha `Tipo de Documento`, `Portador` e `Vencimento`.
+- Clique em **Criar**.
+- O Sol.NET abre o registro correspondente no módulo de **Contas a Pagar/Receber**, que então participa do fluxo de caixa normal.
+
+Se preferir lançar apenas para o DRE sem criar título financeiro, basta não usar essa aba.
 
 ---
 
-## 🔧 Configuração
+## 🗂️ `Configuração RH` (código 222) — modelos de lançamento recorrente
 
-### Estrutura de Contas Contábeis
+A tela **`Cadastro de Configuração RH`** permite definir **modelos recorrentes** de lançamento — útil para itens fixos que se repetem todo mês (salário base, vale-transporte, plano de saúde patronal, etc.).
 
-Configure o plano de contas para receber os lançamentos de RH:
+Tela: **`Configuração RH`** — código **`222`** (abra pela pesquisa `F1`).
+
+Para cada modelo é possível definir:
+
+- `Descrição` e `Pessoas` (a quem se aplica)
+- `Valor` e `Operação`
+- `Plano de Contas`, `Centro de Custo`, `Tipo de Conta`
+- `Dia` de competência e `Data Mês Início` / `Data Mês Fim` (vigência)
+- `Proporcional` — calcula valor proporcional ao período
+- `Mês Ref.` — competência base
+- `Criar PR` — se deve gerar Contas a Pagar/Receber automaticamente
+- `Tipo de Documento` e `Portador` — para a geração de ContasPR
+- `Vencimento para Próximo Mês`
+- `Rateio` — modelo de rateio aplicado
+
+A `Configuração RH` é referenciada pelo `Tipo de Conta` em cada lançamento de RH; com isso, lançamentos mensais herdam automaticamente plano de contas, centro de custo e regras de rateio do modelo.
+
+---
+
+## 📑 `Holerite Excel` (código 134)
+
+A tela **`Holerite Excel`** permite **importar** holerites a partir de uma planilha Excel — útil quando a contabilidade fornece os valores nesse formato.
+
+Tela: **`Holerite Excel`** — código **`134`** (abra pela pesquisa `F1`).
+
+A importação cria os registros correspondentes (cabeçalho do holerite por funcionário e os itens detalhados), que servem como base ou fonte de conferência para os lançamentos contábeis do módulo RH.
+
+> Os layouts de planilha aceitos podem variar por versão. Confirme com o suporte qual o template vigente antes da primeira importação.
+
+---
+
+## 📊 Estrutura contábil sugerida
+
+Para que o DRE apresente a despesa com pessoal segmentada, mantenha contas separadas por **natureza** (salário, encargos, benefícios) e **centro de custo** (administrativo, vendas, produção, etc.). Exemplo:
 
 ```
 6. DESPESAS OPERACIONAIS
-  6.1 Despesas com Vendas
-    6.1.01 Salários - Vendas
-    6.1.02 Encargos Sociais - Vendas
-    6.1.03 Benefícios - Vendas
-  
-  6.2 Despesas Administrativas
-    6.2.01 Salários - Administrativo
-    6.2.02 Encargos Sociais - Administrativo
-    6.2.03 Benefícios - Administrativo
-  
-  6.3 Despesas de Produção
-    6.3.01 Salários - Produção
-    6.3.02 Encargos Sociais - Produção
-    6.3.03 Benefícios - Produção
+   6.1 Vendas
+      6.1.01 Salários — Vendas
+      6.1.02 Encargos — Vendas
+      6.1.03 Benefícios — Vendas
+   6.2 Administrativo
+      6.2.01 Salários — Administrativo
+      6.2.02 Encargos — Administrativo
+      6.2.03 Benefícios — Administrativo
+   6.3 Produção
+      6.3.01 Salários — Produção
+      6.3.02 Encargos — Produção
+      6.3.03 Benefícios — Produção
 
 2. PASSIVO CIRCULANTE
-  2.1.2 Obrigações Trabalhistas
-    2.1.2.01 Salários a Pagar
-    2.1.2.02 Encargos a Recolher
-    2.1.2.03 FGTS a Recolher
-    2.1.2.04 Benefícios a Pagar
+   2.1.2 Obrigações Trabalhistas
+      2.1.2.01 Salários a Pagar
+      2.1.2.02 Encargos a Recolher
+      2.1.2.03 FGTS a Recolher
+      2.1.2.04 Benefícios a Pagar
 ```
 
-### Vinculação no Cadastro de Funcionários
-
-Ao cadastrar cada funcionário, vincule as contas conforme o departamento:
-
-**Funcionário do Administrativo:**
-```
-Conta Salário: 6.2.01 - Salários Administrativo
-Conta Encargos: 6.2.02 - Encargos Administrativo
-Conta Benefícios: 6.2.03 - Benefícios Administrativo
-Centro de Custo: 001 - Administrativo
-```
-
-**Funcionário de Vendas:**
-```
-Conta Salário: 6.1.01 - Salários Vendas
-Conta Encargos: 6.1.02 - Encargos Vendas
-Conta Benefícios: 6.1.03 - Benefícios Vendas
-Centro de Custo: 002 - Vendas
-```
+O **Centro de Custo** do lançamento normalmente acompanha o do funcionário (vem do cadastro da pessoa), mas pode ser alterado por linha quando há rateio.
 
 ---
 
 ## 💡 Exemplos Práticos
 
-### Exemplo 1: Lançamento Completo de Um Funcionário
+### Exemplo 1 — Lançamento mensal de um funcionário
 
-**Cenário:**
-- Funcionário: Maria Santos (Mat. 005)
-- Departamento: Vendas
-- Valores da contabilidade para Março/2024
+**Cenário:** competência 03/2024, funcionária Maria Santos (Vendas).
+Valores recebidos da contabilidade:
 
-**Dados fornecidos pela contabilidade:**
 ```
-Salário Base: R$ 3.500,00
-Comissões: R$ 1.200,00
-INSS Funcionário: R$ 517,00
-IRRF: R$ 95,00
-Vale Transporte: R$ 105,00
-INSS Patronal: R$ 940,00
-FGTS: R$ 376,00
+Salário base ............. R$ 3.500,00
+Comissões ................ R$ 1.200,00
+INSS funcionário (desc.) . R$   517,00
+IRRF (desc.) ............. R$    95,00
+Vale Transporte (desc.) .. R$   105,00
+INSS patronal ............ R$   940,00
+FGTS ..................... R$   376,00
 ```
 
-**Lançamentos no Sol.NET:**
+**Passo a passo no Sol.NET:**
 
-1. **Selecionar Funcionário:**
-   - RH → Lançamentos → Novo
-   - Competência: 03/2024
-   - **Funcionário: Maria Santos (Mat. 005)**
+1. Abra a pesquisa `F1` e digite `84` (ou "Lançamento de RH").
+2. Na aba `Principal`, defina `Competência = 03/2024` e selecione `Pessoas = Maria Santos`.
+3. Para cada item da planilha, crie uma linha de lançamento com `Valor`, `Plano de Contas`, `Centro de Custo`, `Operação`. Exemplo:
 
-2. **Vencimentos:**
-   ```
-   Salário Base: R$ 3.500,00
-   D - 6.1.01 Salários Vendas
-   C - 2.1.2.01 Salários a Pagar
-   
-   Comissões: R$ 1.200,00
-   D - 6.1.01 Salários Vendas
-   C - 2.1.2.01 Salários a Pagar
-   ```
+| Descrição | Valor | Plano de Contas (D) | Plano de Contas (C) |
+|-----------|-------|---------------------|---------------------|
+| Salário base | 3.500,00 | 6.1.01 Salários Vendas | 2.1.2.01 Salários a Pagar |
+| Comissões | 1.200,00 | 6.1.01 Salários Vendas | 2.1.2.01 Salários a Pagar |
+| INSS funcionário | 517,00 | 2.1.2.01 Salários a Pagar | 2.1.2.02 Encargos a Recolher |
+| IRRF | 95,00 | 2.1.2.01 Salários a Pagar | 2.1.2.02 Encargos a Recolher |
+| Vale Transporte | 105,00 | 2.1.2.01 Salários a Pagar | 2.1.2.04 Benefícios a Pagar |
+| INSS patronal | 940,00 | 6.1.02 Encargos Vendas | 2.1.2.02 Encargos a Recolher |
+| FGTS | 376,00 | 6.1.02 Encargos Vendas | 2.1.2.03 FGTS a Recolher |
 
-3. **Descontos:**
-   ```
-   INSS: R$ 517,00
-   (Reduz salário a pagar)
-   
-   IRRF: R$ 95,00
-   (Reduz salário a pagar)
-   
-   Vale Transporte: R$ 105,00
-   (Reduz salário a pagar)
-   ```
+4. Na aba **ContasPR - Manual**, gere o título do líquido a pagar (Salários a Pagar) com `Vencimento` no 5º dia útil — clique em `Criar`.
+5. Salve o lançamento.
 
-4. **Encargos:**
-   ```
-   INSS Patronal: R$ 940,00
-   D - 6.1.02 Encargos Vendas
-   C - 2.1.2.02 Encargos a Recolher
-   
-   FGTS: R$ 376,00
-   D - 6.1.02 Encargos Vendas
-   C - 2.1.2.03 FGTS a Recolher
-   ```
+**Resultado no DRE (Maria Santos, 03/2024):**
 
-5. **Resultado no DRE:**
-   ```
-   6.1 DESPESAS COM VENDAS
-      6.1.01 Salários .............. R$ 4.700,00
-      6.1.02 Encargos Sociais ...... R$ 1.316,00
-      ──────────────────────────────────────────
-      Total (Maria Santos) ......... R$ 6.016,00
-   ```
-
-### Exemplo 2: Empresa com 5 Funcionários
-
-**Cenário:**
-Empresa tem 5 funcionários em diferentes departamentos.
-
-**Funcionários cadastrados:**
-1. João Silva - Administrativo
-2. Maria Santos - Vendas
-3. Pedro Costa - Produção
-4. Ana Oliveira - Administrativo
-5. Carlos Lima - Vendas
-
-**Processo mensal:**
-
-1. **Receber planilha da contabilidade** com valores de cada um dos 5 funcionários
-
-2. **Lançar funcionário por funcionário:**
-   - Lançar valores de João Silva
-   - Lançar valores de Maria Santos
-   - Lançar valores de Pedro Costa
-   - Lançar valores de Ana Oliveira
-   - Lançar valores de Carlos Lima
-
-3. **Conferir totais no DRE:**
-   ```
-   6.1 Vendas:
-       - Salários: Maria + Carlos
-       - Encargos: Maria + Carlos
-   
-   6.2 Administrativo:
-       - Salários: João + Ana
-       - Encargos: João + Ana
-   
-   6.3 Produção:
-       - Salários: Pedro
-       - Encargos: Pedro
-   ```
-
-### Exemplo 3: Provisões Mensais
-
-Para provisões de 13º e férias, também vincule ao funcionário:
-
-**Provisão 13º - João Silva:**
 ```
-Competência: Março/2024
-Funcionário: João Silva
-Tipo: Provisão 13º Salário
-Valor: R$ 416,67 (1/12 de R$ 5.000)
-D - 6.2.04 Provisão 13º
+6.1 Vendas
+   6.1.01 Salários ......... R$ 4.700,00
+   6.1.02 Encargos ......... R$ 1.316,00
+   Total Maria Santos ...... R$ 6.016,00
+```
+
+### Exemplo 2 — Provisão de 13º salário
+
+A provisão também é um lançamento de RH (1/12 do salário + encargos), vinculada ao funcionário e ao Plano de Contas de provisão.
+
+```
+Competência: 03/2024
+Pessoas:     João Silva
+Valor:       R$ 416,67
+D - 6.2.04 Provisão 13º Salário
 C - 2.1.3.01 Provisão 13º a Pagar
 ```
 
-Repita para todos os funcionários.
+Para automatizar a provisão mensal, cadastre-a em **`Configuração RH`** (código `222`) — daí em diante o lançamento entra automaticamente na competência configurada.
+
+### Exemplo 3 — Salário rateado entre dois centros de custo
+
+**Cenário:** o diretor financeiro acumula funções e seu salário é rateado em 60% Administrativo / 40% Vendas.
+
+1. Na tela `Cadastro de Lançamento de RH`, registre o salário total na aba `Principal`.
+2. Vá em `Rateio` → `Inserir`:
+
+| Plano de Contas | Centro de Custo | % | Valor |
+|-----------------|------------------|----|-------|
+| 6.2.01 Salários Adm. | Administrativo | 60 | 6.000,00 |
+| 6.1.01 Salários Vendas | Vendas | 40 | 4.000,00 |
+
+3. Confira que `Diferença` está zerada e salve.
+
+O DRE recebe os valores nos dois centros de custo automaticamente.
 
 ---
 
-## 📊 Relatórios
+## 🆘 Problemas comuns
 
-### Relatórios Disponíveis
+### Não consigo salvar o lançamento
 
-**1. Folha de Pagamento Analítica**
-- Lista todos os funcionários
-- Detalhamento de vencimentos e descontos por funcionário
-- Total por funcionário
-- Total geral
+**Causa provável:** falta selecionar a pessoa, a competência ou o plano de contas.
+**Como resolver:** verifique os campos obrigatórios do registro na aba `Principal` (Competência, Pessoas, Valor, Plano de Contas). Se necessário, abra a tela `Cadastro de Pessoas` (código `5`) e confirme que o funcionário está cadastrado e classificado como `Funcionário`.
 
-**2. Custo por Funcionário**
-- Salário + Encargos + Benefícios
-- Custo total individual
-- Histórico mensal do funcionário
+### Funcionário não aparece na pesquisa
 
-**3. Custo por Departamento**
-- Soma de todos os funcionários do departamento
-- Comparativo entre departamentos
-- Percentual sobre receita
+**Causa provável:** registro não cadastrado, inativo ou sem a classificação `Funcionário`.
+**Como resolver:** abra `Cadastro de Pessoas` (código `5`), inclua/ative o registro e aplique a classificação `Funcionário`.
 
-**4. DRE com Detalhamento RH**
-- Despesas com pessoal por centro de custo
-- Evolução mensal
-- Análise comparativa
+### Valor aparece no centro de custo errado no DRE
 
----
+**Causa provável:** o centro de custo padrão da pessoa está incorreto, ou o rateio não foi aplicado.
+**Como resolver:** corrija o centro de custo no `Cadastro de Pessoas` (código `5`) para que novos lançamentos herdem o valor correto, ou ajuste o rateio do lançamento existente.
 
-## ❓ FAQ - Perguntas Frequentes
+### O título não apareceu em Contas a Pagar
 
-### **P: Preciso lançar cada funcionário individualmente?**
-**R:** **Sim**. Todo lançamento de RH no Sol.NET deve estar vinculado a um funcionário específico. Não é possível lançar valores totais sem associar a um funcionário.
+**Causa provável:** a aba `ContasPR - Manual` não foi usada (lançamento foi salvo sem clicar em `Criar` ContasPR).
+**Como resolver:** edite o lançamento, vá em `ContasPR - Manual`, preencha `Tipo de Documento`, `Portador`, `Vencimento` e clique em `Criar`.
 
-### **P: Posso lançar um valor total para todo o departamento?**
-**R:** **Não**. Cada lançamento precisa estar associado a um funcionário cadastrado. O sistema depois totaliza automaticamente por departamento no DRE.
+### Rateio está com diferença
 
-### **P: Preciso cadastrar todos os funcionários antes de lançar?**
-**R:** **Sim**. É obrigatório cadastrar todos os funcionários no sistema antes de fazer os lançamentos, pois cada lançamento precisa estar vinculado a um funcionário.
+**Causa provável:** a soma das linhas de rateio é diferente do valor total do lançamento.
+**Como resolver:** confira o campo `Diferença` na aba `Rateio` — ele precisa estar em zero. Ajuste valores ou percentuais até zerar.
 
-### **P: O que acontece se eu não vincular o lançamento a um funcionário?**
-**R:** O sistema não permitirá salvar o lançamento sem a vinculação a um funcionário, pois é um campo obrigatório.
+### Total do mês difere do informado pela contabilidade
 
-### **P: Como o sistema totaliza os valores no DRE?**
-**R:** O sistema soma automaticamente os valores de todos os funcionários vinculados ao mesmo centro de custo e mesma conta contábil.
-
-### **P: Preciso informar todos os dados do funcionário no cadastro?**
-**R:** Os dados essenciais são: Nome, CPF, Matrícula, Departamento, Centro de Custo e as Contas Contábeis. Os demais dados são importantes para controle, mas opcionais.
-
-### **P: Como lanço um funcionário que mudou de departamento?**
-**R:** Atualize o cadastro do funcionário alterando o departamento e centro de custo. Os próximos lançamentos irão para o novo centro de custo automaticamente.
-
-### **P: Posso ter dois funcionários com mesmo nome?**
-**R:** Sim, pois cada funcionário é identificado unicamente por CPF e Matrícula.
-
-### **P: Como faço para um funcionário demitido?**
-**R:** Altere o status para "Inativo" e informe a data de demissão. O funcionário permanecerá no histórico mas não aparecerá mais nas listagens de ativos.
-
-### **P: A contabilidade fornece valores totais. Como faço?**
-**R:** Solicite à contabilidade uma planilha detalhada com os valores individuais de cada funcionário. É essencial ter essa informação para lançar corretamente no Sol.NET.
+**Causa provável:** algum funcionário não foi lançado, valor digitado incorreto, ou lançamento duplicado.
+**Como resolver:** liste os lançamentos do mês pela aba `Pesquisar` (filtre por competência) e compare funcionário a funcionário com a planilha da contabilidade.
 
 ---
 
-## 🔧 Melhores Práticas
+## ✅ Boas práticas
 
-### ✅ Recomendações
-
-1. **Cadastre Funcionários Completos:**
-   - Preencha todos os campos do cadastro
-   - Vincule corretamente as contas contábeis
-   - Defina o centro de custo adequado
-
-2. **Mantenha Cadastro Atualizado:**
-   - Atualize mudanças de departamento
-   - Registre admissões e demissões
-   - Mantenha dados de contato atualizados
-
-3. **Lance Por Funcionário:**
-   - Respeite a vinculação obrigatória
-   - Verifique se selecionou o funcionário correto
-   - Confira os valores antes de salvar
-
-4. **Padronize Descrições:**
-   - Use nomes consistentes para os tipos de lançamento
-   - Facilita consultas e relatórios
-
-5. **Confira o DRE:**
-   - Após lançar todos os funcionários
-   - Compare com total da contabilidade
-   - Valide alocação por centro de custo
+1. **Cadastre os funcionários antes do primeiro lançamento.** Sem o cadastro, a pesquisa do form 84 não traz a pessoa.
+2. **Configure o Centro de Custo no cadastro da pessoa.** Isso evita digitar repetidamente o centro de custo em cada linha e garante consistência no DRE.
+3. **Use `Configuração RH` (código `222`) para itens fixos.** Salário base, vale-transporte patronal e plano de saúde patronal raramente mudam — modelos recorrentes economizam tempo e reduzem erros.
+4. **Padronize as descrições.** "INSS Patronal" sempre escrito do mesmo jeito facilita filtros e relatórios.
+5. **Confira o DRE depois de fechar o mês.** Compare o total de despesas com pessoal com o relatório da contabilidade.
+6. **Documente quem mudou de centro de custo no meio do mês.** O lançamento da competência anterior pode ter ficado no centro antigo.
 
 ---
 
-## 🆘 Troubleshooting
+## 🔗 Documentação relacionada
 
-### **Problema: Não consigo salvar o lançamento**
-**Causa:** Falta vincular o lançamento a um funcionário  
-**Solução:** Selecione o funcionário no campo apropriado antes de salvar
-
-### **Problema: Valores não aparecem no DRE**
-**Causa:** Conta contábil não configurada no cadastro do funcionário  
-**Solução:** Edite o cadastro do funcionário e configure as contas contábeis
-
-### **Problema: Valores aparecendo no departamento errado**
-**Causa:** Centro de custo incorreto no cadastro do funcionário  
-**Solução:** Corrija o centro de custo no cadastro do funcionário
-
-### **Problema: Não encontro o funcionário para vincular**
-**Causa:** Funcionário não cadastrado ou inativo  
-**Solução:** Cadastre o funcionário ou ative se estiver inativo
+- **[Processo Mensal de Lançamento de RH](processo_mensal.md)** — passo a passo da rotina mês a mês
+- **[Guia Rápido](guia_rapido.md)** — checklist de bolso
+- **[FAQ](faq.md)** — dúvidas frequentes
+- **[Financeiro — DRE](../Financeiro/documentacao_dre.md)** — como o DRE consome os lançamentos de RH
+- **[Financeiro — Portadores](../Financeiro/documentacao_portadores.md)** — pagamento dos títulos gerados pela aba `ContasPR - Manual`
 
 ---
 
-## 📞 Suporte
-
-### Documentação Relacionada
-
-- **[Módulo Financeiro - DRE](../Financeiro/documentacao_dre.md)**: Como o DRE funciona
-- **[Plano de Contas](../Financeiro/documentacao_dre.md#-estrutura-hierárquica)**: Estrutura contábil
-
-### Contato
-
-Para dúvidas sobre:
-- **Cadastros e lançamentos no Sol.NET**: Suporte técnico Sol.NET
-- **Valores individuais dos funcionários**: Sua contabilidade
-- **Obrigações fiscais**: Contador responsável
+**📅 Última atualização**: Maio de 2026
+**📦 Versão**: 4.0
+**🎯 Público-alvo**: Equipe de suporte e usuários responsáveis por lançamentos de RH
 
 ---
 
-**📅 Última atualização**: Janeiro de 2025  
-**📦 Versão**: 3.0  
-**🎯 Público-alvo**: Usuários responsáveis por lançamentos de RH  
-**👥 Contribuidores**: Equipe de Documentação Sol.NET
-
----
-
-*Esta documentação cobre o módulo de lançamentos de RH do Sol.NET. **Lembre-se: cada lançamento deve estar vinculado a um funcionário específico** - não é possível lançar valores totais sem essa associação.*
+*Esta documentação descreve o módulo de **Lançamentos de RH** do Sol.NET, focado em controle contábil/gerencial. O cálculo da folha em si continua a cargo da contabilidade externa ou de um software dedicado de folha de pagamento.*
