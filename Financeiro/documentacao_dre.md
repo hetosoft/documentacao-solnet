@@ -264,7 +264,7 @@ C - 2.1.3.02 - Provisão Férias a Pagar
 #### **Cadastro de Agrupamento DRE**
 
 **Tela de Configuração:**
-1. Acesse **Financeiro** → **Configurações** → **Agrupamentos DRE**
+1. Abra a pesquisa universal (F1), digite **Agrupamento DRE** (código `130`) e abra a tela.
 2. Clique em **"Novo Agrupamento"**
 
 **Campos Obrigatórios:**
@@ -469,13 +469,13 @@ DESPESAS OPERACIONAIS
 ### 📋 1. Configuração Inicial
 
 #### **Passo 1.1: Estruturar Plano de Contas**
-1. Acesse **Financeiro** → **Cadastros** → **Plano de Contas**
+1. Abra a pesquisa universal (F1), digite **Plano de Contas** (código `14`) e abra a tela.
 2. Crie a **estrutura hierárquica** conforme sua necessidade
 3. Configure **Centros de Custo** obrigatórios quando necessário
 4. Defina **contas sintéticas** (totalizadoras) e **analíticas** (lançamentos)
 
 #### **Passo 1.2: Criar Agrupamentos DRE**
-1. Acesse **Financeiro** → **Configurações** → **Agrupamentos DRE**
+1. Abra a pesquisa universal (F1), digite **Agrupamento DRE** (código `130`) e abra a tela.
 2. Crie os **agrupamentos principais**: Receitas, Custos, Despesas
 3. Defina **hierarquia** e **ordem de apresentação**
 4. Configure **fórmulas** para totalizações automáticas
@@ -495,7 +495,7 @@ DESPESAS OPERACIONAIS
 - **Folha RH**: Lançamentos automáticos da **Folha de Pagamento**
 
 #### **Passo 2.2: Lançamentos Manuais**
-1. Acesse **Financeiro** → **Lançamentos** → **Lançamentos Contábeis**
+1. Abra a pesquisa universal (F1), digite **Lancamento RH** (código `84`) e abra a tela.
 2. Informe **Data**, **Conta Débito**, **Conta Crédito** e **Valor**
 3. Preencha **Histórico** detalhado do lançamento
 4. Selecione **Centro de Custo** quando obrigatório
@@ -504,7 +504,7 @@ DESPESAS OPERACIONAIS
 ### 📈 3. Geração de Relatórios
 
 #### **Passo 3.1: DRE Básico**
-1. Acesse **Financeiro** → **Relatórios** → **DRE**
+1. Abra a pesquisa universal (F1), digite **Relatório DRE** (código `221`) e abra o relatório.
 2. Selecione **Período** (data inicial e final)
 3. Escolha **Empresa/Filial** (individual ou consolidado)
 4. Defina **Formato** (Gerencial ou Legal)
@@ -557,11 +557,11 @@ DESPESAS OPERACIONAIS
 - **Emissão de nota fiscal**: Gera lançamento automático de receita
 - **Impostos**: Lançados automaticamente em contas específicas
 - **Custo da mercadoria**: Baixado automaticamente do estoque
-- **Verificação**: Confira em **Financeiro** → **Consultas** → **Lançamentos por Período**
+- **Verificação**: Abra a pesquisa universal (F1), digite **Contas PR** (código `301`) e abra a consulta de lançamentos.
 
 #### **P: Como lançar despesas que não estão em outros módulos?**
 **R:**
-1. Acesse **Financeiro** → **Lançamentos** → **Lançamentos Contábeis**
+1. Abra a pesquisa universal (F1), digite **Lancamento RH** (código `84`) e abra a tela.
 2. Use template: **Débito** = Conta de Despesa, **Crédito** = Caixa/Banco
 3. **Exemplo**: Débito 6.1.01 (Energia Elétrica), Crédito 1.1.1.01 (Caixa)
 4. **Centro de custo**: Obrigatório quando configurado
