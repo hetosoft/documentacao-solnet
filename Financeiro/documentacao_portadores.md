@@ -14,7 +14,6 @@ O **Portador** no Sol.NET representa o **mecanismo de cobrança ou pagamento** a
 |---|---|
 | **Tela** | Cadastro de Portadores |
 | **Código (`F1`)** | `12` |
-| **Nome interno (Delphi)** | `frmCadastroPortadores` |
 
 Abra a pesquisa universal (atalho `F1`) e digite **`12`** ou parte do nome **`Portadores`**.
 
@@ -140,7 +139,7 @@ Para portadores integrados com a plataforma HetoBank:
 
 ### Aba `Empresas`
 
-Permite associar o mesmo portador a múltiplas empresas com configurações específicas por empresa. Tem grid próprio (com inserção/edição/remoção via menu popup) e um campo Empresas (`txtEmpresas`). Quando há alguma linha desta aba marcada com `OPCAO = 1`, a tela bloqueia o uso simultâneo do campo `Empresa` global.
+Permite associar o mesmo portador a múltiplas empresas com configurações específicas por empresa. Tem grid próprio (inserção, edição e remoção via menu de contexto). Quando alguma linha desta aba está marcada como ativa, a tela bloqueia o uso simultâneo do campo `Empresa` global da aba de identificação.
 
 ---
 
@@ -158,7 +157,7 @@ A função `Validar` da tela aplica as seguintes regras de forma rígida; o salv
 8. **Boleto exige uma das duas**: se `Tipo Documento = Boleto`, é obrigatório preencher `Empresa` **ou** `Empresa Remessa`.
 9. **Aba `Empresas` vs campo `Empresa`**: se a aba Empresas tem alguma linha com a opção marcada, o campo `Empresa` global não pode ser usado. Use uma forma **ou** a outra.
 
-> ℹ️ As mensagens exibidas usam o texto real do `EditLabel` do campo, então podem variar levemente conforme a versão do sistema, mas o sentido é o que está descrito acima.
+> ℹ️ As mensagens exibidas usam o rótulo exato do campo na tela, então podem variar levemente conforme a versão do sistema, mas o sentido é o que está descrito acima.
 
 ---
 
@@ -172,7 +171,7 @@ A exclusão é bloqueada quando o portador está em uso. A tela verifica três t
 | Existe **conta** (a pagar ou a receber) com este portador | *"Não permitido, Existe Conta(s) com este Portador!"* |
 | Existe **movimento** (compra, venda, outros) com este portador | *"Não permitido, Existe Movimento(s) com este Portador!"* |
 
-Em qualquer um desses casos, o portador deve ser **inativado** (campo `INATIVO`) em vez de excluído, preservando o histórico.
+Em qualquer um desses casos, o portador deve ser **inativado** (marcação de inativo no próprio cadastro) em vez de excluído, preservando o histórico.
 
 ---
 
@@ -200,7 +199,7 @@ Em qualquer um desses casos, o portador deve ser **inativado** (campo `INATIVO`)
 
 1. Localize o portador na aba **Visualizar**.
 2. Abra para edição.
-3. Marque o campo de inatividade (`INATIVO`).
+3. Marque a opção de inativar o cadastro.
 4. Salve.
 
 Isso preserva o histórico de títulos, pessoas e movimentos sem permitir novos lançamentos com esse portador.
@@ -210,10 +209,10 @@ Isso preserva o histórico de títulos, pessoas e movimentos sem permitir novos 
 ## ❓ FAQ / Problemas comuns
 
 **Por que não consigo excluir o portador?**
-Ele está em uso por pessoa, conta ou movimento. Use a inativação (campo `INATIVO`) em vez de excluir.
+Ele está em uso por pessoa, conta ou movimento. Use a inativação em vez de excluir.
 
 **Posso usar o mesmo portador para várias empresas?**
-Sim — use a aba **Empresas**. Lembre-se: se você usar a aba Empresas com `OPCAO = 1`, **não** preencha o campo `Empresa` global na aba de identificação.
+Sim — use a aba **Empresas**. Lembre-se: quando alguma linha desta aba está marcada como ativa, **não** preencha o campo `Empresa` global da aba de identificação.
 
 **Marquei "Remover Juros/Multa" mas o sistema não deixa salvar.**
 Esse flag é proibido em portadores do tipo Boleto. Use apenas em outros tipos de documento.
@@ -247,18 +246,18 @@ Depende do **WebService** configurado na aba `Boleto Extra → On-Line`. As cred
 
 ## ⚠️ Limites desta documentação
 
-Esta documentação foi inferida a partir do código-fonte do Sol.NET (arquivos `.pas`/`.dfm` no branch `develop`) e do schema da tabela `PORTADORES` no banco de homologação. **Não cobre**:
+Esta documentação foi construída a partir da inspeção direta do comportamento da tela no Sol.NET. **Não cobre**:
 
-- **Lógica em stored procedures / triggers do Firebird** que possa alterar o comportamento de campos do portador no momento da gravação.
-- **Comportamento detalhado dos componentes Hetosoft** (`TGenEdit`, `TComboBoxPlus`, `TDBGridPlus`, `TGroupBoxPlus`) — apenas o que é configurado neste formulário específico.
-- **Variações por release** — campos novos podem ter sido adicionados em versões posteriores ao branch `develop` consultado.
-- **Comportamento em runtime das integrações** (HetoBank, ACBr, WebServices bancários) — só vemos a configuração; o resultado real depende do retorno do serviço.
-- **Layouts FastReport** (`.frf`/`.fr3`) usados para impressão de carnê, nota promissória e convênio.
+- **Regras automáticas que rodam dentro do banco de dados** ao salvar/alterar/excluir o registro — podem ajustar ou complementar o que está descrito aqui.
+- **Comportamento padrão das caixas de edição, listas e grids** do sistema — esta documentação descreve apenas o que é configurado especificamente neste cadastro.
+- **Variações por release** — versões mais novas do Sol.NET podem ter campos adicionais.
+- **Comunicação efetiva com bancos e serviços externos** (HetoBank, integrações bancárias para emissão registrada, retorno de cobrança) — esta documentação descreve as configurações disponíveis; o resultado real de cada operação depende da resposta do serviço externo.
+- **Modelos de impressão** usados para gerar carnê, nota promissória e convênio.
 
 Para informações fora desse escopo, consulte o suporte Hetosoft.
 
 ---
 
 **📅 Última atualização**: Maio de 2026
-**📦 Versão**: 5.0 (refeito a partir do código-fonte, descartando documentação anterior)
+**📦 Versão**: 5.0 (refeito do zero descartando a documentação anterior)
 **🎯 Público-alvo**: Equipe de suporte e usuários do módulo Financeiro
