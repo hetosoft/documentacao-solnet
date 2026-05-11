@@ -6,589 +6,250 @@ permalink: /RH/processo-mensal/
 
 ## 🎯 Visão Geral
 
-Esta documentação detalha o processo mensal de registro de valores da folha de pagamento no Sol.NET, utilizando o **formulário de Lançamento RH**.
+Este documento descreve a **rotina mensal** de registro dos valores da folha de pagamento no Sol.NET, usando a tela **`Cadastro de Lançamento de RH`** (código `84`).
 
-### Fluxo Mensal Completo
+A rotina cobre, todos os meses:
+
+1. Receber e validar os valores enviados pela contabilidade.
+2. Garantir que os funcionários estão cadastrados e classificados corretamente.
+3. Registrar os lançamentos por funcionário na tela `Cadastro de Lançamento de RH` (código `84`).
+4. Gerar (quando aplicável) os títulos financeiros em Contas a Pagar/Receber.
+5. Conferir os totais no **DRE** e fechar o mês.
+
+### Fluxo do mês
 
 ```mermaid
 graph TD
-    A[Receber Dados<br/>da Contabilidade] --> B[Acessar Formulário<br/>Lançamento RH]
-    B --> C[Selecionar<br/>Competência]
-    C --> D[Para Cada Funcionário]
-    D --> E[Selecionar<br/>Funcionário]
-    E --> F[Informar Valores]
-    F --> G[Salvar Lançamento]
-    G --> H{Mais<br/>Funcionários?}
-    H -->|Sim| D
-    H -->|Não| I[Conferir Totais]
-    I --> J[Validar no DRE]
-    J --> K[Finalizar Mês]
+    A[Receber valores<br/>da contabilidade] --> B[Validar cadastros<br/>de funcionários]
+    B --> C[Abrir tela 84<br/>via F1]
+    C --> D[Selecionar<br/>Competência]
+    D --> E[Para cada funcionário]
+    E --> F[Lançar valores<br/>linha a linha]
+    F --> G{Gerar ContasPR?}
+    G -->|Sim| H[Criar título<br/>na aba ContasPR - Manual]
+    G -->|Não| I[Apenas salvar]
+    H --> J[Salvar]
+    I --> J
+    J --> K{Mais<br/>funcionários?}
+    K -->|Sim| E
+    K -->|Não| L[Conferir DRE]
+    L --> M[Fechar o mês]
 ```
 
 ---
 
-## 📋 Formulário de Lançamento RH
+## 🧭 Telas usadas no processo mensal
 
-### Acesso ao Formulário
+Todas as telas abrem pela pesquisa universal — atalho **`F1`** — digitando o código ou o nome.
 
-**Caminho:** Menu RH → Lançamentos → Lançamento de Folha
-
-ou
-
-**Caminho:** RH → Processos → Lançamento Mensal
-
-### Estrutura do Formulário
-
-O formulário de Lançamento RH é a interface principal para registro mensal dos valores de cada funcionário.
-
-#### **Seção 1: Seleção de Competência**
-
-**Campos:**
-- **Mês**: Selecionar o mês de referência (01 a 12)
-- **Ano**: Informar o ano (ex: 2024)
-- **Competência Completa**: Exibição MM/AAAA (ex: 03/2024)
-
-**Função:**
-Define o período ao qual os lançamentos se referem. Todos os lançamentos do mês serão agrupados por esta competência.
-
-#### **Seção 2: Seleção de Funcionário**
-
-**Campos:**
-- **Funcionário**: Campo de busca/seleção (obrigatório)
-  - Pode buscar por nome, matrícula ou CPF
-  - Mostra apenas funcionários ativos
-  - Vinculação obrigatória para cada lançamento
-
-**Informações Exibidas ao Selecionar:**
-- Nome completo do funcionário
-- Matrícula
-- Departamento
-- Centro de custo
-- Contas contábeis configuradas (salário, encargos, benefícios)
-
-#### **Seção 3: Dados do Lançamento**
-
-**Tipos de Valores:**
-
-**1. Vencimentos (Valores Positivos/Créditos)**
-- Salário Base
-- Horas Extras
-- Comissões
-- Gratificações
-- Adicional Noturno
-- Adicional de Insalubridade
-- Adicional de Periculosidade
-- Outros vencimentos
-
-**2. Descontos (Valores Negativos/Débitos)**
-- INSS Funcionário
-- IRRF
-- Vale Transporte (desconto)
-- Vale Refeição (desconto)
-- Plano de Saúde (coparticipação)
-- Empréstimos consignados
-- Pensão alimentícia
-- Outros descontos
-
-**3. Encargos Patronais (Custo da Empresa)**
-- INSS Patronal
-- FGTS
-- RAT/FAP
-- Salário Educação
-- INCRA/SENAI/SESI/SEBRAE
-
-**4. Benefícios (Custo da Empresa)**
-- Vale Transporte (parte empresa)
-- Vale Refeição (parte empresa)
-- Plano de Saúde (parte empresa)
-- Seguro de Vida
-- Outros benefícios
-
-**Campos para Cada Tipo:**
-- **Descrição**: Nome do evento/rubrica
-- **Valor**: Valor em reais (R$)
-- **Conta Débito**: Conta contábil de despesa (auto-preenchida do cadastro)
-- **Conta Crédito**: Conta contábil de passivo
-- **Observações**: Campo livre para anotações
-
-#### **Seção 4: Totalização**
-
-**Totalizadores Automáticos:**
-- **Total Vencimentos**: Soma de todos os valores positivos
-- **Total Descontos**: Soma de todos os valores negativos
-- **Líquido a Pagar**: Vencimentos - Descontos
-- **Total Encargos**: Soma dos encargos patronais
-- **Total Benefícios**: Soma dos benefícios empresa
-- **Custo Total**: Vencimentos + Encargos + Benefícios
-
-#### **Seção 5: Ações**
-
-**Botões Disponíveis:**
-- **Novo**: Limpa formulário para novo lançamento
-- **Salvar**: Grava o lançamento do funcionário atual
-- **Excluir**: Remove lançamento existente
-- **Cancelar**: Descarta alterações não salvas
-- **Próximo Funcionário**: Salva atual e abre novo para próximo
-- **Imprimir**: Gera relatório do lançamento
+| Tela | Código (`F1`) | Quando entra |
+|------|---------------|--------------|
+| `Cadastro de Pessoas` | `5` | Ao cadastrar novos funcionários ou ajustar centro de custo de um já existente |
+| `Cadastro de Lançamento de RH` | `84` | Tela principal do processo mensal — onde os valores são registrados |
+| `Configuração RH` | `222` | Para criar/ajustar modelos de lançamentos recorrentes (salário base, vale-transporte patronal etc.) |
+| `Holerite Excel` | `134` | Quando a contabilidade fornece os holerites em planilha Excel para importação |
 
 ---
 
-## 🔄 Processo Passo a Passo
+## 📋 Preparação (antes de começar)
 
-### Preparação (Antes de Começar)
+### 1. Receber a planilha da contabilidade
 
-**1. Receber Planilha da Contabilidade**
+Solicite à contabilidade um relatório **detalhado por funcionário**, contendo:
 
-A contabilidade deve fornecer planilha detalhada com:
+- Competência (mês/ano)
+- Nome do funcionário (ou matrícula/CPF para identificação)
+- Cada **evento** com seu valor: salário, comissões, horas extras, INSS funcionário, IRRF, vale-transporte, INSS patronal, FGTS, benefícios, provisões etc.
+- Total por funcionário e total geral do mês
+
+Exemplo de formato útil:
+
 ```
-Competência: Março/2024
+Competência: 03/2024
 
-Funcionário: João Silva (Mat. 001)
-├── Vencimentos
-│   ├── Salário Base: R$ 5.000,00
-│   ├── Horas Extras: R$ 300,00
-│   └── Total Vencimentos: R$ 5.300,00
-├── Descontos
-│   ├── INSS: R$ 583,00
-│   ├── IRRF: R$ 95,00
-│   ├── Vale Transporte: R$ 150,00
-│   └── Total Descontos: R$ 828,00
-├── Líquido: R$ 4.472,00
-└── Encargos Empresa
-    ├── INSS Patronal: R$ 1.060,00
-    ├── FGTS: R$ 424,00
-    └── Total Encargos: R$ 1.484,00
-
-Funcionário: Maria Santos (Mat. 002)
-[... dados individuais ...]
-
-[Repetir para todos os funcionários]
+Funcionário: João Silva
+   Salário base ............ R$ 5.000,00
+   Horas extras ............ R$   300,00
+   INSS funcionário (desc.). R$   583,00
+   IRRF (desc.) ............ R$    95,00
+   Vale Transporte (desc.) . R$   150,00
+   INSS patronal ........... R$ 1.060,00
+   FGTS .................... R$   424,00
 ```
 
-**2. Validar Cadastros**
+### 2. Validar os cadastros
 
-Verificar que todos os funcionários da planilha estão:
-- Cadastrados no sistema
-- Com status "Ativo"
-- Com contas contábeis configuradas
-- Com centro de custo definido
+Para cada funcionário que aparece na planilha, confira na tela **`Cadastro de Pessoas`** (código `5`) se:
+
+- O registro existe.
+- Está marcado com a classificação **`Funcionário`**.
+- O **Centro de Custo** está correto (define onde o custo aparece no DRE).
+- Não está inativo (a menos que se trate de uma rescisão pendente).
+
+Se faltar algum funcionário, inclua o registro antes de iniciar os lançamentos.
+
+### 3. Confirmar os modelos em `Configuração RH` (opcional)
+
+Se já existem modelos recorrentes em **`Configuração RH`** (código `222`), confirme se eles estão vigentes para a competência em andamento. Modelos com `Data Mês Fim` no mês anterior precisam ser estendidos ou substituídos.
 
 ---
 
-### Lançamento no Formulário
+## 🔄 Lançamento na tela `Cadastro de Lançamento de RH`
 
-#### **Passo 1: Abrir Formulário de Lançamento**
+Tela: **`Cadastro de Lançamento de RH`** — código **`84`** (abra pela pesquisa `F1`).
 
-1. Menu RH → Lançamentos → Lançamento de Folha
-2. Sistema abre o formulário de Lançamento RH
+### Passo 1 — Abrir a tela
 
-#### **Passo 2: Definir Competência**
+1. Pressione **`F1`** em qualquer lugar do Sol.NET.
+2. Digite `84` (ou parte do nome `Lançamento de RH`).
+3. Selecione a tela na lista e confirme.
 
-1. Selecionar **Mês**: 03 (Março)
-2. Selecionar **Ano**: 2024
-3. Sistema mostra: Competência 03/2024
+### Passo 2 — Selecionar competência e funcionário
 
-#### **Passo 3: Lançar Primeiro Funcionário**
+Na aba **`Registro → Principal`**:
 
-**Para João Silva (Mat. 001):**
+1. Preencha o campo **Competência** com o mês/ano da folha (ex.: `03/2024`).
+2. No campo **Pessoas**, busque o funcionário pelo nome, código ou CPF.
+3. Confirme os dados que aparecem ao selecionar a pessoa (centro de custo padrão, classificação).
 
-1. **Selecionar Funcionário:**
-   - Clicar no campo "Funcionário"
-   - Digitar "João" ou "001"
-   - Selecionar "João Silva - Mat. 001"
-   - Sistema carrega dados do cadastro
+### Passo 3 — Lançar os valores linha a linha
 
-2. **Informar Vencimentos:**
-   ```
-   Salário Base:
-   - Descrição: Salário Base
-   - Valor: R$ 5.000,00
-   - Conta Débito: 6.2.01 (auto-preenchida)
-   - Conta Crédito: 2.1.2.01
-   
-   Horas Extras:
-   - Descrição: Horas Extras 50%
-   - Valor: R$ 300,00
-   - Conta Débito: 6.2.01 (auto-preenchida)
-   - Conta Crédito: 2.1.2.01
-   ```
+Cada **evento** da planilha vira uma linha contábil. Para cada linha, informe:
 
-3. **Informar Descontos:**
-   ```
-   INSS:
-   - Descrição: INSS Funcionário
-   - Valor: R$ 583,00
-   - (Reduz o líquido a pagar)
-   
-   IRRF:
-   - Descrição: IRRF
-   - Valor: R$ 95,00
-   
-   Vale Transporte:
-   - Descrição: Vale Transporte
-   - Valor: R$ 150,00
-   ```
+- **Valor**
+- **Plano de Contas** (lado do débito, normalmente a conta de despesa)
+- **Centro de Custo** (sugerido pelo cadastro da pessoa; ajuste se houver rateio)
+- **Tipo de Conta** (ligue ao modelo de `Configuração RH`, quando aplicável)
+- **Operação** (débito/crédito)
+- **Observação** (opcional, mas útil para conferência)
 
-4. **Informar Encargos Patronais:**
-   ```
-   INSS Patronal:
-   - Descrição: INSS Patronal
-   - Valor: R$ 1.060,00
-   - Conta Débito: 6.2.02 (auto-preenchida)
-   - Conta Crédito: 2.1.2.02
-   
-   FGTS:
-   - Descrição: FGTS
-   - Valor: R$ 424,00
-   - Conta Débito: 6.2.02 (auto-preenchida)
-   - Conta Crédito: 2.1.2.03
-   ```
+> O sistema trabalha com lançamentos contábeis (débito/crédito), não com rubricas de holerite. Salário, encargo e benefício viram **linhas independentes** vinculadas a planos de contas e tipos de conta diferentes.
 
-5. **Conferir Totalizadores:**
-   ```
-   Total Vencimentos: R$ 5.300,00 ✓
-   Total Descontos: R$ 828,00 ✓
-   Líquido: R$ 4.472,00 ✓
-   Total Encargos: R$ 1.484,00 ✓
-   Custo Total: R$ 6.784,00
-   ```
+### Passo 4 — Rateio (se necessário)
 
-6. **Salvar:**
-   - Clicar em "Salvar" ou usar botão "Próximo Funcionário"
-   - Sistema grava lançamento de João Silva
-   - Limpa formulário para próximo
+Se um valor precisa ser dividido entre vários centros de custo ou planos de contas:
 
-#### **Passo 4: Lançar Próximo Funcionário**
+1. Vá na aba **`Registro → Rateio`**.
+2. Clique em **Inserir** e adicione uma linha por destino, com `Plano de Contas`, `Centro de Custo`, `%` e `Valor`.
+3. Confirme que o campo **Diferença** está em zero antes de salvar.
 
-**Para Maria Santos (Mat. 002):**
+### Passo 5 — Gerar título em Contas a Pagar/Receber (quando aplicável)
 
-1. Selecionar "Maria Santos - Mat. 002"
-2. Informar vencimentos conforme planilha
-3. Informar descontos
-4. Informar encargos
-5. Conferir totais
-6. Salvar
+Para os valores que serão efetivamente pagos (líquido do funcionário, guias de encargos, vales), use a aba **`Registro → ContasPR - Manual`**:
 
-#### **Passo 5: Repetir para Todos**
+1. Preencha **Tipo de Documento**, **Portador** e **Vencimento**.
+2. Clique em **Criar**.
+3. O título passa a aparecer no módulo de **Contas a Pagar/Receber** e entra no fluxo de caixa normal.
 
-Continuar o processo para cada funcionário da planilha:
-- Pedro Costa (Mat. 003)
-- Ana Oliveira (Mat. 004)
-- Carlos Lima (Mat. 005)
-- [... todos os demais ...]
+Se a aba não for usada, o lançamento entra **somente** no DRE (sem reflexo financeiro automático).
+
+### Passo 6 — Salvar e passar ao próximo
+
+1. Salve o lançamento usando o botão equivalente da tela.
+2. Vá ao próximo funcionário (selecione novo `Pessoas` na aba `Principal`) e repita os passos 3 a 5.
+3. Repita até cobrir todos os funcionários da planilha do mês.
+
+### Lançamento em massa
+
+A aba **`Registro → Lançamento em Massa`** permite inserir/excluir várias linhas de uma vez (botões `Inserir` e `Deletar`). É útil quando o mesmo tipo de evento se repete para muitos funcionários — por exemplo, lançar o FGTS de todos de uma vez. Confira sempre os valores antes de salvar.
 
 ---
 
-## ✅ Conferência e Validação
+## ✅ Conferência e fechamento
 
-### Durante o Processo
+### Após cada funcionário
 
-**Após cada funcionário:**
-- [ ] Valores conferidos com planilha
-- [ ] Totalizadores corretos
-- [ ] Lançamento salvo com sucesso
-- [ ] Marcar funcionário como "lançado" na planilha
+- [ ] Soma das linhas do funcionário confere com o total da planilha
+- [ ] Centro de custo e plano de contas conferem com a estrutura contábil esperada
+- [ ] Quando houve geração de ContasPR, o título aparece no módulo financeiro
+- [ ] Lançamento salvo com sucesso (sem mensagem de erro)
+- [ ] Marcar o funcionário como "lançado" na planilha de controle
 
-### Após Todos os Lançamentos
+### Ao final do mês
 
-#### **1. Conferir Total Geral**
+1. **Filtrar os lançamentos da competência** na aba `Pesquisar` da tela `Cadastro de Lançamento de RH` (código `84`).
+2. Conferir que **todos** os funcionários da planilha aparecem.
+3. Conferir o **total** geral contra o relatório da contabilidade.
+4. Abrir o **DRE** (consulte a documentação do módulo Financeiro) e verificar:
+   - Distribuição dos valores nas contas de despesa
+   - Totais por centro de custo
+   - Comparação com o mês anterior
+5. Se identificar diferença, voltar à tela `84` e localizar o lançamento divergente pela aba `Pesquisar`.
 
-**No Formulário:**
-- Menu RH → Relatórios → Resumo Mensal
-- Selecionar competência: 03/2024
-- Verificar total de funcionários lançados
-- Comparar total geral com planilha da contabilidade
-
-**Exemplo:**
-```
-Resumo Março/2024:
-─────────────────────────────────────
-Funcionários Lançados: 10
-Total Salários: R$ 45.000,00
-Total Encargos: R$ 12.600,00
-Total Benefícios: R$ 3.500,00
-─────────────────────────────────────
-Custo Total RH: R$ 61.100,00
-
-Comparar com planilha contabilidade ✓
-```
-
-#### **2. Validar no DRE**
-
-**Acessar:**
-- Menu Financeiro → DRE
-- Competência: 03/2024
-
-**Verificar:**
-```
-6.2 DESPESAS ADMINISTRATIVAS
-    6.2.01 Salários ........... R$ 30.000,00
-    6.2.02 Encargos Sociais ... R$ 8.400,00
-    6.2.03 Benefícios ......... R$ 2.100,00
-
-6.1 DESPESAS COM VENDAS
-    6.1.01 Salários ........... R$ 15.000,00
-    6.1.02 Encargos Sociais ... R$ 4.200,00
-    6.1.03 Benefícios ......... R$ 1.400,00
-```
-
-#### **3. Checklist Final**
+### Checklist final do mês
 
 - [ ] Todos os funcionários da planilha foram lançados
-- [ ] Total geral confere com contabilidade
-- [ ] Valores aparecem corretamente no DRE
-- [ ] Alocação por centro de custo está correta
-- [ ] Não há lançamentos duplicados
-- [ ] Competência está correta
+- [ ] Total geral confere com a contabilidade
+- [ ] Não há lançamentos duplicados (busque por funcionário/competência)
+- [ ] Títulos do líquido a pagar estão criados em ContasPR (se for a prática da empresa)
+- [ ] DRE da competência reflete o esperado
+- [ ] Planilha original da contabilidade arquivada como evidência
 
 ---
 
-## 💡 Recursos do Formulário
+## ⚠️ Problemas comuns
 
-### Funcionalidades Úteis
+### Funcionário não aparece na pesquisa do campo `Pessoas`
 
-#### **Busca de Funcionário**
+**Causas:** funcionário não cadastrado, inativo ou sem classificação `Funcionário`.
+**Como resolver:** abra `Cadastro de Pessoas` (código `5`), ajuste e volte ao lançamento.
 
-**Métodos de busca:**
-- Por nome: Digite parte do nome
-- Por matrícula: Digite número da matrícula
-- Por CPF: Digite CPF completo ou parcial
+### Plano de contas ou centro de custo aparecem vazios
 
-**Filtros:**
-- Mostrar apenas ativos
-- Mostrar todos (ativos + inativos)
-- Por departamento específico
+**Causas:** o `Tipo de Conta` selecionado não tem o modelo em `Configuração RH` preenchido, ou o cadastro da pessoa não tem centro de custo padrão.
+**Como resolver:** ajuste o `Tipo de Conta` em `Configuração RH` (código `222`) ou informe os campos manualmente no lançamento.
 
-#### **Copiar Lançamento Anterior**
+### Erro ao salvar
 
-Se disponível:
-1. Selecionar funcionário
-2. Clicar em "Copiar Mês Anterior"
-3. Sistema traz valores do mês passado
-4. Ajustar valores conforme novo mês
-5. Salvar
+**Causas:** algum campo obrigatório não foi preenchido (Competência, Pessoas, Valor, Plano de Contas), ou o rateio está com diferença.
+**Como resolver:** confira a mensagem do sistema, complete o campo apontado e tente salvar novamente.
 
-**Útil para:**
-- Funcionários com salário fixo
-- Provisões mensais recorrentes
-- Benefícios que não variam
+### Total no DRE diverge da contabilidade
 
-#### **Lançamento em Lote**
+**Causas possíveis:** funcionário esquecido, valor digitado errado, lançamento duplicado, centro de custo trocado.
+**Como resolver:** filtre os lançamentos da competência na aba `Pesquisar` da tela `84`, compare lista por lista com a planilha e corrija.
 
-Se disponível:
-- Importar planilha Excel com dados
-- Sistema valida e cria lançamentos
-- Conferir antes de gravar definitivamente
+### O título de Contas a Pagar não foi criado
 
-#### **Histórico do Funcionário**
-
-Visualizar lançamentos anteriores:
-1. Selecionar funcionário
-2. Clicar em "Histórico"
-3. Ver todos os meses anteriores
-4. Comparar valores
+**Causa:** o lançamento foi salvo sem usar a aba `ContasPR - Manual`.
+**Como resolver:** edite o lançamento, vá em `ContasPR - Manual`, preencha `Tipo de Documento`/`Portador`/`Vencimento` e clique em `Criar`.
 
 ---
 
-## ⚠️ Problemas Comuns e Soluções
+## 💡 Dicas de produtividade
 
-### **Problema: Funcionário não aparece na busca**
-
-**Causas:**
-- Funcionário não cadastrado
-- Status inativo
-- Filtro de departamento ativo
-
-**Solução:**
-1. Verificar em RH → Cadastros → Funcionários
-2. Cadastrar se não existir
-3. Ativar se estiver inativo
-4. Remover filtros de busca
+1. **Organize por departamento.** Lançar todos do Administrativo antes de passar para Vendas facilita a conferência por centro de custo.
+2. **Use `Configuração RH` para itens fixos.** Salário base, vale-transporte patronal, plano de saúde — tudo que se repete entra como modelo recorrente em `Configuração RH` (código `222`).
+3. **Confira incrementalmente.** A cada 5 funcionários, abra a aba `Pesquisar` e valide subtotal — corrigir um lançamento isolado é mais barato que reabrir o mês inteiro.
+4. **Mantenha uma planilha de acompanhamento** marcando funcionário a funcionário o status (lançado, conferido).
+5. **Padronize as descrições** ("INSS Patronal", "FGTS", "Vale-Transporte") — facilita filtros e relatórios.
 
 ---
 
-### **Problema: Contas contábeis não preenchidas**
+## 📅 Calendário sugerido
 
-**Causa:**
-Contas não configuradas no cadastro do funcionário
-
-**Solução:**
-1. Ir em RH → Cadastros → Funcionários
-2. Editar o funcionário
-3. Aba "Configurações Contábeis"
-4. Preencher contas de salário, encargos e benefícios
-5. Salvar
-6. Voltar ao formulário de lançamento
+| Período do mês | O que fazer |
+|----------------|-------------|
+| Dias 1-5 | Receber planilha e/ou holerites da contabilidade; conferir cadastros |
+| Dias 6-15 | Lançar funcionário por funcionário na tela `84`; criar ContasPR quando aplicável |
+| Dias 16-20 | Conferência final, validação no DRE, geração de relatórios |
+| Dias 21-25 | Disponibilizar a análise gerencial e arquivar a documentação do mês |
 
 ---
 
-### **Problema: Erro ao salvar**
+## 🔗 Documentação relacionada
 
-**Causas comuns:**
-- Funcionário não selecionado
-- Valor não informado
-- Conta contábil inválida
-- Competência não definida
-
-**Solução:**
-- Verificar todos os campos obrigatórios
-- Conferir mensagem de erro específica
-- Validar se funcionário está ativo
+- **[Documentação principal do módulo RH](documentacao_folha_de_pagamento.md)** — detalhes de campos, abas, rateio, integração com ContasPR
+- **[Guia Rápido](guia_rapido.md)** — referência de bolso
+- **[FAQ](faq.md)** — perguntas frequentes
+- **[Financeiro — DRE](../Financeiro/documentacao_dre.md)** — onde os lançamentos aparecem consolidados
 
 ---
 
-### **Problema: Total diferente da contabilidade**
-
-**Causas:**
-- Faltou lançar algum funcionário
-- Valor digitado incorreto
-- Lançamento duplicado
-
-**Solução:**
-1. Gerar relatório resumo do mês
-2. Comparar lista de funcionários
-3. Verificar valores individuais
-4. Corrigir discrepâncias
+**📅 Última atualização**: Maio de 2026
+**📦 Versão**: 2.0
+**🎯 Público-alvo**: Equipe de suporte e usuários responsáveis pelo fechamento mensal de RH
 
 ---
 
-### **Problema: Valores não aparecem no DRE**
-
-**Causas:**
-- Conta contábil errada
-- Competência diferente
-- Lançamento não salvo
-
-**Solução:**
-1. Conferir se lançamento foi salvo
-2. Validar contas contábeis
-3. Verificar competência
-4. Regerar DRE
-
----
-
-## 📊 Relatórios Disponíveis
-
-### Durante o Processo
-
-**1. Resumo de Lançamentos**
-- Lista funcionários já lançados no mês
-- Valores por funcionário
-- Total parcial
-
-**2. Pendências**
-- Funcionários ainda não lançados
-- Baseado em mês anterior
-- Alerta de esquecimentos
-
-### Após Finalizar
-
-**1. Folha Analítica**
-- Detalhamento completo
-- Todos os funcionários
-- Todos os eventos
-- Totalização geral
-
-**2. Folha Sintética**
-- Resumo por departamento
-- Totais por tipo (salários, encargos, benefícios)
-- Comparativo com mês anterior
-
-**3. Comprovante de Lançamento**
-- Documento para arquivo
-- Assinatura responsável
-- Data de processamento
-
----
-
-## 💡 Dicas de Produtividade
-
-### **1. Organize o Trabalho**
-
-**Por departamento:**
-- Lanc todos do Administrativo
-- Depois todos de Vendas
-- Depois Produção
-- Facilita conferência
-
-**Por ordem alfabética:**
-- Organizar planilha da contabilidade
-- Lançar na mesma ordem
-- Usar checklist
-
-### **2. Use Atalhos (se disponíveis)**
-
-Verifique atalhos de teclado para:
-- Salvar e próximo: Agiliza processo
-- Buscar funcionário: Acesso rápido
-- Conferir totais: Validação rápida
-
-### **3. Valide Incrementalmente**
-
-Não espere lançar todos para conferir:
-- A cada 5 funcionários, confira subtotal
-- Valide departamento completo antes de mudar
-- Reduz retrabalho
-
-### **4. Mantenha Controle**
-
-**Planilha de acompanhamento:**
-```
-Funcionário | Mat | Lançado | Conferido | Obs
-─────────────────────────────────────────────
-João Silva  | 001 |    ✓    |     ✓     | OK
-Maria Santos| 002 |    ✓    |     ✓     | OK
-Pedro Costa | 003 |    ✓    |     ✓     | OK
-...
-```
-
-### **5. Backup**
-
-Antes de finalizar:
-- Exportar lançamentos
-- Salvar planilha da contabilidade
-- Documentar ajustes feitos
-
----
-
-## 📅 Calendário Sugerido
-
-### **Dia 1-5 do Mês**
-- Receber planilha da contabilidade
-- Validar dados recebidos
-- Conferir cadastros atualizados
-
-### **Dia 6-15**
-- Processar lançamentos
-- Lançar funcionário por funcionário
-- Conferir incrementalmente
-
-### **Dia 16-20**
-- Finalizar lançamentos
-- Conferência final
-- Validar DRE
-- Gerar relatórios
-
-### **Dia 21-25**
-- Disponibilizar para análise gerencial
-- Arquivo de documentação
-- Preparar para próximo mês
-
----
-
-## 🔗 Documentação Relacionada
-
-- **[Cadastro de Funcionários](documentacao_folha_de_pagamento.md#-cadastro-de-funcionários-pessoa-rh)**: Como cadastrar funcionários
-- **[Guia Rápido](guia_rapido.md)**: Referência rápida para lançamentos
-- **[FAQ](faq.md)**: Perguntas frequentes sobre lançamentos
-
----
-
-**📅 Última atualização**: Janeiro de 2025  
-**📦 Versão**: 1.0  
-**🎯 Público-alvo**: Usuários responsáveis por lançamentos mensais de RH  
-**👥 Contribuidores**: Equipe de Documentação Sol.NET
-
----
-
-*Esta documentação detalha o processo mensal de lançamento usando o formulário de Lançamento RH. Lembre-se: cada lançamento deve estar vinculado a um funcionário específico e os valores são fornecidos pela contabilidade externa.*
+*Esta documentação descreve a rotina mensal de uso do `Cadastro de Lançamento de RH` (código `84`). Os valores lançados são os calculados pela contabilidade externa — o Sol.NET não calcula a folha em si.*
