@@ -21,7 +21,7 @@ Todo acesso a telas é pela **pesquisa universal** — atalho **`F1`** — digit
 | Tela | Código (`F1`) | Documento |
 |------|:---:|------|
 | [Bancos](documentacao_bancos.md) | `9` | 🟢 disponível |
-| Agências | `10` | 🟡 em construção |
+| [Agências](documentacao_agencias.md) | `10` | 🟢 disponível |
 | Contas Correntes | `11` | 🟡 em construção |
 | [Portadores](documentacao_portadores.md) | `12` | 🟢 disponível |
 | Cadastro Caixa Geral | `13` | 🟡 em construção |
