@@ -44,7 +44,7 @@ Todo acesso a telas é pela **pesquisa universal** — atalho **`F1`** — digit
 | Tela | Código (`F1`) | Documento |
 |------|:---:|------|
 | [Pagar e Receber](documentacao_pagar_e_receber.md) | `301` | 🟢 disponível |
-| Caixa Geral | `302` | 🟡 em construção |
+| [Caixa Geral](documentacao_caixa_geral_op.md) | `302` | 🟢 disponível |
 | Quitação | `303` | 🟡 em construção |
 
 ### 📊 Análise e Histórico
