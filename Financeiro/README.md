@@ -43,7 +43,7 @@ Todo acesso a telas é pela **pesquisa universal** — atalho **`F1`** — digit
 
 | Tela | Código (`F1`) | Documento |
 |------|:---:|------|
-| Pagar e Receber | `301` | 🟡 em construção |
+| [Pagar e Receber](documentacao_pagar_e_receber.md) | `301` | 🟢 disponível |
 | Caixa Geral | `302` | 🟡 em construção |
 | Quitação | `303` | 🟡 em construção |
 
