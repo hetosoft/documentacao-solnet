@@ -22,7 +22,7 @@ Todo acesso a telas é pela **pesquisa universal** — atalho **`F1`** — digit
 |------|:---:|------|
 | [Bancos](documentacao_bancos.md) | `9` | 🟢 disponível |
 | [Agências](documentacao_agencias.md) | `10` | 🟢 disponível |
-| Contas Correntes | `11` | 🟡 em construção |
+| [Contas Correntes](documentacao_contas_correntes.md) | `11` | 🟢 disponível |
 | [Portadores](documentacao_portadores.md) | `12` | 🟢 disponível |
 | Cadastro Caixa Geral | `13` | 🟡 em construção |
 | Plano de Contas | `14` | 🟡 em construção |
