@@ -29,7 +29,7 @@ Todo acesso a telas é pela **pesquisa universal** — atalho **`F1`** — digit
 | [Centros de Custos](documentacao_centros_de_custos.md) | `15` | 🟢 disponível |
 | [Formas de Pagamento](documentacao_formas_pagamento.md) | `7` | 🟢 disponível |
 | [Cond. de Pagamento](documentacao_condicoes_pagamento.md) | `8` | 🟢 disponível |
-| Tipos de Contas PR | `82` | 🟡 em construção |
+| [Tipos de Contas PR](documentacao_tipos_contas_pr.md) | `82` | 🟢 disponível |
 | Motivo Devolução Cheque | `95` | 🟡 em construção |
 | Taxas | `99` | 🟡 em construção |
 | Rejeições Boletos | `103` | 🟡 em construção |
