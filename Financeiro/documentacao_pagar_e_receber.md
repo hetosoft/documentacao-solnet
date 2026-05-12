@@ -25,9 +25,9 @@ A tela **também é aberta automaticamente** por outras telas em modos especiais
 
 ## 🧭 Estrutura da tela (visão rápida)
 
-### Tab `Visualizar` (consulta de títulos)
+### Consulta de títulos
 
-A tab `Visualizar` é a tela de busca/consulta — onde você filtra e localiza os títulos para depois agir sobre eles (quitar, estornar, cancelar, emitir boleto, etc.).
+É a tela de busca/consulta — onde você filtra e localiza os títulos para depois agir sobre eles (quitar, estornar, cancelar, emitir boleto, etc.).
 
 Filtros principais:
 
@@ -43,7 +43,7 @@ O grid de resultados mostra os títulos. Acima dele, um sumário com totais por 
 
 Pesquisas frequentes podem ser **salvas** (`Salvar Pesquisa`) e **localizadas** depois (`Pesquisar`).
 
-### Tab `Cadastrar` (lançamento e edição de um título)
+### Lançamento e edição de um título
 
 Quando você clica em **Novo** ou **Alterar** (ou dá duplo clique em uma linha), a tela mostra o painel de cadastro com **várias sub-abas**:
 
@@ -98,7 +98,7 @@ Quando você clica em **Novo** ou **Alterar** (ou dá duplo clique em uma linha)
 
 ### 🔹 Localizar / filtrar títulos
 
-1. Na tab `Visualizar`, ajuste os filtros do topo:
+1. Ajuste os filtros do topo:
    - **Tipo** (Receber/Pagar)
    - **Empresa**
    - Selecione o **Campo Pesquisado** (Descrição, Documento, Pessoa, etc.) + **Condição** (igual/contém/começa) + digite o termo
@@ -120,7 +120,7 @@ Quando você clica em **Novo** ou **Alterar** (ou dá duplo clique em uma linha)
 
 A quitação dá baixa em um ou mais títulos selecionados. O atalho de teclado é **F6** (botão `Quitar(F6)`).
 
-1. Na tab `Visualizar`, encontre os títulos a quitar.
+1. Encontre os títulos a quitar na lista.
 2. **Marque** a coluna `Sel.` (OPCAO) dos títulos desejados — pode marcar vários.
 3. Clique em **Quitar** (ou pressione `F6`).
 4. O sistema valida (regras abaixo) e, se passar, abre a tela de **Quitação** (tela `303`) com os títulos selecionados.
@@ -139,7 +139,7 @@ A quitação dá baixa em um ou mais títulos selecionados. O atalho de teclado 
 
 Estornar = desfazer a quitação de um título já quitado.
 
-1. Tab `Visualizar` → encontre o título quitado.
+1. Encontre o título quitado na lista.
 2. Marque a coluna `Sel.`.
 3. Clique em **Estornar**.
 4. O sistema reverte a quitação, retornando o título para "Em Aberto" (apaga os registros financeiros da baixa e zera os valores baixados).
@@ -150,7 +150,7 @@ Estornar = desfazer a quitação de um título já quitado.
 
 Cancelar = anular um título em aberto (não emite estorno — apenas marca como cancelado).
 
-1. Tab `Visualizar` → marque o(s) título(s) na coluna `Sel.`.
+1. Marque o(s) título(s) na coluna `Sel.`.
 2. Clique em **Excluir** (cancelamento).
 3. O sistema valida (regras abaixo) e, se passar, cancela e registra a data em `Cancelamento`.
 
@@ -167,7 +167,7 @@ Cancelar = anular um título em aberto (não emite estorno — apenas marca como
 
 Renegociar = criar um (ou vários) título(s) novo(s) substituindo títulos antigos, podendo ajustar valores com multa/juros/desconto.
 
-1. Tab `Visualizar` → marque os títulos originais.
+1. Marque os títulos originais na lista.
 2. Clique em **Renegociar** (no menu de funções ou no botão equivalente).
 3. O painel `Renegociação` mostra:
    - **Nº Parcelas Reneg** — quantidade de novas parcelas
@@ -329,14 +329,14 @@ O modo é definido pela tela que abre a `Pagar e Receber` e ajusta validações,
 
 ### Quitar várias contas de uma vez
 
-1. Tab `Visualizar` → filtre por **Status: Em Aberto** e ajuste o **Período**.
+1. Filtre por **Status: Em Aberto** e ajuste o **Período**.
 2. Marque na coluna `Sel.` os títulos.
 3. **F6** (ou clique em `Quitar`).
 4. Na tela de Quitação (tela `303`), informe forma de pagamento, valor, eventuais descontos/multas e confirme.
 
 ### Renegociar um título em atraso
 
-1. Tab `Visualizar` → encontre o título vencido.
+1. Encontre o título vencido na lista.
 2. Marque na coluna `Sel.`.
 3. **Renegociar** (no menu de funções).
 4. No painel `Renegociação` informe:

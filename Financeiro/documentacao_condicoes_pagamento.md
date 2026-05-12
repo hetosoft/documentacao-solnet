@@ -25,14 +25,11 @@ Abra a pesquisa universal (atalho `F1`) e digite **`8`** ou parte do nome **`Con
 
 ---
 
-## 🧭 Estrutura da tela
+> 🔎 **Na lista de busca** — as colunas `Tipo` e `Status (A Prazo)` aparecem decodificadas (texto, não número).
 
-A tela segue o padrão dos cadastros do Sol.NET, com duas áreas:
+## 🧭 Sub-abas do formulário
 
-1. **Tab `Visualizar`** — grid de busca. As colunas `Tipo` e `Status (A Prazo)` aparecem decodificadas (texto, não número).
-2. **Tab `Cadastrar`** — formulário com painel de identificação (`Descrição`, `Tipo`, `Juros/Multa`, `Acréscimo/Desconto`, status, flags) + sub-PageControl `pagDetalhes` com várias abas.
-
-### Sub-abas do `Cadastrar` → `pagDetalhes`
+O formulário tem um painel de identificação (`Descrição`, `Tipo`, `Juros/Multa`, `Acréscimo/Desconto`, status, flags) e um conjunto de sub-abas com a configuração detalhada:
 
 | Sub-aba | Para quê serve |
 |---------|----------------|

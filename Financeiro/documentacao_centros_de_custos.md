@@ -26,14 +26,7 @@ Abra a pesquisa universal (atalho `F1`) e digite **`15`** ou parte do nome **`Ce
 
 ---
 
-## 🧭 Estrutura da tela
-
-A tela segue o padrão dos cadastros do Sol.NET:
-
-1. **Tab `Visualizar`** — grid de busca com filtros próprios (`Fixo/Variável`, `Natureza`, `Classificação`). Linhas de **contas sintéticas** aparecem em **cinza** no grid.
-2. **Tab `Cadastrar`** — formulário simples (sem sub-abas — diferente do Plano de Contas).
-
----
+> 🔎 **Na lista de busca** — as linhas de **contas sintéticas** aparecem em **cinza**, para diferenciá-las das analíticas. Os filtros próprios da lista são `Fixo/Variável`, `Natureza` e `Classificação`.
 
 ## 📝 Campos
 
@@ -156,7 +149,7 @@ A estrutura é livre — depende da forma como a empresa organiza seus rateios. 
 
 ### Inativar um centro antigo
 
-1. Localize o centro na aba **Visualizar**.
+1. Localize o centro na lista.
 2. Abra para edição.
 3. Marque a opção de inativar.
 4. Salve.

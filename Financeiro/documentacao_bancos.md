@@ -19,15 +19,6 @@ Abra a pesquisa universal (atalho `F1`) e digite **`9`** ou parte do nome **`Ban
 
 ---
 
-## 🧭 Estrutura da tela
-
-A tela segue o padrão dos cadastros do Sol.NET, com duas áreas:
-
-1. **Tab `Visualizar`** — grid de busca com as colunas `Descrição` e `Código`. Duplo clique numa linha leva direto à edição.
-2. **Tab `Cadastrar`** — formulário enxuto, com apenas três campos.
-
----
-
 ## 📝 Campos
 
 | Label | Obrigatório | Observação |

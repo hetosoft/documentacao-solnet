@@ -31,14 +31,12 @@ Abra a pesquisa universal (atalho `F1`) e digite **`13`** ou parte do nome **`Ca
 
 ---
 
-## 🧭 Estrutura da tela
+> 🔎 **Na lista de busca** — a coluna **Permite Fechamento** aparece decodificada (`PERÍODO` ou `TURNO`). Em **modo pesquisa** (quando o caixa é selecionado por outra tela), só aparecem os caixas que o **usuário logado** tem permissão de uso.
 
-A tela tem duas áreas principais:
+## 🧭 Sub-abas do formulário
 
-1. **Tab `Visualizar`** — grid de busca. A coluna **Permite Fechamento** aparece decodificada (`PERÍODO` ou `TURNO`). Em **modo pesquisa** (quando o caixa é selecionado por outra tela), só aparecem os caixas que o **usuário logado** tem permissão de uso.
-2. **Tab `Cadastrar`** — formulário com duas sub-abas:
-   - **`Principal`** — identificação, conta associada, empresa, tipos e fechamento.
-   - **`Usuário`** — grid de leitura mostrando quais usuários têm acesso a este caixa e que permissões cada um tem (Selecionar, Padrão, Consultar, Quitar, Transferir, Cheque). **A vinculação é feita no Cadastro de Usuários**, não aqui.
+- **`Principal`** — identificação, conta associada, empresa, tipos e fechamento.
+- **`Usuário`** — grid de leitura mostrando quais usuários têm acesso a este caixa e que permissões cada um tem (Selecionar, Padrão, Consultar, Quitar, Transferir, Cheque). **A vinculação é feita no Cadastro de Usuários**, não aqui.
 
 ---
 
@@ -167,7 +165,7 @@ Use este caixa nas regras de Controle de Cartão de **Formas de Pagamento** (tel
 
 ### Inativar um caixa antigo
 
-1. Localize na aba **Visualizar**.
+1. Localize na lista.
 2. Abra para edição.
 3. Marque a opção de inativar o cadastro.
 4. Salve.

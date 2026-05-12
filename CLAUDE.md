@@ -15,7 +15,7 @@ This repository contains **end-user documentation only** for Sol.NET ERP (Hetoso
 The site is a Jekyll GitHub Pages site served from the `main` branch at https://hetosoft.github.io/documentacao-solnet.
 
 - `_config.yml` — Jekyll config. Uses `kramdown` with GFM input and `permalink: pretty` (URLs end without `.html`). Plugins: `jekyll-optional-front-matter`, `jekyll-readme-index` (each folder's `README.md` becomes that folder's `index.html`), `jekyll-relative-links` (rewrites `.md` links to `.html` at build time), `jemoji`, `jekyll-seo-tag`.
-- `_layouts/default.html` — wraps every page, defines the persistent left sidebar (with full module navigation) and includes Mermaid support. The sidebar is fixed on desktop (≥ 900 px) and collapses into a hamburger drawer on mobile. When you add or move a document, **also update the sidebar markup in `_layouts/default.html`**.
+- `_layouts/default.html` — wraps every page, defines the persistent left sidebar (with full module navigation) and includes Mermaid support. The sidebar is fixed on desktop (≥ 900 px) and collapses into a hamburger drawer on mobile. When you add or move a document, **also update the sidebar markup in `_layouts/default.html`**. **Sidebar labels show only the screen name** (e.g., `Portadores`, `Caixa Geral — operação`) — **never** append `(código N)` or other internal identifiers. The screen code belongs in the document itself (via the "Como acessar" section), not in navigation. When two screens share a base name, disambiguate with a short qualifier (e.g., `Caixa Geral` vs `Caixa Geral — operação`), not with a code.
 - `_includes/mermaid.html` — loads Mermaid.js v10.9.1 from jsDelivr with `securityLevel: 'antiscript'`. **Do not lower this security level** — it was deliberately chosen over the default.
 - There is no local preview script committed. Treat edits as published content; verify Mermaid changes against `teste_mermaid.md` after deploy.
 
@@ -66,7 +66,7 @@ The `.github/copilot-instructions.md` file codifies the house style. Key rules t
 
 - Every document opens with `# 📄 [Título] - Sol.NET` and uses emojis as section markers. Match the existing emoji vocabulary rather than inventing new ones.
 - Structure: `## 🎯 Visão Geral` → main sections → `## 💡 Exemplos Práticos` → `## ❓ FAQ / Problemas Comuns` → metadata footer (`**Última atualização**`, `**Versão**`, `**Público-alvo**`).
-- Prefer lists to tables; tables that do appear should stay narrow enough to read on mobile.
+- Prefer lists to tables; tables that do appear should stay narrow enough to read on mobile. **Tables are styled by the site layout** (`_layouts/default.html`) with visible outer/row/column borders and bold headers on a light background — write tables with plain Markdown pipes and let the CSS apply the look. Do **not** add inline HTML, `<style>` blocks, or repeated emoji/bold inside header rows to fake styling.
 - When referring to the system use **"Sol.NET"** or **"Sol.NET ERP"**; modules are **"Módulo <Nome>"**; keyboard shortcuts use plain form (`F1`, `Ctrl+S`) **only when validated against the source code** (see *Atalhos de Teclado* below); screens are referenced by name + numeric code accessed via the F1 search (see *Acesso a Telas* below); field names go in quotes.
 - When editing existing docs, add to existing sections rather than creating parallel ones, and keep the emoji/formatting pattern consistent with the file you're editing.
 
@@ -81,6 +81,16 @@ The `.github/copilot-instructions.md` file codifies the house style. Key rules t
   - *"Use a função `Y` da tela `X`"*
   - *"Confirme/Salve pelo botão equivalente"*
 - Se a documentação atual já cita um atalho não validado, **remova ou substitua pela forma genérica** ao tocar no arquivo.
+
+## Estrutura de Telas de Cadastro (Regra Obrigatória)
+
+**Toda tela de cadastro do Sol.NET** segue um padrão universal herdado de um formulário-base comum: uma aba `Visualizar` (grid de busca, ponto de partida da tela) e uma aba `Cadastrar` (formulário de inclusão/edição). Como o padrão é universal, **descrever essa estrutura na documentação é redundante e atrapalha a leitura**.
+
+- **NÃO** abra a documentação de um cadastro com uma seção `## 🧭 Estrutura da tela` que apenas anuncia que existem as abas `Visualizar` e `Cadastrar`. Comece a explicação pelo conteúdo concreto (lista de campos, regras, sub-abas relevantes).
+- **NÃO** rotule seções como `### Tab Visualizar` / `### Tab Cadastrar`. Se precisar nomear partes da tela, use termos do que o usuário **enxerga e faz**: `Consulta de títulos`, `Lançamento e edição`, `Sub-abas do formulário` etc.
+- Em passos operacionais, prefira **"Localize na lista"** ou **"Encontre o registro"** a *"Vá na aba `Visualizar`"*. Em redirecionamentos para áreas específicas dentro do formulário, dê o nome da sub-aba real (ex.: *"Aba `Boleto Extra → Geral`"*), nunca o invólucro `Cadastrar`.
+- **DOCUMENTE** quando houver sub-abas específicas da tela dentro do formulário (ex.: `Principal`, `Holerite`, `Boleto`, `Empresas`). Essas são úteis porque variam por tela. Use uma seção `## 🧭 Sub-abas do formulário` (ou similar) com lista descritiva.
+- Telas que **não são cadastro puro** (operações como `Pagar e Receber`, `Caixa Geral` op., `Movimentação`, telas de processo) também usam o mesmo invólucro `Visualizar`/`Cadastrar`. Aplique a mesma regra: nomeie as seções pelo papel (`Consulta`, `Lançamento`, `Operações`) e não pelo nome técnico da aba.
 
 ## Acesso a Telas (Convenção Obrigatória)
 

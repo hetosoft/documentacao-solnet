@@ -19,15 +19,6 @@ Abra a pesquisa universal (atalho `F1`) e digite **`11`** ou parte do nome **`Co
 
 ---
 
-## 🧭 Estrutura da tela
-
-A tela segue o padrão dos cadastros do Sol.NET, com duas áreas:
-
-1. **Tab `Visualizar`** — grid de busca com as colunas `Descrição`, `Numero`, `Banco` e `Agência`. Quando a conta tem dígito verificador, ele aparece concatenado ao número no formato `1234-5`. Duplo clique numa linha leva direto à edição.
-2. **Tab `Cadastrar`** — formulário com os campos abaixo.
-
----
-
 ## 📝 Campos
 
 | Label | Obrigatório | Observação |
@@ -92,7 +83,7 @@ A conta aparecerá no grid de busca como `BRADESCO — CC PRINCIPAL | 123456-7 |
 
 Quando a conta sai de operação (encerrada pelo banco) mas o histórico de movimentações precisa ser preservado:
 
-1. Localize a conta na aba **Visualizar**.
+1. Localize a conta na lista.
 2. Abra para edição.
 3. Marque a opção de inativar o cadastro.
 4. Salve.

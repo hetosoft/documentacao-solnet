@@ -27,9 +27,9 @@ A tela também é aberta automaticamente por outras telas em modos especiais (fe
 
 ## 🧭 Estrutura da tela (visão rápida)
 
-### Tab `Visualizar` (consulta de movimentos)
+### Consulta de movimentos
 
-A tab de consulta é organizada em várias áreas:
+A consulta é organizada em várias áreas:
 
 - **Filtros do topo** — Tipo de Operação (`Transferência`, `Estorno`, `Normal`, `Cancelados`), Empresa, Caixa, Data inicial/final, Status, Campo pesquisado + condição, etc.
 - **Páginas de visualização** (sub-PageControl):
@@ -46,7 +46,7 @@ A tab de consulta é organizada em várias áreas:
 
 Filtros e padrões (descrição da loja, datas, tipo de operação) podem ser **salvos como padrão do usuário** pelos menus de contexto — "Salvar Padrão" — para a tela reabrir já configurada.
 
-### Tab `Cadastrar` (lançamento e edição de um movimento)
+### Lançamento e edição de um movimento
 
 Quando você clica em **Novo** ou **Alterar**, a tela mostra o painel com sub-abas:
 
@@ -102,7 +102,7 @@ Operações em lote sobre lançamentos selecionados na consulta:
 
 Passos:
 
-1. Tab `Visualizar` → filtre os lançamentos.
+1. Filtre os lançamentos na lista.
 2. Marque na coluna de seleção (`Sel.`) os movimentos desejados.
 3. Pressione `F6` (Compensar) ou `F7` (Descompensar).
 
@@ -112,7 +112,7 @@ Passos:
 
 Operação para mover valor de um caixa para outro (ex.: do PDV para o caixa banco).
 
-1. Tab `Visualizar` → marque os movimentos a transferir.
+1. Marque os movimentos a transferir na lista.
 2. No menu de contexto (botão direito) escolha:
    - **Transferência de Totais - Selecionados** — transfere o valor total
    - **Transferência de Totais - Selecionados (Empresas)** — transfere consolidando por empresa
@@ -129,7 +129,7 @@ Para cheques há opções específicas:
 
 Quando um cheque é devolvido ou precisa ter prazo renegociado:
 
-1. Tab `Visualizar` → encontre o cheque (use o filtro de tipo cheque).
+1. Encontre o cheque na lista (use o filtro de tipo cheque).
 2. No menu de contexto: **Renegociar Cheque**.
 3. Confirme os dados da renegociação.
 4. O cheque original passa a aparecer na aba **Cheque Renegociado**; o novo título fica vinculado.
@@ -145,7 +145,7 @@ Aba `Operações → Conferência de Caixa`:
 1. Selecione o caixa e o período.
 2. Clique em **Buscar Conferência** — o sistema carrega o saldo esperado vs o lançado.
 3. Identifique divergências (lançamentos faltando, valores incorretos).
-4. Ajuste pelos lançamentos individuais (volte para a tab `Visualizar`).
+4. Ajuste pelos lançamentos individuais (volte para a lista de movimentos).
 
 ### 🔹 Conciliação de Cartões
 
@@ -178,11 +178,11 @@ Aba `Operações → Conciliação Bancária`:
 
 ### 🔹 Rateio contábil
 
-Aba `Rateio` (dentro do Cadastrar): mesma lógica do Rateio em [Pagar e Receber](documentacao_pagar_e_receber.md) — uma ou mais linhas com `Plano de Contas + Centro de Custo + Empresa + Valor/Percentual + Histórico + Data`. O **Total** precisa fechar com o valor do lançamento e o **percentual** precisa fechar em 100%.
+Sub-aba `Rateio` do lançamento: mesma lógica do Rateio em [Pagar e Receber](documentacao_pagar_e_receber.md) — uma ou mais linhas com `Plano de Contas + Centro de Custo + Empresa + Valor/Percentual + Histórico + Data`. O **Total** precisa fechar com o valor do lançamento e o **percentual** precisa fechar em 100%.
 
 ### 🔹 Anexar imagens
 
-Aba `Imagens` (dentro do Cadastrar): mesma operação de Pagar e Receber — origem PC, Banco de Dados ou Câmera, com opção de marcar uma como Padrão e flag PDF/Inativo.
+Sub-aba `Imagens` do lançamento: mesma operação de Pagar e Receber — origem PC, Banco de Dados ou Câmera, com opção de marcar uma como Padrão e flag PDF/Inativo.
 
 ### 🔹 Localizar / filtrar — recursos extras
 
@@ -250,7 +250,7 @@ O modo é definido pela tela que abre a `Caixa Geral` e ajusta validações, bot
 
 ### Transferir total do PDV para o caixa banco
 
-1. Tab `Visualizar` → filtre por **Caixa** = `PDV LOJA SEDE — CAIXA 01`, **Data** de hoje, **Status** = não compensados.
+1. Filtre por **Caixa** = `PDV LOJA SEDE — CAIXA 01`, **Data** de hoje, **Status** = não compensados.
 2. Marque todos os movimentos da coluna `Sel.`.
 3. Menu de contexto → **Transferência de Totais - Selecionados**.
 4. Escolha o caixa de destino (ex.: `BANCO BRADESCO — CC 1234-5`) e confirme a data.
@@ -258,7 +258,7 @@ O modo é definido pela tela que abre a `Caixa Geral` e ajusta validações, bot
 
 ### Compensar cheques recebidos
 
-1. Tab `Visualizar` → na sub-aba `Pagamentos → Cheque`, filtre por cheques **não compensados** com vencimento até hoje.
+1. Na sub-aba `Pagamentos → Cheque`, filtre por cheques **não compensados** com vencimento até hoje.
 2. Marque na coluna `Sel.` os cheques que foram compensados pelo banco.
 3. `F6` (Compensar).
 
@@ -284,7 +284,7 @@ O modo é definido pela tela que abre a `Caixa Geral` e ajusta validações, bot
 
 ### Renegociar cheque devolvido
 
-1. Tab `Visualizar` → encontre o cheque devolvido.
+1. Encontre o cheque devolvido na lista.
 2. Marque na coluna `Sel.`.
 3. Menu de contexto → **Renegociar Cheque**.
 4. Confirme os dados.

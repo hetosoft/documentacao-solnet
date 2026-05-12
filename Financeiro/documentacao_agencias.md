@@ -19,15 +19,6 @@ Abra a pesquisa universal (atalho `F1`) e digite **`10`** ou parte do nome **`Ag
 
 ---
 
-## 🧭 Estrutura da tela
-
-A tela segue o padrão dos cadastros do Sol.NET, com duas áreas:
-
-1. **Tab `Visualizar`** — grid de busca com as colunas `Descrição`, `Número Agência` e `Banco`. Quando a agência tem dígito verificador, ele é exibido junto com o número no formato `1234-5`. Duplo clique numa linha leva direto à edição.
-2. **Tab `Cadastrar`** — formulário enxuto, com quatro campos.
-
----
-
 ## 📝 Campos
 
 | Label | Obrigatório | Observação |
