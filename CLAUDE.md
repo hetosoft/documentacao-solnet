@@ -103,6 +103,19 @@ Toda tela do Sol.NET é acessada pela **tela de pesquisa universal**, aberta com
 - Quando criar listas de telas relacionadas (ex.: "Cadastros do módulo X"), apresente em formato `Tela — código (ID_FORMULARIO) — descrição curta` e deixe claro que todas são abertas pela pesquisa (F1).
 - **Como acessar o repositório privado**: `ProjetosSol.NET` é privado, então é necessário um **fine-grained PAT do GitHub** com a permissão **`Contents: Read`** sobre o repo (a permissão `Metadata: Read` sozinha — padrão dos PATs novos — devolve `403 "Resource not accessible by personal access token"` ao buscar arquivos). Com o token disponível, use `curl -H "Authorization: Bearer $GITHUB_TOKEN" -H "Accept: application/vnd.github.raw" "https://api.github.com/repos/hetosoft/ProjetosSol.NET/contents/<caminho>?ref=develop"` para baixar arquivos brutos, ou `https://api.github.com/search/code?q=<termo>+repo:hetosoft/ProjetosSol.NET` para pesquisar (lembre que o GitHub Code Search é exato — buscar `FORMULARIOS` no plural retorna zero; o termo correto é `FORMULARIO`). Se não houver token disponível na sessão, peça ao usuário para colar o trecho relevante na conversa.
 
+## Consulta ao Banco de Dados (Regra Obrigatória)
+
+Ao **criar ou atualizar** a documentação de uma tela, consulte a **tabela do banco que armazena os registros daquela tela** antes de escrever sobre campos, valores ou exemplos. A consulta serve para ancorar a doc na realidade do sistema — confirmar nomes de colunas, restrições (NOT NULL, CHECK, UNIQUE, FK), valores reais de colunas codificadas (`0/1`, `S/N`, status numéricos etc.) e amostras de registros já cadastrados — em vez de inferir só por inspeção da tela ou por suposição.
+
+- **Como consultar**: use a skill **`sql-tools:querying-databases`** (operada via `usql`). Ela já cobre conexão, restrição de escrita, dual-approval e gravação de outputs em disco. Para Firebird 3.0, a conexão exige `wire_crypt=disabled` + `auth_plugin_name=Srp` — a skill já trata isso.
+- **Qual tabela**: a tabela que persiste os registros mostrados/editados naquela tela. Use o `NOME_FORMULARIO` (Delphi) e o caminho do código-fonte como pista para localizá-la; quando houver dúvida, pergunte ao usuário em vez de adivinhar.
+- **O que extrair**:
+  - **Schema** — nomes e tipos das colunas, comprimentos máximos, default, NOT NULL, CHECK, FK, UNIQUE. Confirma e/ou refina o que a tela aparenta.
+  - **Valores reais** de colunas codificadas — combos numéricos podem ter **ordem do display diferente do valor gravado** (`AHS_ItemsID`/`AHS_Values`). Confirme no banco antes de listar opções na doc.
+  - **Exemplos para `## 💡 Exemplos Práticos`** — prefira casos plausíveis derivados do dado real (sem dados sensíveis) a exemplos fictícios.
+- **Não cole resultado bruto na doc**. A documentação é escrita em linguagem de usuário. Use a consulta para validar e nutrir o texto; outputs ficam só no disco da skill (já é o comportamento padrão dela).
+- **Se não houver banco disponível na sessão** (conexão indisponível, credenciais ausentes), **sinalize ao usuário** e prossiga com cautela — não invente colunas, valores codificados ou exemplos quando a fonte de verdade está fora do alcance.
+
 ## Links Between Documents
 
 - Use **relative `.md` links** between files (e.g. `[DRE](Financeiro/documentacao_dre.md)` from the root, or `[Reforma Tributária](../Fiscal/documentacao_reforma_tributaria.md)` from another module). `jekyll-relative-links` rewrites them to `.html` at build time, so both the GitHub repo view and the Pages site work.
