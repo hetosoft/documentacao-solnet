@@ -28,7 +28,7 @@ Todo acesso a telas é pela **pesquisa universal** — atalho **`F1`** — digit
 | Plano de Contas | `14` | 🟡 em construção |
 | Centros de Custos | `15` | 🟡 em construção |
 | [Formas de Pagamento](documentacao_formas_pagamento.md) | `7` | 🟢 disponível |
-| Cond. de Pagamento | `8` | 🟡 em construção |
+| [Cond. de Pagamento](documentacao_condicoes_pagamento.md) | `8` | 🟢 disponível |
 | Tipos de Contas PR | `82` | 🟡 em construção |
 | Motivo Devolução Cheque | `95` | 🟡 em construção |
 | Taxas | `99` | 🟡 em construção |
