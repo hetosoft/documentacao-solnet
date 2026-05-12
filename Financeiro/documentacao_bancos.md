@@ -46,7 +46,7 @@ Antes de gravar, o sistema verifica:
 
 1. **Campos obrigatórios preenchidos** — `Descrição` e `Código` não podem ficar em branco.
 2. **Descrição com letra** — a `Descrição` precisa ter ao menos uma letra (não é aceito um nome só com números ou símbolos).
-3. **Descrição única** — não é permitido cadastrar dois bancos com a mesma `Descrição`. Se houver duplicidade, o sistema bloqueia o salvamento e informa o registro existente.
+3. **Descrição única** — não é permitido cadastrar dois bancos com a mesma `Descrição`. Se houver duplicidade, o sistema bloqueia o salvamento com uma mensagem no formato *"Descrição (NOME-DIGITADO) Já Existe!"*.
 
 Se alguma validação falhar, o salvamento é abortado e o sistema posiciona o cursor no campo problemático.
 

@@ -34,7 +34,7 @@ A tela segue o padrão dos cadastros do Sol.NET, com duas áreas:
 |-------|:---:|------------|
 | **Descrição** | ✅ | Identificação da agência, até 80 caracteres. Convertido para caixa alta. Exige ao menos uma letra. Use um nome amigável que diferencie agências do mesmo banco (ex.: `BRADESCO — AG. CENTRO`, `BRADESCO — AG. SHOPPING`). |
 | **Número Agência** | ✅ | Número oficial da agência (até 10 caracteres, apenas números). É esse número que aparece em boletos, arquivos CNAB e extratos. |
-| **Dígito** | ◻️ | Dígito verificador da agência (até 20 caracteres). Algumas agências têm, outras não. Quando preenchido, é exibido junto com o número no formato `1234-5`. |
+| **Dígito** | ◻️ | Dígito verificador da agência (até 5 caracteres no banco de dados). Algumas agências têm, outras não. Quando preenchido, é exibido junto com o número no formato `1234-5`. |
 | **Banco** | ✅ | Banco ao qual esta agência pertence — lista preenchida a partir do **Cadastro de Bancos** (tela `9`). Se o banco ainda não existe, cadastre-o primeiro. |
 
 ---
@@ -45,7 +45,7 @@ Antes de gravar, o sistema verifica:
 
 1. **Campos obrigatórios preenchidos** — `Descrição`, `Número Agência` e `Banco` não podem ficar em branco.
 2. **Descrição com letra** — a `Descrição` precisa ter ao menos uma letra.
-3. **Número Agência único** — não é permitido cadastrar duas agências com o mesmo `Número Agência`. Se houver duplicidade, o sistema bloqueia o salvamento e informa o registro existente.
+3. **Número Agência único** — não é permitido cadastrar duas agências com o mesmo `Número Agência`. Se houver duplicidade, o sistema bloqueia o salvamento com uma mensagem no formato *"Número Agência (NUMERO-DIGITADO) Já Existe!"*.
 
 > ℹ️ A validação de duplicidade considera o **número da agência** isoladamente, sem combinar com o banco. Em ambientes com mais de um banco, prefira diferenciar pela **descrição** (incluindo o nome do banco) — assim, o usuário sempre identifica visualmente qual é qual mesmo que duas instituições usem o mesmo número.
 
