@@ -286,7 +286,7 @@ A tela tem comportamentos diferentes conforme **quem a abriu**:
 | Modo | O que faz |
 |------|-----------|
 | **Normal** | Abertura padrão pela pesquisa `F1 → 301` |
-| **Acerto Manual** | Abertura para acerto manual de títulos (operação especial) |
+| **Acerto Manual** | Renegociação automática quando uma conta é quitada parcialmente: o valor que faltou para quitar é convertido em uma **nova conta** (a pagar ou a receber, conforme o título original). Exige **permissão específica** do usuário. |
 | **Estornar a partir do Movimento** | Abertura via "Estornar" no histórico de movimento |
 | **Renegociar Cheque** | Abertura para renegociar cheque |
 | **Limpar Portador** | Operação rápida para remover o portador de um título |
@@ -377,7 +377,7 @@ Ajuste o valor das parcelas ou a quantidade até que o **Total Parcelado** seja 
 Você precisa estar no modo **leitura** (sem edição em andamento) e ter pelo menos um título marcado na coluna `Sel.`. Se há edição em andamento, **Gravar** ou **Desfazer** primeiro.
 
 **Modo "Acerto Manual" — o que é?**
-Modo especial aberto por outras telas (ex.: caixa, conferência) para ajustar manualmente o histórico de um título. Tem regras próprias e é geralmente usado pela equipe de suporte.
+É um modo de **renegociação** acionado quando uma conta é **quitada parcialmente**. O valor que faltou para completar a quitação não fica em aberto no título original — ele é convertido em uma **nova conta** (a pagar ou a receber, conforme o título original), gerada automaticamente para o saldo remanescente. Por criar um novo título fora do fluxo padrão de lançamento, **exige permissão específica** de usuário; sem essa permissão, o Sol.NET bloqueia a operação.
 
 **O título sumiu da lista depois que quitei.**
 Você provavelmente está filtrando por **Status: Em Aberto**. Mude o filtro para **Quitado** ou para o status correspondente.
