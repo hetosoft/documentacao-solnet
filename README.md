@@ -30,6 +30,10 @@ mindmap
     👥 RH
       Folha de pagamento
       Processo mensal
+    📡 API Externa
+      Credenciais de parceiros
+      Permissões por contexto
+      Limites e IP whitelist
     🌱 Agronômico
       Receituário
       ART · TRT
