@@ -24,7 +24,7 @@ Todo acesso a telas é pela **pesquisa universal** — atalho **`F1`** — digit
 | [Agências](documentacao_agencias.md) | `10` | 🟢 disponível |
 | [Contas Correntes](documentacao_contas_correntes.md) | `11` | 🟢 disponível |
 | [Portadores](documentacao_portadores.md) | `12` | 🟢 disponível |
-| Cadastro Caixa Geral | `13` | 🟡 em construção |
+| [Cadastro Caixa Geral](documentacao_caixa_geral.md) | `13` | 🟢 disponível |
 | [Plano de Contas](documentacao_plano_de_contas.md) | `14` | 🟢 disponível |
 | [Centros de Custos](documentacao_centros_de_custos.md) | `15` | 🟢 disponível |
 | [Formas de Pagamento](documentacao_formas_pagamento.md) | `7` | 🟢 disponível |
