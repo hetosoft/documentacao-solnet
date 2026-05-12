@@ -36,15 +36,13 @@ Abra a pesquisa universal (atalho `F1`) e digite **`82`** ou parte do nome **`Ti
 
 ---
 
-## 🧭 Estrutura da tela
+> 🔎 **Na lista de busca** — filtros próprios são `Fixo/Variável`, `Natureza`, `Classificação`, busca por `Código ou Descrição Contábil` e marcador `Contabilidade RH`. Linhas de **contas sintéticas** aparecem em **cinza** no grid.
 
-A tela segue o padrão dos cadastros do Sol.NET:
+## 🧭 Sub-abas do formulário
 
-1. **Tab `Visualizar`** — grid de busca com filtros próprios (`Fixo/Variável`, `Natureza`, `Classificação`, busca por `Código ou Descrição Contábil`, marcador `Contabilidade RH`). Linhas de **contas sintéticas** aparecem em **cinza** no grid.
-2. **Tab `Cadastrar`** — formulário organizado em sub-abas:
-   - **`Principal`** — identificação, tipo (sintética/analítica), hierarquia e atributos da analítica
-   - **`Contabilidade RH`** — vínculo com plano de contas, centro de custo e parametrização de RH (uso opcional)
-   - **`Hetosoft`** — opções internas da Hetosoft (visível **apenas** quando o operador está logado como usuário Hetosoft)
+- **`Principal`** — identificação, tipo (sintética/analítica), hierarquia e atributos da analítica
+- **`Contabilidade RH`** — vínculo com plano de contas, centro de custo e parametrização de RH (uso opcional)
+- **`Hetosoft`** — opções internas da Hetosoft (visível **apenas** quando o operador está logado como usuário Hetosoft)
 
 ---
 
@@ -187,7 +185,7 @@ Exemplo de árvore que separa as principais categorias gerenciais de uma empresa
 
 ### Inativar um tipo antigo
 
-1. Localize na aba **Visualizar**.
+1. Localize na lista.
 2. Abra para edição.
 3. Marque a opção de inativar.
 4. Salve.

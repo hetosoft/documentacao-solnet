@@ -26,14 +26,14 @@ Abra a pesquisa universal (atalho `F1`) e digite **`7`** ou parte do nome **`For
 
 ---
 
-## 🧭 Estrutura da tela
+> 🔎 **Na lista de busca** — filtros próprios são `Nº Grupo` e `Tipo`. As colunas `Tipo`, `Tipo Contas PR` e `Tipo de Troco` aparecem com descrição textual (não com o número interno).
 
-A tela tem duas áreas principais:
+## 🧭 Sub-abas do formulário
 
-1. **Tab `Visualizar`** — grid de busca com filtros próprios (`Nº Grupo` e `Tipo`). O grid mostra colunas como `Tipo`, `Tipo Contas PR` e `Tipo de Troco` com descrição textual (não com o número interno).
-2. **Tab `Cadastrar`** — formulário organizado em duas grandes abas:
-   - **`Geral`** — identificação + Tipo + Tipo Contas PR + opções (com sub-abas internas)
-   - **`Controle De Cartão`** — regras de operadoras de cartão (grid com inserção/edição de detalhes)
+O formulário é dividido em duas grandes abas:
+
+- **`Geral`** — identificação + Tipo + Tipo Contas PR + opções (com sub-abas internas)
+- **`Controle De Cartão`** — regras de operadoras de cartão (grid com inserção/edição de detalhes)
 
 ### Sub-abas internas da aba `Geral` → `pagOpcoes`
 

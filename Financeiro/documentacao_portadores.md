@@ -19,14 +19,11 @@ Abra a pesquisa universal (atalho `F1`) e digite **`12`** ou parte do nome **`Po
 
 ---
 
-## 🧭 Estrutura da tela
+> 🔎 **Na lista de busca** — colunas `Descrição`, `Código`, `Tipo Documento`, `Descrição da Loja` e filtro de status (ativo/inativo).
 
-A tela tem duas áreas principais (padrão dos cadastros do Sol.NET):
+## 🧭 Sub-abas do formulário
 
-1. **Tab `Visualizar`** — grid de busca com colunas `Descrição`, `Código`, `Tipo Documento`, `Descrição da Loja` e filtro de status (ativo/inativo). Duplo clique numa linha leva direto à edição.
-2. **Tab `Cadastrar`** — formulário organizado em sub-abas conforme o tipo de portador e a profundidade da configuração.
-
-### Sub-abas do `Cadastrar`
+O formulário é organizado em sub-abas conforme o tipo de portador e a profundidade da configuração:
 
 | Aba | Para quê serve |
 |------|----------------|
@@ -197,7 +194,7 @@ Em qualquer um desses casos, o portador deve ser **inativado** (marcação de in
 
 ### Inativar (em vez de excluir) um portador antigo
 
-1. Localize o portador na aba **Visualizar**.
+1. Localize o portador na lista.
 2. Abra para edição.
 3. Marque a opção de inativar o cadastro.
 4. Salve.

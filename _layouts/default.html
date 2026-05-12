@@ -243,6 +243,46 @@
         margin: 2em 0;
       }
 
+      /* ---------- Tabelas (bordas visíveis e cabeçalho destacado) ---------- */
+      .markdown-body table {
+        display: table;
+        width: 100%;
+        max-width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        table-layout: auto;
+        margin: 1.2em 0;
+        font-size: 15px;
+        border: 1px solid #57606a;
+        word-wrap: break-word;
+      }
+      .markdown-body table th,
+      .markdown-body table td {
+        border: 1px solid #d0d7de;
+        padding: 8px 12px;
+        vertical-align: top;
+        text-align: left;
+        line-height: 1.45;
+      }
+      .markdown-body table thead th {
+        background: #eaeef2;
+        font-weight: 700;
+        color: #0d1117;
+        border-bottom: 2px solid #57606a;
+      }
+      .markdown-body table tbody tr {
+        background-color: #ffffff;
+        border-top: 0;
+      }
+      .markdown-body table tbody tr:nth-child(2n) {
+        background-color: #f6f8fa;
+      }
+      .markdown-body table code {
+        background: rgba(175, 184, 193, 0.2);
+        padding: 0.15em 0.35em;
+        border-radius: 4px;
+      }
+
       /* ---------- Topbar (apenas mobile) ---------- */
       .sn-topbar {
         display: none;
@@ -349,19 +389,19 @@
             <summary class="sn-sidebar__group-summary">💰 Financeiro</summary>
             <ul class="sn-sidebar__items">
               <li><a href="{{ '/Financeiro/' | relative_url }}">Visão geral</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_formas_pagamento/' | relative_url }}">Formas de Pagamento (código 7)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_condicoes_pagamento/' | relative_url }}">Cond. de Pagamento (código 8)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_bancos/' | relative_url }}">Bancos (código 9)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_agencias/' | relative_url }}">Agências (código 10)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_contas_correntes/' | relative_url }}">Contas Correntes (código 11)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_portadores/' | relative_url }}">Portadores (código 12)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_caixa_geral/' | relative_url }}">Caixa Geral (código 13)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_pagar_e_receber/' | relative_url }}">Pagar e Receber (código 301)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_caixa_geral_op/' | relative_url }}">Caixa Geral — operação (código 302)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_tipos_contas_pr/' | relative_url }}">Tipos de Contas PR (código 82)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_quitacao/' | relative_url }}">Quitação (código 303)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_plano_de_contas/' | relative_url }}">Plano de Contas (código 14)</a></li>
-              <li><a href="{{ '/Financeiro/documentacao_centros_de_custos/' | relative_url }}">Centros de Custos (código 15)</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_formas_pagamento/' | relative_url }}">Formas de Pagamento</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_condicoes_pagamento/' | relative_url }}">Cond. de Pagamento</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_bancos/' | relative_url }}">Bancos</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_agencias/' | relative_url }}">Agências</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_contas_correntes/' | relative_url }}">Contas Correntes</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_portadores/' | relative_url }}">Portadores</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_caixa_geral/' | relative_url }}">Caixa Geral</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_pagar_e_receber/' | relative_url }}">Pagar e Receber</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_caixa_geral_op/' | relative_url }}">Caixa Geral — operação</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_tipos_contas_pr/' | relative_url }}">Tipos de Contas PR</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_quitacao/' | relative_url }}">Quitação</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_plano_de_contas/' | relative_url }}">Plano de Contas</a></li>
+              <li><a href="{{ '/Financeiro/documentacao_centros_de_custos/' | relative_url }}">Centros de Custos</a></li>
             </ul>
           </details>
 
