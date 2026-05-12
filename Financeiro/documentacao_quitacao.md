@@ -237,7 +237,7 @@ Pode ser por:
 - O usuário não tem permissão de uso (raro).
 
 **A data da quitação não pode ser anterior à emissão do título.**
-Correto — regra padrão. Se você precisa ajustar isso (caso excepcional), consulte o suporte ou use o **Acerto Manual** pelo Pagar e Receber.
+Correto — regra padrão. Se você precisa de uma exceção (caso atípico), consulte o suporte Hetosoft.
 
 **Quero quitar um título e gerar comprovante fiscal para outro CPF/CNPJ.**
 Use a seção `CPF/CNPJ na Nota` para informar o documento do tomador antes de clicar em OK.
