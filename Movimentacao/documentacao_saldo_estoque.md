@@ -171,7 +171,9 @@ Ao clicar em uma linha do grid, o painel lateral `Localização de Estoque` carr
 | `Cadastro de Produtos` | `32` | Item de catálogo cujo saldo é consultado; o atalho `Ir para Produto` abre direto a partir do grid. |
 | `Transações de Estoque` | `33` | Configura o efeito que cada movimento causa nas camadas — a origem do saldo que esta tela exibe. |
 | `Tipos de Movimento` | `37` | Junta o Tipo de Movimento à Transação de Estoque; é onde se corrigem comportamentos quando o saldo aparece errado. |
-| `Movimentos` | `53` | Onde os movimentos que geram o saldo são lançados. |
+| `Movimentos de Compras` | `201` | Onde movimentos de compra geram o saldo. |
+| `Movimentos de Vendas` | `202` | Onde as vendas consomem o saldo. |
+| `Outros Movimentos` | `203` | Demais movimentos que afetam o saldo (transferências, ajustes via Tipo de Movimento). |
 | `Ajuste de Estoque` | `79` | Tela para corrigir saldos manualmente quando há divergência. |
 | `Histórico de Movimentações` | `205` | Lista os movimentos individuais que produziram o saldo atual. |
 | `Histórico de Produtos` | `206` | Detalha o histórico de operações por produto. |

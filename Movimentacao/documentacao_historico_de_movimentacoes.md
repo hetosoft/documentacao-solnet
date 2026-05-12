@@ -2,7 +2,7 @@
 
 ## 🎯 Visão Geral
 
-O **Histórico de Movimentações** é a tela de **análise** do que foi movimentado no Sol.NET — vendas, compras, devoluções, transferências, ajustes e qualquer outro lançamento gravado em `Cadastro de Movimentos` (código `53`). A consulta combina dezenas de filtros (data, loja, vendedor, operador, tipo de movimento, condição de pagamento, portador, turno, PDV etc.) com sub-abas de **totais agregados** por diferentes dimensões — data, mês, pessoa, tipo de movimento, portador, condição de pagamento, vendedor, operador e tabela de preço — e ainda calcula **comissões** sobre vendas e devoluções.
+O **Histórico de Movimentações** é a tela de **análise** do que foi movimentado no Sol.NET — vendas, compras, devoluções, transferências, ajustes e qualquer outro lançamento das telas operacionais `Movimentos de Compras` (código `201`), `Movimentos de Vendas` (código `202`) e `Outros Movimentos` (código `203`). A consulta combina dezenas de filtros (data, loja, vendedor, operador, tipo de movimento, condição de pagamento, portador, turno, PDV etc.) com sub-abas de **totais agregados** por diferentes dimensões — data, mês, pessoa, tipo de movimento, portador, condição de pagamento, vendedor, operador e tabela de preço — e ainda calcula **comissões** sobre vendas e devoluções.
 
 A tela não altera dados; é leitura e análise. Os filtros podem ser **salvos como pesquisas reutilizáveis** (aba `Pesquisa Salva`), o que poupa retrabalho de quem consulta sempre os mesmos cortes.
 
@@ -156,10 +156,10 @@ Confira: (1) `Status` — talvez você esteja filtrando só "Faturado" e os movi
 Algumas abas dependem de informações específicas do movimento — `Vendedor` precisa estar preenchido nos movimentos; `Comissão` precisa de configuração na empresa. Confira a mensagem que aparece ao entrar na aba — o sistema explica o que falta.
 
 **Onde vejo o detalhe do que foi vendido em cada movimento?**
-Aqui você vê o movimento (cabeçalho). Para abrir o detalhe item a item, abra o `Cadastro de Movimentos` (código `53`) ou o `Histórico de Produtos` (código `206`).
+Aqui você vê o movimento (cabeçalho). Para abrir o detalhe item a item, abra o movimento original em `Movimentos de Compras` (código `201`), `Movimentos de Vendas` (código `202`) ou `Outros Movimentos` (código `203`), conforme o tipo — ou consulte o `Histórico de Produtos` (código `206`).
 
 **Como exporto o resultado?**
-Use `F3` (Relatórios). O Sol.NET oferece modelos pré-definidos e a opção de exportar a grade atual (XLS, PDF) conforme o modelo escolhido.
+Use `F3` (Relatórios). O Sol.NET oferece modelos pré-definidos e a opção de exportar a grid atual (XLS, PDF) conforme o modelo escolhido.
 
 **A comissão calculada está diferente do que paguei.**
 A comissão depende da configuração feita em três pontos: o **Cargo** do vendedor, a **aba Configuração / Geral** da empresa (Tipo Comissão) e a **regra de comissão por venda**. Quando alguma configuração está ausente, o sistema avisa ao entrar na aba — corrija lá antes de exigir o número desta tela.
@@ -170,7 +170,9 @@ A comissão depende da configuração feita em três pontos: o **Cargo** do vend
 
 | Tela | Código (`F1`) | Como se relaciona |
 |------|---------------|--------------------|
-| `Cadastro de Movimentos` | `53` | Origem dos dados — onde os movimentos são lançados. |
+| `Movimentos de Compras` | `201` | Origem dos dados de compra — onde os movimentos de compra são lançados. |
+| `Movimentos de Vendas` | `202` | Origem dos dados de venda. |
+| `Outros Movimentos` | `203` | Origem dos demais movimentos (ajustes, transferências, devoluções fora do fluxo padrão). |
 | `Histórico de Produtos` | `206` | Mesma análise, mas item a item — útil para margem, custo, vendas por SKU. |
 | `Saldo Estoque` | `78` | Mostra o saldo resultante dos movimentos listados aqui. |
 | `Tipos de Movimento` | `37` | Define os tipos que aparecem nos filtros. |

@@ -190,7 +190,7 @@ A exclusão é bloqueada quando a tabela já foi referenciada:
 
 ## 📋 Clonar tabela
 
-Use o item **Clonar Registros** no menu de contexto da grade de busca para gerar uma cópia de uma tabela existente. O sistema pede confirmação e abre a cópia em modo de edição — ajuste descrição, código e o que precisar antes de gravar.
+Use o item **Clonar Registros** no menu de contexto da grid de busca para gerar uma cópia de uma tabela existente. O sistema pede confirmação e abre a cópia em modo de edição — ajuste descrição, código e o que precisar antes de gravar.
 
 > 💡 **Caso típico.** Clonar é o caminho rápido para criar uma **variação** (`VAREJO PROMO BLACK FRIDAY` a partir de `VAREJO`), uma **réplica multi-loja** (mesma regra para outra empresa), ou um **espelho a prazo** (mudando só os percentuais).
 
@@ -256,7 +256,7 @@ A promoção fica disponível para escolha no PDV e na Agenda de Promoções, se
 
 ### Exemplo 5 — Clonar a tabela de uma loja para outra
 
-1. Na grade de busca, localize `VAREJO 30%` → clique-direito → **Clonar Registros** → confirme.
+1. Na grid de busca, localize `VAREJO 30%` → clique-direito → **Clonar Registros** → confirme.
 2. A cópia abre em modo de inclusão.
 3. Cabeçalho: ajuste `Descrição` (ex.: `VAREJO 30% — FILIAL 2`) e `Código`.
 4. Aba **Empresas** → desmarque a loja original e marque a nova.
@@ -293,7 +293,9 @@ A validação impede que a tabela aponte para ela mesma, mas é possível criar 
 | `Cadastro de Produtos` | `32` | Origem dos produtos referenciados. O preço base e o preço de venda 1 vêm do cadastro. |
 | `Cadastro de Pessoas` | `1` | Origem dos clientes/fornecedores listados na aba `Pessoas`. |
 | `Tipos de Movimento` | `37` | Define quais tabelas estão **habilitadas** para cada tipo de operação (sub-aba `Tabela de Preço` do Tipo de Movimento). |
-| `Movimentos` | `53` | Onde a tabela é efetivamente aplicada na venda. |
+| `Movimentos de Compras` | `201` | Onde a tabela aparece em movimentos de compra. |
+| `Movimentos de Vendas` | `202` | Onde a tabela é efetivamente aplicada na venda. |
+| `Outros Movimentos` | `203` | Mesma tabela em operações fora de compra/venda (ajuste, transferência, etc.). |
 | `Histórico de Movimentações` | `205` | Tem aba `Tabela de Preço` que mostra qual tabela foi usada em cada movimento. |
 | `Cadastro de Empresas` | — | Origem das empresas marcadas na aba `Empresas`. |
 

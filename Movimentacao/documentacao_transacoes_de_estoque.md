@@ -135,7 +135,9 @@ A tela não tem essa consulta pronta. O caminho prático é abrir `Cadastro de T
 | `Tipos de Movimento` | `37` | Cada Tipo de Movimento aponta para **uma** Transação de Estoque, que decide o efeito da operação em cada camada. |
 | `Saldo Estoque` | `78` | Consulta o saldo resultante por Situação de Estoque — é onde o efeito desta transação aparece. |
 | `Histórico de Movimentações` | `205` | Lista os movimentos que aplicaram cada Transação de Estoque. |
-| `Movimentos` | `53` | Tela onde os movimentos são lançados; cada lançamento usa um Tipo de Movimento que, por sua vez, usa uma Transação de Estoque. |
+| `Movimentos de Compras` | `201` | Lançamento de compras — cada movimento usa um Tipo de Movimento que, por sua vez, aplica esta Transação de Estoque. |
+| `Movimentos de Vendas` | `202` | Lançamento de vendas. |
+| `Outros Movimentos` | `203` | Demais movimentos (transferências, ajustes via Tipo de Movimento). |
 
 ---
 

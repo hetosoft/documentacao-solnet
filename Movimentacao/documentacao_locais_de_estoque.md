@@ -108,7 +108,9 @@ Se o local nunca foi usado, a exclusão é definitiva e basta recriá-lo (o hist
 | Tela | Código (`F1`) | Como se relaciona |
 |------|---------------|--------------------|
 | `Tipos de Movimento` | `37` | Cada Tipo de Movimento define qual Local é a **origem** e qual o **destino** padrão da operação. |
-| `Movimentos` | `53` | Cada movimento lançado carrega o Local de Estoque afetado. |
+| `Movimentos de Compras` | `201` | Cada movimento de compra carrega o Local de Estoque afetado. |
+| `Movimentos de Vendas` | `202` | Cada venda carrega o Local de Estoque afetado. |
+| `Outros Movimentos` | `203` | Demais movimentos (transferências, ajustes via Tipos de Movimento) também carregam o Local. |
 | `Saldo Estoque` | `78` | Consulta o saldo do produto **por Local** — é onde a separação faz diferença. |
 | `Ajuste de Estoque` | `79` | O ajuste manual de saldo é feito **dentro de um Local** específico. |
 | `Histórico de Movimentações` | `205` | Lista todos os movimentos por Local, inclusive de Locais já inativados. |

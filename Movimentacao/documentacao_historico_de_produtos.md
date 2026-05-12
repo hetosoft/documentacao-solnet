@@ -164,7 +164,9 @@ Diferenças costumam ser por: (1) itens com `cancelado = sim` que somam no hist�
 | Tela | Código (`F1`) | Como se relaciona |
 |------|---------------|--------------------|
 | `Histórico de Movimentações` | `205` | Mesma análise pelo cabeçalho do movimento — útil para totais por venda, vendedor, portador. |
-| `Cadastro de Movimentos` | `53` | Origem dos dados. |
+| `Movimentos de Compras` | `201` | Origem dos itens de compra listados aqui. |
+| `Movimentos de Vendas` | `202` | Origem dos itens de venda. |
+| `Outros Movimentos` | `203` | Origem dos itens de demais operações (transferências, ajustes via Tipo de Movimento). |
 | `Cadastro de Produtos` | `32` | Cadastro dos itens listados — atalho `Ir no Produto` no menu de contexto. |
 | `Cadastro de Pedido de Compra` | `64` | Destino do atalho `Pedido de Compra` da seleção. |
 | `Saldo Estoque` | `78` | Saldo atual dos produtos analisados. |

@@ -2,9 +2,11 @@
 
 ## 🎯 Visão Geral
 
-O **Ajuste de Estoque** é a ferramenta de **inventário e correção de saldo** do Sol.NET. Você cadastra uma lista de produtos com a **contagem real** medida na loja, o sistema mostra o **saldo atual** registrado no banco e calcula automaticamente a **diferença** entre os dois. Ao acionar **Criar Ajustes**, o Sol.NET gera os movimentos de estoque necessários para que o saldo registrado passe a refletir a contagem — entrada para diferença positiva, saída para diferença negativa, usando os Tipos de Movimento configurados no próprio ajuste.
+O **Ajuste de Estoque** é a ferramenta de **inventário e correção de saldo** do Sol.NET. Você cadastra uma lista de produtos com a **contagem real** medida na loja, o sistema mostra o **saldo atual** registrado no banco e calcula automaticamente a **diferença** entre os dois. Ao acionar **Criar Ajustes**, o Sol.NET **dispara a criação** dos movimentos de estoque necessários para que o saldo registrado passe a refletir a contagem — entrada para diferença positiva, saída para diferença negativa, usando os Tipos de Movimento configurados no próprio ajuste.
 
-O ajuste é controlado por **Status**: começa em `ABERTO` (livre para edição) e, depois de gerar os movimentos, fica vinculado a eles e bloqueia novas alterações. É o jeito padronizado, auditável e reversível de corrigir saldo no Sol.NET — em vez de mexer direto no estoque.
+> ℹ️ **Onde os movimentos vivem.** A tela `Ajuste de Estoque` **não armazena os movimentos** — ela apenas dispara a criação deles. Os movimentos resultantes aparecem na tela operacional `Outros Movimentos` (código `203`), referenciados pelo id do ajuste em campo de ligação (`ID_AJUSTE_SALDO`).
+
+O ajuste é controlado por **Status**: começa em `ABERTO` (livre para edição) e, depois de disparar a criação dos movimentos, fica vinculado a eles e bloqueia novas alterações. É o jeito padronizado, auditável e reversível de corrigir saldo no Sol.NET — em vez de mexer direto no estoque.
 
 > ℹ️ **Quando usar.** Inventário periódico (mensal, trimestral, anual), inventário rotativo, correção pontual após uma divergência, conciliação pós-importação de dados, regularização depois de uma operação não registrada (ex.: doação, perda fora do fluxo normal).
 
@@ -59,9 +61,9 @@ Define como o ajuste se comporta na **inclusão de produtos**. Esses parâmetros
 
 ---
 
-## 🔧 Grade de Produtos do Ajuste
+## 🔧 Grid de Produtos do Ajuste
 
-A grade central recebe **um produto por linha** com colunas:
+A grid central recebe **um produto por linha** com colunas:
 
 | Coluna | O que mostra |
 |--------|--------------|
@@ -72,7 +74,7 @@ A grade central recebe **um produto por linha** com colunas:
 | **Contagem** | Quanto foi **medido fisicamente** na contagem (você digita). |
 | **Diferença** | `Contagem - Saldo Atual` — calculada pelo sistema. Positiva → entrada; negativa → saída. |
 
-### Botões da grade
+### Botões da grid
 
 | Botão | O que faz |
 |-------|-----------|
@@ -82,7 +84,7 @@ A grade central recebe **um produto por linha** com colunas:
 | **Cancelar** | Cancela a inclusão/edição em andamento. |
 | **Deletar Todos** | Apaga todos os produtos do ajuste. |
 
-> 💡 **Adicionar em lote.** Use o menu de contexto da grade → **Adicionar Produtos** (atalho do popup) para abrir uma pesquisa e marcar vários produtos de uma vez. Combina com a opção **Selecionar Todos** para inventariar uma família ou grupo inteiro.
+> 💡 **Adicionar em lote.** Use o menu de contexto da grid → **Adicionar Produtos** (atalho do popup) para abrir uma pesquisa e marcar vários produtos de uma vez. Combina com a opção **Selecionar Todos** para inventariar uma família ou grupo inteiro.
 
 ### Painel `Estoque` (lateral / inferior)
 
@@ -101,10 +103,10 @@ Ao selecionar uma linha, o painel lateral mostra o estoque **detalhado** daquele
 
 Quando todos os produtos estão com `Contagem` preenchida e a `Diferença` correta, o botão **Criar Ajustes** processa o ajuste:
 
-1. Para cada linha com `Diferença ≠ 0`, o sistema gera um **movimento de estoque** usando o Tipo de Movimento adequado (Entrada se positiva, Saída se negativa).
-2. Os movimentos ficam vinculados ao ajuste (campo `ID_AJUSTE_SALDO` em `MOVIMENTOS`).
+1. Para cada linha com `Diferença ≠ 0`, o sistema **dispara a criação** de um movimento de estoque (na tela operacional `Outros Movimentos`, código `203`) usando o Tipo de Movimento adequado (Entrada se positiva, Saída se negativa).
+2. Os movimentos criados ficam vinculados ao ajuste pelo campo `ID_AJUSTE_SALDO` — você pode rastrear quais movimentos vieram de qual ajuste.
 3. O Status do ajuste muda do `ABERTO` para um estado processado, bloqueando alterações posteriores.
-4. A aba **Movimentos** mostra os movimentos gerados para inspeção.
+4. A aba **Movimentos** desta tela lista os ids dos movimentos criados; para abrir o detalhe de cada um, vá a `Outros Movimentos` (código `203`) e localize pelo id.
 
 > ℹ️ **Linhas com Diferença = 0.** Linhas em que a contagem confirmou o saldo (diferença zero) **não geram movimento** — ficam apenas como registro do que foi conferido.
 
@@ -118,7 +120,7 @@ Quando todos os produtos estão com `Contagem` preenchida e a `Diferença` corre
 |--------|--------------------|
 | Sempre | Não pode haver linha em edição não confirmada. |
 | Sempre | Campos obrigatórios do cabeçalho preenchidos (Loja, Local, Situação, Tipos de Movimento). |
-| Ao criar ajustes | A grade não pode estar vazia — *"Ajuste de Estoque sem Produtos!"*. |
+| Ao criar ajustes | A grid não pode estar vazia — *"Ajuste de Estoque sem Produtos!"*. |
 | Ao adicionar / editar produto | O ajuste precisa estar com Status `ABERTO` — *"Não Permitido! Só Status Aberto."*. |
 | Ao adicionar produto | O produto **não pode estar marcado como `Não Movimentar Estoque`** no `Cadastro de Produtos` (código `32`) — *"Produto Configurado para 'Não Movimentar Estoque'!"*. |
 | Contagem | Não pode exceder `999.999,99` — *"Não Permitido, Quantidade Máxima Excedida (999.999,99)!"*. |
@@ -146,17 +148,17 @@ Quando todos os produtos estão com `Contagem` preenchida e a `Diferença` corre
    - `Situação do Estoque`: `FISICO`.
    - `Tipo de Movimento — Saída`: o tipo configurado para ajuste negativo.
    - `Tipo de Movimento — Entrada`: o tipo configurado para ajuste positivo.
-4. Clique no menu de contexto da grade → **Adicionar Produtos** → marque todos os produtos da loja → confirme.
+4. Clique no menu de contexto da grid → **Adicionar Produtos** → marque todos os produtos da loja → confirme.
 5. Faça a contagem física (manual, com coletor, com inventariante).
 6. Para cada linha, digite o valor medido na coluna **Contagem** — a `Diferença` é calculada automaticamente.
 7. Quando terminar, clique **Criar Ajustes**.
-8. Confira na aba **Movimentos** quais movimentos foram gerados.
+8. Confira na aba **Movimentos** os ids dos movimentos criados; abra-os na tela `Outros Movimentos` (código `203`) se precisar inspecionar o detalhe.
 
 ### Exemplo 2 — Inventário rotativo (correção pontual de uma seção)
 
 1. Pesquisa `F1` → `79` → **Novo**.
 2. Preencha o cabeçalho como no Exemplo 1, alterando a descrição para refletir a seção (ex.: `INVENTÁRIO BEBIDAS — SEMANA 42`).
-3. Menu de contexto da grade → **Adicionar Produtos** → filtre por grupo `BEBIDAS` → **Selecionar Todos**.
+3. Menu de contexto da grid → **Adicionar Produtos** → filtre por grupo `BEBIDAS` → **Selecionar Todos**.
 4. Faça a contagem, preencha `Contagem` em cada linha.
 5. **Criar Ajustes**.
 
@@ -176,7 +178,7 @@ Quando todos os produtos estão com `Contagem` preenchida e a `Diferença` corre
 O produto está marcado para não movimentar estoque no cadastro (`Cadastro de Produtos` — código `32`, aba de configurações de estoque). Ajuste de saldo só faz sentido em produtos que movimentam estoque. Se o produto deve passar a movimentar, ajuste o cadastro primeiro; se não deve, ele não deveria estar no inventário.
 
 **Errei a contagem e o ajuste já foi processado. Como corrijo?**
-Você **não pode excluir** ou reabrir o ajuste — ele já gerou movimentos. A maneira correta é criar **um novo ajuste** com a contagem corrigida (a `Diferença` vai compensar o erro anterior) ou, em casos pontuais, lançar um movimento direto de correção no `Cadastro de Movimentos` (código `53`) com a justificativa.
+Você **não pode excluir** ou reabrir o ajuste — ele já gerou movimentos. A maneira correta é criar **um novo ajuste** com a contagem corrigida (a `Diferença` vai compensar o erro anterior) ou, em casos pontuais, lançar um movimento direto de correção em `Outros Movimentos` (código `203`) com a justificativa.
 
 **A diferença ficou enorme e desconfio que o saldo no banco estava errado antes da contagem.**
 É exatamente o caso de uso de inventário — o ajuste **vai corrigir** o saldo para refletir o real medido. Confira só se algum produto não estava com o saldo zerado por engano antes (por exemplo, um produto novo que ainda não tinha entrada cadastrada). Para esses, lance a entrada normal antes de aplicar o ajuste.
@@ -197,7 +199,7 @@ Use o botão de **Relatório** da tela ou pelo `Histórico de Movimentações` (
 | `Tipos de Movimento` | `37` | Define os tipos usados como Entrada e Saída do ajuste. |
 | `Locais de Estoque` | `28` | Origem do combo `Local de Estoque`. |
 | `Situação de Estoque` | `30` | Origem do combo `Situação do Estoque`. |
-| `Cadastro de Movimentos` | `53` | Destino — onde aparecem os movimentos gerados pelo ajuste. |
+| `Outros Movimentos` | `203` | Destino — onde aparecem os movimentos gerados pelo ajuste. |
 | `Saldo Estoque` | `78` | Onde o efeito final do ajuste é visível. |
 | `Localização de Estoque` | `29` | Fornece a coluna `Prateleira` do painel de estoque do produto selecionado. |
 

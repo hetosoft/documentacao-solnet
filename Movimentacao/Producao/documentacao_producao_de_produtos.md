@@ -2,13 +2,15 @@
 
 ## 🎯 Visão Geral
 
-A tela de **Produção de Produtos** é onde a fórmula vira movimento de estoque. Cada produção parte de uma **Fórmula de Produto** (cadastrada em `Cadastro de Fórmula de Produtos`, código `143`), informa **quanto** será produzido na rodada e, ao ser finalizada, **gera automaticamente os três movimentos de estoque** que materializam a operação:
+A tela de **Produção de Produtos** é o **disparador** da operação de produção interna. Cada produção parte de uma **Fórmula de Produto** (cadastrada em `Cadastro de Fórmula de Produtos`, código `143`), informa **quanto** será produzido na rodada e, ao ser finalizada, **dispara automaticamente a criação de três movimentos de estoque** que materializam a operação:
 
 1. **Saída** dos ingredientes (com o Tipo de Movimento configurado para insumos consumidos).
 2. **Entrada** do produto acabado (com o Tipo de Movimento configurado para o que sai pronto).
 3. **Saída de Perda** (quando a fórmula tem itens marcados como Perda), com um Tipo de Movimento próprio.
 
-A produção pode ficar em três estados — **Iniciada**, **Finalizada** ou **Cancelada** — e o usuário controla a transição pelos botões da própria tela. Os movimentos só são gerados na **Finalização**; antes disso, o registro é apenas uma intenção que pode ser ajustada ou cancelada sem afetar o estoque.
+> ℹ️ **Onde os movimentos vivem.** A tela `Produção de Produtos` **não armazena os movimentos** — ela apenas dispara a criação deles. Cada um dos três movimentos aparece nas telas operacionais correspondentes ao seu Tipo de Movimento: `Movimentos de Compras` (código `201`), `Movimentos de Vendas` (código `202`) ou `Outros Movimentos` (código `203`). A aba `Movimento` desta tela mostra um resumo com os ids e oferece atalhos para abrir cada movimento na tela operacional certa.
+
+A produção pode ficar em três estados — **Iniciada**, **Finalizada** ou **Cancelada** — e o usuário controla a transição pelos botões da própria tela. Os movimentos só são criados na **Finalização**; antes disso, o registro é apenas uma intenção que pode ser ajustada ou cancelada sem afetar o estoque.
 
 ---
 
@@ -28,7 +30,7 @@ Abra a pesquisa universal (atalho `F1`) e digite **`144`** ou parte do nome **`P
 | Aba | O que mostra |
 |-----|--------------|
 | **Principal** | Configuração da produção + ingredientes + saldo de estoque dos insumos (lateral). |
-| **Movimento** | Resumo dos três movimentos gerados pela finalização (Entrada, Saída, Perda). Só faz sentido depois da produção estar Finalizada. |
+| **Movimento** | Resumo dos três movimentos disparados pela finalização (Entrada, Saída, Perda) — exibe os ids e oferece atalhos para abrir cada um na tela operacional correspondente. Só faz sentido depois da produção estar Finalizada. |
 
 A aba **Principal** é subdividida em:
 
@@ -37,7 +39,7 @@ A aba **Principal** é subdividida em:
 | **Configuração** | Tipos de Movimento de Entrada, Saída e Perda + Situação e Local de Estoque alvo. |
 | **Dados da Produção** | Código, Loja, datas (Início, Fim, Cadastro) e Status. |
 | **Dados do Produto Acabado** | Fórmula escolhida, produto acabado, quantidades de produção e fator de conversão. |
-| **Ingredientes** | Grade dos insumos consumidos (puxada da fórmula e ajustada à quantidade real). |
+| **Ingredientes** | Grid dos insumos consumidos (puxada da fórmula e ajustada à quantidade real). |
 | **Estoque** (lateral) | Saldo físico, saldo por Local, Prateleira / Localização e Estoque Mínimo do insumo selecionado — útil para conferir se há estoque suficiente antes de finalizar. |
 
 ---
@@ -95,9 +97,9 @@ A aba **Principal** é subdividida em:
 
 ---
 
-## 🔧 Grade `Ingredientes`
+## 🔧 Grid `Ingredientes`
 
-A grade carrega os ingredientes da fórmula (composição + perdas) já recalculados para a `Qtd. Produção Real` digitada. Cada linha exibe:
+A grid carrega os ingredientes da fórmula (composição + perdas) já recalculados para a `Qtd. Produção Real` digitada. Cada linha exibe:
 
 | Coluna | O que mostra |
 |--------|--------------|
@@ -118,13 +120,13 @@ A grade carrega os ingredientes da fórmula (composição + perdas) já recalcul
 
 ### Atualizar Custos
 
-A opção **`Atualizar Todos Custos`** (clique-direito sobre a grade) força o sistema a reler o custo atual de cada ingrediente a partir do cadastro do produto. Útil quando o custo foi reajustado depois de você ter aberto a produção — antes de finalizar, atualize para garantir que o produto acabado receba o custo correto.
+A opção **`Atualizar Todos Custos`** (clique-direito sobre a grid) força o sistema a reler o custo atual de cada ingrediente a partir do cadastro do produto. Útil quando o custo foi reajustado depois de você ter aberto a produção — antes de finalizar, atualize para garantir que o produto acabado receba o custo correto.
 
 ---
 
 ## 📦 Painel `Estoque` (lateral)
 
-Ao selecionar um ingrediente na grade, o painel lateral mostra **em tempo real** o que está disponível para aquele insumo na loja escolhida:
+Ao selecionar um ingrediente na grid, o painel lateral mostra **em tempo real** o que está disponível para aquele insumo na loja escolhida:
 
 | Sub-painel | O que mostra |
 |-----------|--------------|
@@ -141,7 +143,7 @@ Ao selecionar um ingrediente na grade, o painel lateral mostra **em tempo real**
 | Botão | Quando aparece | O que faz |
 |-------|----------------|-----------|
 | **Iniciar Produção** | Em uma produção nova ou ainda não iniciada. | Carimba `Início Produção` e muda o Status para `Iniciada`. **Não gera movimentos** — só marca o início. |
-| **Finalizar Produção** | Quando a produção está Iniciada. | Carimba `Fim Produção`, muda o Status para `Finalizada` e **gera os três movimentos** automáticos (Entrada do acabado, Saída dos ingredientes, Perda se houver). Mensagem de sucesso: *"Produção Finalizada! Todos os movimentos foram criados com sucesso."* |
+| **Finalizar Produção** | Quando a produção está Iniciada. | Carimba `Fim Produção`, muda o Status para `Finalizada` e **dispara a criação dos três movimentos** automáticos (Entrada do acabado, Saída dos ingredientes, Perda se houver) nas telas operacionais correspondentes. Mensagem de sucesso: *"Produção Finalizada! Todos os movimentos foram criados com sucesso."* |
 | **Cancelar Produção** | Em qualquer estado anterior à finalização. | Muda o Status para `Cancelada`. Não gera nem desfaz movimentos. |
 
 Ao clicar em **Excluir** da barra padrão, a produção é **cancelada** (Status = Cancelada) — não há exclusão física do registro.
@@ -176,11 +178,11 @@ Ao clicar em **Excluir** da barra padrão, a produção é **cancelada** (Status
 4. **Dados da Produção**:
    - `Descrição da Loja`: a empresa.
 5. **Dados do Produto Acabado**:
-   - `Fórmula`: clique duplo → escolha a fórmula. A grade de ingredientes carrega automaticamente.
+   - `Fórmula`: clique duplo → escolha a fórmula. A grid de ingredientes carrega automaticamente.
 6. Confirme `Qtd. Produção Real` (ou ajuste).
 7. Clique **Iniciar Produção**.
 8. Quando a produção física estiver pronta, volte na tela, abra a produção pelo grid de busca e clique **Finalizar Produção**.
-9. Os três movimentos são gerados e podem ser inspecionados na aba **Movimento**.
+9. Os três movimentos são criados nas telas operacionais correspondentes. A aba **Movimento** desta tela lista os ids; use o clique-direito → `Ir para Movimentação` para abrir cada um.
 
 ### Exemplo 2 — Ajustar quantidade real (produção parcial)
 
@@ -190,7 +192,7 @@ A fórmula prevê 2 kg gerando 20 unidades, mas hoje será produzido só 1 kg (1
 2. Em `Qtd. Produção Real`, digite `1`.
 3. O sistema recalcula automaticamente:
    - `Qtd. Produto Acabado`: `10`.
-   - Quantidade de cada ingrediente na grade: metade do valor original.
+   - Quantidade de cada ingrediente na grid: metade do valor original.
 4. **Iniciar Produção** → finalize quando for o caso.
 
 ### Exemplo 3 — Atualizar custos antes de finalizar
@@ -198,7 +200,7 @@ A fórmula prevê 2 kg gerando 20 unidades, mas hoje será produzido só 1 kg (1
 A produção foi iniciada na semana passada; o custo da matéria-prima subiu nos últimos dias.
 
 1. Pesquisa `F1` → `144` → localize a produção em Status `Iniciada` e abra.
-2. Clique-direito sobre a grade de ingredientes → **Atualizar Todos Custos**.
+2. Clique-direito sobre a grid de ingredientes → **Atualizar Todos Custos**.
 3. Os custos das linhas são reescritos com os valores atuais; o `Total Custo Ingredientes` é recalculado.
 4. Clique **Finalizar Produção**.
 
@@ -211,14 +213,14 @@ O produto acabado entra no estoque com o custo calculado a partir do total atual
    - **Movimento de Entrada do Produto Acabado**
    - **Movimento de Saída dos Ingredientes**
    - **Movimento de Perda** (se houver)
-3. Para ver os movimentos na tela principal, clique-direito sobre qualquer linha → `Ir para Movimentação` — abre o `Cadastro de Movimentos` (código `53`) já filtrado nos três movimentos gerados.
+3. Para ver os movimentos na tela operacional, clique-direito sobre qualquer linha → `Ir para Movimentação` — abre o movimento em `Movimentos de Compras` (código `201`), `Movimentos de Vendas` (código `202`) ou `Outros Movimentos` (código `203`), conforme o Tipo de Movimento configurado para cada um dos três movimentos gerados.
 
 ---
 
 ## ❓ FAQ / Problemas comuns
 
 **Tentei trocar a Loja e o sistema bloqueou.**
-Mensagem *"Não é possível alterar a empresa com itens adicionados"* aparece porque a fórmula já foi carregada para a Loja inicial. Para mudar de loja, **cancele a produção** (Status → Cancelada) e crie outra do zero na loja correta — ou apague os ingredientes da grade primeiro.
+Mensagem *"Não é possível alterar a empresa com itens adicionados"* aparece porque a fórmula já foi carregada para a Loja inicial. Para mudar de loja, **cancele a produção** (Status → Cancelada) e crie outra do zero na loja correta — ou apague os ingredientes da grid primeiro.
 
 **Finalizei a produção mas os saldos não bateram.**
 Confira a configuração das Transações de Estoque dos Tipos de Movimento usados. Por exemplo, o Tipo de Movimento de Saída dos ingredientes precisa **subtrair** das camadas certas. Veja o doc de `Cadastro de Tipos de Movimento` (código `37`) e `Transações de Estoque` (código `33`).
@@ -226,11 +228,11 @@ Confira a configuração das Transações de Estoque dos Tipos de Movimento usad
 **O custo do produto acabado ficou diferente do esperado.**
 O custo do produto acabado é apurado a partir do `Total Custo Ingredientes` no momento da finalização. Se você não rodou **Atualizar Todos Custos** antes de finalizar e algum insumo teve o custo reajustado entre a abertura e a finalização, o produto acabado pode ter sido custeado com o valor antigo. Para casos retroativos, abra o produto acabado em `Cadastro de Produtos` (código `32`) e ajuste manualmente — não é possível "refinalizar" uma produção.
 
-**A grade de ingredientes ficou vazia depois de escolher a fórmula.**
+**A grid de ingredientes ficou vazia depois de escolher a fórmula.**
 Confira se a fórmula tem ingredientes cadastrados — abra-a em `Cadastro de Fórmula de Produtos` (código `143`). Fórmulas sem ingredientes não podem ser usadas em produção.
 
 **Posso modificar a quantidade de um ingrediente individualmente?**
-Sim — mas tenha cautela: o sistema deixa editar a coluna `Qtd.` na grade. Isso quebra a proporção definida pela fórmula. Use só em casos de ajuste pontual (rendimento diferente do esperado).
+Sim — mas tenha cautela: o sistema deixa editar a coluna `Qtd.` na grid. Isso quebra a proporção definida pela fórmula. Use só em casos de ajuste pontual (rendimento diferente do esperado).
 
 **Cancelei uma produção. Posso reaproveitar?**
 Não — produções canceladas ficam como histórico permanente. Crie uma nova produção do zero.
@@ -248,7 +250,9 @@ Não — produções canceladas ficam como histórico permanente. Crie uma nova 
 | `Locais de Estoque` | `28` | Origem do combo `Local Estoque`. |
 | `Situação de Estoque` | `30` | Origem do combo `Situação Estoque`. |
 | `Saldo Estoque` | `78` | Onde o efeito final da produção é visível (queda dos insumos + entrada do acabado). |
-| `Movimentos` | `53` | Onde aparecem os três movimentos gerados. O atalho `Ir para Movimentação` abre direto. |
+| `Movimentos de Compras` | `201` | Onde aparece o movimento de entrada do produto acabado (se o Tipo de Movimento for de compra). |
+| `Movimentos de Vendas` | `202` | Onde aparecem movimentos de venda gerados, quando aplicável. |
+| `Outros Movimentos` | `203` | Onde aparecem os movimentos de saída de insumos e de perda. O atalho `Ir para Movimentação` abre direto. |
 
 ---
 
@@ -256,7 +260,7 @@ Não — produções canceladas ficam como histórico permanente. Crie uma nova 
 
 - Não cobre como **apurar custo médio** do produto acabado a partir dos ingredientes — o cálculo é feito automaticamente na finalização e o detalhe está no guia "Atualização de Custo Automática".
 - Não detalha o que cada Tipo de Movimento precisa estar configurado para servir como Entrada/Saída/Perda — isso é assunto do `Cadastro de Tipos de Movimento` (código `37`).
-- Produções **canceladas** não disparam nenhum movimento; produções **finalizadas** não podem ser "refinalizadas". Estornos exigem lançamento manual em `Cadastro de Movimentos` (código `53`).
+- Produções **canceladas** não disparam nenhum movimento; produções **finalizadas** não podem ser "refinalizadas". Estornos exigem lançamento manual nas telas operacionais (`Movimentos de Compras` 201, `Movimentos de Vendas` 202 ou `Outros Movimentos` 203, conforme o caso).
 
 ---
 
