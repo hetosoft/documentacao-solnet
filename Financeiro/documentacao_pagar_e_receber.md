@@ -78,7 +78,7 @@ Quando você clica em **Novo** ou **Alterar** (ou dá duplo clique em uma linha)
    - **Data Emissão**
    - **Data Vencimento** — precisa ser ≥ data de emissão
    - **Valor da Parcela** — valor total (será distribuído nas parcelas se houver)
-   - **Número do Documento** — para Contas a Pagar com pessoa, **o sistema valida que esse número não está duplicado para a mesma pessoa** (regra `varNumeroDocCPRValida` ativa por padrão)
+   - **Número do Documento** — para Contas a Pagar com pessoa, **o sistema valida que esse número não está duplicado para a mesma pessoa** (validação ativa por padrão; pode ser desligada por configuração)
    - **Tipo de Documento** — link com [Tipos de Documentos]
    - **Portador** — link com [Portadores](documentacao_portadores.md) — quem cobra/recebe
    - **Plano de Contas** + **Centro de Custo** + **Tipo de Conta PR** — classificação contábil
@@ -114,7 +114,7 @@ Quando você clica em **Novo** ou **Alterar** (ou dá duplo clique em uma linha)
 - **Pesquisar** (botão): abre a lista de pesquisas salvas para carregar uma.
 - **Excluir Pesquisa**: remove uma pesquisa salva.
 
-> ℹ️ **Permissão de mudar datas**: dependendo da configuração, alguns usuários ficam com `Data Inicial` e `Data Final` travadas no dia (sem poder mudar). O parâmetro é configurado em **Cadastro de Usuários** (`conConfig_PermissaoMudaDataConsultaCPR`).
+> ℹ️ **Permissão de mudar datas**: dependendo da configuração, alguns usuários ficam com `Data Inicial` e `Data Final` travadas no dia (sem poder mudar). O parâmetro é configurado em **Cadastro de Usuários**, na seção de permissões de consulta a Contas PR — pode também limitar quantos dias para trás e para frente o usuário consegue ajustar.
 
 ### 🔹 Quitar (baixar) títulos
 
@@ -127,13 +127,13 @@ A quitação dá baixa em um ou mais títulos selecionados. O atalho de teclado 
 
 **Regras impeditivas comuns**:
 
-- **Status diferente de "Em Aberto"** — só títulos em aberto podem ser quitados. Mensagem: *"Apenas títulos com status 'EM ABERTO' podem ser quitados!"*.
-- **Mistura de tipos** — não pode misturar `Receber` e `Pagar` na mesma quitação. Mensagem: *"Não é permitido quitar Pagar e Receber juntos!"*.
+- **Status diferente de "Em Aberto"** — só títulos em aberto podem ser quitados. O sistema bloqueia e informa que apenas títulos em aberto podem ser quitados.
+- **Mistura de tipos** — não pode misturar `Receber` e `Pagar` na mesma quitação. Mensagem: *"Selecione títulos só a Receber ou a Pagar!"*.
 - **Mistura de tipos de crédito** — Pré-Créditos e títulos normais têm regras separadas.
-- **Empresas diferentes** — quando `varAgruparContasQuitacao` está ligado, todos os títulos selecionados precisam ser da **mesma empresa**.
+- **Empresas/pessoas diferentes** — quando o sistema está configurado para agrupar quitações, títulos de empresas diferentes (ou pessoas diferentes, dependendo da configuração) são bloqueados. Mensagens: *"Não permitido agrupar Contas a Receber! De 'EMPRESAS' diferentes para fazer a Quitação"*, *"Não permitido agrupar Contas a Pagar! De 'PESSOAS' diferentes para fazer a Quitação"* (e variantes).
 - **Permissão por empresa** — o usuário precisa ter permissão de quitar para cada empresa envolvida.
 
-**Requitar** (refazer quitação): a tela tem um modo `ModoRequitar` para refazer uma quitação que está em estado especial (consulte o suporte se precisar usar).
+**Requitar** (refazer quitação): a tela tem um modo especial para refazer uma quitação já feita — usado em situações específicas. Consulte o suporte se precisar.
 
 ### 🔹 Estornar
 
@@ -142,7 +142,7 @@ Estornar = desfazer a quitação de um título já quitado.
 1. Tab `Visualizar` → encontre o título quitado.
 2. Marque a coluna `Sel.`.
 3. Clique em **Estornar**.
-4. O sistema reverte a quitação, retornando o título para "Em Aberto" (apaga os registros em `CONTROLE_FINANCEIRO` e remove valores baixados).
+4. O sistema reverte a quitação, retornando o título para "Em Aberto" (apaga os registros financeiros da baixa e zera os valores baixados).
 
 > ℹ️ Estorno **não** afeta o cadastro do título original — apenas remove a quitação. O título volta a ter status "Em Aberto" e pode ser quitado novamente.
 
@@ -160,7 +160,7 @@ Cancelar = anular um título em aberto (não emite estorno — apenas marca como
 - **Status diferente de "Em Aberto"** — *"Apenas títulos com status 'EM ABERTO' podem ser cancelados!"*.
 - **Título oriundo de renegociação** — *"Títulos que foram 'oriundos de uma renegociação' — Você pode fazer o 'Cancelamento da Renegociação' — Deseja Cancelar individualmente?"*.
 - **Vinculado com RH fechado** — *"Não Permitido Cancelar, Conta Vinculada com Lançamento RH Fechado!"*.
-- **Tem boleto de remessa ativo** — não permitido cancelar enquanto há boleto em remessa que ainda não foi baixado.
+- **Tem boleto de remessa ativo** — não permitido cancelar enquanto há boleto em remessa que ainda não foi baixado. Mensagem: *"Não permitido! Existe Boleto Com Remessa (Sem Baixa ou Sem Instrução de Baixa)"*.
 - **Sem permissão por empresa** — bloqueio individual por empresa.
 
 ### 🔹 Renegociar títulos
@@ -184,7 +184,7 @@ Renegociar = criar um (ou vários) título(s) novo(s) substituindo títulos anti
 
 A aba `Rateio` permite quebrar o valor do título em várias linhas — cada uma com **Plano de Contas + Centro de Custo + Empresa + Valor + Percentual + Histórico + Data**.
 
-1. Aba `Rateio` → clique em **Inserir** (botão `btnLrNovo`).
+1. Aba `Rateio` → clique em **Inserir** (botão de inserir linha de rateio).
 2. Preencha a linha:
    - **Empresa** (combo)
    - **Plano de Contas** (busca por pesquisa) — link com tela `14`
@@ -201,8 +201,8 @@ A validação não deixa salvar se o rateio não bater com o valor total.
 
 A aba `Boleto` gera/gerencia os boletos do título (apenas para títulos a Receber com portador do tipo Boleto).
 
-1. Aba `Boleto` → clique em **Inserir** (botão `btnNovoBoleto`).
-2. Só permite criar um novo boleto se **não há boleto ativo** anteriormente (mensagem: *"Já existe boleto ativo!"*).
+1. Aba `Boleto` → clique em **Inserir** (botão de inserir boleto).
+2. Só permite criar um novo boleto se **não há boleto ativo** anteriormente. Mensagem: *"Não permitido! Existe Boleto Ativo"*.
 3. Preencha:
    - **Vencimento Boleto** — default = data do vencimento do título ou hoje (se vencimento já passou)
    - **Valor Boleto** — default = valor da parcela
@@ -239,7 +239,7 @@ Para cada registro:
 
 A aba `Imagem` permite anexar fotos/scans ao título — nota fiscal, comprovante de pagamento, contrato, etc.
 
-1. Aba `Imagem` → **Inserir** (botão `btnNovoImg`).
+1. Aba `Imagem` → **Inserir** (botão de inserir imagem).
 2. Origem da imagem:
    - **PC** — selecionar arquivo do computador
    - **Banco de Dados** — carregar imagem armazenada
@@ -260,14 +260,14 @@ Quando a tela é aberta no modo `9` (Cadastrar pelo OFX), o fluxo é otimizado p
 
 ## ✅ Resumo das principais validações ao salvar
 
-A função `Validar` da tela tem dezenas de regras. Os pontos mais comuns:
+A validação ao gravar tem dezenas de regras. Os pontos mais comuns:
 
 1. **Detalhes não podem estar em edição** (boleto, imagem, rateio) — feche antes de gravar.
 2. **Campos obrigatórios preenchidos** (Pessoa, Valor, Datas, Portador, etc.).
 3. **Número de Documento único por pessoa** (A Pagar) — o sistema mostra todos os dados do documento existente em caso de duplicidade.
 4. **RH obrigatório se pessoa é funcionário** (e tipo = Pagar).
 5. **Empresa do título = empresa do funcionário** (RH).
-6. **Lançamentos RH não retroagem antes do último fechado** (busca em `LANCAMENTO_RH`).
+6. **Lançamentos RH não retroagem antes do último fechado** — o sistema verifica o último lançamento de RH fechado para a pessoa e bloqueia novos lançamentos com mês/ano anterior.
 7. **Permissão por nível RH** (Nível 2 e 3 exigem permissões específicas).
 8. **Data Vencimento ≥ Data Emissão**.
 9. **Total das parcelas fecha com o valor do título** (Diferença = 0).
@@ -279,23 +279,23 @@ Quando uma validação falha, o sistema mostra a mensagem específica e posicion
 
 ---
 
-## 🔐 Modos de comportamento (`TipoComportamento`)
+## 🔐 Modos de abertura
 
 A tela tem comportamentos diferentes conforme **quem a abriu**:
 
 | Modo | O que faz |
 |------|-----------|
-| `0` | **Normal** — abertura padrão pela pesquisa `F1 → 301` |
-| `1` | **Acerto Manual** — abertura para acerto manual de títulos (form é renomeado `FrmContasPR_Pag`) |
-| `3` | **Estornar a partir do Movimento** — abertura via "Estornar" no histórico de movimento |
-| `4` | **Renegociar Cheque** — abertura para renegociar cheque (form é renomeado `FrmContasPR_Cheque`) |
-| `5` | **Limpar Portador** — operação rápida de remover portador |
-| `6` | **Limpar Portador Selecionados** — operação em lote |
-| `7` | **Quitar Individual a partir do Movimento** — abertura via "Quitar" no histórico de movimento |
-| `8` | **Atualizar Boleto** — não entra em permissão de editar/salvar |
-| `9` | **Cadastrar pelo OFX** — abertura via importação OFX (form é renomeado `FrmContasPR_OFX`) |
+| **Normal** | Abertura padrão pela pesquisa `F1 → 301` |
+| **Acerto Manual** | Abertura para acerto manual de títulos (operação especial) |
+| **Estornar a partir do Movimento** | Abertura via "Estornar" no histórico de movimento |
+| **Renegociar Cheque** | Abertura para renegociar cheque |
+| **Limpar Portador** | Operação rápida para remover o portador de um título |
+| **Limpar Portador Selecionados** | Operação em lote para remover portador de vários títulos |
+| **Quitar Individual a partir do Movimento** | Abertura via "Quitar" no histórico de movimento |
+| **Atualizar Boleto** | Abertura específica para atualização de boleto, sem passar pela permissão padrão de editar/salvar |
+| **Cadastrar pelo OFX** | Abertura via importação automática de extrato OFX |
 
-O modo é definido pela tela que abre a `Pagar e Receber` e ajusta validações, botões disponíveis e permissões.
+O modo é definido pela tela que abre a `Pagar e Receber` e ajusta validações, botões disponíveis e permissões. No modo Normal (o uso direto pela pesquisa `F1`), todas as funcionalidades padrão estão disponíveis.
 
 ---
 
