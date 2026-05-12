@@ -120,7 +120,7 @@ A função `Validar` da tela aplica as seguintes regras de forma rígida; o salv
 5. **Manual com 1 parcela exige `Dias entre Parc. > 0`** — *"Rateio incorreto. Dias entre Parcelas têm que ser maior 0"*.
 6. **Manual com mais de 2 registros é bloqueado** — *"Rateio incorreto. Máximo permitido de registro 2 quando Máximo Parcelas Manual maior 0"*.
 7. **`Parcelas - Quantidade Padrão Um(1)` e `Entrar Com Quantidade Parcela Vazio` mutuamente exclusivos** — não marque as duas.
-8. **`Vencimento Fixo` ajustado automaticamente** — em condições "Para Hoje" ou com apenas 1 parcela manual, o sistema desmarca e informa: *"Não é necessário Vencimento Fixo para Pagamento 'Para Hoje' ou Com apenas Uma Parcela!"*.
+8. **`Vencimento Fixo` ajustado automaticamente** — em condições "Para Hoje", "Parcela Manual" com `Máximo Parcelas = 1`, ou "Com Entrada" com menos de 3 parcelas no plano principal, o sistema desmarca e informa: *"Não é necessário Vencimento Fixo para Pagamento 'Para Hoje' ou Com apenas Uma Parcela!"*.
 9. **Descrição única** — mensagem: *"Descrição (VALOR) Já Existe!"*.
 10. **`Aplicar Acré/Desc` obrigatório quando há `Acréscimo/Desconto (%)`** — *"Aplicar Acré/Desc Obrigatorio! Se Acréscimo/Desconto(%) for diferente zero(0)"*.
 11. **Acréscimo/Desconto Manual: tudo positivo ou tudo negativo** — não misture acréscimos e descontos no mesmo cadastro. Mensagem: *"Não Permitido! Existe Acréscimos e Descontos em Parcelas Manuais. Utilize somente um deles!"*.
