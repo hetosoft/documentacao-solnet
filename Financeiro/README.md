@@ -26,7 +26,7 @@ Todo acesso a telas é pela **pesquisa universal** — atalho **`F1`** — digit
 | [Portadores](documentacao_portadores.md) | `12` | 🟢 disponível |
 | Cadastro Caixa Geral | `13` | 🟡 em construção |
 | [Plano de Contas](documentacao_plano_de_contas.md) | `14` | 🟢 disponível |
-| Centros de Custos | `15` | 🟡 em construção |
+| [Centros de Custos](documentacao_centros_de_custos.md) | `15` | 🟢 disponível |
 | [Formas de Pagamento](documentacao_formas_pagamento.md) | `7` | 🟢 disponível |
 | [Cond. de Pagamento](documentacao_condicoes_pagamento.md) | `8` | 🟢 disponível |
 | Tipos de Contas PR | `82` | 🟡 em construção |
