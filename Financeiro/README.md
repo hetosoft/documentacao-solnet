@@ -1,76 +1,70 @@
 ---
-title: "Índice: Documentação Módulo Financeiro Sol.NET"
+title: "Índice: Documentação Módulo Financeiro - Sol.NET ERP"
 permalink: /Financeiro/
 ---
-# 💰 Índice: Documentação Módulo Financeiro Sol.NET
+# 💰 Índice: Documentação Módulo Financeiro - Sol.NET ERP
 
-Documentação dos recursos centrais do módulo financeiro do Sol.NET: DRE e Portadores. Para temas tributários (Reforma Tributária / CBS / IBS), consulte o **[Módulo Fiscal](../Fiscal/README.md)**.
+> ⚠️ **Documentação em reescrita.** A documentação anterior foi descartada na íntegra por ter sido produzida via inferência automatizada com taxa elevada de imprecisões. Cada doc deste módulo está sendo refeito a partir da leitura direta do código-fonte do Sol.NET — telas, campos, validações e fluxos. Conforme cada documento ficar pronto, o link respectivo é ativado nesta página.
 
----
+## 🎯 Sobre o módulo
 
-## 📋 Documentos Disponíveis
+O **Módulo Financeiro** do Sol.NET concentra cadastros base (bancos, agências, contas correntes, portadores, plano de contas, condições de pagamento), as três operações centrais (`Pagar e Receber`, `Caixa Geral`, `Quitação`) e os relatórios de análise (`DRE`, históricos).
 
-### 📊 [Documentação DRE](documentacao_dre.md)
-Guia completo da Demonstração do Resultado do Exercício:
-- Conceitos fundamentais e estrutura do Plano de Contas
-- Configuração de Agrupamentos DRE
-- Integração com AP/AR, Caixa e RH
-- Exemplos práticos por segmento (comércio, indústria, serviços)
-- DRE Comparativo, por Centro de Custo e indicadores de rentabilidade
-- FAQ e troubleshooting
-
-### 📄 [Documentação de Portadores](documentacao_portadores.md)
-Manual de instrumentos de pagamento e cobrança:
-- Configuração de bancos, boletos e carnês
-- PIX integrado e remessa eletrônica
-- Convênios e Hetobank
-- Comissões, validações e troubleshooting
+Todo acesso a telas é pela **pesquisa universal** — atalho **`F1`** — digitando o **código** ou parte do **nome** da tela.
 
 ---
 
-## 🎯 Por Onde Começar
+## 🧭 Telas do módulo
 
-- **👤 Novo no módulo** — comece pela [Documentação DRE](documentacao_dre.md), entenda o Plano de Contas, configure agrupamentos básicos e veja os exemplos do seu segmento.
-- **🔧 Administrador / configurador** — foque na configuração de agrupamentos DRE, integração entre módulos e na seção de configuração de [Portadores](documentacao_portadores.md).
-- **⚡ Usuário experiente** — use os relatórios comparativos do DRE e os controles avançados de Portadores como referência.
+### 📋 Cadastros base
+
+| Tela | Código (`F1`) | Documento |
+|------|:---:|------|
+| [Bancos](documentacao_bancos.md) | `9` | 🟢 disponível |
+| [Agências](documentacao_agencias.md) | `10` | 🟢 disponível |
+| [Contas Correntes](documentacao_contas_correntes.md) | `11` | 🟢 disponível |
+| [Portadores](documentacao_portadores.md) | `12` | 🟢 disponível |
+| [Cadastro Caixa Geral](documentacao_caixa_geral.md) | `13` | 🟢 disponível |
+| [Plano de Contas](documentacao_plano_de_contas.md) | `14` | 🟢 disponível |
+| [Centros de Custos](documentacao_centros_de_custos.md) | `15` | 🟢 disponível |
+| [Formas de Pagamento](documentacao_formas_pagamento.md) | `7` | 🟢 disponível |
+| [Cond. de Pagamento](documentacao_condicoes_pagamento.md) | `8` | 🟢 disponível |
+| [Tipos de Contas PR](documentacao_tipos_contas_pr.md) | `82` | 🟢 disponível |
+| Motivo Devolução Cheque | `95` | 🟡 em construção |
+| Taxas | `99` | 🟡 em construção |
+| Rejeições Boletos | `103` | 🟡 em construção |
+| Operadoras Cartão | `122` | 🟡 em construção |
+| Cadastro de Usuários Hetobank | `128` | 🟡 em construção |
+| Agrupamento DRE | `130` | 🟡 em construção |
+| Configuração DRE | `131` | 🟡 em construção |
+| Pessoa Rateio | `133` | 🟡 em construção |
+
+### ⚙️ Operações
+
+| Tela | Código (`F1`) | Documento |
+|------|:---:|------|
+| [Pagar e Receber](documentacao_pagar_e_receber.md) | `301` | 🟢 disponível |
+| [Caixa Geral](documentacao_caixa_geral_op.md) | `302` | 🟢 disponível |
+| [Quitação](documentacao_quitacao.md) | `303` | 🟢 disponível |
+
+### 📊 Análise e Histórico
+
+| Tela | Código (`F1`) | Documento |
+|------|:---:|------|
+| DRE | `221` | 🟡 em construção |
+| Histórico de ContasPR | `207` | 🟡 em construção |
+| Histórico de Caixa Geral | `208` | 🟡 em construção |
+| Histórico de Lançamento Rateio | `212` | 🟡 em construção |
 
 ---
 
-## 🧭 Navegação por Funcionalidade
+## 📚 Documentação relacionada
 
-### 📊 Análises Gerenciais
-- [DRE por Centro de Custo](documentacao_dre.md#-dre-por-centro-de-custo)
-- [Indicadores de Rentabilidade](documentacao_dre.md#indicadores-calculados)
-- [DRE Comparativo](documentacao_dre.md#-dre-comparativo)
-- [Margem de Lucro por Produto](documentacao_dre.md#p-como-analisar-a-margem-de-lucro-por-produto)
-
-### ⚙️ Configuração e Setup
-- [Estruturação do Plano de Contas](documentacao_dre.md#-estrutura-hierárquica)
-- [Agrupamentos DRE](documentacao_dre.md#-configuração-de-agrupamentos)
-- [Configuração de Portadores](documentacao_portadores.md#-estrutura-da-interface-abas-e-funcionalidades)
-- [Integração com Módulos](documentacao_dre.md#-integração-com-módulos-do-solnet)
-
-### 💳 Instrumentos de Pagamento
-- [Boletos Bancários](documentacao_portadores.md#1-boleto-tipo-0)
-- [Carnês](documentacao_portadores.md#2-carnê-tipo-1)
-- [Convênios](documentacao_portadores.md#4-convênio-tipo-3)
-- [PIX Integrado](documentacao_portadores.md#seção-pix---pagamentos-instantâneos)
-
-### 🆘 Suporte e Problemas
-- [FAQ DRE](documentacao_dre.md#-faq---perguntas-frequentes)
-- [Troubleshooting DRE](documentacao_dre.md#-troubleshooting---solução-de-problemas)
-- [Troubleshooting Portadores](documentacao_portadores.md#-manutenção-e-troubleshooting)
+- **[Fiscal — Reforma Tributária](../Fiscal/documentacao_reforma_tributaria.md)** — CBS/IBS e impactos nas operações financeiras
+- **[RH — Lançamentos de Folha](../RH/documentacao_folha_de_pagamento.md)** — geração de títulos em Contas a Pagar a partir do lançamento de RH
 
 ---
 
-## 🔗 Módulos Relacionados
-
-- **[Fiscal](../Fiscal/README.md)** — Reforma Tributária (CBS / IBS), cronograma, créditos.
-- **[RH](../RH/README.md)** — Lançamentos de folha que alimentam o DRE.
-- **[Movimentação](../Movimentacao/README.md)** — Documentos fiscais e quitações que afetam o financeiro.
-
----
-
-**📅 Última atualização**: Abril de 2026  
-**📦 Versão**: 2.0  
-**🎯 Público-alvo**: Usuários do Módulo Financeiro Sol.NET
+**📅 Última atualização**: Maio de 2026
+**📦 Versão**: 5.0 (reescrita em andamento)
+**🎯 Público-alvo**: Equipe de suporte e usuários do módulo Financeiro
