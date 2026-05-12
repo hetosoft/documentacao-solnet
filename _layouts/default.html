@@ -140,6 +140,60 @@
         color: var(--sn-sidebar-accent);
       }
 
+      /* ---------- Sub-grupo aninhado (submódulo dentro de um módulo) ---------- */
+      .sn-sidebar__subgroup {
+        margin: 0;
+      }
+      .sn-sidebar__subgroup-summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 6px 20px 6px 41px;
+        color: var(--sn-sidebar-text);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        user-select: none;
+        border-left: 3px solid transparent;
+        line-height: 1.35;
+      }
+      .sn-sidebar__subgroup-summary::-webkit-details-marker { display: none; }
+      .sn-sidebar__subgroup-summary::before {
+        content: "▸";
+        font-size: 9px;
+        color: var(--sn-sidebar-muted);
+        transition: transform 0.15s ease;
+        display: inline-block;
+        width: 10px;
+      }
+      .sn-sidebar__subgroup[open] > .sn-sidebar__subgroup-summary::before {
+        transform: rotate(90deg);
+      }
+      .sn-sidebar__subgroup-summary:hover {
+        background: var(--sn-sidebar-hover-bg);
+      }
+      .sn-sidebar__subitems {
+        list-style: none;
+        margin: 0;
+        padding: 2px 0 4px;
+      }
+      .sn-sidebar__subitems li { margin: 0; }
+      .sn-sidebar__subitems a {
+        display: block;
+        padding: 5px 20px 5px 60px;
+        text-decoration: none;
+        color: var(--sn-sidebar-text);
+        border-left: 3px solid transparent;
+        line-height: 1.35;
+        font-size: 13.5px;
+      }
+      .sn-sidebar__subitems a:hover { background: var(--sn-sidebar-hover-bg); }
+      .sn-sidebar__subitems a.is-active {
+        background: var(--sn-sidebar-active-bg);
+        border-left-color: var(--sn-sidebar-accent);
+        font-weight: 600;
+        color: var(--sn-sidebar-accent);
+      }
+
       .sn-sidebar__footer {
         padding: 12px 20px 20px;
         font-size: 11px;
@@ -419,17 +473,27 @@
             <summary class="sn-sidebar__group-summary">📦 Movimentação</summary>
             <ul class="sn-sidebar__items">
               <li><a href="{{ '/Movimentacao/' | relative_url }}">Visão geral</a></li>
-              <li><a href="{{ '/Movimentacao/documentacao_movimentacao/' | relative_url }}">Documentação Movimentação</a></li>
-              <li><a href="{{ '/Movimentacao/guia_rapido/' | relative_url }}">Guia Rápido</a></li>
-              <li><a href="{{ '/Movimentacao/faq/' | relative_url }}">FAQ</a></li>
-              <li><a href="{{ '/Movimentacao/preco_de_venda_guia_do_usuario/' | relative_url }}">Preço de Venda — Guia</a></li>
-              <li><a href="{{ '/Movimentacao/tabela_de_preco_fallback_preco_base/' | relative_url }}">Tabela de Preço — Fallback</a></li>
-              <li><a href="{{ '/Movimentacao/atualizacao_de_custo_automatica/' | relative_url }}">Atualização de Custo Automática</a></li>
-              <li><a href="{{ '/Movimentacao/cashback_pdv/' | relative_url }}">Cashback PDV</a></li>
+              <li><a href="{{ '/Movimentacao/documentacao_locais_de_estoque/' | relative_url }}">Locais de Estoque</a></li>
+              <li><a href="{{ '/Movimentacao/documentacao_transacoes_de_estoque/' | relative_url }}">Transações de Estoque</a></li>
+              <li>
+                <details class="sn-sidebar__subgroup" data-sn-subgroup="tipos-movimento">
+                  <summary class="sn-sidebar__subgroup-summary">Tipos de Movimento</summary>
+                  <ul class="sn-sidebar__subitems">
+                    <li><a href="{{ '/Movimentacao/TiposDeMovimento/' | relative_url }}">Visão geral</a></li>
+                    <li><a href="{{ '/Movimentacao/TiposDeMovimento/documentacao_tipos_de_movimento/' | relative_url }}">Documentação</a></li>
+                    <li><a href="{{ '/Movimentacao/TiposDeMovimento/faq/' | relative_url }}">FAQ</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li><a href="{{ '/Movimentacao/documentacao_tabela_de_preco/' | relative_url }}">Tabela de Preço</a></li>
+              <li><a href="{{ '/Movimentacao/documentacao_saldo_estoque/' | relative_url }}">Saldo Estoque</a></li>
+              <li><a href="{{ '/Movimentacao/documentacao_regras_cashback/' | relative_url }}">Regras Cashback</a></li>
+              <li><a href="{{ '/Movimentacao/documentacao_ajuste_de_estoque/' | relative_url }}">Ajuste de Estoque</a></li>
+              <li><a href="{{ '/Movimentacao/documentacao_historico_de_movimentacoes/' | relative_url }}">Histórico de Movimentações</a></li>
+              <li><a href="{{ '/Movimentacao/documentacao_historico_de_produtos/' | relative_url }}">Histórico de Produtos</a></li>
               <li><a href="{{ '/Movimentacao/Producao/' | relative_url }}">Produção — Visão geral</a></li>
-              <li><a href="{{ '/Movimentacao/Producao/documentacao_producao/' | relative_url }}">Produção — Documentação</a></li>
-              <li><a href="{{ '/Movimentacao/Producao/guia_rapido/' | relative_url }}">Produção — Guia Rápido</a></li>
-              <li><a href="{{ '/Movimentacao/Producao/faq/' | relative_url }}">Produção — FAQ</a></li>
+              <li><a href="{{ '/Movimentacao/Producao/documentacao_formulas_de_produtos/' | relative_url }}">Produção — Fórmula de Produtos</a></li>
+              <li><a href="{{ '/Movimentacao/Producao/documentacao_producao_de_produtos/' | relative_url }}">Produção — Produção de Produtos</a></li>
             </ul>
           </details>
 
@@ -525,7 +589,7 @@
         var activeLink = null;
         var bestLength = -1;
 
-        var links = sidebar.querySelectorAll('.sn-sidebar__items a, .sn-sidebar__home');
+        var links = sidebar.querySelectorAll('.sn-sidebar__items a, .sn-sidebar__subitems a, .sn-sidebar__home');
         links.forEach(function (a) {
           var hrefPath;
           try { hrefPath = new URL(a.href, window.location.href).pathname; }
@@ -549,8 +613,12 @@
 
         if (activeLink) {
           activeLink.classList.add('is-active');
-          var group = activeLink.closest('details.sn-sidebar__group');
-          if (group) group.setAttribute('open', '');
+          // Abre todos os <details> ancestrais (grupo + sub-grupo aninhado, se houver)
+          var node = activeLink.parentElement;
+          while (node && node !== sidebar) {
+            if (node.tagName === 'DETAILS') node.setAttribute('open', '');
+            node = node.parentElement;
+          }
         }
 
         // Toggle mobile
