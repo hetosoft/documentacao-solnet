@@ -18,6 +18,7 @@ Por concentrar todas essas regras, é a **tela de configuração mais densa do m
 ## 📄 Documentos desta seção
 
 - [Documentação](documentacao_tipos_de_movimento.md) — referência completa: como acessar, detalhe de cada uma das 12 abas e suas sub-abas, exclusão, clonagem, exemplos práticos de criação dos tipos mais comuns, telas relacionadas, limites.
+- [Referência de configurações (checkboxes e combos)](referencia_configuracoes_tipos_movimento.md) — lista exaustiva dos campos de marcação e de escolha do formulário, organizada aba por aba, com bloco de atenção nos flags de impacto fiscal/financeiro/estoque.
 - [FAQ](faq.md) — perguntas frequentes + **tabela completa de validações** (50+ mensagens reais com a aba/sub-aba onde resolver cada uma). Use como referência de troubleshooting quando uma gravação for recusada.
 
 ---
