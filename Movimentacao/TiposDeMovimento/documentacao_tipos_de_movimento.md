@@ -95,7 +95,7 @@ A aba **Itens** é a maior em volume de regras — controla o que o movimento ac
 | Aba | O que configura |
 |-----|-----------------|
 | **Finalizar** | O que acontece quando o movimento é finalizado — botões, validações finais, geração de documentos. Inclui sub-aba `Finalizar / Mudar` que liga este Tipo a outro (ex.: `PEDIDO → VENDA` ao finalizar). |
-| **Mudar** | Configura uma **mudança automática** deste tipo para outro durante o ciclo (ex.: orçamento que vira pedido que vira venda). |
+| **Mudar** | Configura para qual Tipo este pode ser mudado (via `F7` na tela de Movimentos) e **como** essa mudança ocorre: `Transformar` (mesmo movimento muda de Tipo, sem exigir permissão de estorno) ou `Duplicar` (gera novo movimento, o anterior fica em status `VINCULADO` e forma pilha). Típico no ciclo `ORÇAMENTO → PEDIDO → VENDA`. |
 | **Agrupar** | Regras de agrupamento de movimentos (juntar vários pedidos em uma única nota, por exemplo). |
 
 ---

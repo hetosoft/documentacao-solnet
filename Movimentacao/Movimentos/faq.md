@@ -133,6 +133,10 @@ Conferir nesta ordem:
 2. `Descontos/Outras Despesas` — acréscimo/desconto no total redistribui as parcelas.
 3. Edição manual na sub-aba `Financeiro → Parcelas` — alguém pode ter ajustado manualmente após a geração automática.
 
+### O que significa o status `VINCULADO`?
+
+Aparece quando o movimento foi origem de uma **Mudança Duplicar** (`F7` com o Tipo de destino configurado como `Duplicar` em `Tipos de Movimento → aba Mudar`) e o novo movimento gerado está ativo. O original fica **congelado** nesse status — não aceita novas operações até que o subsequente (o "duplicado") seja cancelado, momento em que volta a aceitar ações. A pilha de movimentos relacionados fica visível na sub-aba `Vínculos`. Veja [Mudar (F7)](documentacao_movimentos.md#mudar-bot%C3%A3o-mudar--f7) para o conceito completo.
+
 ---
 
 ## 🔗 Links

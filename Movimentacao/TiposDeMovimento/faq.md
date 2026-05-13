@@ -150,6 +150,15 @@ A flag `Quitar Crédito Automaticamente` só é válida em Tipos exclusivos da a
 **O que a flag `PDV` faz exatamente?**
 Marca o Tipo como **exclusivo da aplicação PDV** (frente de caixa — um sistema à parte do ponto de vista do usuário, embora seja o mesmo Sol.NET compilado em modo PDV). Tipos com `PDV` marcado **não aparecem** no combo `Tipo` das telas `Movimentos de Compras/Vendas/Outros` (`201/202/203`). Ela **não** ativa nenhum "modo PDV" nessas telas — é puramente um filtro de visibilidade.
 
+### Mudar — Transformar vs Duplicar
+
+**Quando usar `Transformar` vs `Duplicar` na configuração de Mudar?**
+
+- Use **Transformar** quando o cliente prefere **simplicidade** — o movimento vira o próximo Tipo no ciclo sem deixar rastro de cada etapa. O `ID` interno é preservado. Vantagem operacional importante: permite que o usuário avance o ciclo (`ORÇAMENTO → PEDIDO → VENDA`, p.ex.) mesmo **sem permissão de estorno**, porque tecnicamente o movimento não é estornado e re-lançado, é só reconfigurado.
+- Use **Duplicar** quando o cliente quer **rastreabilidade** — cada etapa do ciclo (orçamento, pedido, faturamento) fica como movimento separado e auditável. O Sol.NET marca o anterior como `VINCULADO` e congela ele até o subsequente ser cancelado, garantindo que a pilha não fique inconsistente. Visualize a pilha pela sub-aba `Vínculos` na tela de Movimentos.
+
+A decisão fica no cadastro do Tipo de **destino** da mudança. O operador da tela de Movimentos não escolhe o modo no momento do `F7` — ele recebe o resultado do que o Tipo dita.
+
 ### Clonagem e Histórico
 
 **Posso editar um Tipo já usado em movimentos antigos sem afetar o histórico?**

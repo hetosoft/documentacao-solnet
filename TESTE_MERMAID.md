@@ -78,14 +78,18 @@ Diagramas em validação antes de irem pros docs finais (PR #36, conteúdo paral
 
 ### Rascunho 1 — Ciclo de vida de um Movimento
 
-Setas sólidas = transição de estado. Setas pontilhadas = operação que gera artefato sem mudar o estado do movimento.
+Setas sólidas = transição de estado. Setas pontilhadas = operação que gera artefato sem mudar o estado do movimento. O losango decisão do `F7 Mudar` ramifica conforme o Tipo de destino esteja configurado como `Transformar` (mesmo ID muda de Tipo) ou `Duplicar` (novo movimento criado, original vira `VINCULADO`).
 
 ```mermaid
 flowchart TD
   E[Em edição] -->|Gravar| L[Lançado]
   L -->|F6 Finalizar| F[Finalizado]
-  L -->|F7 Mudar| M[Novo movimento<br/>com outro Tipo]
-  F -->|F7 Mudar| M
+  L -->|F7 Mudar| D{Modo configurado<br/>no Tipo?}
+  F -->|F7 Mudar| D
+  D -->|Transformar| F
+  D -->|Duplicar| N[Novo movimento<br/>com outro Tipo]
+  D -->|Duplicar| V[VINCULADO<br/>original congelado]
+  N -. pilha .-> V
   F -->|F11 Estornar| X[Estornado]
   F -. F8 Quitar .-> Q[(Quita títulos)]
   F -. F10 NF-e .-> NF[(Emite documento fiscal)]

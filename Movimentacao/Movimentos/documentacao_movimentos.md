@@ -40,7 +40,7 @@ O formulário se divide em **duas grandes áreas**: a área de **Consulta** (lis
 | **Contas PR** | Títulos do contas a Pagar/Receber gerados por este movimento. Sub-abas: **Registros**, **Renegociação**, **Detalhes**, **Cheque** (com Histórico do Cheque), **Cartão**, **Crédito Pessoa - Usado**, **Crédito Pessoa - Gerado**. |
 | **OS / Req.** | Vínculos com Ordem de Serviço e OS-Requisição. |
 | **Agrupar** | Movimentos que foram agrupados — ver quais movimentos-origem compõem o movimento atual e vice-versa. |
-| **Vínculos** | Outras amarras explícitas com outros movimentos (referência fiscal, devolução, vínculo manual). |
+| **Vínculos** | Outras amarras explícitas com outros movimentos (referência fiscal, devolução, vínculo manual) e a **pilha de movimentos gerada por Mudança Duplicar**, com o original em status `VINCULADO` apontando para o novo movimento que o substituiu. |
 | **Parcial** | Sub-abas **Movimento Parcial** e **Quitação Parcial** — partes do movimento liberadas/quitadas em etapas. |
 | **Chamada** | Histórico de chamadas (atendimento) ligadas ao movimento. |
 | **Crédito - Gerado** | Créditos de pessoa gerados pelo movimento (devoluções, p.ex.). |
@@ -81,15 +81,19 @@ O ciclo de vida típico de um movimento e as operações disponíveis em cada es
 flowchart TD
   E[Em edição] -->|Gravar| L[Lançado]
   L -->|F6 Finalizar| F[Finalizado]
-  L -->|F7 Mudar| M[Novo movimento<br/>com outro Tipo]
-  F -->|F7 Mudar| M
+  L -->|F7 Mudar| D{Modo configurado<br/>no Tipo?}
+  F -->|F7 Mudar| D
+  D -->|Transformar| F
+  D -->|Duplicar| N[Novo movimento<br/>com outro Tipo]
+  D -->|Duplicar| V[VINCULADO<br/>original congelado]
+  N -. pilha .-> V
   F -->|F11 Estornar| X[Estornado]
   F -. F8 Quitar .-> Q[(Quita títulos)]
   F -. F10 NF-e .-> NF[(Emite documento fiscal)]
   F -. F9 Imprimir .-> P[(Impressão)]
 ```
 
-Setas sólidas marcam transições de estado; setas pontilhadas marcam operações que produzem um artefato (quitação de título, emissão fiscal, impressão) sem mudar o estado do movimento. Os detalhes de cada operação estão a seguir.
+Setas sólidas marcam transições de estado; setas pontilhadas marcam operações que produzem um artefato (quitação de título, emissão fiscal, impressão) sem mudar o estado do movimento. O `F7 Mudar` passa por um **modo configurado no Tipo de destino** que decide se a mudança preserva o `ID_MOVIMENTO` (`Transformar`) ou gera um novo movimento com o original em status `VINCULADO` (`Duplicar`) — ver a seção `Mudar (botão Mudar / F7)` abaixo. Os detalhes de cada operação estão a seguir.
 
 ### Lançar um movimento novo
 
@@ -119,7 +123,12 @@ A finalização é o passo que **consolida** o movimento — gera o financeiro d
 
 ### Mudar (botão **Mudar** / `F7`)
 
-Converte um movimento de um Tipo para outro **conforme regras configuradas** em `Cadastro de Tipos de Movimento → aba Mudar` — típico no ciclo `ORÇAMENTO → PEDIDO → VENDA`. A mudança copia os itens e o cabeçalho, ajustando o Tipo e re-aplicando regras fiscais/financeiras.
+Converte um movimento de um Tipo para outro **conforme regras configuradas** em `Cadastro de Tipos de Movimento → aba Mudar` — típico no ciclo `ORÇAMENTO → PEDIDO → VENDA`. O Tipo de destino define **um de dois comportamentos**:
+
+- **Transformar** — o **mesmo movimento** muda de Tipo. O identificador interno do movimento é **preservado**; cabeçalho, fiscal e transações são reaplicados conforme o novo Tipo. Útil porque permite avançar o ciclo do movimento **sem exigir permissão de estorno** do usuário (equivalente prático a estornar + re-lançar, mas com tudo pré-definido pela configuração do Tipo).
+- **Duplicar** — um **novo movimento** é criado com o Tipo de destino e os itens copiados; o **original** muda de status para `VINCULADO` e fica **congelado** até que o novo seja cancelado. Forma uma **pilha** acessível pela sub-aba `Vínculos`. Útil quando o cliente quer **preservar histórico** de cada etapa (orçamento, pedido, faturamento são auditáveis separadamente).
+
+A escolha entre Transformar e Duplicar é decidida pelo cadastro do Tipo de destino, não pelo operador da tela. Ao apertar `F7`, o usuário não escolhe o modo — o sistema executa o que o Tipo dita.
 
 ### Quitar (botão **Quitar** / `F8`)
 

@@ -47,13 +47,15 @@ Abra a pesquisa universal (`F1`) e digite `202` ou parte do nome **Movimentos de
 
 ### Orçamento → Pedido → NFC-e (cupom fiscal)
 
-Cenário comum em loja de balcão. **Não é um comportamento automático da tela `202`** — todas as etapas dependem da configuração dos três [Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) envolvidos. O fluxo abaixo descreve o que acontece quando os Tipos estão configurados no padrão típico de loja.
+Cenário comum em loja de balcão. **Não é um comportamento automático da tela `202`** — todas as etapas dependem da configuração dos três [Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) envolvidos. O fluxo abaixo descreve o que acontece quando os Tipos estão configurados no padrão típico de loja: cada `F7 Mudar` aqui usa o modo **Transformar**, ou seja, é **o mesmo movimento mudando de Tipo** a cada etapa — não três movimentos distintos. O identificador interno é preservado, o que torna o ciclo executável mesmo por usuários sem permissão de estorno.
 
 ```mermaid
 flowchart TD
-  O["ORÇAMENTO<br/>(sem efeito no estoque<br/>nem no financeiro)"] -->|F7 Mudar| P["PEDIDO<br/>(estoque baixa<br/>financeiro aberto)"]
-  P -->|F7 Mudar| N["NFC-E CUPOM FISCAL<br/>(quitação dispara<br/>emissão fiscal inicia)"]
+  O["ORÇAMENTO<br/>(sem efeito no estoque<br/>nem no financeiro)"] -->|F7 Mudar Transformar| P["PEDIDO<br/>(estoque baixa<br/>financeiro aberto)"]
+  P -->|F7 Mudar Transformar| N["NFC-E CUPOM FISCAL<br/>(quitação dispara<br/>emissão fiscal inicia)"]
 ```
+
+> 💡 **Alternativa Duplicar.** Se o cliente preferir manter cada etapa como movimento separado e auditável, o Tipo `PEDIDO` (e o `NFC-E CUPOM FISCAL`) pode ser configurado no modo `Duplicar`. Nesse caso, o orçamento e o pedido **continuam existindo** com status `VINCULADO`, e a operação cria um novo movimento a cada `F7` — formando uma pilha visível em `Vínculos`. Ver [Mudar (F7)](documentacao_movimentos.md#mudar-bot%C3%A3o-mudar--f7) na documentação principal para entender Transformar vs Duplicar.
 
 1. **Lance um Tipo `ORÇAMENTO`** em `202`. O orçamento **não baixa estoque** e **não gera financeiro** — serve apenas para registrar a proposta ao cliente. *Configuração-chave do Tipo `ORÇAMENTO`*: `Itens → Estoque` sem Transação que afete saldo; `Financeiro → Financeiro 1` com `Gerar Lançamento` desligado; `Finalizar/Mudar → Mudar` apontando para o Tipo `PEDIDO`.
 2. **Cliente aprova → `F7` (Mudar)** transforma o `ORÇAMENTO` em `PEDIDO`. Neste momento, o **estoque é baixado** e o **financeiro é gerado** (conta a receber em aberto, com as parcelas da Condição de Pagamento escolhida). *Configuração-chave do Tipo `PEDIDO`*: `Itens → Estoque` com `Transação de Estoque` que subtrai `Físico` e `Disponível`; `Financeiro → Financeiro 1` com `Gerar Lançamento` ligado, Plano de Contas, Centro de Custo e Tipo de Documento Padrão definidos; `Finalizar/Mudar → Mudar` apontando para `NFC-E CUPOM FISCAL` (ou outro Tipo fiscal).
