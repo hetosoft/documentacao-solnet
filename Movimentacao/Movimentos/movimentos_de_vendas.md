@@ -27,7 +27,7 @@ Abra a pesquisa universal (`F1`) e digite `202` ou parte do nome **Movimentos de
 - **`Atualizar Custo Automático` proibido** — vendas **não** atualizam custo. Marcar essa flag em `37` para um Tipo de Saída é rejeitado: *"Atualizar Custo Automático, Somente para Compras/Outros!"*.
 - **PDV** — Tipos marcados como PDV em `Outras Operações → Sistema` ativam a sub-aba `PDV` no formulário, otimizada para venda balcão rápida (teclado, código de barras, finalização em poucos passos).
 - **Devolução de Venda** — quando um cliente devolve mercadoria, o Tipo `DEVOLUÇÃO DE VENDA` (configurado em `37` com `Devolução = Sim`) faz o movimento neste mesmo modo `202`, gerando Crédito de Pessoa quando configurado.
-- **Vencimento** — Tipos de venda costumam gerar contas a receber. As parcelas são derivadas da `Condição de Pagamento` do Cabeçalho e ficam visíveis/editáveis na sub-aba `Vencimento`.
+- **Financeiro** — Tipos de venda costumam gerar contas a receber. As parcelas são derivadas da `Condição de Pagamento` do Cabeçalho e ficam visíveis/editáveis na sub-aba `Financeiro → Parcelas`. (A aba `Vencimento`, à parte, é controle de **lote/data de validade dos produtos** — não de parcelas.)
 - **Caixa aberto** — para finalizar uma venda em modo PDV (ou em qualquer Tipo configurado para exigir Caixa), o Caixa do usuário precisa estar **aberto**; sem isso o sistema bloqueia: *"Caixa Aberto. Fechamento Nº: ( ... )"*.
 - **Cashback** — Tipos PDV podem disparar geração/uso de [Cashback](../documentacao_regras_cashback.md) automaticamente ao finalizar, conforme as Regras de Cashback ativas para a empresa/cliente.
 
@@ -40,7 +40,7 @@ Abra a pesquisa universal (`F1`) e digite `202` ou parte do nome **Movimentos de
 1. Pesquisa `F1` → `202` → **Novo**.
 2. **Cabeçalho**: `Tipo` = `VENDA BALCÃO`, `Pessoa` = cliente (ou genérico/consumidor final), `Condição de Pagamento` = `À VISTA`, `Portador` = `Caixa`.
 3. **Itens**: bipe ou digite cada produto; ajuste quantidade e desconto.
-4. **Outros Valores**: se necessário, lance desconto no total.
+4. **Descontos/Outras Despesas**: se necessário, lance desconto no total.
 5. `F6` (Finalizar) → estoque baixa, conta a receber é criada e imediatamente quitada (porque é à vista), cupom/NFC-e é emitido.
 
 ### Venda no PDV com NFC-e

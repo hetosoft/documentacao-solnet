@@ -51,14 +51,22 @@ O formulário se divide em **duas grandes áreas**: a área de **Consulta** (lis
 | Sub-aba | O que recebe |
 |---------|--------------|
 | **Cabeçalho** | Identificação do movimento: Tipo, Série, Número do Documento, Empresa, Pessoa, Datas (Emissão, E/S, Opcionais), Condição de Pagamento, Portador, Funcionários, Natureza de Operação, Modelo, Local de Estoque (origem e destino), Tabela de Preço. |
-| **Itens** | Produtos do movimento. Sub-abas: **Totais**, **Observações dos Itens**, **Imposto Livre**, **Total Pontos**, **Estoque** (visão por item), **IVA** (impostos consolidados), **Oculta** (campos técnicos não exibidos por padrão). |
-| **Outros Valores** | Acréscimos, descontos, fretes, despesas que afetam o total. |
-| **Vencimento** | Parcelas de vencimento do contas PR — gerado a partir da Condição de Pagamento e editável manualmente. |
-| **Precificação** | Aba auxiliar para revisão de preços antes de gravar. |
-| **PDV** | Disponível em Tipos marcados como PDV — interface de venda direta otimizada para teclado/balcão. |
+| **Itens** | Produtos do movimento. Sub-abas: **Totais**, **Tributação**, **ICMS/ST/IPI Livre**, **Pontos**, **Estoque do Produto**, **IVA** (impostos consolidados). |
 | **Campos Complementares** | Campos extras configurados em `Tipos de Movimento → Campos Livres`. |
+| **Descontos/Outras Despesas** | Acréscimos, descontos, fretes, despesas que afetam o total do movimento. |
+| **Precificação** | Aba auxiliar para revisão de preços antes de gravar. Sub-abas: **Custos**, **Preços**, **Buscador de Preço**. |
+| **Chamada** | Dados da chamada/atendimento vinculada ao movimento (quando o Tipo trabalha com Chamada). |
+| **Cadastro/Fechamento** | Dados de cadastro/fechamento associados (ex.: fechamento de comanda, abertura de OS). |
+| **Financeiro** | Contas a Pagar/Receber geradas pelo movimento. Sub-abas: **Contas** (títulos lançados), **Parcelas** (geração manual ou via Condição de Pagamento), **Rateio**, **Imagens** (anexos), **Forma de Pagamento**. |
+| **Entrega** | Dados de entrega — endereço, transportadora, prazos. |
+| **Entrega PDV** | Dados específicos de entrega para vendas originadas em PDV. |
+| **MDF-e** | Quando o movimento envolve transporte próprio: sub-abas **Rodoviário**, **Locais**, **Percurso/Condutor**, **Reboque**. |
+| **Itens Cancelados** | Itens removidos do movimento, mantidos para auditoria. |
+| **Vencimento** | **Controle de lote e data de validade dos produtos** do movimento — não tem relação com vencimento de parcelas (parcelas ficam em `Financeiro`). |
+| **Outras Operações** | Sub-abas auxiliares: **Informações** (Adicionais e Outras Info., como Município Origem/Destino para transporte). |
+| **PDV** | Disponível em Tipos marcados como PDV — interface de venda direta otimizada para teclado/balcão. |
 
-> 💡 **Quais sub-abas aparecem.** Cada Tipo de Movimento decide quais sub-abas ficam visíveis. Um Tipo `VENDA BALCÃO` mostra Cabeçalho + Itens + Outros Valores + Vencimento. Um Tipo `TRANSFERÊNCIA ENTRE LOJAS` mostra Cabeçalho + Itens (sem Vencimento, porque não gera financeiro). Um Tipo `DEVOLUÇÃO DE VENDA` mostra também a aba `Crédito Gerado`.
+> 💡 **Quais sub-abas aparecem.** Cada Tipo de Movimento decide quais sub-abas ficam visíveis. Um Tipo `VENDA BALCÃO` mostra Cabeçalho + Itens + Descontos/Outras Despesas + Financeiro. Um Tipo `TRANSFERÊNCIA ENTRE LOJAS` mostra Cabeçalho + Itens (sem Financeiro, porque não gera contas). Um Tipo `DEVOLUÇÃO DE VENDA` mostra também a aba `Crédito - Gerado` (na área de Consulta). Tipos que controlam produtos com lote/validade ativam a aba **Vencimento**; Tipos com transporte próprio ativam **MDF-e**.
 
 ---
 
@@ -73,8 +81,8 @@ O formulário se divide em **duas grandes áreas**: a área de **Consulta** (lis
    - Preencha `Pessoa` (cliente, fornecedor, funcionário — conforme o Tipo).
    - Ajuste `Série`, `Número do Documento`, `Datas`, `Local de Estoque`, `Tabela de Preço`, `Condição de Pagamento`, `Portador`, `Funcionários` (conforme exigências).
 4. Vá para a sub-aba **Itens** e adicione cada produto: código/nome, Quantidade, Preço (do produto ou da tabela), Desconto/Acréscimo.
-5. Em **Outros Valores**, se necessário, ajuste totais (frete, despesas, descontos no total).
-6. Em **Vencimento**, confira/edite as parcelas geradas a partir da Condição de Pagamento (válido para Tipos que geram financeiro).
+5. Em **Descontos/Outras Despesas**, se necessário, ajuste totais (frete, despesas, descontos no total).
+6. Em **Financeiro → Parcelas**, confira/edite as parcelas geradas a partir da Condição de Pagamento (válido para Tipos que geram financeiro).
 7. Pressione **Gravar** (ou `F6` para gravar e **finalizar** em um passo — ver atalhos abaixo).
 
 ### Editar um movimento já lançado
@@ -154,8 +162,8 @@ O formulário executa **centenas** de verificações distintas ao salvar, finali
 1. Pesquisa `F1` → `202` → **Novo**.
 2. **Cabeçalho**: `Tipo` = `VENDA BALCÃO`, `Pessoa` = cliente, `Local de Estoque` = `01 - Matriz`, `Condição de Pagamento` = `À VISTA`, `Portador` = `Caixa`.
 3. **Itens**: adicione cada produto. O preço vem da Tabela amarrada ao Tipo; ajuste desconto/quantidade conforme combinado.
-4. **Outros Valores**: se for o caso, lance frete ou desconto no total.
-5. **Vencimento**: parcela única confirmada automaticamente.
+4. **Descontos/Outras Despesas**: se for o caso, lance frete ou desconto no total.
+5. **Financeiro → Parcelas**: parcela única confirmada automaticamente.
 6. Pressione `F6` (Finalizar) → o sistema gera financeiro, baixa estoque e imprime cupom (se o Tipo tiver Relatório configurado).
 
 ### Exemplo 2 — Lançar entrada de NF de compra (`201`)
@@ -163,7 +171,7 @@ O formulário executa **centenas** de verificações distintas ao salvar, finali
 1. Pesquisa `F1` → `201` → **Novo**.
 2. **Cabeçalho**: `Tipo` = `COMPRA À VISTA` (ou `A PRAZO`), `Pessoa` = fornecedor, `Série` e `Número do Documento` = os da NF recebida, `Data de Emissão` = data da NF, `Data E/S` = data do recebimento físico.
 3. **Itens**: lance cada produto com `Custo` da nota. Se o Tipo tem `Atualizar Custo Automático` marcado em `Tipos de Movimento → Itens → Quantidade`, esse custo será propagado para o cadastro do produto ao gravar.
-4. **Vencimento**: confira parcelas conforme acordado com o fornecedor.
+4. **Financeiro → Parcelas**: confira parcelas conforme acordado com o fornecedor.
 5. `F6` (Finalizar) → estoque entra, financeiro a pagar é gerado, conta a pagar fica no `Contas PR`.
 
 ### Exemplo 3 — Transferência entre lojas (`203`)

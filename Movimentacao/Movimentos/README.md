@@ -32,7 +32,7 @@ O formulário se divide em duas grandes áreas:
 | Área | O que tem |
 |------|-----------|
 | **Consulta** | Lista de movimentos lançados, com sub-abas: `Movimentos` (geral + Produtos / Pagamentos / Observações / Protocolo Fiscal / Entrega PDV), `Contas PR` (Registros / Renegociação / Detalhes / Cheque / Cartão / Crédito Pessoa Usado/Gerado), `OS / Req.`, `Agrupar`, `Vínculos`, `Parcial` (Movimento Parcial + Quitação Parcial), `Chamada`, `Crédito - Gerado`, `Pesquisa PDV`, `Pesquisa Salva`, `Comportamentos`. |
-| **Lançamento** | Cabeçalho, Itens (com Totais / Observações / Imposto Livre / Total Pontos / Estoque / IVA / Oculta), Outros Valores, Vencimento, Precificação, PDV (quando o Tipo for PDV), Campos Complementares. |
+| **Lançamento** | Cabeçalho, Itens (com Totais / Tributação / ICMS/ST/IPI Livre / Pontos / Estoque do Produto / IVA), Campos Complementares, Descontos/Outras Despesas, Precificação (Custos / Preços / Buscador de Preço), Chamada, Cadastro/Fechamento, **Financeiro** (Contas / Parcelas / Rateio / Imagens / Forma de Pagamento), Entrega, Entrega PDV, MDF-e, Itens Cancelados, Vencimento (controle de lote/validade dos produtos), Outras Operações, PDV (quando o Tipo for PDV). |
 
 Quais sub-abas aparecem em cada movimento depende inteiramente do `Tipo de Movimento` selecionado no Cabeçalho.
 

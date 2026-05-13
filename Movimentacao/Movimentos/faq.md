@@ -130,8 +130,8 @@ A sub-aba de Consulta (`Movimentos`) tem filtros por período de emissão, Pesso
 
 Conferir nesta ordem:
 1. `Condição de Pagamento` no Cabeçalho — o número e os intervalos das parcelas saem dela.
-2. `Outros Valores` — acréscimo/desconto no total redistribui as parcelas.
-3. Edição manual na sub-aba `Vencimento` — alguém pode ter ajustado manualmente após a geração automática.
+2. `Descontos/Outras Despesas` — acréscimo/desconto no total redistribui as parcelas.
+3. Edição manual na sub-aba `Financeiro → Parcelas` — alguém pode ter ajustado manualmente após a geração automática.
 
 ---
 

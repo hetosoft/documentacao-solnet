@@ -40,7 +40,7 @@ Tudo o que diferencia esta tela das outras duas vem do **Tipo de Movimento** sel
 
 1. Pesquisa `F1` → `201` → **Importar XML** (botão; o caminho exato depende da personalização do menu).
 2. Selecione o XML da NF-e recebida. O Sol.NET preenche Cabeçalho e Itens automaticamente.
-3. Confira `Tipo de Movimento` proposto, `Local de Estoque` de entrada, `Vencimentos`.
+3. Confira `Tipo de Movimento` proposto, `Local de Estoque` de entrada e as parcelas em `Financeiro`.
 4. **Gravar** + **Finalizar** (`F6`) → estoque entra, conta a pagar é gerada.
 
 ### Devolução para fornecedor
