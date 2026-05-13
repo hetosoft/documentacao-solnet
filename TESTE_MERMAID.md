@@ -72,6 +72,57 @@ stateDiagram-v2
     FINALIZADO --> [*]
 ```
 
+## 🧰 Leva-piloto de diagramas — rascunhos a validar
+
+Diagramas em validação antes de irem pros docs finais (PR #36, conteúdo paralelo à reescrita do trio Movimentos 201/202/203).
+
+### Rascunho 1 — Ciclo de vida de um Movimento
+
+Setas sólidas = transição de estado. Setas pontilhadas = operação que gera artefato sem mudar o estado do movimento. O losango decisão do `F7 Mudar` ramifica conforme o Tipo de destino esteja configurado como `Transformar` (mesmo ID muda de Tipo) ou `Duplicar` (novo movimento criado, original vira `VINCULADO`).
+
+```mermaid
+flowchart TD
+  E[Em edição] -->|Gravar| L[Lançado]
+  L -->|F6 Finalizar| F[Finalizado]
+  L -->|F7 Mudar| D{Modo configurado<br/>no Tipo?}
+  F -->|F7 Mudar| D
+  D -->|Transformar| F
+  D -->|Duplicar| N[Novo movimento<br/>com outro Tipo]
+  D -->|Duplicar| V[VINCULADO<br/>original congelado]
+  N -. pilha .-> V
+  F -->|F11 Estornar| X[Estornado]
+  F -. F8 Quitar .-> Q[(Quita títulos)]
+  F -. F10 NF-e .-> NF[(Emite documento fiscal)]
+  F -. F9 Imprimir .-> P[(Impressão)]
+```
+
+### Rascunho 2 — Ciclo Orçamento → Pedido → NFC-e
+
+```mermaid
+flowchart TD
+  O["ORÇAMENTO<br/>(sem efeito no estoque<br/>nem no financeiro)"] -->|F7 Mudar| P["PEDIDO<br/>(estoque baixa<br/>financeiro aberto)"]
+  P -->|F7 Mudar| N["NFC-E CUPOM FISCAL<br/>(quitação dispara<br/>emissão fiscal inicia)"]
+```
+
+### Rascunho 3 — Fluxo de Produção
+
+```mermaid
+flowchart TD
+  R[Fórmula cadastrada<br/>na tela 143] -. pré-requisito .-> F[Nova Produção<br/>na tela 144]
+  F -->|Iniciar Produção| I[Status: Iniciada]
+  I -->|Finalizar Produção| OK[Status: Finalizada]
+  I -->|Cancelar| C[Status: Cancelada]
+  OK --> M1[Movimento de saída<br/>dos ingredientes]
+  OK --> M2[Movimento de entrada<br/>do produto acabado]
+  OK --> M3[Movimento de perda<br/>quando a fórmula tem perdas]
+  M1 --> T{Vão para a tela<br/>operacional do Tipo<br/>de Movimento configurado}
+  M2 --> T
+  M3 --> T
+  T --> T1[201 Compras]
+  T --> T2[202 Vendas]
+  T --> T3[203 Outros]
+```
+
 ## ✅ Verificação
 
 Se você consegue ver os diagramas renderizados acima (e não apenas o código), então o suporte Mermaid está funcionando corretamente! 🎉
