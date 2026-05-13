@@ -49,6 +49,12 @@ Abra a pesquisa universal (`F1`) e digite `202` ou parte do nome **Movimentos de
 
 Cenário comum em loja de balcão. **Não é um comportamento automático da tela `202`** — todas as etapas dependem da configuração dos três [Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) envolvidos. O fluxo abaixo descreve o que acontece quando os Tipos estão configurados no padrão típico de loja.
 
+```mermaid
+flowchart TD
+  O["ORÇAMENTO<br/>(sem efeito no estoque<br/>nem no financeiro)"] -->|F7 Mudar| P["PEDIDO<br/>(estoque baixa<br/>financeiro aberto)"]
+  P -->|F7 Mudar| N["NFC-E CUPOM FISCAL<br/>(quitação dispara<br/>emissão fiscal inicia)"]
+```
+
 1. **Lance um Tipo `ORÇAMENTO`** em `202`. O orçamento **não baixa estoque** e **não gera financeiro** — serve apenas para registrar a proposta ao cliente. *Configuração-chave do Tipo `ORÇAMENTO`*: `Itens → Estoque` sem Transação que afete saldo; `Financeiro → Financeiro 1` com `Gerar Lançamento` desligado; `Finalizar/Mudar → Mudar` apontando para o Tipo `PEDIDO`.
 2. **Cliente aprova → `F7` (Mudar)** transforma o `ORÇAMENTO` em `PEDIDO`. Neste momento, o **estoque é baixado** e o **financeiro é gerado** (conta a receber em aberto, com as parcelas da Condição de Pagamento escolhida). *Configuração-chave do Tipo `PEDIDO`*: `Itens → Estoque` com `Transação de Estoque` que subtrai `Físico` e `Disponível`; `Financeiro → Financeiro 1` com `Gerar Lançamento` ligado, Plano de Contas, Centro de Custo e Tipo de Documento Padrão definidos; `Finalizar/Mudar → Mudar` apontando para `NFC-E CUPOM FISCAL` (ou outro Tipo fiscal).
 3. **Faturar → `F7` novamente** transforma o `PEDIDO` em `NFC-E CUPOM FISCAL`. Neste momento, o sistema **dispara a quitação** dos títulos gerados na etapa anterior e, em sequência, **inicia a emissão do documento fiscal** (NFC-e enviada à SEFAZ, retorno com protocolo, cupom impresso). *Configuração-chave do Tipo `NFC-E CUPOM FISCAL`*: `Cabeçalho → Fiscal` com Modelo de Documento `NFC-e`, Série fiscal padrão e CFOPs `5xxx`; `Finalizar` configurado para quitar automaticamente; o efeito de estoque/financeiro **não se duplica** porque o `PEDIDO` já fez essa parte (o Tipo de mudança herda referência ao movimento-pai).

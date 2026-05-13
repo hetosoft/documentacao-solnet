@@ -75,6 +75,22 @@ O formulário se divide em **duas grandes áreas**: a área de **Consulta** (lis
 
 ## 🔧 Fluxos principais
 
+O ciclo de vida típico de um movimento e as operações disponíveis em cada estado:
+
+```mermaid
+flowchart TD
+  E[Em edição] -->|Gravar| L[Lançado]
+  L -->|F6 Finalizar| F[Finalizado]
+  L -->|F7 Mudar| M[Novo movimento<br/>com outro Tipo]
+  F -->|F7 Mudar| M
+  F -->|F11 Estornar| X[Estornado]
+  F -. F8 Quitar .-> Q[(Quita títulos)]
+  F -. F10 NF-e .-> NF[(Emite documento fiscal)]
+  F -. F9 Imprimir .-> P[(Impressão)]
+```
+
+Setas sólidas marcam transições de estado; setas pontilhadas marcam operações que produzem um artefato (quitação de título, emissão fiscal, impressão) sem mudar o estado do movimento. Os detalhes de cada operação estão a seguir.
+
 ### Lançar um movimento novo
 
 1. Abra a tela (`201`, `202` ou `203` conforme a categoria).
