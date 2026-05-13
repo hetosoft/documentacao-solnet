@@ -2,9 +2,11 @@
 
 ## 🎯 Visão Geral
 
-`Outros Movimentos` é a porta de entrada para todos os documentos que **afetam estoque ou financeiro** mas **não são compra nem venda** em sentido comercial direto: transferências entre lojas/locais, ajustes de inventário, perdas, consumo interno, brindes, amostras grátis, entradas/saídas pelo Pedido de Compra ou pela Produção, devoluções neutras, doações.
+`Outros Movimentos` concentra os Tipos de Movimento operados pela **retaguarda/almoxarifado** — fluxos que não são compra fiscal de fornecedor (`201`) nem venda de vendedor (`202`): **transferências entre filiais/locais**, **devoluções de venda**, ajustes de inventário, perdas, consumo interno, brindes, amostras grátis, entradas/saídas disparadas por `Pedido de Compra` ou `Produção`, doações.
 
-A tela compartilha o mesmo formulário operacional usado em `Movimentos de Compras` (`201`) e `Movimentos de Vendas` (`202`), mas **filtra os Tipos de Movimento disponíveis** apenas para aqueles com **Comportamento = Outros** no [Cadastro de Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) (`37`).
+> 💡 É comum a devolução de venda parecer que "deveria estar em Vendas" — afinal, é uma venda voltando. A regra do Sol.NET segue o **operador**, não o sentido fiscal: devolução de venda é operada pela retaguarda (conferindo o que voltou, ajustando estoque, gerando crédito), por isso fica aqui.
+
+A tela compartilha o mesmo formulário operacional usado em `Movimentos de Compras` (`201`) e `Movimentos de Vendas` (`202`), mas **filtra os Tipos de Movimento disponíveis** para aqueles configurados em [Cadastro de Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) (`37`) como movimentos de retaguarda (tipicamente Comportamento `Outros`; devolução de venda configurada como Entrada também recai aqui quando o Tipo é operacional, não de vendedor).
 
 ---
 
@@ -28,7 +30,8 @@ A categoria `Outros` é a mais **heterogênea** das três — cada Tipo aqui cos
 - **Produção de Produtos** — `Produção de Produtos` (`144`) também **dispara** movimentos em `203`: saída dos ingredientes, entrada do acabado, perda. Veja [Produção](../Producao/documentacao_producao_de_produtos.md).
 - **Pedido de Compra** convertido — `Pedido de Compra` (`64`) pode ser configurado para gerar movimento aqui em vez de em `201`, dependendo do desenho do cliente.
 - **Brindes, amostras, doações, consumo interno** — Tipos `Outros` que tipicamente saem do estoque sem financeiro, ou com financeiro de despesa.
-- **Devolução neutra** — quando a devolução não se enquadra como compra (sem refazer estoque do fornecedor) nem como venda (sem cliente final), pode ser cadastrada como `Outros` com regras dedicadas.
+- **Devolução de Venda** — quando o cliente devolve mercadoria já vendida, o Tipo `DEVOLUÇÃO DE VENDA` (configurado em `37` com `Devolução = Sim`, geralmente com `Devolução Crédito` para gerar crédito ao cliente) **fica aqui** em `203`, não em `202`. Exige `Referenciar Nota` apontando para a venda original. Estoque volta, fiscal de entrada é emitido, e (se configurado) um Crédito de Pessoa é gerado.
+- **Devolução neutra** — quando a devolução não se enquadra como compra (sem refazer estoque do fornecedor) nem como venda direta, pode ser cadastrada como `Outros` com regras dedicadas.
 
 > 💡 **CFOPs aceitos**: o validador do CFOP em `Outros` é mais flexível — não há restrição absoluta de faixa como em Entrada/Saída. Cada Tipo definirá em `Cabeçalho → Fiscal` quais CFOPs aceita.
 

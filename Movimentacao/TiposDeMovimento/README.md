@@ -5,7 +5,7 @@ permalink: /Movimentacao/TiposDeMovimento/
 
 # 📚 Cadastro de Tipos de Movimento — Sol.NET
 
-O **Tipo de Movimento** é a **identidade operacional** de cada lançamento no Sol.NET. Ele responde, em um único cadastro, a perguntas que todo movimento precisa carregar: *é venda ou compra?*, *sai ou entra no estoque?*, *é nota fiscal própria ou de terceiro?*, *qual CFOP, qual modelo de documento, qual série?*, *gera financeiro?*, *atualiza custo?*, *é PDV, mobile, ordem de serviço?*. Tudo o que diferencia uma venda de balcão de uma venda no PDV, ou uma compra à vista de uma compra parcelada, está aqui.
+O **Tipo de Movimento** é a **identidade operacional** de cada lançamento no Sol.NET. Ele responde, em um único cadastro, a perguntas que todo movimento precisa carregar: *é venda ou compra?*, *sai ou entra no estoque?*, *é nota fiscal própria ou de terceiro?*, *qual CFOP, qual modelo de documento, qual série?*, *gera financeiro?*, *atualiza custo?*, *é mobile, ordem de serviço?*, *é exclusivo da aplicação PDV?*. Tudo o que diferencia uma venda de balcão de uma devolução, ou uma compra à vista de uma compra parcelada, está aqui.
 
 Cada movimento operacional (em `Movimentos de Compras` código `201`, `Movimentos de Vendas` código `202`, `Outros Movimentos` código `203`, e também as ações disparadas por `Pedido de Compra` código `64`, `Produção de Produtos` código `144` e `Ajuste de Estoque` código `79`) aponta para **um** Tipo de Movimento — e é dele que o Sol.NET extrai todas as regras: quais Tabelas de Preço aceitar, qual `Transação de Estoque` aplicar, qual `Tipo de Documento Padrão` usar no financeiro, qual layout fiscal emitir, quais campos exigir, em qual `Local de Estoque` operar, com qual `Portador` quitar.
 

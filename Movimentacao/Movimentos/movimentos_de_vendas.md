@@ -2,11 +2,13 @@
 
 ## 🎯 Visão Geral
 
-`Movimentos de Vendas` é o ponto operacional da **saída comercial** do Sol.NET na retaguarda: vendas balcão, orçamentos, pedidos de venda, ordens de serviço com faturamento, faturamentos parciais, transferências de saída para outras lojas. Toda mercadoria que **sai** com nota fiscal de venda (ou documento equivalente) e **não passa pelo PDV** é lançada aqui.
+`Movimentos de Vendas` concentra os Tipos de Movimento **acessados por vendedores** na retaguarda: venda balcão, orçamentos, pedidos de venda, ordens de serviço com faturamento, faturamentos parciais. É o conjunto de operações que um vendedor encontra no dia-a-dia para registrar uma saída comercial com cliente.
 
-> ℹ️ **PDV é separado.** Vendas em frente de caixa (cupom, NFC-e, comanda) acontecem em uma aplicação à parte, o **PDV**, que será documentada em outra seção. Tipos de Movimento marcados como `PDV` em [Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) **não aparecem** no combo `Tipo` desta tela — só são selecionáveis pela aplicação PDV. Movimentos lançados no PDV ficam visíveis aqui apenas em modo de **consulta/edição complementar**.
+> ℹ️ **O que NÃO fica aqui:** devoluções de venda e transferências entre filiais — embora envolvam saída de mercadoria — **não** são fluxos de vendedor. Elas ficam em [Outros Movimentos](outros_movimentos.md) (`203`). A regra simples: se o Tipo de Movimento é tipicamente operado pela retaguarda/almoxarifado e não por um vendedor, ele vai para `203`.
 
-A tela compartilha o mesmo formulário operacional usado em `Movimentos de Compras` (`201`) e `Outros Movimentos` (`203`), mas **filtra os Tipos de Movimento disponíveis** apenas para aqueles com **Comportamento = Saída** no [Cadastro de Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) (`37`).
+> ℹ️ **PDV é separado.** Vendas em frente de caixa (cupom, NFC-e, comanda) acontecem em uma aplicação à parte, o **PDV**, que será documentada em outra seção. Tipos de Movimento marcados como `PDV` em [Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) **não aparecem** no combo `Tipo` desta tela — são exclusivos da aplicação PDV. Movimentos lançados no PDV ficam visíveis aqui apenas em modo de **consulta/edição complementar**.
+
+A tela compartilha o mesmo formulário operacional usado em `Movimentos de Compras` (`201`) e `Outros Movimentos` (`203`), mas **filtra os Tipos de Movimento disponíveis** para aqueles configurados como vendas de vendedor em [Cadastro de Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) (`37`). Comportamento `Saída` é necessário mas não suficiente — outras flags (especialmente a exclusividade PDV) também filtram.
 
 ---
 
@@ -27,7 +29,6 @@ Abra a pesquisa universal (`F1`) e digite `202` ou parte do nome **Movimentos de
 - **Transações de Estoque que subtraem Físico/Disponível** — a venda consome saldo. Tipos cuja Transação não subtrai disparam erro de configuração no momento de finalizar.
 - **Emissão Própria** — a empresa emite o documento; `Série` e `Número do Documento` vêm da Série fiscal do Sol.NET, em sequência.
 - **`Atualizar Custo Automático` proibido** — vendas **não** atualizam custo. Marcar essa flag em `37` para um Tipo de Saída é rejeitado: *"Atualizar Custo Automático, Somente para Compras/Outros!"*.
-- **Devolução de Venda** — quando um cliente devolve mercadoria, o Tipo `DEVOLUÇÃO DE VENDA` (configurado em `37` com `Devolução = Sim`) faz o movimento neste mesmo modo `202`, gerando Crédito de Pessoa quando configurado.
 - **Financeiro** — Tipos de venda costumam gerar contas a receber. As parcelas são derivadas da `Condição de Pagamento` do Cabeçalho e ficam visíveis/editáveis na sub-aba `Financeiro → Parcelas`. (A aba `Vencimento`, à parte, é controle de **lote/data de validade dos produtos** — não de parcelas.)
 - **Caixa aberto** — Tipos configurados para exigir Caixa só finalizam se o Caixa do usuário estiver **aberto**; sem isso o sistema bloqueia: *"Caixa Aberto. Fechamento Nº: ( ... )"*.
 - **Vendas vindas do PDV** — vendas que se originaram no PDV (aplicação à parte) aparecem nas listas desta tela e podem ser consultadas/auditadas aqui. Filtros específicos estão na sub-aba `Pesquisa PDV` da área de Consulta. Cashback aplicado/gerado nessas vendas fica visível nas sub-abas `Crédito Pessoa - Usado` / `Crédito Pessoa - Gerado`.

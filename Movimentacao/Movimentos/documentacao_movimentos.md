@@ -18,11 +18,13 @@ O Sol.NET expõe o mesmo formulário operacional sob **três códigos** distinto
 
 | Tela | Código (`F1`) | O que abre |
 |------|---------------|------------|
-| Movimentos de Compras | `201` | Formulário filtrado para Tipos de **Entrada**. |
-| Movimentos de Vendas | `202` | Formulário filtrado para Tipos de **Saída**. |
-| Outros Movimentos | `203` | Formulário filtrado para Tipos de Comportamento `Outros`. |
+| Movimentos de Compras | `201` | Formulário com os Tipos da retaguarda de **entrada** (notas de fornecedor, devoluções para fornecedor, importações). |
+| Movimentos de Vendas | `202` | Formulário com os Tipos acessados por **vendedores** (venda balcão, orçamento, pedido de venda, OS faturada). |
+| Outros Movimentos | `203` | Formulário com os demais Tipos: transferências entre filiais, ajustes, perdas, produção, brindes, **devoluções de venda** e qualquer movimento que não seja fluxo de vendedor nem de recebimento fiscal de compra. |
 
 Abra a pesquisa universal (atalho `F1`) e digite o código ou parte do nome da tela.
+
+> 💡 **A regra prática de classificação.** A divisão entre as três telas não é apenas pelo Comportamento do Tipo (Entrada/Saída/Outros) — é também pelo **fluxo operacional** de quem usa o Tipo. Por isso devoluções de venda e transferências entre filiais, embora envolvam mercadoria saindo, ficam em `203` (são operadas pela retaguarda) e não em `202` (que é território do vendedor).
 
 ---
 
@@ -184,7 +186,7 @@ O formulário executa **centenas** de verificações distintas ao salvar, finali
 
 ### Exemplo 4 — Devolução de venda gerando crédito ao cliente
 
-1. Pesquisa `F1` → `201` (ou `203`, conforme o Tipo `DEVOLUÇÃO DE VENDA` esteja cadastrado) → **Novo**.
+1. Pesquisa `F1` → `203` (devolução de venda não fica em `202`, porque não é fluxo de vendedor — é retaguarda) → **Novo**.
 2. **Cabeçalho**: `Tipo` = `DEVOLUÇÃO DE VENDA`. **Referenciar Nota**: aponte para a venda original (o Tipo exige; sem isso a validação bloqueia).
 3. **Itens**: lance os produtos devolvidos.
 4. `F6` → estoque volta, fiscal de entrada é emitido, e (se o Tipo tem `Devolução Crédito` marcado em `37`) um **Crédito de Pessoa** é gerado para o cliente. O crédito aparece na sub-aba **Crédito - Gerado** desse movimento e na ficha da pessoa.

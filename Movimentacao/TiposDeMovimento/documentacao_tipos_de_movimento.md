@@ -2,7 +2,7 @@
 
 ## 🎯 Visão Geral
 
-O **Tipo de Movimento** é a configuração que define **como** cada movimento operacional (compra, venda, devolução, transferência, ajuste, produção, pedido) se comporta no Sol.NET. Ele concentra dezenas de regras — comportamento de estoque, regras fiscais, geração de financeiro, comissão, regras de PDV, mobile, agrupamento, finalização — em um único registro reutilizável.
+O **Tipo de Movimento** é a configuração que define **como** cada movimento operacional (compra, venda, devolução, transferência, ajuste, produção, pedido) se comporta no Sol.NET. Ele concentra dezenas de regras — comportamento de estoque, regras fiscais, geração de financeiro, comissão, exclusividade da aplicação PDV, mobile, agrupamento, finalização — em um único registro reutilizável.
 
 Para um panorama do papel do Tipo de Movimento no Sol.NET e o mapa das 12 abas do formulário, veja a [Visão Geral](README.md). Para troubleshooting das mensagens de bloqueio ao gravar, veja o [FAQ](faq.md).
 
@@ -119,6 +119,8 @@ Aba "guarda-tudo" de comportamentos especiais — alvo de muitas validações cr
 | **Empresa → Empresa 1 / Empresa 2 / extras** | Comportamentos por empresa-destino do movimento. |
 | **Sistema** | Flags de sistema — PDV, Mobile, OS × OS Requisição, Devolução, Crédito Pessoa, Quitar Crédito Automaticamente. As validações cruzadas mais comuns aparecem no [FAQ](faq.md). |
 
+> ℹ️ **Flag `PDV`.** Marcar `PDV` aqui **não altera** o comportamento do Tipo nas telas `Movimentos de Compras/Vendas/Outros` (`201/202/203`) — em vez disso, **torna o Tipo exclusivo da aplicação PDV** (frente de caixa), que é um sistema à parte do ponto de vista do usuário (mesmo Sol.NET compilado em modo PDV). Tipos com `PDV` marcado **não aparecem** no combo `Tipo` das telas de Movimentos da retaguarda — só são selecionáveis dentro do PDV. A aplicação PDV será documentada em outra seção.
+
 ---
 
 ## 🌿 Aba `Agrotóxico`
@@ -188,9 +190,11 @@ Este Tipo passa a aparecer como opção em `Movimentos de Compras` (código `201
 5. Aba **Outras Operações → Sistema**:
    - `Devolução` = `Sim`.
    - `Devolução Crédito` ≥ `0` (gera crédito).
-   - Se for PDV, marque `Quitar Crédito Automaticamente` para abater o crédito direto na próxima compra.
-6. Aba **Financeiro → Financeiro 1**: `Não Estornar Financeiro` se for compra (válido), ou deixe vazio para vendas (não permitido para Vendas; o erro avisa).
+   - Se este Tipo for usado exclusivamente pela aplicação PDV (frente de caixa), marque `PDV` + `Quitar Crédito Automaticamente` — assim o crédito é abatido direto na próxima compra dentro do PDV. Para devoluções operadas pela retaguarda, deixe `PDV` desmarcado.
+6. Aba **Financeiro → Financeiro 1**: `Não Estornar Financeiro` quando aplicável (válido para Tipos de Compras/Outros; bloqueado em Vendas).
 7. **Gravar**.
+
+Este Tipo passa a aparecer como opção em `Outros Movimentos` (código `203`) — devoluções de venda são operadas pela retaguarda, não por vendedores em `202`. Se a flag `PDV` for marcada, o Tipo deixa de aparecer nessas três telas e fica exclusivo da aplicação PDV.
 
 ### Exemplo 4 — Inativar um Tipo legado sem perder histórico
 

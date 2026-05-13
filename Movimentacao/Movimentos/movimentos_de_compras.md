@@ -2,9 +2,11 @@
 
 ## 🎯 Visão Geral
 
-`Movimentos de Compras` é o ponto de entrada da operação **fiscal e de estoque de chegada**: notas fiscais de fornecedor, devoluções para fornecedor, recebimentos, importações, transferências de entrada vindas de outras lojas. Toda mercadoria que **entra** no estoque do Sol.NET por documento fiscal — ou o relacionamento fiscal de entrada equivalente — passa por aqui.
+`Movimentos de Compras` é o ponto de entrada da operação **fiscal e de estoque de chegada**: notas fiscais de fornecedor, devoluções para fornecedor, recebimentos, importações. Toda mercadoria que **entra** com documento fiscal de compra é lançada aqui.
 
-A tela compartilha o mesmo formulário operacional usado em `Movimentos de Vendas` (`202`) e `Outros Movimentos` (`203`), mas **filtra os Tipos de Movimento disponíveis** apenas para aqueles com **Comportamento = Entrada** no [Cadastro de Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) (`37`).
+> ℹ️ **Transferências entre filiais** não ficam aqui — mesmo o lado da entrada de uma transferência. Transferências são operadas como movimentos auxiliares pela retaguarda e vivem em [Outros Movimentos](outros_movimentos.md) (`203`).
+
+A tela compartilha o mesmo formulário operacional usado em `Movimentos de Vendas` (`202`) e `Outros Movimentos` (`203`), mas **filtra os Tipos de Movimento disponíveis** para aqueles configurados em [Cadastro de Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) (`37`) como entrada fiscal de compra.
 
 ---
 

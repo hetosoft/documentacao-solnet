@@ -7,9 +7,9 @@ permalink: /Movimentacao/Movimentos/
 
 **Movimentos** é o coração operacional do módulo Movimentação: a tela onde toda transação de estoque com documento (compra recebida, venda emitida, transferência, devolução, ajuste, produção) é lançada, consultada, editada, finalizada, quitada e auditada. O Sol.NET expõe o mesmo formulário sob **três códigos** distintos na pesquisa universal, um por categoria:
 
-- [Movimentos de Compras](movimentos_de_compras.md) — código `201` — entrada de mercadoria com documento fiscal de compra.
-- [Movimentos de Vendas](movimentos_de_vendas.md) — código `202` — saída comercial pela retaguarda (balcão, pedido faturado, OS faturada). Vendas em frente de caixa acontecem na aplicação **PDV**, à parte, documentada em outra seção.
-- [Outros Movimentos](outros_movimentos.md) — código `203` — transferências, ajustes, perdas, produção, brindes, consumo interno.
+- [Movimentos de Compras](movimentos_de_compras.md) — código `201` — entrada com documento fiscal de compra (notas de fornecedor, devoluções para fornecedor, importações).
+- [Movimentos de Vendas](movimentos_de_vendas.md) — código `202` — Tipos acessados por **vendedores** (venda balcão, orçamento, pedido de venda, OS faturada). Vendas em frente de caixa acontecem na aplicação **PDV**, à parte, documentada em outra seção.
+- [Outros Movimentos](outros_movimentos.md) — código `203` — Tipos operados pela **retaguarda**: **transferências entre filiais**, **devoluções de venda**, ajustes, perdas, produção, brindes, consumo interno.
 
 Cada movimento amarra **um** [Tipo de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) (cadastro `37`) e dele herda todas as regras: efeito no estoque (via `Transações de Estoque` — `33`), efeito no financeiro, fiscal (modelo, série, CFOPs), Funcionários exigidos, Tabela de Preço aplicada, Local de Estoque padrão, Portador, Condição de Pagamento padrão, regras de mobile/devolução/cashback.
 

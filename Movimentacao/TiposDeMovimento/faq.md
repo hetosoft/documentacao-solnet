@@ -144,8 +144,11 @@ Algumas opções desta tela ficam bloqueadas quando a empresa tem flags globais 
 **Quando usar `Devolução Crédito`?**
 Quando a devolução deve **gerar um crédito** ao cliente em vez de devolver dinheiro/refazer pagamento. O crédito fica disponível na pessoa e pode ser usado para abater compras futuras.
 
-**Devolução de PDV está reclamando que `Quitar Crédito Automaticamente` exige PDV.**
-A flag `Quitar Crédito Automaticamente` só é válida em tipos com a flag PDV marcada. Se o tipo não é PDV, desligue `Quitar Crédito Automaticamente` ou marque `PDV`.
+**`Quitar Crédito Automaticamente` está reclamando que exige `PDV`.**
+A flag `Quitar Crédito Automaticamente` só é válida em Tipos exclusivos da aplicação PDV (frente de caixa). Se este Tipo é operado pela retaguarda (telas `201/202/203`), desligue `Quitar Crédito Automaticamente`. Se realmente é um Tipo do PDV, marque `PDV` — ciente de que o Tipo deixará de aparecer no combo das telas de retaguarda.
+
+**O que a flag `PDV` faz exatamente?**
+Marca o Tipo como **exclusivo da aplicação PDV** (frente de caixa — um sistema à parte do ponto de vista do usuário, embora seja o mesmo Sol.NET compilado em modo PDV). Tipos com `PDV` marcado **não aparecem** no combo `Tipo` das telas `Movimentos de Compras/Vendas/Outros` (`201/202/203`). Ela **não** ativa nenhum "modo PDV" nessas telas — é puramente um filtro de visibilidade.
 
 ### Clonagem e Histórico
 
