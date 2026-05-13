@@ -70,7 +70,7 @@ As validações abaixo se aplicam às três telas (`201` Compras, `202` Vendas, 
 | Mensagem | Quando aparece |
 |----------|----------------|
 | *"Erro ao Agrupar Movimento!"* | Falha ao agrupar dois ou mais movimentos. Conferir compatibilidade dos movimentos (Tipos diferentes, status diferentes). |
-| *"Erro ao Cadastrar o Cliente!"* | Cadastro automático de cliente (geralmente em PDV/NFC-e) falhou. Cadastrar manualmente em `Pessoas`. |
+| *"Erro ao Cadastrar o Cliente!"* | Cadastro automático de cliente (geralmente em integrações ou importações) falhou. Cadastrar manualmente em `Pessoas`. |
 | *"Erro ao Calcular!"* | Falha de cálculo de totais (preço × quantidade × desconto × impostos). Conferir valores numéricos. |
 | *"Erro ao Cancelar Financeiro!"* | Falha ao cancelar contas PR no estorno. Conferir se há quitação que precisa ser estornada primeiro. |
 | *"Erro ao gerar parcelas!"* / *"Erro ao gerar parcelas com valor negativo!"* | Falha ao gerar parcelas a partir da Condição de Pagamento. Conferir valor total e condição. |

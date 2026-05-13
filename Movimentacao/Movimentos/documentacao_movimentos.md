@@ -34,7 +34,7 @@ O formulário se divide em **duas grandes áreas**: a área de **Consulta** (lis
 
 | Sub-aba | Para quê serve |
 |---------|----------------|
-| **Movimentos** | Lista principal de movimentos lançados. Filtros por Tipo, período, Pessoa, status, Empresa, Local. Sub-painéis: **Produtos** (itens do movimento selecionado), **Pagamentos**, **Observações**, **Protocolo Fiscal**, **Entrega PDV**. |
+| **Movimentos** | Lista principal de movimentos lançados. Filtros por Tipo, período, Pessoa, status, Empresa, Local. Sub-painéis: **Produtos** (itens do movimento selecionado), **Pagamentos**, **Observações**, **Protocolo Fiscal**, **Entrega PDV** (dados de entrega quando o movimento veio do PDV). |
 | **Contas PR** | Títulos do contas a Pagar/Receber gerados por este movimento. Sub-abas: **Registros**, **Renegociação**, **Detalhes**, **Cheque** (com Histórico do Cheque), **Cartão**, **Crédito Pessoa - Usado**, **Crédito Pessoa - Gerado**. |
 | **OS / Req.** | Vínculos com Ordem de Serviço e OS-Requisição. |
 | **Agrupar** | Movimentos que foram agrupados — ver quais movimentos-origem compõem o movimento atual e vice-versa. |
@@ -42,7 +42,7 @@ O formulário se divide em **duas grandes áreas**: a área de **Consulta** (lis
 | **Parcial** | Sub-abas **Movimento Parcial** e **Quitação Parcial** — partes do movimento liberadas/quitadas em etapas. |
 | **Chamada** | Histórico de chamadas (atendimento) ligadas ao movimento. |
 | **Crédito - Gerado** | Créditos de pessoa gerados pelo movimento (devoluções, p.ex.). |
-| **Pesquisa PDV** | Filtros adicionais para movimentos originados em PDV. |
+| **Pesquisa PDV** | Filtros adicionais para **consultar** movimentos que se originaram no PDV (a aplicação de frente de caixa, documentada à parte). Esta tela apenas visualiza/edita o registro lançado por lá — não é onde se opera o PDV. |
 | **Pesquisa Salva** | Filtros pré-configurados pelo usuário (salvar uma consulta para reusar). |
 | **Comportamentos** | Configurações de visualização da própria tela (colunas, ordenação padrão). |
 
@@ -59,14 +59,15 @@ O formulário se divide em **duas grandes áreas**: a área de **Consulta** (lis
 | **Cadastro/Fechamento** | Dados de cadastro/fechamento associados (ex.: fechamento de comanda, abertura de OS). |
 | **Financeiro** | Contas a Pagar/Receber geradas pelo movimento. Sub-abas: **Contas** (títulos lançados), **Parcelas** (geração manual ou via Condição de Pagamento), **Rateio**, **Imagens** (anexos), **Forma de Pagamento**. |
 | **Entrega** | Dados de entrega — endereço, transportadora, prazos. |
-| **Entrega PDV** | Dados específicos de entrega para vendas originadas em PDV. |
+| **Entrega PDV** | Dados de entrega para vendas que **se originaram no PDV** — quando a retaguarda precisa completar ou ajustar essas informações. |
 | **MDF-e** | Quando o movimento envolve transporte próprio: sub-abas **Rodoviário**, **Locais**, **Percurso/Condutor**, **Reboque**. |
 | **Itens Cancelados** | Itens removidos do movimento, mantidos para auditoria. |
 | **Vencimento** | **Controle de lote e data de validade dos produtos** do movimento — não tem relação com vencimento de parcelas (parcelas ficam em `Financeiro`). |
 | **Outras Operações** | Sub-abas auxiliares: **Informações** (Adicionais e Outras Info., como Município Origem/Destino para transporte). |
-| **PDV** | Disponível em Tipos marcados como PDV — interface de venda direta otimizada para teclado/balcão. |
 
 > 💡 **Quais sub-abas aparecem.** Cada Tipo de Movimento decide quais sub-abas ficam visíveis. Um Tipo `VENDA BALCÃO` mostra Cabeçalho + Itens + Descontos/Outras Despesas + Financeiro. Um Tipo `TRANSFERÊNCIA ENTRE LOJAS` mostra Cabeçalho + Itens (sem Financeiro, porque não gera contas). Um Tipo `DEVOLUÇÃO DE VENDA` mostra também a aba `Crédito - Gerado` (na área de Consulta). Tipos que controlam produtos com lote/validade ativam a aba **Vencimento**; Tipos com transporte próprio ativam **MDF-e**.
+
+> ℹ️ **PDV é uma aplicação separada.** Tipos de Movimento com a flag `PDV` marcada (configurada em [Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md)) **não aparecem** no combo `Tipo` em `Movimentos de Vendas` (`202`) — eles são exclusivos da aplicação `PDV` (frente de caixa), que será documentada à parte. Esta tela apenas **consulta** e, em alguns casos, **edita** registros que vieram do PDV (sub-abas `Pesquisa PDV` e `Entrega PDV`).
 
 ---
 
@@ -229,7 +230,7 @@ Mais perguntas e a referência completa de mensagens de erro em [FAQ](faq.md).
 | [Ajuste de Estoque](../documentacao_ajuste_de_estoque.md) | `79` | Tela auxiliar que **dispara** movimentos visíveis em `203`. |
 | `Pedido de Compra` | `64` | Tela que **dispara** movimentos em `201` ao ser convertido em entrada. |
 | [Produção de Produtos](../Producao/documentacao_producao_de_produtos.md) | `144` | **Dispara** movimentos visíveis em `203` (saída dos ingredientes, entrada do acabado, perda). |
-| [Regras Cashback](../documentacao_regras_cashback.md) | `124` | Tipos PDV podem disparar geração/uso de cashback ao finalizar. |
+| [Regras Cashback](../documentacao_regras_cashback.md) | `124` | Cashback é configurado por Tipo de Movimento e usado predominantemente pelo PDV (aplicação à parte). Movimentos vindos do PDV chegam aqui com o cashback já aplicado/gerado, visível nas sub-abas `Crédito Pessoa - Usado` / `Crédito Pessoa - Gerado`. |
 
 ---
 
