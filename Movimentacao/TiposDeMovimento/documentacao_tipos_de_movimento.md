@@ -4,7 +4,7 @@
 
 O **Tipo de Movimento** é a configuração que define **como** cada movimento operacional (compra, venda, devolução, transferência, ajuste, produção, pedido) se comporta no Sol.NET. Ele concentra dezenas de regras — comportamento de estoque, regras fiscais, geração de financeiro, comissão, exclusividade da aplicação PDV, mobile, agrupamento, finalização — em um único registro reutilizável.
 
-Para um panorama do papel do Tipo de Movimento no Sol.NET e o mapa das 12 abas do formulário, veja a [Visão Geral](README.md). Para troubleshooting das mensagens de bloqueio ao gravar, veja o [FAQ](faq.md).
+Para um panorama do papel do Tipo de Movimento no Sol.NET e o mapa das 12 abas do formulário, veja a [Visão Geral](README.md). Para a lista exaustiva, **campo a campo**, de cada checkbox e combo do formulário (com bloco de atenção nos flags críticos), use a [Referência de configurações](referencia_configuracoes_tipos_movimento.md). Para troubleshooting das mensagens de bloqueio ao gravar, veja o [FAQ](faq.md).
 
 > ⚠️ **Acesso de suporte necessário:** alterações no `Cadastro de Tipos de Movimento` requerem permissão de acesso de suporte. Entre em contato com o suporte Hetosoft antes de realizar qualquer modificação nesta tela.
 
