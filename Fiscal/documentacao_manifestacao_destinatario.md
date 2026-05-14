@@ -178,7 +178,7 @@ Clicando com o botão direito no grid, aparecem ações rápidas:
 
 ## 🔗 Vínculo com movimentos do Sol.NET
 
-Quando uma NF-e baixada já foi importada como **entrada** na movimentação (via `Importar XML` ou lançada manualmente), o Sol.NET cria o vínculo automaticamente. Esse vínculo aparece de duas formas:
+Quando uma NF-e baixada já foi importada como **entrada** na movimentação (via [Importar XML](documentacao_importar_xml.md) ou lançada manualmente), o Sol.NET cria o vínculo automaticamente. Esse vínculo aparece de duas formas:
 
 1. **Colunas `M-` no grid** — replicam os dados do movimento ao lado dos dados da nota, permitindo conferir divergências (valor, data de emissão, número) entre o que o fornecedor emitiu e o que foi lançado.
 2. **Atalho `Ir para Movimentação`** (botão direito) — abre a entrada correspondente para consulta ou ajuste.
