@@ -235,7 +235,7 @@ Não no mesmo modelo. A conferência aqui descrita serve para **recebimento de m
 - [Documentação Importar XML](documentacao_importar_xml.md) — onde a conferência se encaixa
 - [Guia Rápido — Importar XML](guia_rapido_importar_xml.md) — cartão de referência rápido
 - [FAQ — Importar XML](faq_importar_xml.md) — perguntas mais frequentes
-- [Manifestação do Destinatário](documentacao_manifestacao_destinatario.md) — porta de entrada dos XMLs
+- [Manifestação do Destinatário](../Fiscal/documentacao_manifestacao_destinatario.md) — porta de entrada dos XMLs
 
 ---
 

@@ -77,7 +77,7 @@ Cada linha representa um XML carregado e traz, entre outras colunas: `Status`, `
 
 ### O caminho recomendado: a partir da Manifestação do Destinatário
 
-A forma **padrão** de lançar a entrada de uma NF-e no Sol.NET é **não abrir a tela `Importar XML` diretamente**. O fluxo correto começa na [Manifestação do Destinatário](documentacao_manifestacao_destinatario.md) (tela `401`):
+A forma **padrão** de lançar a entrada de uma NF-e no Sol.NET é **não abrir a tela `Importar XML` diretamente**. O fluxo correto começa na [Manifestação do Destinatário](../Fiscal/documentacao_manifestacao_destinatario.md) (tela `401`):
 
 1. Pressione **F1** → `401` para abrir a `Manifestação do Destinatário`.
 2. Localize a NF-e no grid (filtros por loja, período, fornecedor, chave de acesso etc.).
@@ -241,7 +241,7 @@ Imprime o **Documento Auxiliar da NF-e** a partir do XML armazenado. Funciona ta
 
 ## 🔗 Relação com a Manifestação do Destinatário
 
-A tela [Manifestação do Destinatário](documentacao_manifestacao_destinatario.md) é a **porta de entrada padrão** dos XMLs no Sol.NET. O fluxo correto é sempre:
+A tela [Manifestação do Destinatário](../Fiscal/documentacao_manifestacao_destinatario.md) é a **porta de entrada padrão** dos XMLs no Sol.NET. O fluxo correto é sempre:
 
 1. O `Sol.NET_MonitorNFCe` (aplicação à parte) baixa periodicamente os XMLs da SEFAZ e grava no banco.
 2. O usuário abre a `Manifestação do Destinatário` (tela `401`), localiza a nota e a manifesta (`Confirmação`, `Ciência` etc.).
