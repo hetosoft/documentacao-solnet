@@ -2,435 +2,297 @@
 
 ## 🎯 Visão Geral
 
-O **Módulo Agronômico** do Sol.NET ERP gerencia todo o ciclo de **Receituário Agronômico**, exigência legal para a comercialização e aplicação de defensivos agrícolas no Brasil. O receituário é o documento prescritivo emitido por um responsável técnico habilitado (Engenheiro Agrônomo ou Técnico Agrícola) que autoriza a aplicação de um produto fitossanitário em uma cultura, contra um alvo biológico, na dose indicada pela bula registrada no MAPA.
+O **Receituário Agronômico** é a prescrição técnica obrigatória para a venda de defensivos agrícolas. No Sol.NET, ele é emitido pela tela **Receituário Agronômico** (código `142` na pesquisa F1) e está sempre ligado a um **Movimento de venda** que tenha pelo menos um item formulado.
 
-O Sol.NET cobre:
-- **Cadastros de apoio**: culturas, diagnósticos (alvos), produtos formulados, configuração de bula digital, embalagens
-- **Cadastros administrativos**: profissionais responsáveis, blocos de ART/TRT, locais de aplicação dos clientes
-- **Emissão**: avulsa ou integrada à Movimentação (venda)
-- **Validações automáticas**: bula, saldo e validade de ART, vínculo cliente/local, vínculo empresa/ART
-- **Impressão** no modelo legal via ReportBuilder
-- **Cancelamento** com estorno automático de saldo
+A emissão consome saldo de um **ART/TRT** ativo do profissional responsável, gera um número de receita sequencial e libera a impressão do documento. Antes de emitir, o sistema valida automaticamente a combinação **Formulado + Cultura + Alvo (Diagnóstico)** contra a bula cadastrada e checa as regras de vínculo entre profissional, empresa, cliente e local de aplicação.
 
-### 📜 Base Legal Resumida
+### Principais Características
 
-- **Lei nº 7.802/1989** e **Decreto nº 4.074/2002**: regulam agrotóxicos e exigem receituário
-- **Decreto nº 10.833/2021**: atualiza dispositivos sobre comercialização de defensivos
-- **MAPA**: registro nacional dos produtos e suas bulas
-- **CREA / CFTA**: conselhos profissionais que autorizam a assinatura
-
-> ⚠️ A entrega das vias da receita e a transmissão a órgãos estaduais (ADAPAR/IDARON/IAGRO/SEAPDR/etc.) seguem regras locais. O Sol.NET imprime no formato exigido; a tramitação física/eletrônica externa fica sob responsabilidade da empresa.
+- ✅ Vínculo obrigatório com um movimento de venda contendo item formulado
+- ✅ Consumo automático do saldo do bloco ART/TRT do profissional
+- ✅ Validação da dose aplicada contra a faixa min/max da bula
+- ✅ Cálculo automático da área tratada a partir de dose e quantidade
+- ✅ Bloqueios de coerência (UF do profissional × UF do local, ART × empresa, cliente diferente de "Consumidor Padrão")
+- ✅ Cancelamento com estorno de saldo do ART
+- ✅ Impressão em layout oficial padrão CREA
 
 ---
 
-## 🧭 Acesso às Telas
+## 🧭 Pré-requisitos antes de emitir
 
-Todas as telas do Sol.NET são acessadas pela **tela de pesquisa universal**, aberta com o atalho **F1**. Na pesquisa, digite o **código identificador** (`ID_FORMULARIO`) da tela ou parte do seu nome e confirme.
+Para emitir o primeiro receituário, todos os cadastros abaixo precisam estar prontos. Todos são abertos pela pesquisa universal (F1):
 
-**Telas do Módulo Agronômico:**
+| Cadastro | Código | Para que serve |
+|---------|--------|----------------|
+| Profissionais Externos | `135` | Engenheiro Agrônomo ou Técnico que assina a receita (CREA/CFTA). |
+| Gestão ART/TRT | `136` | Bloco de numeração da ART do profissional, com número inicial, final, saldo, validade e empresa associada. |
+| Cadastro Cultura Agronômica | `138` | Lista de culturas (Soja, Milho, etc.). |
+| Cadastro Diagnóstico Agronômico | `139` | Lista de alvos (pragas, doenças, plantas daninhas, etc.) com o `Tipo Alvo`. |
+| Cadastro Formulado Agronômico | `140` | Registro MAPA do produto. Cada produto comercial do ERP precisa estar vinculado a um Formulado para que o receituário seja exigido. |
+| Cadastro Config Bula Agronômico | `141` | Combinação **Formulado × Cultura × Alvo** com doses, calda, dias de carência, modo de aplicação. |
+| Cadastro de Pessoas — aba Endereços | `5` | Endereços do cliente, usados como Locais de Aplicação (talhões, fazendas). |
 
-| Tela | Código (`ID_FORMULARIO`) | Para quê serve |
-|------|:---:|---|
-| Cadastro Cultura Agronômica | **138** | Cultivos atendidos (Soja, Milho, Café…) |
-| Cadastro Diagnóstico Agronômico | **139** | Alvos biológicos (pragas, doenças, plantas daninhas, nematóides) |
-| Cadastro Formulado Agronômico | **140** | Defensivos comercializados (com nº de registro MAPA) |
-| Cadastro Config Bula Agronômico | **141** | Bula digital — combinações `Formulado × Cultura × Diagnóstico` permitidas, dose mín./máx., modalidade e carência |
-| Profissionais Externos | **135** | Responsáveis técnicos (Eng. Agrônomos / Téc. Agrícolas) |
-| Gestão ART/TRT | **136** | Blocos de ART/TRT vinculados a profissional + empresa |
-| Receituário Agronômico | **142** | Emissão avulsa, consulta e cancelamento de receitas |
-| Fórmulas de Produtos | **143** | Fórmulas/composições usadas na produção interna de produtos |
-| Produção de Produtos | **144** | Apontamento de produção a partir das fórmulas |
-
-> 📚 Fonte dos códigos: [`Sol.NET/Form/uFrmProcessoAtualizacaoPrincipal.pas`](https://github.com/hetosoft/ProjetosSol.NET/blob/develop/Sol.NET/Form/uFrmProcessoAtualizacaoPrincipal.pas) (`INSERT` na tabela `FORMULARIOS`). Os códigos podem ser revisados a cada release — em caso de divergência, prevalece o arquivo no repositório.
-
-> 💡 A **emissão integrada** à venda **não tem entrada própria pelo F1**: ela é disparada **automaticamente** pelo Sol.NET quando uma movimentação do tipo fiscal contém itens que exigem receituário (veja [Emissão Integrada à Movimentação](#-emissão-integrada-à-movimentação-gatilho-automático)).
+Sem esses cadastros (especialmente a **Config Bula** para a combinação que se quer prescrever) a emissão não é liberada.
 
 ---
 
-## 🧩 Conceitos Básicos
+## 🌾 Fluxo geral do módulo
 
-| Termo | O que é |
-|-------|---------|
-| **Cultura** | Planta cultivada onde o produto será aplicado (Soja, Milho, Café…). |
-| **Diagnóstico** | Alvo biológico a controlar — fungo, inseto, planta daninha ou nematóide. |
-| **Formulado** | Defensivo agrícola registrado no MAPA, identificado pelo nº de registro. |
-| **Bula (Configuração de Bula)** | Combinação autorizada **Formulado × Cultura × Diagnóstico** com dose mín./máx., unidade, modalidade de aplicação e dias de carência. |
-| **Profissional** | Responsável técnico habilitado (Eng. Agrônomo no CREA ou Téc. Agrícola no CFTA). |
-| **ART/TRT** | Bloco numerado de receituários liberado pelo conselho profissional para o responsável técnico. Tem **número inicial**, **número final**, **saldo atual** e **data de validade**. |
-| **Local de Aplicação** | Fazenda/talhão do cliente onde o produto será efetivamente aplicado. |
-| **Calda** | Mistura final aplicada (volume e produtos). |
-| **Receituário** | Documento emitido (cabeçalho + itens) que vincula tudo o acima. |
+```mermaid
+flowchart TD
+    subgraph Base ["1. Cadastros base"]
+        A1["Profissional (135)"] --> A2["Bloco ART/TRT (136)"]
+        B1["Cultura (138)"]
+        B2["Diagnóstico (139)"]
+        B3["Formulado MAPA (140)"]
+        B1 --> C["Config Bula (141)"]
+        B2 --> C
+        B3 --> C
+        D["Endereço no cliente (5)"]
+    end
 
----
+    subgraph Venda ["2. Venda"]
+        V1["Venda (202)<br/>com item formulado"]
+    end
 
-## 🔁 Pré-requisitos e Ordem Recomendada
+    subgraph Emissao ["3. Emissão do receituário (142)"]
+        E1["Selecionar ART"] --> E2["Selecionar Local"]
+        E2 --> E3["Aba Item:<br/>Formulado + Cultura + Diagnóstico"]
+        E3 --> E4["Sistema preenche bula<br/>e calcula Área"]
+        E4 --> E5["Confirma e situação<br/>fica CRIADO"]
+        E5 --> E6["F9 → EMITIDO<br/>consome ART"]
+        E6 --> E7["Relatório aberto<br/>para impressão"]
+    end
 
-Antes de emitir a primeira receita, conclua os cadastros nesta ordem:
-
-1. **Culturas** atendidas pela revenda
-2. **Diagnósticos** (alvos) recorrentes na região
-3. **Tipos de Embalagem** e **Embalagens** dos produtos comercializados
-4. **Formulados** em estoque (com nº de registro MAPA)
-5. **Configuração de Bula** para cada combinação válida (Produto × Cultura × Alvo)
-6. **Profissionais** habilitados que assinarão receitas
-7. **ART/TRT** de cada profissional, **vinculadas à empresa operadora**
-8. **Locais de Aplicação** dos clientes ativos
-
-> 💡 Sem qualquer um destes itens, a emissão é bloqueada e o Sol.NET informa o que está faltando.
-
----
-
-## 📚 Cadastros de Apoio
-
-### 🌾 Cadastro de Culturas
-
-Registra as plantas cultivadas onde os defensivos serão aplicados.
-
-**Acesso:** F1 → `Cadastro Cultura Agronômica` (código **138**)
-
-**Campos principais:**
-- **Nome Comum**: ex. "Soja", "Milho", "Café Arábica"
-- **Nome Científico**: ex. "Glycine max" (aceita maiúsculas e minúsculas)
-- **Situação**: Ativo / Inativo
-
-**Dicas:**
-- Use o **nome comum** que aparece no rótulo do produto e no contrato com o cliente
-- Inative culturas que a revenda deixou de atender (não as exclua, para preservar histórico)
+    A2 -.-> E1
+    C -.-> E3
+    D -.-> E2
+    V1 --> E1
+```
 
 ---
 
-### 🐛 Cadastro de Diagnósticos
+## 🧭 Sub-abas do formulário
 
-Cadastra os alvos biológicos que podem ser tratados.
+Ao abrir um receituário em modo de inclusão ou edição, o formulário se organiza em três sub-abas dentro da área de cadastro:
 
-**Acesso:** F1 → `Cadastro Diagnóstico Agronômico` (código **139**)
+### `Receituário`
+Cabeçalho da receita. Reúne dados do ART/TRT escolhido, dados do profissional, dados gerais da receita (número, data, situação), local de aplicação, cliente e o movimento de venda associado.
 
-**Campos principais:**
-- **Nome Vulgar**: ex. "Ferrugem Asiática", "Lagarta-do-cartucho"
-- **Nome Científico**: ex. "Phakopsora pachyrhizi"
-- **Tipo de Alvo**: Fungo, Inseto, Planta Daninha ou Nematóide
-- **Situação**: Ativo / Inativo
+### `Item`
+Detalhes da prescrição em si: formulado, cultura, diagnóstico, dose aplicada, área tratada, quantidade total, unidades, calda e tipo de aplicação. É aqui que o sistema cruza a tríade com a bula e calcula a área.
 
-**Dicas:**
-- O **Tipo de Alvo** organiza relatórios e filtros por classe agronômica do problema
-- Cadastre também sinônimos populares como observação, para facilitar buscas
+### `Informações`
+Trechos legais que serão impressos no receituário: EPI, restrições de uso, precauções de manuseio, primeiros socorros, sintomas de alarme, antídoto e advertências de meio ambiente. Esses textos são alimentados pela configuração da bula do formulado escolhido.
 
 ---
 
-### 🧪 Cadastro de Formulados
+## 🔧 Fluxo de emissão
 
-Cadastra cada defensivo comercializado, com base no **registro MAPA**.
+Há dois pontos de partida válidos:
 
-**Acesso:** F1 → `Cadastro Formulado Agronômico` (código **140**)
+### Caminho A — A partir da Venda (mais comum)
 
-**Campos principais:**
-- **Nº de Registro MAPA**
-- **Marca Comercial**
-- **Titular do Registro** e **CNPJ do Titular**
-- **Classe Agronômica**: Herbicida, Inseticida, Fungicida, Acaricida, etc.
-- **Classificação Toxicológica**
-- **Classificação Ambiental**
-- **Modo de Ação**
-- **Compatibilidade** (com outros produtos)
-- **Advertência Ambiental**
-- **Embalagem(ns)** comercializada(s) e o respectivo **Tipo de Embalagem**
+1. Lance a venda normalmente pela tela `Vendas` (código `202`). Inclua o item formulado.
+2. Ainda dentro do movimento, dispare a emissão do receituário pela função correspondente da tela de venda. O Sol.NET abre a tela `Receituário Agronômico` já com o movimento, o item e o formulado preenchidos.
+3. Selecione o **ART/TRT** ativo do profissional. Se a empresa do movimento já tiver um único ART vigente, ele é sugerido automaticamente.
+4. Selecione o **Local de Aplicação** do cliente. A UF do local precisa coincidir com a UF do registro do profissional — caso contrário o local é descartado.
+5. Na aba `Item`, ajuste **Dose Aplicada**, **Área Tratada** e **Quantidade Total** se necessário (o sistema calcula a área automaticamente — ver seção abaixo).
+6. Confirme. O receituário fica em situação `CRIADO`.
+7. Pressione **F9** (ou o botão `Gerar/Imprimir`) para emitir. O sistema consome um número do bloco ART, muda a situação para `EMITIDO` e abre o relatório da receita para impressão.
 
-> O cadastro de Formulados é também acessado a partir da aba "Receituário Agronômico" no **Cadastro de Produtos** — assim, o produto comercial fica vinculado ao formulado correspondente.
+### Caminho B — Direto na tela 142
 
----
+1. Abra a tela `Receituário Agronômico` (código `142` na pesquisa F1).
+2. Use `Novo` para iniciar uma receita em branco.
+3. No grupo **Movimento**, escolha o movimento de venda já lançado (com item formulado). A escolha do movimento puxa cliente, empresa, item, quantidade e formulado.
+4. Continue a partir do passo 3 do Caminho A.
 
-### 📖 Configuração de Bula (Bula Digital)
-
-É o coração das validações. Define **o que é permitido**: produto, cultura, alvo, dose mín./máx., unidade, modalidade e carência.
-
-**Acesso:** F1 → `Cadastro Config Bula Agronômico` (código **141**)
-
-**Campos principais:**
-- **Formulado**, **Cultura**, **Diagnóstico**
-- **Dose Mínima** e **Dose Máxima** (no padrão da bula registrada)
-- **Unidade de Medida**: L/ha, kg/ha, mL/100L, etc.
-- **Modalidade de Aplicação**: foliar, jato dirigido, tratamento de sementes, etc.
-- **Dias de Carência**
-
-**Regra:** sem entrada compatível na configuração de bula, a combinação **não pode** ser receitada. Esse bloqueio impede prescrições off-label.
-
-> 💡 Mantenha as bulas atualizadas. Toda renovação de registro do MAPA pode alterar dose, modalidade ou carência.
+> Em ambos os caminhos, o movimento de venda associado **precisa existir antes** da emissão — o receituário não pode ser emitido sem movimento associado.
 
 ---
 
-### 📦 Embalagens e Tipos de Embalagem
+## 🧮 Cálculo automático da Área Tratada e validação da bula
 
-Permitem registrar as embalagens em que cada produto é vendido. **Tipos de Embalagem** (frasco, bombona, saco, big bag, etc.) e **Embalagens** específicas ficam vinculados ao **Produto** correspondente.
+### Cálculo da área
 
----
+Quando o usuário preenche **Dose Aplicada** ou **Quantidade Total**, o sistema recalcula a Área Tratada pela fórmula:
 
-## 🧑‍🌾 Cadastros Administrativos
+```
+Área Tratada = (Quantidade Total × 1000) / Dose Aplicada
+```
 
-### 👤 Cadastro de Profissionais
+O fator fixo `1000` faz a conversão entre as unidades de medida (mL → L, g → kg, etc.). Se o usuário digitar manualmente uma área diferente da calculada, o Sol.NET pede confirmação informando os dois valores; o usuário decide se mantém o número digitado ou aceita a área calculada.
 
-Registra os responsáveis técnicos habilitados a assinar receituários (inclusive externos à empresa).
+### Validação da dose contra a bula
 
-**Acesso:** F1 → `Profissionais Externos` (código **135**)
+Ao escolher a tríade **Formulado + Cultura + Diagnóstico**, o sistema busca a configuração na tela `141` (Config Bula) e:
 
-**Campos principais:**
-- **Nome completo**
-- **CPF**
-- **Tipo de Conselho**: CREA (Eng. Agrônomos) ou CFTA (Técnicos Agrícolas)
-- **Registro no Conselho** (nº)
-- **UF do Registro**
-- **Endereço, Cidade, Estado** (profissionais externos)
-- **Situação**: Ativo / Inativo
+- Se **Dose Aplicada** estiver vazia, preenche automaticamente com a **Dose Máxima** da bula.
+- Se a calda estiver vazia, preenche com a calda da bula.
+- Se a dose informada estiver **fora da faixa min/max** da bula, exibe a mensagem *"Dose aplicada fora dos limites estabelecidos pela Configuração da Bula. Deseja confirmar?"*. Confirmando, o sistema aceita a dose; cancelando, volta para a dose máxima da bula.
 
-**Profissionais externos** (que não são da empresa) podem ser cadastrados para casos em que o responsável técnico não é funcionário, mas presta o serviço.
+A aba `Informações` é preenchida com os textos da bula (EPI, restrições, precauções, antídoto, etc.) — esses campos vão para o relatório impresso da receita.
 
 ---
 
-### 📋 Cadastro de ART/TRT
+## 📌 Situações do receituário
 
-Cada bloco de receituário liberado pelo conselho deve ser cadastrado para que o sistema controle saldo e validade.
+Todo receituário passa por uma das três situações abaixo:
 
-**Acesso:** F1 → `Gestão ART/TRT` (código **136**)
+| Situação | Significado |
+|----------|-------------|
+| `CRIADO` | Receituário rascunho, ainda editável. Não consumiu número do ART. |
+| `EMITIDO` | Receita oficializada — número consumido do bloco ART, data de emissão registrada, relatório disponível para impressão. |
+| `CANCELADO` | Receita estornada. O saldo do ART foi devolvido ao bloco. Não pode mais ser emitida. |
 
-**Campos principais:**
-- **Profissional** responsável
-- **Empresa** vinculada (obrigatório — cada bloco pertence a uma empresa do grupo)
-- **Número da ART Mãe**
-- **Número Inicial** e **Número Final** da sequência
-- **Saldo Atual** (quantas receitas ainda podem ser emitidas)
-- **Quantidade de Aviso** (limite para alertar reposição)
-- **Data de Validade**
-- **Situação**: Ativo / Inativo
+A transição é sempre `CRIADO → EMITIDO → CANCELADO`. Não existe caminho de volta de `EMITIDO` para `CRIADO`.
 
-**Regras:**
-- Apenas ARTs **ativas**, com **saldo > 0** e **dentro da validade** aparecem na seleção ao emitir uma receita.
-- ARTs já em uso podem ser **inativadas** quando substituídas.
-- Em pesquisa de seleção durante a emissão, o sistema mostra **somente as ARTs da empresa logada e com saldo**.
-- Ao **emitir**: o saldo é decrementado e o número sequencial é consumido.
-- Ao **cancelar** uma receita: o saldo é estornado para a mesma ART (e o número fica reservado historicamente).
-
-> 🔔 **Alerta de saldo:** quando o `Saldo Atual` atinge a `Quantidade de Aviso`, o Sol.NET exibe alerta na tela e na lista de ARTs acabando.
+- **Editar** só é permitido enquanto a situação é `CRIADO`. Tentar editar um receituário `EMITIDO` ou `CANCELADO` exibe *"Não é possível editar receituário Emitido ou Cancelado!"*.
+- **Excluir** um receituário `CRIADO` remove o registro e desfaz a associação com o movimento.
+- **Excluir** um receituário `EMITIDO` aciona o cancelamento: estorna o saldo do ART e marca a receita como `CANCELADO` (não remove o registro). Isso só é permitido se a nota fiscal do movimento **ainda não tiver Protocolo de Autorização** — depois da autorização da nota, o receituário fica preso ao movimento.
+- **Excluir** um receituário `CANCELADO` exibe *"Esse receituário já está CANCELADO. Não é possível excluir."*.
 
 ---
 
-### 🏞️ Cadastro de Locais de Aplicação
+## 🖨️ Impressão
 
-Cada cliente pode ter várias fazendas/talhões. O receituário sempre indica **onde** o produto será aplicado. Os locais ficam vinculados ao **Cliente** e são mantidos a partir do próprio cadastro do cliente / dentro da emissão do receituário.
+A impressão é feita pelo botão **Gerar/Imprimir** ou pela tecla **F9**. O comportamento depende da situação:
 
-**Campos principais:**
-- **Cliente** (vinculado obrigatoriamente)
-- **Descrição** (ex. "Fazenda Santa Rita - Talhão 4")
-- **Endereço completo**
-- **Cidade** e **UF**
-- **Situação**: Ativo / Inativo
+- Receituário em `CRIADO` → o sistema executa a emissão (gera número de receita, consome saldo do ART, muda para `EMITIDO`) e em seguida abre o relatório da receita.
+- Receituário em `EMITIDO` → o sistema apenas reabre o relatório da receita.
+- Receituário em `CANCELADO` ou sem dados completos → impressão não é liberada. Aparece *"O receituário precisa estar emitido para ser impresso!"*.
 
-> 💡 Padronize a descrição. Evite duplicidades como "Fazenda Sta. Rita T4" e "Faz. Santa Rita - Talhão 04" para o mesmo lugar.
+Após emitir, o sistema também emite um alerta se o saldo do ART estiver chegando ao limite configurado de aviso.
 
 ---
 
-## 🧾 Emissão de Receituário
-
-A emissão pode ocorrer de duas formas: **integrada** ao processo de venda (recomendada) ou **avulsa**.
-
-### 🔁 Emissão Integrada à Movimentação (Gatilho Automático)
-
-É o caminho mais comum. A receita é gerada a partir dos itens da Movimentação que exigem receituário, **sem necessidade de atalho ou comando do operador**: quando a movimentação é do **tipo fiscal** e contém itens vinculados a um formulado agronômico, o Sol.NET **dispara automaticamente** a tela de receituário no momento adequado do fluxo, para que o usuário preencha os dados e finalize a receita.
-
-**Passo a passo:**
-
-1. Lance a **Movimentação** normalmente (movimento fiscal — NF-e, NFC-e ou demais documentos fiscais que comportem venda de defensivos).
-2. Inclua os itens. Produtos vinculados a um formulado agronômico são identificados como itens que exigem receita.
-3. Ao avançar no fluxo da movimentação, o Sol.NET **abre automaticamente** a tela de Receituário com:
-   - Cliente já preenchido
-   - Itens que exigem receita já carregados
-   - Profissional sugerido (último utilizado)
-   - ART sugerida automaticamente (a primeira ativa, com saldo, da empresa)
-4. Selecione o **Local de Aplicação** do cliente.
-5. Confirme **Cultura**, **Diagnóstico** e **Modalidade de Aplicação** de cada item.
-6. Informe a **Dose Aplicada** e a **Área Tratada** — a **Quantidade Total é calculada automaticamente** (Dose × Área).
-7. Preencha as observações (se houver).
-8. **Salve.** O sistema executa as validações e, se tudo estiver ok, gera o número da receita.
-9. **Imprima** as vias.
-
-> 📌 O gatilho automático **só acontece em movimentos do tipo fiscal**. Movimentos não fiscais (orçamento, pedido sem fiscalização etc.) não disparam a emissão automática — para esses casos, use a **emissão avulsa** descrita a seguir.
-
-> 📌 A emissão **não exige protocolo de NF-e autorizado**. A tela é aberta no fluxo da movimentação fiscal, e a receita pode ser concluída antes do retorno da SEFAZ.
-
-> 📎 Cada item de movimentação pode ter sua própria associação ao receituário. O vínculo é por **item de movimento**, não pelo movimento como um todo — útil para vendas mistas (com e sem itens que exigem receita).
-
----
-
-### 📝 Emissão Avulsa
-
-Use quando não há movimentação fiscal associada no momento (assistência técnica em campo, recomposição de prescrição, recomendação preliminar antes da venda, etc.).
-
-**Acesso:** F1 → `Receituário Agronômico` (código **142**) → **Novo**.
-
-**Regra importante sobre o vínculo com movimentação:**
-
-- **Para lançar/cadastrar** o receituário avulso, **não é obrigatório** vincular uma movimentação. Você pode preencher cliente, profissional, ART, local, itens e doses livremente.
-- **Para emitir e imprimir** o receituário, o **vínculo a uma movimentação é obrigatório**. Sem esse vínculo, o sistema permite salvar o cadastro mas **bloqueia a emissão/impressão** definitiva.
-- Use esse comportamento quando precisar adiantar o preenchimento técnico (em campo, por exemplo) e completar a vinculação fiscal posteriormente, antes de imprimir.
-
-Os campos disponíveis são os mesmos da emissão integrada.
-
----
-
-### 🧮 Cálculo Automático da Área Tratada
-
-Ao informar **Dose Aplicada** e **Quantidade Total** (ou **Área Tratada**), o Sol.NET completa automaticamente o terceiro valor:
-
-- `Quantidade Total = Dose Aplicada × Área Tratada`
-- `Área Tratada = Quantidade Total ÷ Dose Aplicada`
-
-Isso reduz erros de digitação e garante coerência entre a quantidade vendida e a área a tratar.
-
----
-
-## ✅ Validações Automáticas
+## 🚫 Regras de bloqueio na emissão
 
 Antes de gerar o número da receita, o Sol.NET verifica:
 
-1. **Empresa × ART** — a ART selecionada deve pertencer à empresa logada.
-2. **Cliente × Local** — o local de aplicação deve pertencer ao cliente da venda.
-3. **Saldo de ART** — `Saldo Atual` > 0.
-4. **Validade da ART** — `Data de Validade` ≥ data atual (validação ignorada se a data não tiver sido preenchida no cadastro).
-5. **Combinação Formulado × Cultura × Diagnóstico** — deve existir em **Configuração de Bula**.
-6. **Dose dentro do permitido** — `Dose Mínima` ≤ `Dose Aplicada` ≤ `Dose Máxima`.
-7. **Modalidade de Aplicação** — campo obrigatório.
-8. **Cliente válido** — não permite cliente padrão (ex. "consumidor padrão") nem caracteres especiais inválidos no nome.
-9. **Tipo de Aplicação** — campo obrigatório.
-
-Se alguma validação falhar, o Sol.NET exibe a mensagem específica e bloqueia a emissão.
-
----
-
-## 🖨️ Impressão (ReportBuilder)
-
-A impressão usa o **ReportBuilder** do Sol.NET, com layout próprio do receituário agronômico.
-
-- Acessível pelo botão **Relatórios** da tela do receituário (habilitado após salvar).
-- Layout segue o modelo legal exigido pelo MAPA com campos de devolução de embalagens, advertência ambiental e assinatura do responsável técnico.
-- O texto de **devolução de embalagens** é registrado no momento da emissão como um *snapshot* — alterações futuras nesse texto **não** afetam receitas já emitidas.
-- Em geral imprima **3 vias**: comprador, vendedor e responsável técnico (verifique a regra do órgão estadual).
+| Condição | Bloqueio / Mensagem |
+|----------|---------------------|
+| Receituário sem movimento associado | *"Não é possível emitir receituário sem movimento associado!"* |
+| Receituário sem item | *"Não é possível emitir receituário sem item!"* |
+| Item sem Formulado, Cultura, Diagnóstico, Dose, Área ou Quantidade preenchidos | *"Para emitir o receituário é necessário preencher todos os dados do item!"* |
+| Item do movimento não bate com o item do receituário | *"Nenhum item do movimento é compatível com os itens do receituário."* |
+| ART/TRT escolhido não é da Empresa do Movimento | *"O ART/TRT preenchido não é da Empresa do Movimento selecionado. Ele será sobrescrito."* / *"O ART/TRT selecionado não é da Empresa do Movimento"* |
+| UF do Local de Aplicação diferente da UF do Registro do Profissional | *"O Local selecionado não pertence ao estado do Registro do Profissional."* (o local é limpo) |
+| Cliente do receituário = "Consumidor Padrão" | *"Não permitido selecionar Consumidor Padrão"* |
+| Receituário emitido com nota fiscal já autorizada (com Protocolo) | *"Não é possível alterar status desse Receituário! O movimento associado já possui nota fiscal com Protocolo de Autorização"* |
+| Saldo do ART zerado ou data de validade vencida | Emissão bloqueada pelo controle do ART (tela `136`). |
 
 ---
 
-## ↩️ Cancelamento de Receituário
+## 🧾 Valores codificados (referência)
 
-Erros acontecem (cliente errado, dose digitada incorretamente, troca de produto). O Sol.NET permite cancelar receitas já emitidas.
+### Situação do receituário
 
-**Como cancelar:**
-1. Abra a receita pelo menu de Receituários.
-2. Clique em **Cancelar Receituário**.
-3. Confirme a operação.
+| Texto exibido | Significado |
+|---------------|-------------|
+| `CRIADO` | Rascunho, ainda editável |
+| `EMITIDO` | Oficializado, com número de receita e saldo ART consumido |
+| `CANCELADO` | Receita estornada, saldo ART devolvido |
 
-**O que acontece:**
-- A receita muda para a situação **Cancelada** (não é excluída, para preservar histórico).
-- O **saldo da ART é estornado** automaticamente.
-- O número da receita **permanece reservado** — não é reaproveitado.
-- A movimentação associada é **desvinculada** da receita.
+### Tipo de alvo (Diagnóstico)
 
-> ⚠️ Imprima um documento de cancelamento e arquive junto à via cancelada. Algumas defesas estaduais exigem essa rastreabilidade.
+| Texto exibido |
+|---------------|
+| `FUNGO` |
+| `INSETO` |
+| `PLANTA DANINHA` |
+| `NEMATÓIDE` |
+| `BACTÉRIA` |
+| `VÍRUS` |
 
----
+### Tipo de aplicação
 
-## 🧭 Integração com Outros Módulos
-
-| Módulo | Ponto de integração |
-|--------|---------------------|
-| **Cadastro de Produtos** | Aba "Receituário Agronômico" vincula o produto comercial ao formulado MAPA. |
-| **Cadastro de Pessoas** | Cliente da venda; locais de aplicação dependem de cliente válido. |
-| **Cadastro de Empresas** | A ART é vinculada a uma empresa específica do grupo. |
-| **Movimentação** | Em movimentos fiscais com itens que exigem receita, o Sol.NET abre o Receituário automaticamente; vínculo por item. |
-| **Profissionais Externos** | Endereço, cidade e estado para receitas assinadas por profissional contratado. |
-
----
-
-## 🔔 Alertas e Auditoria
-
-- **Alerta de ARTs acabando**: lista as ARTs cujo saldo atingiu a `Quantidade de Aviso`.
-- **Usuário que criou** e **Usuário que emitiu** ficam registrados em cada receita (rastreabilidade).
-- **Data e hora de emissão** registradas automaticamente.
-- **Histórico de cancelamentos** preservado mesmo após estorno.
+| Texto exibido |
+|---------------|
+| `TERRESTRE` |
+| `AÉREO` |
+| `MANUAL` |
+| `EXPURGO` |
 
 ---
 
 ## 💡 Exemplos Práticos
 
-### Exemplo 1 — Venda de fungicida para soja
+### Exemplo 1 — Venda de fungicida para soja (caminho mais comum)
 
-**Contexto:** revenda em Maringá (PR), cliente "Fazenda Boa Vista", 50 ha de soja com Ferrugem Asiática.
+1. Cliente "Fazenda Boa Vista" entra na loja para comprar 10 L de fungicida cujo produto comercial está vinculado a um Formulado.
+2. Vendedor lança a venda (tela `202`), informa o cliente e o item.
+3. Antes de fechar, o sistema indica que o item exige receituário. O vendedor abre a emissão do receituário a partir do movimento.
+4. A tela `Receituário Agronômico` abre já com Movimento, Item, Cliente, Formulado e Empresa preenchidos.
+5. O vendedor seleciona o ART do Engenheiro Agrônomo da loja e o Local de Aplicação cadastrado para o cliente.
+6. Na aba `Item`, escolhe a Cultura "Soja" e o Diagnóstico "Ferrugem Asiática". O sistema preenche Dose Máxima, Calda e Dias de Carência da bula.
+7. O vendedor confirma a Quantidade Total (10 L) e o sistema calcula a Área Tratada automaticamente.
+8. O vendedor pressiona **F9**. O receituário sai com número sequencial do bloco ART e o relatório da receita abre para impressão.
 
-**Passos:**
-1. Lança Movimentação fiscal (NF-e) de venda.
-2. Adiciona o item "Fungicida XYZ 1L" — quantidade 25 frascos.
-3. Ao avançar no fluxo da venda, o Sol.NET **abre o Receituário automaticamente** com cliente e item já preenchidos.
-4. Profissional sugerido: "João Eng. Agrônomo - CREA-PR 12345" (último usado).
-5. ART sugerida: "Bloco 2026/1, saldo 38 receitas".
-6. Local de Aplicação: "Fazenda Boa Vista - Talhão Norte".
-7. Cultura: Soja • Diagnóstico: Ferrugem Asiática • Modalidade: Foliar.
-8. Dose: 0,5 L/ha • Área: 50 ha → Quantidade Total: 25 L (calculada).
-9. Salva. Sistema valida bula (0,4 a 0,8 L/ha — ok) e gera receita **nº 12463**.
-10. Imprime 3 vias e entrega ao cliente.
+### Exemplo 2 — Cancelar uma receita emitida erroneamente
 
-### Exemplo 2 — Bula bloqueia combinação
+1. O cliente cancela a compra antes da nota fiscal ser autorizada.
+2. O operador abre a tela `Receituário Agronômico` (código `142`), localiza a receita no grid e clica em `Excluir`.
+3. Como a situação é `EMITIDO` e a nota ainda não tem Protocolo de Autorização, o sistema:
+   - Devolve a numeração ao saldo do ART
+   - Muda a situação da receita para `CANCELADO`
+   - Desassocia o movimento do receituário
+4. Mensagem: *"Situação do receituário alterada para CANCELADO e Saldo do ART estornado."*
 
-**Contexto:** mesmo cliente quer usar o mesmo fungicida em "Lagarta-da-soja" (alvo errado).
+### Exemplo 3 — Dose acima da bula com justificativa do técnico
 
-**Resultado:** ao salvar, Sol.NET informa: *"Combinação Produto × Cultura × Alvo não permitida. Verifique a Configuração de Bula."*
-
-**Solução:** consultar o rótulo do produto. Se a recomendação contra o alvo realmente não existe na bula registrada, **não cadastre** uma exceção para a venda — recomende ao cliente um inseticida adequado, com bula correspondente.
-
-### Exemplo 3 — ART acabando
-
-**Contexto:** ART "Bloco 2026/1" começou com 50 receitas, está em 5. Quantidade de Aviso configurada: 5.
-
-**Resultado:** ao emitir a próxima receita, o sistema mostra alerta na tela:
-> *"Atenção: restam apenas 4 receitas nesta ART. Providencie nova ART junto ao conselho."*
-
-A receita é emitida normalmente, mas o gestor já é avisado.
-
-### Exemplo 4 — Cancelamento por engano de dose
-
-**Contexto:** receita 12463 saiu com 1,5 L/ha (acima do permitido — só passou porque a bula estava errada). Bula corrigida; receita precisa ser refeita.
-
-**Passos:**
-1. Abrir a receita 12463 → **Cancelar**.
-2. Saldo da ART volta de 37 para 38.
-3. Emitir nova receita com a dose correta. Receberá o próximo número disponível (12464).
+1. Na aba `Item`, ao escolher Formulado + Cultura + Diagnóstico, o sistema mostra Dose Mín. = 1,0 L/ha e Dose Máx. = 2,0 L/ha.
+2. O Técnico Agrícola decide aplicar 2,5 L/ha (acima da máxima) por orientação específica.
+3. Ao sair do campo Dose Aplicada, o sistema exibe *"Dose aplicada fora dos limites estabelecidos pela Configuração da Bula. Deseja confirmar?"*.
+4. O usuário confirma. O receituário aceita a dose, recalcula a área tratada e segue para emissão.
 
 ---
 
 ## ❓ FAQ / Problemas Comuns
 
-**"Não há ART disponível para a empresa atual."**
-→ Cadastre uma ART na tela `Gestão ART/TRT` (F1, código **136**) vinculando o profissional **e a empresa logada**.
+### ❓ Não consigo emitir o receituário — a tela reclama que não há movimento associado. O que fazer?
 
-**"Combinação Produto × Cultura × Alvo não permitida!"**
-→ Não há bula cadastrada para essa combinação. Consulte o rótulo oficial do produto: se houver, cadastre na tela `Cadastro Config Bula Agronômico` (F1, código **141**); se não houver, a aplicação é off-label e não pode ser receitada.
+O receituário **precisa** estar ligado a uma venda com item formulado. Mesmo que você esteja na tela `142` direto, é preciso escolher um movimento no grupo `Movimento`. Se ainda não existe venda lançada, lance primeiro pela tela `202`.
 
-**"Dosagem fora do permitido!"**
-→ O valor digitado está abaixo da `Dose Mínima` ou acima da `Dose Máxima` da bula. Ajuste a dose ou revise a bula (se foi cadastrada com erro).
+### ❓ Apertei F9 e o sistema falou que falta preencher dados do item. Onde olho?
 
-**"A ART está vencida."**
-→ Renove o bloco junto ao conselho profissional, cadastre a nova ART e inative a anterior.
+Vá na sub-aba `Item`. Para a emissão, são obrigatórios: Formulado, Cultura, Diagnóstico, Dose Aplicada, Área Tratada e Quantidade Total. Qualquer um vazio bloqueia a emissão.
 
-**"Local de aplicação não pertence ao cliente."**
-→ Verifique se o local foi cadastrado para o cliente correto. Edite o cadastro se necessário.
+### ❓ Selecionei o Local de Aplicação mas o sistema apagou. Por quê?
 
-**Para mais perguntas, consulte o [FAQ completo](faq.md).**
+A UF do Local precisa ser igual à UF do Registro do Profissional. Se forem diferentes, o sistema avisa *"O Local selecionado não pertence ao estado do Registro do Profissional."* e limpa o campo. Cadastre um endereço na UF correta (na aba `Endereços` do **Cadastro de Pessoas** — código `5`) ou escolha um profissional com registro na UF do Local.
+
+### ❓ O ART escolhido foi sobrescrito sozinho. Por quê?
+
+O ART precisa pertencer à mesma Empresa do Movimento de venda. Se você escolher um ART de outra empresa, o sistema avisa e tenta sobrescrever pelo ART mais antigo ativo da empresa do movimento. Use a tela `Gestão ART/TRT` (código `136`) para conferir a empresa de cada bloco.
+
+### ❓ A dose que digitei está fora da bula, mas o técnico autorizou. Como prosseguir?
+
+Quando a dose está fora da faixa min/max da bula, o sistema pede confirmação: *"Dose aplicada fora dos limites estabelecidos pela Configuração da Bula. Deseja confirmar?"*. Confirme e a receita aceita a dose informada.
+
+### ❓ Por que o cliente "Consumidor Padrão" não aparece na seleção?
+
+Receituário precisa ter um cliente identificado para fins legais. O cliente genérico "Consumidor Padrão" é bloqueado intencionalmente — *"Não permitido selecionar Consumidor Padrão"*. Cadastre o cliente real (CPF/CNPJ) e use esse cadastro.
+
+### ❓ Tentei excluir uma receita emitida e o sistema não deixou. Por quê?
+
+Provavelmente a nota fiscal do movimento já foi autorizada (tem Protocolo de Autorização). Após autorização, o receituário fica preso ao movimento e não pode mais ser cancelado pelo Sol.NET — a regra é fiscal, não operacional.
+
+### ❓ Preciso reimprimir uma receita antiga. Como faço?
+
+Localize a receita pela lista da tela `Receituário Agronômico` (código `142`) — você pode pesquisar por número da receita, número do ART mãe, nome do profissional, cliente, etc. Abra a receita e pressione **F9** ou o botão `Gerar/Imprimir`. Como a situação já é `EMITIDO`, o sistema só reabre o relatório da receita, sem consumir novo número do ART.
+
+### ❓ Como o sistema calcula a área tratada?
+
+Pela fórmula `Área = (Quantidade Total × 1000) / Dose Aplicada`. O fator `1000` converte mL → L ou g → kg automaticamente. Se você digitar uma área diferente da calculada, o sistema pede confirmação antes de aceitar.
+
+### ❓ Onde cadastrar um novo bloco de ART?
+
+Na tela `Gestão ART/TRT` (código `136`). Você informa profissional, empresa, número da ART mãe, número inicial e final, validade e o sistema controla o saldo conforme as receitas são emitidas e canceladas.
 
 ---
 
-## 🔗 Documentação Complementar
-
-- **[Guia Rápido](guia_rapido.md)** — checklist e atalhos
-- **[FAQ](faq.md)** — perguntas frequentes
-- **[Movimentação](../Movimentacao/documentacao_movimentacao.md)** — fluxo da venda
-- **[Portal de Documentação](../README.md)** — visão geral do Sol.NET
-
----
-
-**📅 Última atualização**: Abril de 2026
-**📦 Versão**: 1.0
-**🎯 Público-alvo**: Vendedores de revenda agropecuária, responsáveis técnicos, administradores Sol.NET
+**Última atualização**: Maio de 2026
+**Versão**: 1.0
+**Público-alvo**: Usuários do Sol.NET
