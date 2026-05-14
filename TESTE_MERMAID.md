@@ -123,6 +123,67 @@ flowchart TD
   T --> T3[203 Outros]
 ```
 
+## 🌱 Rascunhos — Receituário Agronômico (validação antes de virar PR #43)
+
+### Diagrama 1 — Relação entre as telas do módulo
+
+```mermaid
+flowchart TD
+    P135["Profissionais Externos<br/>(135)"]
+    P136["Gestão ART/TRT<br/>(136)"]
+    P138["Culturas<br/>(138)"]
+    P139["Diagnósticos<br/>(139)"]
+    P140["Formulados<br/>(140)"]
+    P141["Config Bula<br/>(141)"]
+    P5["Cadastro de Pessoas<br/>(5) — Endereço"]
+    P202["Venda<br/>(202)"]
+    P142["Receituário Agronômico<br/>(142)"]
+
+    P135 --> P136
+    P140 --> P141
+    P138 --> P141
+    P139 --> P141
+
+    P136 --> P142
+    P141 --> P142
+    P5 --> P142
+    P202 --> P142
+```
+
+### Diagrama 2 — Fluxo de emissão com subgrafos
+
+```mermaid
+flowchart TD
+    subgraph Base ["1. Cadastros base"]
+        A1["Profissional (135)"] --> A2["Bloco ART/TRT (136)"]
+        B1["Cultura (138)"]
+        B2["Diagnóstico (139)"]
+        B3["Formulado MAPA (140)"]
+        B1 --> C["Config Bula (141)"]
+        B2 --> C
+        B3 --> C
+        D["Endereço no cliente (5)"]
+    end
+
+    subgraph Venda ["2. Venda"]
+        V1["Venda (202)<br/>com item formulado"]
+    end
+
+    subgraph Emissao ["3. Emissão do receituário (142)"]
+        E1["Selecionar ART"] --> E2["Selecionar Local"]
+        E2 --> E3["Aba Item:<br/>Formulado + Cultura + Diagnóstico"]
+        E3 --> E4["Sistema preenche bula<br/>e calcula Área"]
+        E4 --> E5["Confirma e situação<br/>fica CRIADO"]
+        E5 --> E6["F9 → EMITIDO<br/>consome ART"]
+        E6 --> E7["Relatório aberto<br/>para impressão"]
+    end
+
+    A2 -.-> E1
+    C -.-> E3
+    D -.-> E2
+    V1 --> E1
+```
+
 ## ✅ Verificação
 
 Se você consegue ver os diagramas renderizados acima (e não apenas o código), então o suporte Mermaid está funcionando corretamente! 🎉
