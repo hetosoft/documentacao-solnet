@@ -154,19 +154,21 @@
       .sn-sidebar__subgroup-summary {
         list-style: none;
         cursor: pointer;
-        padding: 6px 20px 6px 41px;
+        padding: 7px 20px 7px 36px;
         color: var(--sn-sidebar-text);
+        font-weight: 600;
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 8px;
         user-select: none;
         border-left: 3px solid transparent;
         line-height: 1.35;
+        margin-top: 2px;
       }
       .sn-sidebar__subgroup-summary::-webkit-details-marker { display: none; }
       .sn-sidebar__subgroup-summary::before {
         content: "▸";
-        font-size: 9px;
+        font-size: 10px;
         color: var(--sn-sidebar-muted);
         transition: transform 0.15s ease;
         display: inline-block;
@@ -514,8 +516,6 @@
                   </ul>
                 </details>
               </li>
-              <li><a href="{{ '/Movimentacao/documentacao_locais_de_estoque/' | relative_url }}">Locais de Estoque</a></li>
-              <li><a href="{{ '/Movimentacao/documentacao_transacoes_de_estoque/' | relative_url }}">Transações de Estoque</a></li>
               <li>
                 <details class="sn-sidebar__subgroup" data-sn-subgroup="tipos-movimento">
                   <summary class="sn-sidebar__subgroup-summary">Tipos de Movimento</summary>
@@ -527,15 +527,31 @@
                   </ul>
                 </details>
               </li>
+              <li>
+                <details class="sn-sidebar__subgroup" data-sn-subgroup="estoque">
+                  <summary class="sn-sidebar__subgroup-summary">Estoque</summary>
+                  <ul class="sn-sidebar__subitems">
+                    <li><a href="{{ '/Movimentacao/documentacao_locais_de_estoque/' | relative_url }}">Locais de Estoque</a></li>
+                    <li><a href="{{ '/Movimentacao/documentacao_transacoes_de_estoque/' | relative_url }}">Transações de Estoque</a></li>
+                    <li><a href="{{ '/Movimentacao/documentacao_saldo_estoque/' | relative_url }}">Saldo Estoque</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li>
+                <details class="sn-sidebar__subgroup" data-sn-subgroup="producao">
+                  <summary class="sn-sidebar__subgroup-summary">Produção</summary>
+                  <ul class="sn-sidebar__subitems">
+                    <li><a href="{{ '/Movimentacao/Producao/' | relative_url }}">Visão geral</a></li>
+                    <li><a href="{{ '/Movimentacao/Producao/documentacao_formulas_de_produtos/' | relative_url }}">Fórmula de Produtos</a></li>
+                    <li><a href="{{ '/Movimentacao/Producao/documentacao_producao_de_produtos/' | relative_url }}">Produção de Produtos</a></li>
+                  </ul>
+                </details>
+              </li>
               <li><a href="{{ '/Movimentacao/documentacao_tabela_de_preco/' | relative_url }}">Tabela de Preço</a></li>
-              <li><a href="{{ '/Movimentacao/documentacao_saldo_estoque/' | relative_url }}">Saldo Estoque</a></li>
               <li><a href="{{ '/Movimentacao/documentacao_regras_cashback/' | relative_url }}">Regras Cashback</a></li>
               <li><a href="{{ '/Movimentacao/documentacao_ajuste_de_estoque/' | relative_url }}">Ajuste de Estoque</a></li>
               <li><a href="{{ '/Movimentacao/documentacao_historico_de_movimentacoes/' | relative_url }}">Histórico de Movimentações</a></li>
               <li><a href="{{ '/Movimentacao/documentacao_historico_de_produtos/' | relative_url }}">Histórico de Produtos</a></li>
-              <li><a href="{{ '/Movimentacao/Producao/' | relative_url }}">Produção — Visão geral</a></li>
-              <li><a href="{{ '/Movimentacao/Producao/documentacao_formulas_de_produtos/' | relative_url }}">Produção — Fórmula de Produtos</a></li>
-              <li><a href="{{ '/Movimentacao/Producao/documentacao_producao_de_produtos/' | relative_url }}">Produção — Produção de Produtos</a></li>
             </ul>
           </details>
 
