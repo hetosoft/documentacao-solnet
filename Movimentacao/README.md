@@ -15,6 +15,15 @@ permalink: /Movimentacao/
 
 - **[Movimentos](Movimentos/)** — trio operacional `Movimentos de Compras` (`201`), `Movimentos de Vendas` (`202`), `Outros Movimentos` (`203`). Subpasta com referência completa, perfil por tela e FAQ.
 
+### 📥 Importar XML NF-e
+
+Lançamento de entrada (e registro de saída de NF-e própria) a partir do XML recebido pela SEFAZ ou por arquivo. O fluxo padrão começa pela [Manifestação do Destinatário](../Fiscal/documentacao_manifestacao_destinatario.md) (módulo Fiscal); a importação e o lançamento na movimentação acontecem aqui.
+
+- [Documentação Importar XML](documentacao_importar_xml.md) — `204`. Tela completa, sub-abas (`XML`, `Cabeçalho`, `Itens`, `Financeiro`, `Conferência`), vínculo de itens com produtos e os botões `Lançar NF-e`, `Lançar Parcial`, `Lançar Próprio`, `DANFE`.
+- [Guia Rápido — Importar XML](guia_rapido_importar_xml.md) — checklist da rotina, mensagens de erro mais comuns e quando usar cada botão de lançamento.
+- [FAQ — Importar XML](faq_importar_xml.md) — carregamento, vínculo de itens, lançamento e relação com a Manifestação.
+- [Conferência de XML](documentacao_conferencia_xml.md) — habilitação por loja no `Cadastro de Empresas`, estados da conferência, aba `Conferência` dentro do `Importar XML` e interação com `Lançar NF-e` / `Lançar Parcial`.
+
 ### Configuração — o que define o comportamento da operação
 
 - **[Tipos de Movimento](TiposDeMovimento/)** — `37`. Configura todas as regras herdadas pelos movimentos.

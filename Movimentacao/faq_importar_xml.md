@@ -161,7 +161,7 @@ Não. Quando o Sol.NET detecta que o movimento vinculado foi **excluído** ou **
 
 Carregar um `.xml` diretamente pelo `Importar XML` (modo `Novo` + grupo `Arquivo`) existe como **exceção** para situações em que o XML não veio pela SEFAZ. Não substitui a manifestação.
 
-Veja [Manifestação do Destinatário](documentacao_manifestacao_destinatario.md).
+Veja [Manifestação do Destinatário](../Fiscal/documentacao_manifestacao_destinatario.md).
 
 ### ❓ Posso imprimir o DANFE direto pela tela?
 
@@ -200,7 +200,7 @@ Detalhes em [Conferência de XML](documentacao_conferencia_xml.md).
 - [Documentação Importar XML](documentacao_importar_xml.md) — referência completa
 - [Guia Rápido — Importar XML](guia_rapido_importar_xml.md) — checklist operacional
 - [Conferência de XML](documentacao_conferencia_xml.md) — fluxo da conferência física
-- [Manifestação do Destinatário](documentacao_manifestacao_destinatario.md) — porta de entrada dos XMLs da SEFAZ
+- [Manifestação do Destinatário](../Fiscal/documentacao_manifestacao_destinatario.md) — porta de entrada dos XMLs da SEFAZ
 
 ---
 

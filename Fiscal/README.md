@@ -60,45 +60,15 @@ Cartão de referência para a rotina diária do suporte:
 #### ❓ [FAQ — Manifestação do Destinatário](faq_manifestacao_destinatario.md)
 Perguntas comuns sobre conceitos, operação, NSU e vínculo com a Movimentação.
 
----
-
-### 📥 Importar XML NF-e
-
-#### 📖 [Documentação Importar XML](documentacao_importar_xml.md)
-Como carregar o XML de uma NF-e e transformá-lo em movimento de entrada (ou saída, no caso de emissão própria):
-- Tela `Importar XML NF-e` (código `204`) — consulta e filtros de XMLs carregados
-- Carregamento via arquivo `.xml` e via Manifestação do Destinatário
-- Sub-abas `XML`, `Cabeçalho`, `Itens`, `Financeiro`, `Conferência`
-- Vínculo de itens do XML com o cadastro de produtos (manual, automático e cadastro durante o vínculo)
-- Lançamento na movimentação: `Lançar NF-e`, `Lançar Parcial`, `Lançar Próprio` e `DANFE`
-- Relação com a Manifestação do Destinatário
-
-#### ⚡ [Guia Rápido — Importar XML](guia_rapido_importar_xml.md)
-Cartão de referência para o suporte:
-- Checklist da rotina padrão de importação
-- Os três botões de lançamento e quando usar cada um
-- Tabelas de status, conferência e financeiro
-- Mensagens de erro mais comuns e como resolver
-- Combinações úteis de filtros
-
-#### ❓ [FAQ — Importar XML](faq_importar_xml.md)
-Perguntas comuns sobre carregamento, vínculo de itens, lançamento e relação com Manifestação.
-
-#### 🔬 [Conferência de XML](documentacao_conferencia_xml.md)
-Fluxo dedicado da conferência física da mercadoria:
-- Habilitação por loja no `Cadastro de Empresas`
-- Estados da conferência (`Não Conferido`, `Em Andamento`, `Sem Divergência`, `Com Divergência`)
-- Aba `Conferência` dentro do `Importar XML` e o que o conferente faz
-- Reabertura de conferências finalizadas (permissão especial)
-- Como a conferência interage com `Lançar NF-e` / `Lançar Parcial`
+> 📥 **Importar XML NF-e** e **Conferência de XML** agora vivem em **[Movimentação](../Movimentacao/README.md#-importar-xml-nf-e)** — a partir da Manifestação, o lançamento da NF-e como entrada acontece dentro da Movimentação.
 
 ---
 
 ## 🎯 Por Onde Começar
 
-- **👤 Primeira leitura** — abra a [Documentação da Reforma Tributária](documentacao_reforma_tributaria.md) para entender o cronograma fiscal, depois passe pela [Documentação da Manifestação](documentacao_manifestacao_destinatario.md) e pela [Documentação Importar XML](documentacao_importar_xml.md) para a rotina diária de entrada de notas.
+- **👤 Primeira leitura** — abra a [Documentação da Reforma Tributária](documentacao_reforma_tributaria.md) para entender o cronograma fiscal e depois passe pela [Documentação da Manifestação](documentacao_manifestacao_destinatario.md) para o fluxo de NF-e e CT-e da SEFAZ. O lançamento subsequente em entrada está em [Movimentação — Importar XML](../Movimentacao/documentacao_importar_xml.md).
 - **🔧 Configurador** — foque nas seções de cadastro de NCM e regras tributárias na [Documentação da Reforma Tributária](documentacao_reforma_tributaria.md), e use o [FAQ](faq_reforma_tributaria.md) para casos específicos.
-- **⚡ Operacional / Suporte** — os guias rápidos da [Manifestação do Destinatário](guia_rapido_manifestacao_destinatario.md) e do [Importar XML](guia_rapido_importar_xml.md) cobrem a rotina mais comum no atendimento.
+- **⚡ Operacional / Suporte** — o guia rápido da [Manifestação do Destinatário](guia_rapido_manifestacao_destinatario.md) cobre a rotina diária no atendimento; para a etapa de lançamento, consulte o [Guia Rápido — Importar XML](../Movimentacao/guia_rapido_importar_xml.md) em Movimentação.
 
 ---
 
@@ -110,5 +80,5 @@ Fluxo dedicado da conferência física da mercadoria:
 ---
 
 **📅 Última atualização**: Maio de 2026  
-**📦 Versão**: 1.2  
+**📦 Versão**: 1.3  
 **🎯 Público-alvo**: Usuários, contadores, configuradores e equipe de suporte Sol.NET
