@@ -1,0 +1,102 @@
+# Documentação Sol.NET ERP
+
+> Portal de documentação do Sol.NET ERP (Hetosoft) — escrito em português do Brasil para usuários finais, administradores e equipe de suporte. Cada módulo segue o tripé Documentação (referência completa) + Guia Rápido (cheat-sheet do dia a dia) + FAQ (perguntas recorrentes).
+
+Toda tela do Sol.NET é acessada pela pesquisa universal (atalho `F1`), digitando o nome ou o código numérico (`ID_FORMULARIO`) da tela. O portal não usa caminhos de menu.
+
+## Portal
+
+- [Início](https://hetosoft.github.io/documentacao-solnet/): página inicial do portal, com o ecossistema de módulos.
+
+## Financeiro
+
+- [Visão geral do módulo Financeiro](https://hetosoft.github.io/documentacao-solnet/Financeiro/): índice da seção.
+- [Formas de Pagamento](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_formas_pagamento/): cadastro de formas de pagamento (dinheiro, cartão, boleto, PIX etc.).
+- [Condições de Pagamento](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_condicoes_pagamento/): cadastro de prazos e parcelamentos.
+- [Bancos](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_bancos/): cadastro de bancos.
+- [Agências](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_agencias/): cadastro de agências bancárias.
+- [Contas Correntes](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_contas_correntes/): cadastro de contas correntes da empresa.
+- [Portadores](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_portadores/): cadastro de portadores de títulos.
+- [Caixa Geral](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_caixa_geral/): cadastro/configuração de caixa geral.
+- [Pagar e Receber](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_pagar_e_receber/): lançamento e gestão de contas a pagar e a receber.
+- [Caixa Geral — operação](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_caixa_geral_op/): operação diária do caixa geral.
+- [Tipos de Contas PR](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_tipos_contas_pr/): cadastro de tipos de contas a pagar/receber.
+- [Quitação](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_quitacao/): processo de quitação de títulos.
+- [Plano de Contas](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_plano_de_contas/): cadastro do plano de contas contábil/gerencial.
+- [Centros de Custos](https://hetosoft.github.io/documentacao-solnet/Financeiro/documentacao_centros_de_custos/): cadastro de centros de custos.
+
+## Fiscal
+
+- [Visão geral do módulo Fiscal](https://hetosoft.github.io/documentacao-solnet/Fiscal/): índice da seção.
+- [Reforma Tributária — Documentação](https://hetosoft.github.io/documentacao-solnet/Fiscal/documentacao_reforma_tributaria/): referência completa da Reforma Tributária (CBS/IBS).
+- [Reforma Tributária — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Fiscal/guia_rapido_reforma_tributaria/): cheat-sheet operacional da Reforma Tributária.
+- [Reforma Tributária — FAQ](https://hetosoft.github.io/documentacao-solnet/Fiscal/faq_reforma_tributaria/): perguntas frequentes sobre Reforma Tributária.
+- [Manifestação do Destinatário — Documentação](https://hetosoft.github.io/documentacao-solnet/Fiscal/documentacao_manifestacao_destinatario/): referência completa da Manifestação do Destinatário (tela 401).
+- [Manifestação do Destinatário — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Fiscal/guia_rapido_manifestacao_destinatario/): cheat-sheet operacional da Manifestação.
+- [Manifestação do Destinatário — FAQ](https://hetosoft.github.io/documentacao-solnet/Fiscal/faq_manifestacao_destinatario/): perguntas frequentes sobre Manifestação.
+
+## Movimentação
+
+- [Visão geral do módulo Movimentação](https://hetosoft.github.io/documentacao-solnet/Movimentacao/): índice da seção.
+- [Movimentos — visão geral](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Movimentos/): índice dos documentos de Movimentos.
+- [Movimentos — referência](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Movimentos/documentacao_movimentos/): referência transversal de Movimentos (201/202/203).
+- [Movimentos de Compras](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Movimentos/movimentos_de_compras/): tela Compras (código 201).
+- [Movimentos de Vendas](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Movimentos/movimentos_de_vendas/): tela Vendas (código 202).
+- [Outros Movimentos](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Movimentos/outros_movimentos/): tela Outros (código 203) — devoluções, transferências.
+- [Movimentos — FAQ](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Movimentos/faq/): perguntas frequentes sobre Movimentos.
+- [Importar XML — Documentação](https://hetosoft.github.io/documentacao-solnet/Movimentacao/documentacao_importar_xml/): tela Importar XML (código 204).
+- [Importar XML — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Movimentacao/guia_rapido_importar_xml/): cheat-sheet operacional do Importar XML.
+- [Importar XML — FAQ](https://hetosoft.github.io/documentacao-solnet/Movimentacao/faq_importar_xml/): perguntas frequentes sobre Importar XML.
+- [Conferência de XML](https://hetosoft.github.io/documentacao-solnet/Movimentacao/documentacao_conferencia_xml/): aba de conferência de XML dentro do Importar XML.
+- [Tipos de Movimento — visão geral](https://hetosoft.github.io/documentacao-solnet/Movimentacao/TiposDeMovimento/): índice dos documentos de Tipos de Movimento.
+- [Tipos de Movimento — Documentação](https://hetosoft.github.io/documentacao-solnet/Movimentacao/TiposDeMovimento/documentacao_tipos_de_movimento/): cadastro de Tipos de Movimento.
+- [Tipos de Movimento — Referência de configurações](https://hetosoft.github.io/documentacao-solnet/Movimentacao/TiposDeMovimento/referencia_configuracoes_tipos_movimento/): referência detalhada das flags/configurações.
+- [Tipos de Movimento — FAQ](https://hetosoft.github.io/documentacao-solnet/Movimentacao/TiposDeMovimento/faq/): perguntas frequentes sobre Tipos de Movimento.
+- [Locais de Estoque](https://hetosoft.github.io/documentacao-solnet/Movimentacao/documentacao_locais_de_estoque/): cadastro de locais físicos de estoque.
+- [Transações de Estoque](https://hetosoft.github.io/documentacao-solnet/Movimentacao/documentacao_transacoes_de_estoque/): transações que movimentam estoque.
+- [Saldo Estoque](https://hetosoft.github.io/documentacao-solnet/Movimentacao/documentacao_saldo_estoque/): consulta de saldo de estoque.
+- [Produção — visão geral](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Producao/): índice da subárea de Produção.
+- [Fórmula de Produtos](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Producao/documentacao_formulas_de_produtos/): cadastro de fórmulas (lista de insumos).
+- [Produção de Produtos](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Producao/documentacao_producao_de_produtos/): registro de produção a partir de fórmulas.
+- [Tabela de Preço](https://hetosoft.github.io/documentacao-solnet/Movimentacao/documentacao_tabela_de_preco/): cadastro de tabelas de preço.
+- [Regras Cashback](https://hetosoft.github.io/documentacao-solnet/Movimentacao/documentacao_regras_cashback/): configuração de regras de cashback no PDV.
+- [Ajuste de Estoque](https://hetosoft.github.io/documentacao-solnet/Movimentacao/documentacao_ajuste_de_estoque/): ajustes manuais de saldo de estoque.
+- [Histórico de Movimentações](https://hetosoft.github.io/documentacao-solnet/Movimentacao/documentacao_historico_de_movimentacoes/): consulta de histórico de movimentações.
+- [Histórico de Produtos](https://hetosoft.github.io/documentacao-solnet/Movimentacao/documentacao_historico_de_produtos/): consulta de histórico por produto.
+
+## RH
+
+- [Visão geral do módulo RH](https://hetosoft.github.io/documentacao-solnet/RH/): índice da seção.
+- [Folha de Pagamento](https://hetosoft.github.io/documentacao-solnet/RH/documentacao_folha_de_pagamento/): referência completa da folha de pagamento.
+- [Processo Mensal](https://hetosoft.github.io/documentacao-solnet/RH/processo_mensal/): roteiro mensal do RH.
+- [Guia Rápido — RH](https://hetosoft.github.io/documentacao-solnet/RH/guia_rapido/): cheat-sheet operacional do RH.
+- [FAQ — RH](https://hetosoft.github.io/documentacao-solnet/RH/faq/): perguntas frequentes do RH.
+
+## API Externa
+
+- [Visão geral do módulo API Externa](https://hetosoft.github.io/documentacao-solnet/ApiExterna/): índice da seção.
+- [Documentação API Externa](https://hetosoft.github.io/documentacao-solnet/ApiExterna/documentacao_api_externa/): referência completa da API Externa (credenciais, permissões, limites).
+- [Guia Rápido — API Externa](https://hetosoft.github.io/documentacao-solnet/ApiExterna/guia_rapido/): cheat-sheet de configuração da API Externa.
+- [FAQ — API Externa](https://hetosoft.github.io/documentacao-solnet/ApiExterna/faq/): perguntas frequentes sobre API Externa.
+
+## Agronômico
+
+- [Visão geral do módulo Agronômico](https://hetosoft.github.io/documentacao-solnet/Agronomico/): índice da seção.
+- [Receituário Agronômico](https://hetosoft.github.io/documentacao-solnet/Agronomico/documentacao_receituario_agronomico/): tela Receituário Agronômico (código 142).
+- [Guia Rápido — Agronômico](https://hetosoft.github.io/documentacao-solnet/Agronomico/guia_rapido/): cheat-sheet operacional do módulo.
+- [FAQ — Agronômico](https://hetosoft.github.io/documentacao-solnet/Agronomico/faq/): perguntas frequentes do módulo.
+
+## Self Checkout
+
+- [Visão geral do módulo Self Checkout](https://hetosoft.github.io/documentacao-solnet/SelfCheckout/): índice da seção.
+- [Documentação de Instalação](https://hetosoft.github.io/documentacao-solnet/SelfCheckout/documentacao_instalacao/): instalação do Self Checkout (inclui Toledo Prix R7).
+- [Guia Rápido — Self Checkout](https://hetosoft.github.io/documentacao-solnet/SelfCheckout/guia_rapido/): cheat-sheet operacional.
+- [FAQ — Self Checkout](https://hetosoft.github.io/documentacao-solnet/SelfCheckout/faq/): perguntas frequentes.
+
+## Integrações
+
+- [Visão geral do módulo Integrações](https://hetosoft.github.io/documentacao-solnet/Integracoes/): índice da seção.
+- [iFood — visão geral](https://hetosoft.github.io/documentacao-solnet/Integracoes/iFood/): índice da integração iFood.
+- [iFood — Pedidos (Documentação)](https://hetosoft.github.io/documentacao-solnet/Integracoes/iFood/documentacao_pedidos_ifood/): referência completa da integração de Pedidos iFood.
+- [iFood — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Integracoes/iFood/guia_rapido/): cheat-sheet operacional da integração iFood.
+- [iFood — FAQ](https://hetosoft.github.io/documentacao-solnet/Integracoes/iFood/faq/): perguntas frequentes sobre integração iFood.
