@@ -140,10 +140,10 @@ E ainda:
 | Tela | Código F1 | Quando ir lá |
 |------|-----------|--------------|
 | `Manifestação do Destinatário` | `401` | Para ver/manifestar NF-e antes de importar. |
-| `Cadastro de Produtos` | `40` | Vincular ou cadastrar produto do item do XML. |
-| `Cadastro de Pessoas` | `30` | Cadastrar fornecedor novo. |
-| `Movimentos de Entrada` | `203` | Onde a entrada gerada pelo `Lançar NF-e` é registrada. |
-| `Cadastro de Empresas` | `100` | Habilitar/desabilitar `Tipo Conferência XML` por loja. |
+| `Cadastro de Produtos` | `32` | Vincular ou cadastrar produto do item do XML. |
+| `Cadastro de Pessoas` | `5` | Cadastrar fornecedor novo. |
+| `Movimentos de Compras` | `201` | Onde a entrada gerada pelo `Lançar NF-e` é registrada. |
+| `Cadastro de Empresas` | `1` | Habilitar/desabilitar `Tipo Conferência XML` por loja. |
 
 ---
 

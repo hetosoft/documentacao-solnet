@@ -178,7 +178,7 @@ Se o XML não estiver no banco (caso raro de carga manual sem persistência), o 
 
 ### ❓ Onde vejo se a conferência está ativa para minha empresa?
 
-No `Cadastro de Empresas` (código `100`), há a configuração `Tipo Conferência XML`. Quando habilitada, a aba `Conferência` aparece dentro do `Importar XML`. Veja o documento dedicado: [Conferência de XML](documentacao_conferencia_xml.md).
+No `Cadastro de Empresas` (código `1`), há a configuração `Tipo Conferência XML`. Quando habilitada, a aba `Conferência` aparece dentro do `Importar XML`. Veja o documento dedicado: [Conferência de XML](documentacao_conferencia_xml.md).
 
 > ⚠️ **Acesso de suporte necessário:** alterações no `Cadastro de Empresas` requerem permissão de acesso de suporte. Entre em contato com o suporte Hetosoft antes de realizar qualquer modificação nesta tela.
 

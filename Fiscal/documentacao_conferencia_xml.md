@@ -32,7 +32,7 @@ Quando habilitada na loja, a tela [Importar XML NF-e](documentacao_importar_xml.
 
 A conferência é **configurada por loja** (não é um parâmetro global do sistema). A configuração fica no `Cadastro de Empresas`:
 
-1. Pressione F1 e abra o `Cadastro de Empresas` (código `100`).
+1. Pressione F1 e abra o `Cadastro de Empresas` (código `1`).
 2. Localize a loja desejada no grid de busca.
 3. Abra o registro e localize o campo **`Tipo Conferência XML`** (ou rótulo equivalente).
 4. Habilite e grave.

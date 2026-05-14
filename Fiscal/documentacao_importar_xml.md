@@ -177,7 +177,7 @@ Sempre que uma das condições abaixo é verdadeira, o vínculo automático falh
 Nesses casos, a coluna `Descrição` do item aparece em branco. O usuário precisa **abrir o item e fazer a vinculação manual**:
 
 1. **Duplo clique** sobre a linha do item (ou pressione Enter sobre ela).
-2. A tela `Cadastro de Produtos` (código `40` na pesquisa F1) abre **em modo pesquisa**, já filtrada para mostrar produtos. A descrição que aparece no topo é o nome do produto **no fornecedor** (o que veio no XML), para ajudar a identificar.
+2. A tela `Cadastro de Produtos` (código `32` na pesquisa F1) abre **em modo pesquisa**, já filtrada para mostrar produtos. A descrição que aparece no topo é o nome do produto **no fornecedor** (o que veio no XML), para ajudar a identificar.
 3. Localize o produto correspondente no cadastro e confirme.
 4. O Sol.NET grava o vínculo: a partir daí, **qualquer próxima compra desse mesmo produto com esse fornecedor é vinculada automaticamente** (pelo mesmo `Cód. Forn.`).
 
@@ -216,7 +216,7 @@ Depois que **todos os itens estão vinculados** e o cabeçalho está correto, o 
 Para a maioria absoluta dos casos, este é o botão a usar.
 
 - **Quando usar**: NF-e de **entrada** vinda de fornecedor (mercadoria recebida da forma como a nota descreve, parcelas a pagar como vieram no XML).
-- **O que acontece**: o Sol.NET abre a tela `Movimentos de Entrada` (código `203` na pesquisa F1) já preenchida com cabeçalho, itens, tributos e financeiro do XML. O usuário ajusta o que for necessário (tipo de movimento, conta de financeiro, observações) e grava — gerando estoque e contas a pagar.
+- **O que acontece**: o Sol.NET abre a tela `Movimentos de Compras` (código `201` na pesquisa F1) já preenchida com cabeçalho, itens, tributos e financeiro do XML. O usuário ajusta o que for necessário (tipo de movimento, conta de financeiro, observações) e grava — gerando estoque e contas a pagar.
 - Após gravar, o XML passa para status `Importado` e ganha vínculo com o `ID_MOVIMENTO` criado.
 
 ### `Lançar Parcial`
@@ -265,7 +265,7 @@ Abrir o `Importar XML` diretamente (F1 → `204` → `Novo`) é um **caminho exc
 5. A tela `Importar XML NF-e` abre em inclusão, com todas as abas preenchidas a partir do XML armazenado.
 6. Aba `Itens`: **todos os itens devem aparecer vinculados** (descrição preenchida) porque o vínculo foi gravado em compras anteriores. Confira valores e quantidade.
 7. Aba `Financeiro`: confira as parcelas que vieram do XML.
-8. Clique em `Lançar NF-e`. A tela `Movimentos de Entrada` abre com tudo preenchido.
+8. Clique em `Lançar NF-e`. A tela `Movimentos de Compras` abre com tudo preenchido.
 9. Ajuste o `Tipo de Movimento` se necessário e grave.
 10. O XML passa para status `Importado` e o vínculo aparece nas colunas `M-` da Manifestação.
 
