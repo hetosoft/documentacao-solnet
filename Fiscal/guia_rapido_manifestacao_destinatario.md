@@ -4,6 +4,8 @@
 
 Cartão de referência para a rotina diária de manifestação de NF-e e CT-e na tela `Manifestação do Destinatário` (código **`401`** na pesquisa F1). Use junto com a [documentação completa](documentacao_manifestacao_destinatario.md) para entender cada conceito a fundo.
 
+> 🤖 **Download é automático**: a tela apenas **lista** as notas. Quem baixa da SEFAZ é o aplicativo **Sol.NET MonitorNFCe** (background, ciclo padrão **~1 hora**). Se a nota recente não está na lista, aguarde o próximo ciclo. **Não use** os botões `NF-e`/`CT-e` à esquerda da faixa — estão descontinuados.
+
 ---
 
 ## ⚡ Os quatro botões de manifestação
@@ -24,12 +26,12 @@ Cartão de referência para a rotina diária de manifestação de NF-e e CT-e na
 - [ ] Abrir a tela: **F1 → `401` → Enter**
 - [ ] Selecionar a `Descrição da Loja` correta
 - [ ] Confirmar `Modelo = NF-e` (ou `CT-e`)
-- [ ] Clicar em **`NF-e`** (ou **`CT-e`**) para baixar novas notas
-- [ ] Filtrar `Situação da Manifestação = Sem manifestação`
+- [ ] Filtrar `Situação da Manifestação = Sem manifestação` e clicar em **`Buscar`**
 - [ ] Selecionar tudo (botão direito → `Selecionar Todos`)
 - [ ] Clicar em **`Ciência(4)`** para liberar o XML
 - [ ] Conferir cada nota: confirmar, desconhecer ou marcar não realizada
 - [ ] Verificar coluna `M-Número NF-e` para identificar notas confirmadas que ainda não foram lançadas
+- [ ] Para lançar uma entrada a partir do XML, selecione a nota e clique no botão **`NF-e`** (ou **`CT-e`**) localizado **entre `Zerar NSU` e `Confirmar`**
 
 ---
 
@@ -86,15 +88,24 @@ Cartão de referência para a rotina diária de manifestação de NF-e e CT-e na
 
 ---
 
-## 🛠️ Botões de manutenção
+## 🛠️ Botões de consulta e manutenção
 
 | Botão | Quando usar |
 |-------|-------------|
 | `Status` | Verificar situação atual de uma nota na SEFAZ (cancelamento posterior, divergência) |
 | `(Web)` | Abrir a nota no portal da SEFAZ para conferência visual |
-| `Parar` | Interromper download/manifestação em andamento que travou |
-| `Zerar NSU NF-e` / `Zerar NSU CT-e` | Forçar a SEFAZ a reenviar **tudo desde o início**. **Pesado** — só sob orientação |
+| `Parar` | Interromper manifestação em lote em andamento |
+| `Zerar NSU NF-e` | Reseta o contador NSU da loja para que o Monitor reconsulte notas dos últimos 180 dias. **Risco SEFAZ** (suspensão de manifesto, multa) — só sob orientação direta. Não funciona para CT-e |
 | `Relatórios` | Listagens detalhadas das manifestações realizadas |
+
+## 🧩 Os dois pares `NF-e` / `CT-e`
+
+A faixa tem **dois botões com o mesmo rótulo** `NF-e` (e idem para `CT-e`). Posição importa:
+
+| Posição | Botões | Função |
+|---------|--------|--------|
+| **À esquerda** da faixa | `NF-e`, `CT-e` | **Descontinuados.** Antigos botões de download em massa. Exibem aviso "Função Automatizada" e bloqueiam. **Não usar.** |
+| **Entre `Zerar NSU` e `Confirmar`** | `NF-e`, `CT-e` | **Iniciam a importação/lançamento** do documento selecionado como entrada na Movimentação |
 
 ---
 
@@ -102,8 +113,8 @@ Cartão de referência para a rotina diária de manifestação de NF-e e CT-e na
 
 | Sintoma | Verificar primeiro |
 |---------|-------------------|
-| "A nota não aparece" | Loja correta? Filtros limpos? Clicou em `NF-e` para baixar? |
-| "Travou no download" | Conexão de internet, certificado digital, clicar `Parar` e tentar de novo |
+| "A nota não aparece" | Loja correta? Filtros limpos? Nota emitida há menos de 1 hora? Sol.NET MonitorNFCe rodando no servidor? |
+| "Monitor não está baixando" | MonitorNFCe aberto? Internet do servidor? Certificado digital válido? Empresa não está em suspensão de manifesto? |
 | "Manifestei a nota errada" | Não dá pra reverter — manifestar a correta e orientar o cliente; histórico fica |
 | "Não consigo lançar a entrada" | Conferir primeiro se a nota tem `Ciência(4)` ou `Confirmar(1)` — sem isso o XML não está liberado |
 | "Diz `Já Manifestada` mas eu nunca manifestei" | Tentativa de re-manifestar a mesma nota, ou manifestação feita antes por outro sistema/instalação ou pelo portal SEFAZ. Manifestação é única por CNPJ na SEFAZ |
@@ -116,11 +127,12 @@ Cartão de referência para a rotina diária de manifestação de NF-e e CT-e na
 - ✅ Conferir o CNPJ da loja **antes** de manifestar em lote
 - ✅ Dar `Ciência(4)` em massa pela manhã, conferir manualmente ao longo do dia
 - ✅ Usar `Mostrar Só Selecionados` para revisar antes de clicar no botão de manifestação
-- ❌ **Não** clicar em `Zerar NSU` sem motivo concreto — gera processamento enorme
+- ❌ **Não** clicar nos botões `NF-e`/`CT-e` à esquerda da faixa — descontinuados, podem causar suspensão SEFAZ
+- ❌ **Não** clicar em `Zerar NSU` sem motivo concreto — risco SEFAZ
 - ❌ **Não** confundir `Canc.Manual` com cancelamento real — é status interno
 
 ---
 
 **Última atualização**: Maio de 2026  
-**Versão**: 1.0  
+**Versão**: 1.1  
 **Público-alvo**: Equipe de suporte Sol.NET

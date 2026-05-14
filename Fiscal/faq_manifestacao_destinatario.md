@@ -48,9 +48,12 @@ Verifique nesta ordem:
 1. A `Descrição da Loja` filtrada é a loja que receberia a nota?
 2. O período em `Data` cobre a data de emissão da NF-e?
 3. Os outros filtros (`Situação da NF-e`, `Situação da Manifestação`, `Modelo`) estão restritivos demais?
-4. Clicou em **`NF-e`** (ou **`CT-e`**) para forçar o download das novas?
+4. A nota foi emitida há mais de **1 hora**? O download da SEFAZ é feito pelo aplicativo **Sol.NET MonitorNFCe** em ciclos (padrão **59 minutos**); notas muito recentes podem ainda não ter sido baixadas.
+5. O `Sol.NET MonitorNFCe` está rodando no servidor?
 
 Se nada disso resolveu, peça a `Chave de Acesso` ao fornecedor e use **`(Web)`** para conferir o status diretamente no portal da SEFAZ.
+
+> ⚠️ **Não tente** clicar nos botões `NF-e` / `CT-e` à esquerda da faixa para forçar o download — estão descontinuados e exibem aviso bloqueando a operação. Consultas em excesso à SEFAZ podem causar suspensão do manifesto da empresa.
 
 ### ❓ Como manifestar várias notas de uma vez?
 
@@ -58,6 +61,15 @@ Se nada disso resolveu, peça a `Chave de Acesso` ao fornecedor e use **`(Web)`*
 2. Botão direito no grid → `Selecionar Todos` (ou marcar manualmente as caixas `Sel.`).
 3. Opcional: `Mostrar Só Selecionados` para revisar antes.
 4. Clicar no botão da manifestação desejada (`Confirmar(1)`, `Ciência(4)`, etc.).
+
+### ❓ Existem dois botões `NF-e` na tela — qual é qual?
+
+Sim, e a posição na faixa define a função:
+
+- **`NF-e` à esquerda da faixa** — **descontinuado**. Era o antigo botão de download em massa. Hoje exibe o aviso "Essa Função foi Automatizada" e bloqueia a operação. **Não usar.**
+- **`NF-e` entre `Zerar NSU` e `Confirmar`** — ativo. Inicia o **lançamento da NF-e selecionada** como entrada na Movimentação, usando o XML obtido junto à SEFAZ.
+
+O mesmo vale para os dois botões `CT-e`. O da esquerda é o descontinuado; o que aparece junto da faixa central de ações é o que lança uma CT-e específica (uma por vez).
 
 ### ❓ Como cancelar uma manifestação enviada por engano?
 
@@ -90,11 +102,23 @@ Tecnicamente não, mas o XML só fica liberado para download a partir da `Ciênc
 
 ---
 
-## NSU e download
+## Download das notas, NSU e Monitor
+
+### ❓ Quem baixa as notas da SEFAZ?
+
+**Não é a tela `Manifestação do Destinatário`** — quem baixa é o aplicativo **Sol.NET MonitorNFCe**, que roda em background no servidor. A tela apenas **lista** o que já foi baixado e permite manifestar.
+
+### ❓ De quanto em quanto tempo o Monitor consulta a SEFAZ?
+
+A periodicidade é configurável. **O valor padrão é 59 minutos** (na prática, ~1 vez por hora) para a consulta à SEFAZ de novas notas para Manifestação. O ciclo principal interno do Monitor é de 5 minutos, e a rotina de Manifestação roda em ~12 desses ciclos.
+
+### ❓ Por que os botões antigos de download (`NF-e` / `CT-e` à esquerda) foram desativados?
+
+Para evitar **alto consumo de dados** com consultas repetidas à SEFAZ. Quando o download era manual, era comum o usuário clicar repetidas vezes para ver se "veio mais alguma" — esse padrão pode causar **suspensão do manifesto da empresa por até 24 horas** e, em casos mais graves, **suspensão da Inscrição Estadual e aplicação de multa**. Hoje o Monitor faz o download em ritmo controlado e os botões antigos só exibem o aviso explicativo.
 
 ### ❓ O que é o "NSU"?
 
-NSU é o **Número Sequencial Único** que a SEFAZ usa para controlar quais documentos cada CNPJ já recebeu. Cada NF-e ou CT-e recebe um NSU. O Sol.NET guarda o último NSU baixado e, na próxima consulta, pede só os números maiores — para não baixar tudo de novo.
+NSU é o **Número Sequencial Único** que a SEFAZ usa para controlar quais documentos cada CNPJ já recebeu. Cada NF-e ou CT-e recebe um NSU. O Sol.NET guarda o último NSU baixado por empresa e, no próximo ciclo do Monitor, pede só os números maiores — para não baixar tudo de novo.
 
 ### ❓ Quando faz sentido `Zerar NSU`?
 
@@ -104,20 +128,20 @@ Apenas em situações específicas:
 - Suspeita de notas perdidas em sincronizações anteriores.
 - Auditoria histórica completa solicitada pelo contador.
 
-Fora desses casos, **evite** — pode processar centenas de milhares de notas e levar horas.
+Fora desses casos, **evite** — o Monitor passa a reconsultar notas dos últimos 180 dias, com risco real de suspensão na SEFAZ (o sistema mostra aviso explícito ao clicar).
 
-### ❓ Posso zerar NSU de NF-e e CT-e ao mesmo tempo?
+### ❓ Posso zerar NSU de CT-e pela tela?
 
-Sim, mas faça **um modelo de cada vez** para que a tela termine um processamento antes de iniciar o outro. Os contadores são independentes.
+Não. O botão **`Zerar NSU NF-e`** funciona apenas para NF-e; para CT-e o sistema responde *"Não Permitido para CT-e!"*.
 
-### ❓ A tela travou durante o download. O que fazer?
+### ❓ O Monitor parou de baixar notas. O que verificar?
 
-1. Clicar em **`Parar`** para interromper.
-2. Fechar e reabrir a tela.
-3. Verificar conexão de internet e validade do certificado digital.
-4. Tentar novamente.
+1. Confirmar que o aplicativo **Sol.NET MonitorNFCe** está aberto e rodando no servidor.
+2. Verificar a conexão de internet do servidor com a SEFAZ.
+3. Conferir validade do **certificado digital** da empresa — sem ele a SEFAZ não autoriza consulta.
+4. Verificar se a empresa não está em **suspensão de manifesto** (cliente fez consultas demais antes da automatização, ou o Monitor está em estado anormal).
 
-Se persistir, abra a tela `Status` (botão da própria tela de Manifestação) para testar se a SEFAZ está respondendo.
+O botão `Parar` da tela **não para o download** — para apenas uma manifestação em lote em andamento.
 
 ---
 
@@ -172,5 +196,5 @@ Pode haver dias entre uma e outra (nota baixada hoje, manifestada após conferê
 ---
 
 **Última atualização**: Maio de 2026  
-**Versão**: 1.0  
+**Versão**: 1.1  
 **Público-alvo**: Equipe de suporte Sol.NET

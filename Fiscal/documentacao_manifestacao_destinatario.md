@@ -33,6 +33,19 @@ A tela é aberta pela pesquisa universal:
 
 ---
 
+## 🤖 Como as notas chegam à tela
+
+O download das NF-e e CT-e disponíveis na SEFAZ **não é feito por esta tela** — é feito por uma **aplicação à parte que roda em background**, o **Sol.NET MonitorNFCe**. O Monitor consulta a SEFAZ em intervalos configuráveis e grava as notas encontradas no banco; a tela `Manifestação do Destinatário` apenas **lista** o que o Monitor já trouxe.
+
+- **Periodicidade padrão**: o Monitor consulta a SEFAZ por novas notas para Manifestação a cada **59 minutos**. Esse valor é configurável nas configurações do Sincronizador.
+- **Por que não baixar manualmente**: a SEFAZ limita o volume de consultas por CNPJ. Consultas em excesso podem causar **suspensão do manifesto da empresa por até 24 horas** e, em casos mais graves, **suspensão da Inscrição Estadual e aplicação de multa**.
+
+Se uma nota recente não está na lista, o caminho normal é **aguardar o próximo ciclo do Monitor** (no máximo ~1 hora). Se mesmo assim não aparecer, verifique se o Monitor está rodando no servidor — não tente forçar o download pela tela.
+
+> ⚠️ Os botões `NF-e` e `CT-e` à **esquerda** da faixa de botões existem por compatibilidade, mas estão **descontinuados**. Ao serem clicados exibem o aviso *"Essa Função foi Automatizada"* e bloqueiam a sincronização manual. **Não devem ser usados.**
+
+---
+
 ## 🔄 Os quatro tipos de manifestação
 
 Cada NF-e pode receber **uma** das manifestações abaixo. O código entre parênteses é o número que aparece nos botões da tela e nos relatórios.
@@ -114,7 +127,7 @@ A grid do meio da tela exibe uma linha por documento. As colunas mais importante
 
 ## 🖱️ Botões e ações
 
-A faixa de botões na parte inferior reúne as ações que enviam manifestação ou consultam a SEFAZ.
+A faixa de botões na parte inferior reúne as ações disponíveis. **Atenção**: existem dois pares de botões com os mesmos rótulos (`NF-e` e `CT-e`), com funções diferentes — a posição na faixa indica para que servem.
 
 ### Ações de manifestação
 
@@ -125,17 +138,25 @@ A faixa de botões na parte inferior reúne as ações que enviam manifestação
 
 A manifestação pode ser feita uma a uma ou em **lote**, marcando várias linhas em `Sel.` antes de clicar no botão.
 
-### Consulta e download
+### Importação do documento selecionado (entre `Zerar NSU` e `Confirmar`)
 
-- **`NF-e`** (canto esquerdo) — baixa da SEFAZ as **novas NF-e** disponíveis para a loja selecionada
-- **`CT-e`** — mesmo procedimento, mas para conhecimentos de transporte
-- **`Status`** — consulta a situação atual do documento marcado na SEFAZ (útil para verificar se houve cancelamento posterior pelo emitente)
+Esses botões iniciam o **lançamento da nota selecionada como entrada** na Movimentação, a partir do XML obtido junto à SEFAZ.
+
+- **`NF-e`** — inicia a importação/lançamento da **NF-e** selecionada
+- **`CT-e`** — mesma operação, para um **CT-e** específico (uma nota por vez)
+
+Pré-requisito: a nota precisa estar com **Ciência** ou **Confirmação** já enviada — sem isso a SEFAZ não libera o XML.
+
+### Consulta e auditoria
+
+- **`Status`** — consulta a situação atual do documento selecionado na SEFAZ (útil para verificar cancelamento posterior pelo emitente)
 - **`(Web)`** — abre o **portal da SEFAZ** no navegador para consulta visual da nota
 
 ### Controle e manutenção
 
-- **`Parar`** — interrompe um processamento em andamento (download em massa, manifestação em lote)
-- **`Zerar NSU NF-e`** / **`Zerar NSU CT-e`** — zera o **contador NSU** da loja para que a próxima busca traga **todas as notas desde o início** (não apenas as novas). Use somente sob orientação — é uma operação pesada e geralmente desnecessária no dia a dia
+- **`NF-e` / `CT-e` à esquerda da faixa** — **descontinuados**. Eram os antigos botões de download em massa. Hoje exibem o aviso *"Essa Função foi Automatizada"* e bloqueiam a sincronização manual (o download é feito pelo Sol.NET MonitorNFCe — ver [Como as notas chegam à tela](#-como-as-notas-chegam-à-tela)). **Não devem ser usados.**
+- **`Parar`** — interrompe um processamento de manifestação em andamento (por exemplo, manifestação em lote pesada que precisa ser cancelada)
+- **`Zerar NSU NF-e`** — zera o **contador NSU** da loja para que o Monitor reconsulte **todas as notas dos últimos 180 dias**. Operação pesada — o sistema exibe aviso explícito sobre risco SEFAZ (suspensão de manifesto, multa). Use **somente sob orientação direta**. Funciona apenas para NF-e (CT-e exibe `Não Permitido para CT-e!`).
 - **`Relatórios`** — abre listagens detalhadas das manifestações realizadas
 - **`Sair`** — fecha a tela
 
@@ -193,11 +214,13 @@ Essas opções existem para casos atípicos em que o status no Sol.NET diverge d
 1. Abra a tela `Manifestação do Destinatário` (F1 → `401`).
 2. Em `Descrição da Loja`, selecione a loja que recebeu a mercadoria.
 3. Confirme `Modelo = NF-e`.
-4. Clique em **`NF-e`** para baixar novas notas da SEFAZ.
+4. Clique em **`Buscar`** para atualizar a lista com o que o Monitor já trouxe.
 5. Localize a nota do fornecedor na lista (use o campo `Fornecedor` + `Contém` se preferir buscar).
 6. Marque a caixa `Sel.` na linha.
 7. Clique em **`Confirmar(1)`**.
 8. A coluna `Situação da Manifestação` passa para `Confirmada` e a `Data Manifestação` é preenchida.
+
+> Se a nota recente ainda não aparece, aguarde o próximo ciclo do Sol.NET MonitorNFCe (~1 hora). Não tente forçar pelos botões `NF-e`/`CT-e` à esquerda — estão descontinuados.
 
 ### Exemplo 2 — Receber ciência em lote no início do dia
 
@@ -208,7 +231,7 @@ Essas opções existem para casos atípicos em que o status no Sol.NET diverge d
 5. Clique em **`Ciência(4)`**.
 6. Aguarde o processamento. Depois, retorne aos casos um a um para Confirmar, Desconhecer ou marcar Não Realizada.
 
-> Esse é o fluxo mais comum: dar Ciência em massa para liberar o download dos XMLs e depois tratar cada nota individualmente.
+> Esse é o fluxo mais comum: dar Ciência em massa para liberar o XML das notas e depois tratar cada uma individualmente.
 
 ### Exemplo 3 — Recusar uma nota emitida por engano
 
@@ -234,8 +257,9 @@ Essas opções existem para casos atípicos em que o status no Sol.NET diverge d
 
 1. Confirmar que a `Descrição da Loja` selecionada é a loja que receberia a nota.
 2. Limpar filtros de data — pode ser que a emissão esteja fora do intervalo padrão.
-3. Clicar em **`NF-e`** para forçar download das novas.
-4. Se ainda não aparecer, peça a `Chave de Acesso` ao fornecedor e use **`(Web)`** para confirmar na SEFAZ que a nota foi mesmo autorizada contra esse CNPJ.
+3. Conferir há quanto tempo a nota foi emitida — o Monitor consulta a SEFAZ a cada **~1 hora**; uma nota emitida nos últimos minutos pode simplesmente ainda não ter sido baixada.
+4. Verificar com o responsável do servidor se o **Sol.NET MonitorNFCe** está rodando.
+5. Se mesmo após o próximo ciclo a nota não aparecer, peça a `Chave de Acesso` ao fornecedor e use **`(Web)`** para confirmar na SEFAZ que a nota foi mesmo autorizada contra esse CNPJ.
 
 ### ❓ Manifestar pode ser desfeito?
 
@@ -258,9 +282,16 @@ Em qualquer dos casos, não é possível sobrescrever — a manifestação exist
 
 É um status **exclusivo do Sol.NET**, atribuído manualmente pelo botão direito (`Alterar Situação da NF-e (Cancelado Manual)`). Para a SEFAZ a nota continua no estado real (geralmente `Autorizado`). Sirva como sinal de que o cliente fez uma marcação local — pergunte por que antes de mexer.
 
-### ❓ A tela está "travada" baixando notas e não responde.
+### ❓ O Monitor parou de baixar notas — o que verificar?
 
-Clique no botão **`Parar`** para interromper o processamento. Em seguida, feche e reabra a tela. Se o problema persistir, verifique a conexão com a internet e o certificado digital da empresa — sem certificado válido a SEFAZ não autoriza o download.
+A tela em si **não baixa notas** — quem baixa é o aplicativo **Sol.NET MonitorNFCe** que roda no servidor. Quando notas param de chegar:
+
+1. Confirmar com o responsável que o `Sol.NET MonitorNFCe` está aberto e rodando no servidor.
+2. Verificar a conexão de internet do servidor com a SEFAZ.
+3. Conferir a validade do **certificado digital** da empresa — sem certificado válido a SEFAZ não autoriza a consulta.
+4. Verificar se a empresa não está em **suspensão de manifesto** (ocorre se o Monitor — ou alguém usando os botões antigos — fizer consultas em excesso).
+
+Na tela `Manifestação do Destinatário`, o botão **`Parar`** serve apenas para interromper uma manifestação em lote em andamento — não tem efeito sobre o download.
 
 ### ❓ Qual a diferença entre "Data Pesquisa" e "Data Manifestação"?
 
@@ -276,5 +307,5 @@ Sim, a mesma tela atende os dois. Basta trocar o `Modelo` para `CT-e` e usar os 
 ---
 
 **Última atualização**: Maio de 2026  
-**Versão**: 1.0  
+**Versão**: 1.1  
 **Público-alvo**: Equipe de suporte Sol.NET, usuários do módulo Fiscal
