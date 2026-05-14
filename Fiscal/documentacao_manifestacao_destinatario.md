@@ -31,8 +31,6 @@ A tela é aberta pela pesquisa universal:
 2. Digite **`401`** (código da tela) ou parte do nome **Manifestação**.
 3. Confirme para abrir a tela `Manifestação do Destinatário`.
 
-Existe também um **atalho na Central de Ações**: quando há notas aguardando manifestação, o painel `Manifesto` fica visível e abre direto esta tela ao ser clicado.
-
 ---
 
 ## 🔄 Os quatro tipos de manifestação
@@ -249,7 +247,12 @@ Manifestar mesmo assim funciona apenas para **controle interno** — o Sol.NET a
 
 ### ❓ A nota aparece como `Já Manifestada` ou `Já Negada`. Por quê?
 
-Significa que a SEFAZ **já tem uma manifestação registrada** para essa nota — provavelmente vinda de outro sistema ou de outra instalação do Sol.NET (cliente que migrou de servidor, por exemplo). Não é possível sobrescrever; a manifestação existente prevalece.
+Significa que a SEFAZ **já tem uma manifestação registrada** para essa nota. As causas mais comuns são:
+
+- O usuário tentou manifestar de novo uma nota que ele próprio já havia manifestado antes.
+- Outro sistema, outra instalação do Sol.NET ou o portal da SEFAZ registrou a manifestação anteriormente (cliente que migrou de servidor, por exemplo).
+
+Em qualquer dos casos, não é possível sobrescrever — a manifestação existente prevalece.
 
 ### ❓ A coluna `Situação da NF-e` mostra `Canc.Manual` — o que é?
 

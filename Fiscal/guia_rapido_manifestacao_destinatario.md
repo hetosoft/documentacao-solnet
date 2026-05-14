@@ -106,7 +106,7 @@ Cartão de referência para a rotina diária de manifestação de NF-e e CT-e na
 | "Travou no download" | Conexão de internet, certificado digital, clicar `Parar` e tentar de novo |
 | "Manifestei a nota errada" | Não dá pra reverter — manifestar a correta e orientar o cliente; histórico fica |
 | "Não consigo lançar a entrada" | Conferir primeiro se a nota tem `Ciência(4)` ou `Confirmar(1)` — sem isso o XML não está liberado |
-| "Diz `Já Manifestada` mas eu nunca manifestei" | Outro sistema ou outra instalação do Sol.NET fez essa manifestação. Manifestação é única por CNPJ na SEFAZ |
+| "Diz `Já Manifestada` mas eu nunca manifestei" | Tentativa de re-manifestar a mesma nota, ou manifestação feita antes por outro sistema/instalação ou pelo portal SEFAZ. Manifestação é única por CNPJ na SEFAZ |
 | "Fora do Prazo" | Aceita o registro local, mas não tem efeito legal na SEFAZ. Orientar cliente a falar com o contador |
 
 ---

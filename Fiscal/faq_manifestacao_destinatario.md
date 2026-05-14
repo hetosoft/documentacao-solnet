@@ -39,7 +39,7 @@ A Ciência é um **passo intermediário** e deve ser seguida por uma das outras 
 
 ### ❓ Como abrir a tela?
 
-Pressione **F1** em qualquer lugar do Sol.NET, digite **`401`** (ou parte do nome `Manifestação`) e confirme. Também é possível abrir pelo painel `Manifesto` da Central de Ações quando há notas pendentes.
+Pressione **F1** em qualquer lugar do Sol.NET, digite **`401`** (ou parte do nome `Manifestação`) e confirme.
 
 ### ❓ Por que a nota não aparece na lista?
 
@@ -129,7 +129,12 @@ Sim — o Sol.NET aceita o registro local. Mas a SEFAZ **não considera** a mani
 
 ### ❓ A nota apareceu como `Já Manifestada` ou `Já Negada`. O que isso significa?
 
-A SEFAZ **já tem uma manifestação registrada** para essa nota — quase sempre vinda de outro sistema, de outra instalação do Sol.NET (cliente que migrou de servidor), ou de uma manifestação feita direto no portal da SEFAZ. Não é possível sobrescrever; a manifestação existente prevalece.
+A SEFAZ **já tem uma manifestação registrada** para essa nota. As duas causas mais comuns são:
+
+- O usuário tentou manifestar de novo a mesma nota (clique repetido, manifestação em lote que pegou notas já tratadas).
+- A manifestação veio de outro sistema, de outra instalação do Sol.NET (cliente que migrou de servidor) ou foi feita direto no portal da SEFAZ.
+
+Em qualquer dos casos, **não é possível sobrescrever** — a manifestação existente prevalece. Se o cliente acha que a manifestação atual está errada, oriente-o a tratar com o fornecedor (e, se for o caso, com o contador).
 
 ### ❓ O que é `Canc.Manual` na coluna `Situação da NF-e`?
 
