@@ -8,20 +8,32 @@ Cartão de referência para a equipe de suporte durante o atendimento. Para a ex
 
 ---
 
-## ⚡ Rotina padrão de importação
+## ⚡ Rotina padrão (via Manifestação)
 
-Checklist do fluxo "carregar XML → lançar movimento":
+O caminho normal **começa na Manifestação do Destinatário**, não em `Novo` direto no `Importar XML`.
 
-1. **Abrir a tela**: F1 → `204`.
-2. **Modo de inclusão**: clique em `Novo`.
-3. **Carregar o XML**: aba `XML`, campo `Caminho` → botão de busca → selecione o `.xml`.
-4. **Conferir cabeçalho**: aba `Cabeçalho` — `Descrição da Loja`, `Fornecedor`, `Comportamento` (Entrada/Saída).
-5. **Vincular itens**: aba `Itens` — todos devem aparecer com `Descrição` preenchida. Itens em branco → duplo clique → vincular ou cadastrar.
-6. **Conferir financeiro**: aba `Financeiro` — número, vencimento e valor das parcelas.
-7. **Lançar**: clique em `Lançar NF-e` (botão padrão).
-8. **Confirmar na movimentação**: ajustar tipo de movimento e gravar.
+1. **Abrir a Manifestação**: F1 → `401`.
+2. **Localizar a NF-e** no grid (filtros por loja, fornecedor, período, chave).
+3. **Manifestar** se ainda não foi: `Confirmar(1)` ou `Ciência(4)` conforme o caso.
+4. **Clicar em `NF-e`** (botão entre `Zerar NSU` e `Confirmar`) com a linha selecionada.
+5. O `Importar XML` abre **já em inclusão** e com o XML carregado.
+6. **Conferir cabeçalho**: aba `Cabeçalho` — `Descrição da Loja`, `Fornecedor`, `Comportamento` (Entrada/Saída).
+7. **Vincular itens**: aba `Itens` — todos devem aparecer com `Descrição` preenchida. Itens em branco → duplo clique → vincular ou cadastrar.
+8. **Conferir financeiro**: aba `Financeiro` — número, vencimento e valor das parcelas.
+9. **Lançar**: clique em `Lançar NF-e` (botão padrão).
+10. **Confirmar na movimentação**: ajustar tipo de movimento e gravar.
 
 > 💡 Se a empresa tem conferência XML habilitada, ainda há uma etapa de **conferência física** antes do lançamento. Veja [Conferência de XML](documentacao_conferencia_xml.md).
+
+### Caminho alternativo: XML por arquivo
+
+Apenas quando o XML não veio pela SEFAZ (e-mail, pendrive, outra loja):
+
+1. F1 → `204` → `Novo`.
+2. Aba `XML`, grupo `Arquivo`, campo `Caminho` → botão à direita seleciona o `.xml`.
+3. Demais passos iguais ao fluxo padrão a partir do item 6.
+
+> ⚠️ O campo `Chave de Acesso` no grupo `Manifesto` **não recebe digitação para iniciar uma importação** — ele apenas mostra a chave do XML já carregado.
 
 ---
 

@@ -8,13 +8,24 @@ Perguntas frequentes sobre a tela `Importar XML NF-e` (código `204` na pesquisa
 
 ## 📥 Carregamento do XML
 
-### ❓ Onde fica o arquivo `.xml` que devo carregar?
+### ❓ Qual é o fluxo "certo" para lançar uma NF-e que chegou?
+
+**Sempre comece pela Manifestação do Destinatário** (tela `401`), não pelo `Importar XML` direto. Localize a nota no grid da Manifestação, manifeste-a se ainda não foi, e clique no botão **`NF-e`** (entre `Zerar NSU` e `Confirmar`) — a tela `Importar XML` abre automaticamente em inclusão com o XML já carregado.
+
+Abrir o `Importar XML` (F1 → `204`) e clicar em `Novo` é o **caminho excepcional**: serve apenas para XMLs que chegaram por fora da SEFAZ (e-mail, pendrive, outra loja).
+
+### ❓ E quando o XML não veio pela SEFAZ?
 
 Depende da origem:
 
-- **Veio por e-mail/anexo**: salve o `.xml` em uma pasta de fácil acesso (ex.: `Documentos/XMLs/`) e selecione no campo `Caminho`.
-- **Veio da SEFAZ pela Manifestação**: o arquivo já está armazenado no banco do Sol.NET. Use o caminho via [Manifestação do Destinatário](documentacao_manifestacao_destinatario.md) (tela `401`) — a tela `Importar XML` abre com a chave preenchida e busca o XML sozinha.
+- **Veio por e-mail/anexo**: salve o `.xml` em uma pasta de fácil acesso (ex.: `Documentos/XMLs/`) e, na tela `Importar XML` em modo `Novo`, selecione no campo `Caminho` (grupo `Arquivo`).
 - **Veio em pendrive**: copie para o disco local antes de carregar; o seletor aceita qualquer caminho válido.
+
+### ❓ Posso digitar a chave de acesso no campo `Chave de Acesso` para o sistema baixar o XML?
+
+**Não.** O campo `Chave de Acesso` dentro do grupo `Manifesto` é apenas **informativo** — ele exibe a chave do XML já carregado (vindo da Manifestação ou de um arquivo). Não há ação de "baixar XML pela chave" disparada por esse campo.
+
+O caminho para trazer um XML é sempre: ou clicar `NF-e` na Manifestação, ou selecionar o `.xml` no grupo `Arquivo`.
 
 ### ❓ Posso carregar XML de NFC-e (cupom fiscal eletrônico)?
 
@@ -146,7 +157,9 @@ Não. Quando o Sol.NET detecta que o movimento vinculado foi **excluído** ou **
 
 ### ❓ Preciso fazer a Manifestação antes de importar o XML?
 
-Legalmente, **sim**, para NF-e de terceiros emitidas contra o seu CNPJ. A `Confirmação da Operação` ou `Ciência da Emissão` precede o lançamento como entrada. Operacionalmente, o Sol.NET permite carregar um `.xml` diretamente — mas o caminho recomendado é via Manifestação, porque garante que o XML é o oficial da SEFAZ.
+**Sim, é o fluxo padrão.** Para NF-e de terceiros emitidas contra o seu CNPJ, a `Confirmação da Operação` ou `Ciência da Emissão` precede o lançamento como entrada — e o Sol.NET já entrega isso integrado: depois de manifestar, basta clicar no botão `NF-e` (entre `Zerar NSU` e `Confirmar` na tela `401`) e a importação parte do XML que a SEFAZ disponibilizou.
+
+Carregar um `.xml` diretamente pelo `Importar XML` (modo `Novo` + grupo `Arquivo`) existe como **exceção** para situações em que o XML não veio pela SEFAZ. Não substitui a manifestação.
 
 Veja [Manifestação do Destinatário](documentacao_manifestacao_destinatario.md).
 

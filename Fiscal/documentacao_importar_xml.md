@@ -75,26 +75,28 @@ Cada linha representa um XML carregado e traz, entre outras colunas: `Status`, `
 
 ## 📥 Importar um novo XML
 
-A importação começa quando o usuário entra no **modo de inclusão** (botão `Novo` da faixa padrão de operações).
+### O caminho recomendado: a partir da Manifestação do Destinatário
 
-A tela abre a sub-aba **`XML`** com dois grupos:
+A forma **padrão** de lançar a entrada de uma NF-e no Sol.NET é **não abrir a tela `Importar XML` diretamente**. O fluxo correto começa na [Manifestação do Destinatário](documentacao_manifestacao_destinatario.md) (tela `401`):
 
-- **Manifesto** — campo `Chave de Acesso` (44 dígitos). Pode ser preenchido manualmente ou vem preenchido automaticamente quando a tela é aberta pela Manifestação do Destinatário.
-- **Arquivo** — campo `Caminho` para selecionar o arquivo `.xml` no computador. O botão à direita do campo abre o seletor de arquivos; o botão à esquerda limpa o caminho.
+1. Pressione **F1** → `401` para abrir a `Manifestação do Destinatário`.
+2. Localize a NF-e no grid (filtros por loja, período, fornecedor, chave de acesso etc.).
+3. Com a linha selecionada, clique no botão **`NF-e`** (entre os botões `Zerar NSU` e `Confirmar`).
+4. O Sol.NET abre a tela `Importar XML NF-e` **já em modo de inclusão**, carrega o XML armazenado no banco (baixado pelo `Sol.NET_MonitorNFCe`) e preenche todas as abas automaticamente.
+5. Confira, vincule itens pendentes (se houver) e use `Lançar NF-e` para gerar o movimento.
 
-### Como o XML é localizado
+Esse caminho é o recomendado porque garante que o XML usado é o oficial da SEFAZ (vinculado à manifestação) e dispensa qualquer manipulação de arquivo `.xml` no disco.
 
-Há dois caminhos típicos:
+### Caminho alternativo: carregar um `.xml` de arquivo
 
-1. **Selecionar o `.xml` direto do disco**
-   - Clique no botão de busca à direita do campo `Caminho` e escolha o arquivo.
-   - Se o nome do arquivo for a própria chave de acesso (formato padrão), o campo `Chave de Acesso` é preenchido automaticamente.
-   - Confirme o lançamento (botão `Importar`) — o Sol.NET lê o XML e popula todas as abas.
+Há casos em que o XML não veio pela SEFAZ — fornecedor enviou por e-mail, pendrive, recebimento em outra loja, etc. Para esses casos:
 
-2. **Vir da Manifestação do Destinatário**
-   - O usuário, no grid de Manifestação, dispara a ação de lançar a entrada de uma NF-e baixada.
-   - A tela `Importar XML` abre já com a chave preenchida e busca o XML armazenado no banco.
-   - O processamento é igual ao caminho 1.
+1. Abra a tela `Importar XML NF-e` (F1 → `204`).
+2. Clique em `Novo` para entrar em modo de inclusão.
+3. Na sub-aba **`XML`**, grupo **`Arquivo`**, use o botão à direita do campo `Caminho` para escolher o `.xml` no computador (o botão à esquerda limpa o caminho).
+4. O Sol.NET lê o arquivo e preenche cabeçalho, fornecedor, itens, financeiro e tributos.
+
+> 💡 **O campo `Chave de Acesso` (grupo `Manifesto`) não é editável para iniciar uma importação.** Esse campo apenas **exibe** a chave de acesso de um XML já carregado (seja vindo da Manifestação, seja extraído do arquivo selecionado). Não digite a chave manualmente esperando que o sistema baixe o XML — não há essa ação.
 
 ### O que o Sol.NET faz ao ler o XML
 
@@ -239,37 +241,39 @@ Imprime o **Documento Auxiliar da NF-e** a partir do XML armazenado. Funciona ta
 
 ## 🔗 Relação com a Manifestação do Destinatário
 
-A tela `Importar XML` é a **porta natural de saída** para os XMLs que chegam pela [Manifestação do Destinatário](documentacao_manifestacao_destinatario.md):
+A tela [Manifestação do Destinatário](documentacao_manifestacao_destinatario.md) é a **porta de entrada padrão** dos XMLs no Sol.NET. O fluxo correto é sempre:
 
-- Os XMLs baixados pelo `Sol.NET_MonitorNFCe` ficam armazenados no banco.
-- Após a manifestação (Confirmação ou Ciência), o usuário pode lançar a entrada **direto pelo grid da Manifestação** — o Sol.NET abre a tela `Importar XML` com a chave de acesso já preenchida.
-- Quando o XML já está no `Importar XML`, o grid da Manifestação passa a mostrar as colunas `M-` (do movimento), permitindo conferir divergências (valor, data, número) entre o que o fornecedor emitiu e o que foi lançado.
+1. O `Sol.NET_MonitorNFCe` (aplicação à parte) baixa periodicamente os XMLs da SEFAZ e grava no banco.
+2. O usuário abre a `Manifestação do Destinatário` (tela `401`), localiza a nota e a manifesta (`Confirmação`, `Ciência` etc.).
+3. Com a linha selecionada, clica no botão **`NF-e`** (entre `Zerar NSU` e `Confirmar`). O Sol.NET abre a tela `Importar XML` já em inclusão, carrega o XML do banco e preenche todas as abas.
+4. Depois de gravado o movimento via `Lançar NF-e`, o grid da Manifestação passa a mostrar as colunas `M-` (do movimento), permitindo conferir divergências (valor, data, número) entre o que o fornecedor emitiu e o que foi lançado.
 
-Esse caminho é o **uso recomendado**: o XML chega oficialmente pela SEFAZ, é validado pela manifestação, e só então vira movimento via `Importar XML`. Carregar o XML de fontes externas (`.xml` recebido por e-mail, USB, etc.) também funciona, mas não substitui a manifestação.
+Abrir o `Importar XML` diretamente (F1 → `204` → `Novo`) é um **caminho excepcional**, usado apenas quando o XML chegou por fora da SEFAZ (e-mail, pendrive, outra loja). O fluxo principal sempre passa pela Manifestação.
 
 ---
 
 ## 💡 Exemplos Práticos
 
-### Exemplo 1 — Entrada normal de fornecedor recorrente
+### Exemplo 1 — Entrada normal de fornecedor recorrente (fluxo padrão via Manifestação)
 
-**Cenário**: o fornecedor enviou a mercadoria com NF-e. O cliente já comprou várias vezes desse fornecedor.
+**Cenário**: o fornecedor enviou a mercadoria com NF-e. O `Sol.NET_MonitorNFCe` já baixou o XML da SEFAZ. O cliente já comprou várias vezes desse fornecedor.
 
-1. Abra a tela `Importar XML NF-e` (F1 → `204`).
-2. Clique em `Novo` para entrar em modo de inclusão.
-3. Selecione o arquivo `.xml` no campo `Caminho` (botão à direita).
-4. O Sol.NET lê o XML; vá direto para a aba `Itens`.
-5. **Todos os itens devem aparecer vinculados** (descrição preenchida) porque o vínculo foi gravado em compras anteriores. Confira valores e quantidade.
-6. Aba `Financeiro`: confira as parcelas que vieram do XML.
-7. Clique em `Lançar NF-e`. A tela `Movimentos de Entrada` abre com tudo preenchido.
-8. Ajuste o `Tipo de Movimento` se necessário e grave.
-9. O XML passa para status `Importado` e some da pendência.
+1. Abra a `Manifestação do Destinatário` (F1 → `401`).
+2. Localize a NF-e no grid (filtros por loja, fornecedor, período ou chave de acesso).
+3. Se ainda não manifestou, clique em `Confirmar(1)` (ou `Ciência(4)` quando aplicável).
+4. Com a linha selecionada, clique no botão **`NF-e`** (entre `Zerar NSU` e `Confirmar`).
+5. A tela `Importar XML NF-e` abre em inclusão, com todas as abas preenchidas a partir do XML armazenado.
+6. Aba `Itens`: **todos os itens devem aparecer vinculados** (descrição preenchida) porque o vínculo foi gravado em compras anteriores. Confira valores e quantidade.
+7. Aba `Financeiro`: confira as parcelas que vieram do XML.
+8. Clique em `Lançar NF-e`. A tela `Movimentos de Entrada` abre com tudo preenchido.
+9. Ajuste o `Tipo de Movimento` se necessário e grave.
+10. O XML passa para status `Importado` e o vínculo aparece nas colunas `M-` da Manifestação.
 
 ### Exemplo 2 — Primeira compra de um fornecedor novo
 
-**Cenário**: fornecedor novo, ainda não cadastrado no Sol.NET, com itens nunca comprados.
+**Cenário**: fornecedor novo, ainda não cadastrado no Sol.NET, com itens nunca comprados. O XML já foi baixado pela Manifestação.
 
-1. Carregue o XML como no exemplo anterior.
+1. Manifeste a nota e abra pelo botão `NF-e` como no Exemplo 1.
 2. Mensagem `( razão social ) NÃO É SUA EMPRESA!` **não** aparece — o destinatário (você) está correto.
 3. A aba `Cabeçalho` mostra o fornecedor com `Fornecedor` em branco. Clique no botão **`Cadastrar fornecedor`** à direita do campo (ícone de adicionar) — o cadastro de pessoas abre com CNPJ, razão, endereço já preenchidos do XML. Salve.
 4. Volte para a aba `Itens`. Todos os itens estão sem descrição (sem vínculo).
@@ -277,21 +281,20 @@ Esse caminho é o **uso recomendado**: o XML chega oficialmente pela SEFAZ, é v
 6. Se o produto **não existe**, vá para inclusão dentro do `Cadastro de Produtos`. Os campos `Cód. Fornecedor`, `EAN Fornecedor` e `Descrição Fornecedor` já vêm preenchidos do XML — complete o restante (NCM, CST, unidade, preço de venda) e salve.
 7. Repita para os demais itens. A partir da segunda compra, esse fornecedor vai entrar como no Exemplo 1.
 
-### Exemplo 3 — XML carregado em duplicidade
+### Exemplo 3 — Tentativa de duplicidade
 
-**Cenário**: o usuário tenta carregar uma NF-e que já foi importada antes.
+**Cenário**: o usuário tenta lançar uma NF-e que já foi importada antes (por exemplo, abriu o `Importar XML` direto com `Novo` e selecionou um `.xml` cujo registro já existe).
 
-1. Selecione o arquivo `.xml`.
-2. O Sol.NET tenta processar e mostra `Chave de Acesso já Cadastrada!`.
-3. A tela limpa o campo e abre o registro existente na aba de busca para que o usuário confirme.
-4. Se o registro anterior já virou movimento (`Status = Importado`), nada precisa ser feito — a nota já está lançada.
-5. Se o registro anterior está em `Edição`, abra-o pelo grid e termine o lançamento por lá.
+1. Após o carregamento, o Sol.NET detecta a chave já cadastrada e mostra `Chave de Acesso já Cadastrada!`.
+2. A tela limpa o campo e abre o registro existente na aba de busca para que o usuário confirme.
+3. Se o registro anterior já virou movimento (`Status = Importado`), nada precisa ser feito — a nota já está lançada.
+4. Se o registro anterior está em `Edição`, abra-o pelo grid e termine o lançamento por lá.
 
 ### Exemplo 4 — Recebimento parcial
 
 **Cenário**: a NF-e tem 10 itens, mas só 7 chegaram fisicamente.
 
-1. Carregue o XML normalmente.
+1. Abra a nota pelo fluxo da Manifestação (Exemplo 1, passos 1–5).
 2. Vincule todos os 10 itens ao cadastro.
 3. Na aba `Itens`, marque (na coluna `Sel.`) apenas os 7 itens que chegaram.
 4. Ajuste a quantidade dos 7 itens se houver divergência de unidade.
