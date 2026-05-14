@@ -4,12 +4,15 @@
 
 A **Conferência de XML** é um mecanismo opcional do Sol.NET para **confrontar a mercadoria recebida fisicamente com o que veio no XML do fornecedor** *antes* de a NF-e virar movimento de entrada.
 
-Quando habilitada na loja, a tela [Importar XML NF-e](documentacao_importar_xml.md) (código `204`) ganha uma aba **`Conferência`**, e o grid principal passa a mostrar o `Status Conferência` de cada XML. A conferência funciona como uma **etapa intermediária** entre carregar o XML e clicar em `Lançar NF-e`:
+A contagem física **não é feita na tela** `Importar XML NF-e` — ela é registrada pelo conferente no aplicativo **Sol.NET Administrativo** (mobile). A tela `204` apenas **exibe o resultado** da conferência feita no app, na aba `Conferência`, e usa esse resultado para classificar o XML em `Sem Divergência` ou `Com Divergência` antes do lançamento.
 
-1. XML chega na tela `Importar XML` (manualmente ou via Manifestação do Destinatário).
-2. Conferente físico abre o registro, vai na aba `Conferência` e marca o que efetivamente recebeu (por item).
-3. O Sol.NET classifica como `Sem Divergência` ou `Com Divergência`.
-4. Lançamento na movimentação é feito depois, já ciente do que bate ou não com o XML.
+O fluxo de ponta a ponta fica assim:
+
+1. XML chega na tela `Importar XML` (via Manifestação do Destinatário ou arquivo).
+2. **Conferente registra a contagem pelo Sol.NET Administrativo** (etapa externa a esta tela).
+3. A aba `Conferência` da tela `204` passa a refletir o que foi conferido — item a item, com indicação de divergências.
+4. O `Status Conferência` do XML é classificado: `Não Conferido`, `Em Andamento`, `Finalizada Sem Divergência` ou `Finalizada Com Divergência`.
+5. Lançamento na movimentação é feito depois, já ciente do que bate ou não com o XML.
 
 ### Para que serve
 
@@ -57,12 +60,12 @@ A conferência tem **dois campos** que andam juntos no grid e nos relatórios.
 
 Indica em que ponto do fluxo o XML está.
 
-| Texto exibido | Significa | O que pode fazer |
-|---------------|-----------|------------------|
-| `NÃO CONFERIDO` | Conferência não iniciada. | Abrir o registro e iniciar. |
-| `EM ANDAMENTO` | Conferência aberta, alguns itens já tratados, mas não finalizada. | Retomar e concluir. |
-| `FINALIZADA SEM DIVERGÊNCIA` | Conferente concluiu e tudo bateu com o XML. | Pode lançar a NF-e. |
-| `FINALIZADA COM DIVERGÊNCIA` | Conferente concluiu e marcou pelo menos um item como divergente. | Avaliar antes de lançar; possivelmente usar `Lançar Parcial`. |
+| Texto exibido | Significa | Próximo passo no Sol.NET |
+|---------------|-----------|--------------------------|
+| `NÃO CONFERIDO` | A contagem ainda não foi iniciada no Sol.NET Administrativo. | Aguardar a equipe da loja iniciar a conferência pelo app. |
+| `EM ANDAMENTO` | A contagem foi iniciada no app, mas ainda não foi finalizada. | Aguardar a equipe concluir pelo app. |
+| `FINALIZADA SEM DIVERGÊNCIA` | A contagem foi concluída e tudo bateu com o XML. | Pode lançar a NF-e. |
+| `FINALIZADA COM DIVERGÊNCIA` | A contagem foi concluída e pelo menos um item ficou divergente. | Avaliar a aba `Conferência` antes de lançar; possivelmente usar `Lançar Parcial`. |
 
 ### Indicador no grid
 
@@ -72,71 +75,61 @@ Na grid principal da tela `204`, a coluna `Status Conferência` muda de cor conf
 
 ## 🧭 A aba `Conferência` dentro do `Importar XML`
 
-A aba **`Conferência`** só fica visível quando a loja tem o recurso habilitado e o XML está aberto. Ela exibe um grid (`dbgItensConferencia`) com **uma linha por item da NF-e**, focado no que o conferente precisa marcar.
+A aba **`Conferência`** só fica visível quando a loja tem o recurso habilitado e o XML está aberto. Ela exibe um grid com **uma linha por item da NF-e**, mostrando **o que o conferente registrou no Sol.NET Administrativo** — quantidades efetivamente recebidas, código bipado e divergências apuradas.
+
+> ℹ️ A aba é **apenas leitura sobre o resultado da contagem**. Não há marcação ou edição da conferência diretamente nessa tela — a operação acontece toda no app.
 
 ### Colunas do grid
 
 | Coluna | Para que serve |
 |--------|----------------|
-| `Sel.` | Marcação manual de itens (uso operacional). |
+| `Sel.` | Marcação manual para ações em lote (uso operacional). |
 | `Nº` | Número sequencial do item dentro da NF-e. |
 | `Cód. Forn.` | Código do produto no fornecedor (vem do XML). |
 | `EAN Forn.` | EAN do produto no fornecedor. |
 | `Produto do Fornecedor` | Descrição como aparece na nota do fornecedor. |
 | `Código` | Código do produto **no cadastro do Sol.NET** (após vínculo). |
-| `Conf.` | Marcação de conferido — alimentada pela conferência física. |
+| `Conf.` | Indica se o item foi conferido no app. |
 | `Descrição` | Descrição do produto no cadastro. |
-| `Quantidade` (várias colunas: `Q.De`, `Q.Na`, `Quant.`) | Quantidades e suas conversões de unidade. |
+| Quantidade (`Q.De`, `Q.Na`, `Quant.`) | Quantidades do XML e suas conversões de unidade — útil para comparar com o que foi efetivamente contado. |
 | `Vl. Unitário`, `Custo I. Nota`, `Custo I. Atual`, `Dif. Custo %` | Análise de custo entre o que o XML traz e o cadastro. |
-| `Vl. Total`, `Bs. ICMS`, `Vl. ICMS`, `Bs. ICMS ST`, `Vl. ICMS ST`, `Vl. IPI` | Valores fiscais para conferência. |
+| `Vl. Total`, `Bs. ICMS`, `Vl. ICMS`, `Bs. ICMS ST`, `Vl. ICMS ST`, `Vl. IPI` | Valores fiscais para auditoria. |
 
-> 💡 As colunas de tributos servem mais para auditoria que para conferência física — o foco da operação é nas colunas de **quantidade** e **código**.
-
-### O que o conferente faz
-
-Em geral o fluxo manual é:
-
-1. Item a item, comparar o que está no XML com a mercadoria física à frente.
-2. Marcar a coluna `Conf.` quando o item bate (quantidade e identificação).
-3. Quando há diferença (falta, excesso, item diferente), **registrar a divergência** — o sistema marca `TP_DIVERGENCIA = 1` na linha.
-4. No final, finalizar a conferência (botão correspondente na tela, ver próxima seção).
-
-> ⚠️ Telas auxiliares de leitor de código de barras podem ser usadas para alimentar essa conferência automaticamente — o resultado, porém, chega ao mesmo grid e segue as mesmas regras.
+> 💡 As colunas de tributos servem mais para auditoria que para análise da contagem — o foco visual é nas colunas de **quantidade** e **código**, que evidenciam onde houve divergência.
 
 ---
 
 ## 🚦 O ciclo da conferência
 
-O fluxo completo, da chegada da mercadoria ao lançamento, fica assim:
+O fluxo de ponta a ponta, com cada estado e o agente responsável pela transição:
 
+```mermaid
+flowchart TD
+    A([XML chega no Sol.NET<br/>via Manifestação ou arquivo]) --> B[Status: NÃO CONFERIDO]
+    B -->|Conferente inicia contagem<br/>no Sol.NET Administrativo| C[Status: EM ANDAMENTO]
+    C -->|Conferente finaliza<br/>contagem no app| D{Houve<br/>divergência?}
+    D -->|Não| E[Status: FINALIZADA<br/>SEM DIVERGÊNCIA]
+    D -->|Sim| F[Status: FINALIZADA<br/>COM DIVERGÊNCIA]
+    E -->|Operador na tela 204| G[Lançar NF-e]
+    F -->|Operador na tela 204| H{Avaliar<br/>divergência}
+    H -->|Lançar tudo conforme XML| G
+    H -->|Lançar só o recebido| I[Lançar Parcial]
+    H -->|Não lançar| J([Contatar fornecedor])
+    G --> K([NF-e vira movimento<br/>de entrada])
+    I --> K
 ```
-[XML carregado] 
-       │ Status Conferência: NÃO CONFERIDO
-       ▼
-[Conferente abre o registro]
-       │ Status Conferência: EM ANDAMENTO
-       ▼
-[Marca/desmarca itens, registra divergências]
-       │
-       ▼
-[Finaliza a conferência]
-       │ STATUS_CONFERENCIA_ANDAMENTO = 2
-       │  ├── Sem divergência → FINALIZADA SEM DIVERGÊNCIA
-       │  └── Com divergência → FINALIZADA COM DIVERGÊNCIA
-       ▼
-[Operador decide lançar a NF-e]
-       └── Lançar NF-e / Lançar Parcial conforme o caso
-```
+
+A contagem em si (`NÃO CONFERIDO` → `EM ANDAMENTO` → `FINALIZADA`) é toda registrada no **Sol.NET Administrativo**. A tela `Importar XML` (`204`) é onde o operador acompanha o status e decide o lançamento depois que a conferência está finalizada.
 
 ### Reabrir uma conferência finalizada
 
-Quando o conferente conclui mas precisa ajustar (item esquecido, divergência registrada errada), é possível **voltar a conferência para `Em Andamento`**:
+Quando uma contagem é concluída mas precisa ser ajustada (item esquecido, divergência registrada errada), é possível **voltar o status para `Em Andamento`** a partir da própria tela `204`:
 
 - A operação exige permissão (consulta interna `375`); usuários sem acesso são bloqueados.
-- O sistema mostra `Conferencia não está finalizada!` se tentar reabrir uma conferência que ainda está em andamento — o objetivo é reabrir uma já finalizada.
-- Ao confirmar a reabertura, o status volta para `EM ANDAMENTO` e a mensagem `Status de Conferencia Alterado para EM ANDAMENTO.` é exibida.
+- A reabertura **só é permitida se a conferência já estiver finalizada**. Se estiver em andamento, o sistema responde com `Conferencia não está finalizada!`.
+- Ao confirmar, o status volta para `EM ANDAMENTO` e a mensagem `Status de Conferencia Alterado para EM ANDAMENTO.` é exibida. O conferente pode então retomar a contagem pelo app.
 
-A reabertura é uma exceção operacional — o caminho normal é finalizar uma única vez.
+A reabertura é uma exceção operacional — o caminho normal é finalizar uma única vez no app.
 
 ---
 
@@ -165,41 +158,39 @@ A operação de `Lançar` em si é a mesma descrita em [Importar XML — Lançar
 **Cenário**: chegou um caminhão com 12 caixas conforme NF-e. Cada caixa contém um item que está no XML, na quantidade certa.
 
 1. O XML já está no Sol.NET (importado pela Manifestação ou carregado manualmente).
-2. O conferente abre o registro na tela `204`, vai na aba `Conferência`.
-3. Confere item a item. Tudo bate.
-4. Marca `Conf.` em todos os itens.
-5. Finaliza a conferência. `Status Conferência` vira `FINALIZADA SEM DIVERGÊNCIA`.
-6. O operador (mesmo usuário ou outro) clica em `Lançar NF-e`. Entrada gerada normalmente.
+2. A equipe da loja faz a contagem pelo **Sol.NET Administrativo** e finaliza a conferência. Tudo bate.
+3. Na tela `204`, o `Status Conferência` aparece como `FINALIZADA SEM DIVERGÊNCIA`.
+4. O operador abre o registro, confere visualmente a aba `Conferência` e clica em `Lançar NF-e`. Entrada gerada normalmente.
 
 ### Exemplo 2 — Conferência com divergência de quantidade
 
 **Cenário**: XML lista 10 unidades de um produto; chegaram apenas 8.
 
-1. Conferente abre o registro, vai na aba `Conferência`.
-2. Confere os itens. No item divergente, registra a quantidade efetiva (8) — o item fica marcado como divergente (`TP_DIVERGENCIA = 1`).
-3. Finaliza a conferência. `Status Conferência` vira `FINALIZADA COM DIVERGÊNCIA` e a coluna no grid principal aparece em destaque.
-4. Operador decide:
+1. A contagem é feita pelo **Sol.NET Administrativo**. O conferente registra a quantidade efetiva (8) — o item fica marcado como divergente.
+2. Ao finalizar a contagem no app, o `Status Conferência` da nota na tela `204` muda para `FINALIZADA COM DIVERGÊNCIA` e a coluna no grid principal aparece em destaque.
+3. Na tela `204`, o operador abre o registro e vai na aba `Conferência` para ver qual item divergiu e em que quantidade.
+4. O operador decide:
    - **Opção A**: lançar tudo igual ao XML (`Lançar NF-e`) e tratar a falta com o fornecedor depois — gera um excedente fiscal de 2 unidades que precisará de ajuste.
-   - **Opção B**: lançar parcial (`Lançar Parcial`), entrando só as 8 unidades; o XML permanece registrado e a divergência é histórico.
+   - **Opção B**: lançar parcial (`Lançar Parcial`), entrando só as 8 unidades; o XML permanece registrado e a divergência fica como histórico.
 5. Sempre comunicar o fornecedor para correção (carta de correção, retorno de mercadoria, abatimento).
 
 ### Exemplo 3 — Conferência por código diferente
 
 **Cenário**: XML lista o produto X, mas chegou o produto Y (código diferente).
 
-1. Conferente abre a aba `Conferência`.
-2. Marca o item como divergente — o EAN ou código que chegou não bate.
-3. Finaliza a conferência como `Com Divergência`.
+1. Durante a contagem no app, o EAN bipado não bate com o item do XML — o app registra divergência de identificação.
+2. Conferência é finalizada como `FINALIZADA COM DIVERGÊNCIA`.
+3. Na tela `204`, o operador vê a divergência na aba `Conferência` (códigos não casaram).
 4. Esse caso normalmente **não deve virar movimento** — a mercadoria errada precisa voltar para o fornecedor e uma nota corretiva precisa ser emitida.
 
 ### Exemplo 4 — Reabrir conferência por engano
 
-**Cenário**: conferente finalizou a conferência, mas percebeu que esqueceu de marcar um item.
+**Cenário**: a conferência foi finalizada pelo app, mas a equipe percebeu que um item foi contado errado.
 
-1. Operador com permissão abre o registro pelo grid (estado de visualização).
+1. Operador com permissão abre o registro na tela `204` (modo visualização).
 2. Aciona a função de reabrir conferência (ver `Reabrir uma conferência finalizada` acima).
 3. Confirma. Status volta para `EM ANDAMENTO`.
-4. Conferente reentra, ajusta, e finaliza de novo.
+4. A equipe retoma a contagem no Sol.NET Administrativo e finaliza novamente.
 
 ---
 
@@ -213,9 +204,13 @@ A aba só é exibida quando a loja (registro do XML) tem o `Tipo Conferência XM
 
 Sim. A configuração é **por loja**. Lojas onde o recurso não faz sentido (ex.: ponto de venda sem recebimento físico) podem ficar sem.
 
-### ❓ Quem pode finalizar uma conferência? E reabrir?
+### ❓ Quem inicia e finaliza a contagem?
 
-Qualquer usuário com acesso à tela `Importar XML` pode iniciar e finalizar uma conferência. **Reabrir** uma conferência já finalizada exige permissão específica (controle de acesso interno `375`) — se o usuário não tem, recebe bloqueio de permissão.
+A contagem é feita pela equipe da loja no aplicativo **Sol.NET Administrativo**. Não há ação de iniciar/finalizar conferência na tela `204` — a tela apenas reflete o status atual da contagem.
+
+### ❓ E para reabrir uma conferência finalizada?
+
+A **reabertura** é a única ação relacionada à conferência feita na tela `204` (não no app). Exige permissão específica (controle de acesso interno `375`) — usuários sem esse acesso recebem bloqueio de permissão. Após reabrir, o status volta para `EM ANDAMENTO` e a equipe retoma a contagem no Sol.NET Administrativo.
 
 ### ❓ Conferência finalizada pode ser apagada?
 
@@ -223,11 +218,11 @@ Não. O histórico de conferência fica no registro do XML mesmo após o lançam
 
 ### ❓ O sistema bloqueia o lançamento da NF-e se a conferência estiver pendente?
 
-O Sol.NET **não bloqueia automaticamente** — mas o `Status Conferência` no grid e na tela serve de aviso visual. A política de "não lançar sem conferir" é uma regra **operacional** da empresa, não uma restrição do sistema. Se quiser bloqueio rígido, a equipe Hetosoft pode avaliar uma configuração específica.
+O Sol.NET **não bloqueia automaticamente** — mas o `Status Conferência` no grid e na tela serve de aviso visual. A política de "não lançar sem conferir" é uma regra **operacional** da empresa, não uma restrição do sistema.
 
 ### ❓ Posso ver quem conferiu cada nota?
 
-Sim. A coluna `Usuário Conferencia` no grid mostra o operador que finalizou a conferência. O carimbo é gravado no momento da finalização.
+Sim. A coluna `Usuário Conferencia` no grid mostra o usuário que finalizou a contagem no app. O carimbo é gravado no momento da finalização.
 
 ### ❓ Conferência funciona para NF-e de saída (emissão própria)?
 

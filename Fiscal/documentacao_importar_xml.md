@@ -148,7 +148,7 @@ Dentro de `Itens` há ainda duas sub-abas:
 Lista as **parcelas / duplicatas** trazidas do XML, com `Número`, `Vencimento` e `Valor`. Esse grid alimenta a geração de contas a pagar no momento do lançamento da NF-e.
 
 ### Aba `Conferência`
-**Visível apenas quando a empresa tem o tipo de conferência XML habilitado** no `Cadastro de Empresas`. É onde o conferente físico marca o que foi efetivamente recebido. Veja o documento dedicado: [Conferência de XML](documentacao_conferencia_xml.md).
+**Visível apenas quando a empresa tem o tipo de conferência XML habilitado** no `Cadastro de Empresas`. Mostra o resultado da contagem física da mercadoria, feita pelo app **Sol.NET Administrativo** — é uma visão de leitura, não há marcação nesta tela. Veja o documento dedicado: [Conferência de XML](documentacao_conferencia_xml.md).
 
 ---
 
