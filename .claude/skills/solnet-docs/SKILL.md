@@ -50,6 +50,28 @@ Se algo confundiria um atendente de suporte que nunca viu o código-fonte, reesc
 
 ---
 
+## 🗣️ Princípio: investigar primeiro, perguntar para corroborar
+
+Antes de qualquer pergunta sobre como a funcionalidade funciona, esgote as fontes de verdade disponíveis — `.dfm` (Caption real, **não** o nome do componente), `.pas` (handlers, `AHS_ClientDataSetCampo`, validações de `uFrmHeranca`), tabela do banco via `sql-tools:querying-databases` (schema, valores codificados, exemplos reais), issues e PRs no `ProjetosSol.NET`. As perguntas ao usuário entram em dois momentos:
+
+- **Durante** a investigação, quando uma pista é ambígua e bloqueia o próximo passo (ex.: dois componentes com Caption parecido, combo codificado sem `AHS_ItemsID`/`AHS_Values` visível, regra de validação cujo motivo de negócio não está no código).
+- **Depois** dela, num bloco curto de confirmação no Checkpoint de entendimento (ver passos dos modos), para corroborar inferências que ainda não são fortes e para pegar contexto de negócio que só o usuário tem — motivação da feature, casos reais que o suporte vê, edge cases observados em campo.
+
+Não substitua a investigação por perguntas — pergunte o que a investigação não pode responder.
+
+### Quando a inferência é forte o suficiente para ir direto pra doc
+
+Uma afirmação só entra na documentação sem pergunta de confirmação quando há **premissas suficientes** sustentando-a. Classifique as fontes:
+
+- **Fontes diretas** (afirmam o fato): `Caption` real do `.dfm`; coluna do banco com tipo, `NOT NULL`, `CHECK` ou FK; handler no `.pas` (`KeyDown`, `OnClick`, `AHS_ClientDataSetCampo`, validações em `uFrmHeranca`); enunciado de issue ou PR já mergeado; contexto que o próprio usuário forneceu nesta sessão.
+- **Fontes indiretas / heurísticas** (sugerem, não provam): nome do componente; `Hint` do `.dfm` (pode estar obsoleto — componente duplicado com Caption novo); ordem visual de um combo (≠ valor gravado, ver `AHS_ItemsID`/`AHS_Values`); intuição de UI; "óbvio pelo nome do campo".
+
+**Inferência forte** = pelo menos uma fonte direta + uma segunda fonte (direta ou heurística) concordando, **ou** uma fonte direta inequívoca para um fato simples (tamanho de campo, `NOT NULL`, valor de combo).
+
+**Inferência fraca** = só fontes heurísticas, **ou** uma única fonte direta para um ponto crítico (regra de negócio, valor codificado, comportamento condicional, motivação por trás de uma validação). Inferência fraca **não vai para a doc sem pergunta de confirmação ao usuário**.
+
+---
+
 ## 🔀 Identificando o modo
 
 Leia a mensagem do usuário e classifique:
@@ -102,7 +124,19 @@ Se o conteúdo vier de issues ou PRs, busque-os via GitHub MCP antes de continua
 
 Quando a granularidade for ambígua (tema que poderia ser subtópico ou módulo separado), apresente duas opções com recomendação e peça confirmação antes de criar qualquer arquivo.
 
-### Passo 4 — Escrever os documentos
+### Passo 4 — Checkpoint de entendimento (antes de escrever)
+
+Depois da investigação (Passo 2) e da decisão de estrutura (Passo 3), e **antes** de começar a escrever qualquer arquivo, resuma para o usuário numa única mensagem:
+
+- **Escopo** — quais arquivos serão criados e o que cada um cobre
+- **Telas envolvidas** — nome + `ID_FORMULARIO` confirmado para cada uma
+- **Estrutura do documento principal** — lista dos títulos `##` que pretende usar
+- **Campos / regras de negócio principais** — bullets curtos resumindo o que você entendeu da funcionalidade a partir da investigação
+- **Pontos ainda incertos** — inferências fracas (ver princípio acima) listadas como perguntas objetivas
+
+Pare e espere o "pode escrever" (ou correções). Só prossiga para o Passo 5 quando o usuário aprovar. Esse checkpoint é o que evita reescrever doc inteiro depois de uma virada de premissa.
+
+### Passo 5 — Escrever os documentos
 
 Siga a estrutura do `CLAUDE.md` (`## Document Style`):
 
@@ -150,15 +184,16 @@ Siga a estrutura do `CLAUDE.md` (`## Document Style`):
 Resposta prática e direta. Se há mais de um passo, use lista numerada.
 ```
 
-### Passo 5 — Atualizar infraestrutura
+### Passo 6 — Atualizar infraestrutura
 
 Após escrever os documentos, **sempre** atualize:
 
 1. **`README.md` do módulo**: Adicione links para os novos arquivos no índice existente.
-2. **Portal `README.md`** (raiz): Se for módulo novo ou adição significativa, adicione referência.
+2. **Portal `README.md`** (raiz): Se for módulo novo ou adição significativa, adicione referência no corpo do portal.
 3. **Sidebar** (`_layouts/default.html`): Adicione as entradas. Consulte `references/sidebar_patterns.md` para os padrões HTML exatos, incluindo como criar subgrupo aninhado quando um tema tem mais de 2 arquivos.
+4. **Rodapé do portal** (`README.md` raiz, linha `📅 Última atualização: <Mês> de <Ano> · 📦 Versão X.Y`): atualize sempre o mês/ano para o atual. A `📦 Versão` do portal só sobe quando a adição é estruturalmente significativa (módulo novo, reorganização da navegação) — nesse caso proponha o novo número e peça confirmação ao usuário.
 
-### Passo 6 — Commit e PR
+### Passo 7 — Commit e PR
 
 Crie uma branch com nome `docs/<nome-do-tema>` (letras minúsculas, hífens, apenas ASCII, sem acentos).
 
@@ -190,15 +225,27 @@ Busque o conteúdo do GitHub via MCP se forem fornecidos números de PR ou issue
 
 Se a atualização introduz telas novas, valide seus códigos (veja `references/screen_lookup.md`).
 
-### Passo 3 — Aplicar mudanças
+### Passo 3 — Checkpoint de entendimento (antes de aplicar mudanças)
+
+Após investigar (Passo 2) e **antes de tocar nos arquivos**, resuma para o usuário numa única mensagem:
+
+- **Arquivos que vou alterar** e o que muda em cada um
+- **O que entendi do que mudou na funcionalidade** (bullets curtos derivados da investigação)
+- **Versão sugerida** para cada doc filho (incremento menor `1.0 → 1.1` ou maior `1.x → 2.0`) e justificativa
+- **Pontos ainda incertos** — inferências fracas que precisam de confirmação
+
+Pare e espere o "pode aplicar" (ou correções) antes de seguir para o Passo 4.
+
+### Passo 4 — Aplicar mudanças
 
 - Adicione às seções existentes em vez de criar seções paralelas
 - Preserve o vocabulário de emojis e a formatação do arquivo existente
-- Atualize o rodapé de metadados:
+- Atualize o rodapé de metadados do doc alterado:
   - `**Última atualização**`: mês e ano atual
-  - `**Versão**`: incremente o número menor (ex: `1.0` → `1.1`). Para reestruturações maiores, incremente o maior (`1.x` → `2.0`). Informe a versão sugerida e peça confirmação.
+  - `**Versão**`: aplique o incremento confirmado no Passo 3
+- **Rodapé do portal** (`README.md` raiz, linha `📅 Última atualização: <Mês> de <Ano> · 📦 Versão X.Y`): sempre que a versão de um doc filho é bumpada, atualize o mês/ano do portal para o atual. A `📦 Versão` do portal só sobe em mudanças estruturalmente significativas — proponha o novo número e peça confirmação ao usuário.
 
-### Passo 4 — Commit e PR
+### Passo 5 — Commit e PR
 
 Branch: `docs/<nome-do-tema>` (mesma convenção do modo Criar).
 
