@@ -2,7 +2,7 @@
 
 ## 🎯 Visão Geral
 
-Perguntas frequentes sobre a tela `Importar XML NF-e` (código `204` na pesquisa F1). Para o detalhamento dos fluxos, ver [Documentação Importar XML](documentacao_importar_xml.md) e o [Guia Rápido](guia_rapido_importar_xml.md).
+Perguntas frequentes sobre a tela `Importar XML NF-e` (código `204` na pesquisa F1). Para o detalhamento dos fluxos, consulte a [Documentação Importar XML](documentacao_importar_xml.md) e o [Guia Rápido](guia_rapido_importar_xml.md).
 
 ---
 
@@ -206,4 +206,4 @@ Detalhes em [Conferência de XML](documentacao_conferencia_xml.md).
 
 **Última atualização**: Maio de 2026  
 **Versão**: 1.0  
-**Público-alvo**: Equipe de suporte Sol.NET
+**Público-alvo**: Usuários e administradores do Sol.NET ERP

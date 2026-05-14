@@ -2,7 +2,7 @@
 
 ## 🎯 Visão Geral
 
-Cartão de referência para a equipe de suporte durante o atendimento. Para a explicação completa de campos, regras e exemplos, consulte a [Documentação Importar XML](documentacao_importar_xml.md).
+Cartão de referência rápido com a rotina padrão, mensagens de erro e atalhos de combinação de filtros. Para a explicação completa de campos, regras e exemplos, consulte a [Documentação Importar XML](documentacao_importar_xml.md).
 
 > **Tela**: `Importar XML NF-e` — código **`204`** (pesquisa F1).
 
@@ -160,4 +160,4 @@ E ainda:
 
 **Última atualização**: Maio de 2026  
 **Versão**: 1.0  
-**Público-alvo**: Equipe de suporte Sol.NET
+**Público-alvo**: Usuários e administradores do Sol.NET ERP

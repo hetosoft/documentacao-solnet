@@ -21,12 +21,12 @@ A tela também mantém o **histórico de todos os XMLs já carregados**, com fil
 - ✅ Lançar **parcialmente** uma NF-e quando apenas parte da mercadoria foi recebida
 - ✅ Registrar a saída de uma NF-e **emitida pela própria empresa** que precisa virar movimento
 
-### Quando o suporte é acionado
+### Situações comuns no dia a dia
 
-- "Aparece *Chave de Acesso já Cadastrada*" → mesma NF-e foi carregada duas vezes; orientar como localizar o registro anterior.
-- "Aparece *( ... ) NÃO É SUA EMPRESA*" → o CNPJ do destinatário no XML não bate com nenhuma loja do Sol.NET; orientar conferência da loja ou da nota.
-- "Não consigo vincular o produto" → o item ainda não tem código do fornecedor cadastrado; explicar o duplo clique no item.
-- "Lancei a NF-e mas o financeiro não veio" → o lançamento de duplicatas é controlado por configuração; verificar se a NF-e tem parcelas no XML e se o financeiro foi gerado.
+- Mensagem `Chave de Acesso já Cadastrada` → a mesma NF-e já foi carregada antes; é preciso localizar o registro existente no grid em vez de carregar de novo.
+- Mensagem `( ... ) NÃO É SUA EMPRESA` → o CNPJ do destinatário no XML não bate com nenhuma loja cadastrada; conferir se a NF-e foi emitida para o CNPJ correto.
+- Item da nota fica sem vínculo no grid → ainda não há código de fornecedor cadastrado para esse produto; duplo clique no item resolve, vinculando ou cadastrando o produto.
+- NF-e foi lançada mas o financeiro não apareceu → o XML pode não ter trazido as parcelas (NF-e à vista), ou as parcelas precisam ser conferidas na aba `Financeiro` antes do lançamento.
 
 ---
 
@@ -154,7 +154,7 @@ Lista as **parcelas / duplicatas** trazidas do XML, com `Número`, `Vencimento` 
 
 ## 🛒 Vinculando itens do XML ao cadastro de produtos
 
-Esta é a parte que mais consome tempo no dia a dia e onde o suporte mais é acionado. Cada linha da aba `Itens` representa um produto no XML do fornecedor — e cada uma precisa "casar" com um produto do cadastro **antes** da NF-e poder ser lançada como movimento.
+Esta é a parte que mais consome tempo no dia a dia. Cada linha da aba `Itens` representa um produto no XML do fornecedor — e cada uma precisa "casar" com um produto do cadastro **antes** da NF-e poder ser lançada como movimento.
 
 ### Como o Sol.NET tenta vincular automaticamente
 
@@ -316,4 +316,4 @@ A lista completa está em [FAQ — Importar XML](faq_importar_xml.md). Os mais f
 
 **Última atualização**: Maio de 2026  
 **Versão**: 1.0  
-**Público-alvo**: Equipe de suporte Sol.NET, usuários operacionais e administradores
+**Público-alvo**: Usuários e administradores do Sol.NET ERP

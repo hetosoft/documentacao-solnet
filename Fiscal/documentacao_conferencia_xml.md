@@ -19,12 +19,12 @@ Quando habilitada na loja, a tela [Importar XML NF-e](documentacao_importar_xml.
 - ✅ Auditar quem conferiu cada nota e quando
 - ✅ Servir como base de negociação com fornecedor em caso de falta ou excedente
 
-### Quando o suporte é acionado
+### Situações comuns no dia a dia
 
-- "A aba `Conferência` não aparece" → loja não está com o tipo de conferência habilitado.
-- "Status Conferência ficou em `Em Andamento` para sempre" → conferente não finalizou a conferência; orientar como retomar.
-- "Preciso reabrir a conferência" → conferente terminou mas precisa ajustar; explicar o fluxo de voltar para `Em Andamento`.
-- "Quero saber por que o lançamento da NF-e foi feito sem conferência" → loja não usa o recurso ou foi desabilitado.
+- A aba `Conferência` não aparece → a loja não está com o tipo de conferência habilitado.
+- `Status Conferência` continua em `Em Andamento` indefinidamente → a conferência foi iniciada mas não foi finalizada; é preciso voltar ao registro e concluir.
+- Necessidade de reabrir uma conferência já finalizada → existe um fluxo controlado por permissão para devolver o status para `Em Andamento`.
+- NF-e foi lançada sem conferência → a loja pode não usar o recurso ou ele foi desabilitado.
 
 ---
 
@@ -238,7 +238,7 @@ Não no mesmo modelo. A conferência aqui descrita serve para **recebimento de m
 ## 🔗 Documentos relacionados
 
 - [Documentação Importar XML](documentacao_importar_xml.md) — onde a conferência se encaixa
-- [Guia Rápido — Importar XML](guia_rapido_importar_xml.md) — atalhos para suporte
+- [Guia Rápido — Importar XML](guia_rapido_importar_xml.md) — cartão de referência rápido
 - [FAQ — Importar XML](faq_importar_xml.md) — perguntas mais frequentes
 - [Manifestação do Destinatário](documentacao_manifestacao_destinatario.md) — porta de entrada dos XMLs
 
@@ -246,4 +246,4 @@ Não no mesmo modelo. A conferência aqui descrita serve para **recebimento de m
 
 **Última atualização**: Maio de 2026  
 **Versão**: 1.0  
-**Público-alvo**: Equipe de suporte Sol.NET, conferentes e administradores de loja
+**Público-alvo**: Conferentes, usuários e administradores de loja do Sol.NET ERP
