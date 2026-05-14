@@ -191,7 +191,8 @@ Após escrever os documentos, **sempre** atualize:
 1. **`README.md` do módulo**: Adicione links para os novos arquivos no índice existente.
 2. **Portal `README.md`** (raiz): Se for módulo novo ou adição significativa, adicione referência no corpo do portal.
 3. **Sidebar** (`_layouts/default.html`): Adicione as entradas. Consulte `references/sidebar_patterns.md` para os padrões HTML exatos, incluindo como criar subgrupo aninhado quando um tema tem mais de 2 arquivos.
-4. **Rodapé do portal** (`README.md` raiz, linha `📅 Última atualização: <Mês> de <Ano> · 📦 Versão X.Y`): atualize sempre o mês/ano para o atual. A `📦 Versão` do portal só sobe quando a adição é estruturalmente significativa (módulo novo, reorganização da navegação) — nesse caso proponha o novo número e peça confirmação ao usuário.
+4. **Mapa para IAs** (`llms.txt` na raiz): Adicione uma entrada para cada novo documento publicado, na seção do módulo correspondente, no formato `- [Título](URL absoluta): descrição curta.`. A URL segue o padrão `https://hetosoft.github.io/documentacao-solnet/<Modulo>/<nome_do_arquivo_sem_extensao>/` (terminação com barra, sem `.html`). Se for módulo novo, crie uma nova seção `## <Nome do Módulo>` mantendo a mesma ordem usada no sidebar. Não inclua arquivos excluídos do build (`teste_mermaid.md`, `CLAUDE.md`) nem arquivos internos do skill.
+5. **Rodapé do portal** (`README.md` raiz, linha `📅 Última atualização: <Mês> de <Ano> · 📦 Versão X.Y`): atualize sempre o mês/ano para o atual. A `📦 Versão` do portal só sobe quando a adição é estruturalmente significativa (módulo novo, reorganização da navegação) — nesse caso proponha o novo número e peça confirmação ao usuário.
 
 ### Passo 7 — Commit e PR
 
@@ -243,6 +244,7 @@ Pare e espere o "pode aplicar" (ou correções) antes de seguir para o Passo 4.
 - Atualize o rodapé de metadados do doc alterado:
   - `**Última atualização**`: mês e ano atual
   - `**Versão**`: aplique o incremento confirmado no Passo 3
+- **Mapa para IAs** (`llms.txt` na raiz): se o título visível de algum doc mudou, atualize o texto do link correspondente. Se um arquivo foi renomeado, atualize a URL. Se um arquivo foi removido, remova a entrada. A atualização só é dispensada quando a mudança é puramente interna ao conteúdo (sem alterar título, URL ou existência do arquivo).
 - **Rodapé do portal** (`README.md` raiz, linha `📅 Última atualização: <Mês> de <Ano> · 📦 Versão X.Y`): sempre que a versão de um doc filho é bumpada, atualize o mês/ano do portal para o atual. A `📦 Versão` do portal só sobe em mudanças estruturalmente significativas — proponha o novo número e peça confirmação ao usuário.
 
 ### Passo 5 — Commit e PR
@@ -279,6 +281,7 @@ Para cada arquivo `.md` (pule `CLAUDE.md`, `README.md` raiz, `teste_mermaid.md`)
 | Idioma | Sem inglês, espanhol ou jargão de desenvolvimento |
 | Público-alvo | Sem referências ao código-fonte, termos Delphi, ou detalhes de implementação |
 | Nota de acesso restrito | Toda instrução de alteração em `Cadastro de Empresas` ou `Cadastro de Tipos de Movimento` tem a nota de aviso de acesso de suporte imediatamente após |
+| Mapa `llms.txt` | Todo documento `.md` publicado (exceto `CLAUDE.md`, `teste_mermaid.md` e arquivos internos do skill) tem entrada correspondente em `llms.txt` na raiz, com URL absoluta e descrição curta |
 
 ### Passo 3 — Corrigir e documentar
 
