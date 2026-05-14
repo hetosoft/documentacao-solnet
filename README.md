@@ -41,6 +41,8 @@ mindmap
     🛒 Self Checkout
       Instalação
       Toledo Prix R7
+    🔌 Integrações
+      iFood — Pedidos
 ```
 
 Cada módulo segue o mesmo ritmo de três documentos: a **Documentação** (referência completa), o **Guia Rápido** (cheat-sheet do dia a dia) e o **FAQ** (perguntas que aparecem todo dia no suporte). Comece pela Documentação quando estiver aprendendo, mantenha o Guia Rápido por perto quando estiver operando.
@@ -59,4 +61,4 @@ Cada módulo segue o mesmo ritmo de três documentos: a **Documentação** (refe
 
 ---
 
-<p align="center"><sub>📅 Última atualização: Maio de 2026 · 📦 Versão 3.0 · 👥 Hetosoft — Sol.NET ERP</sub></p>
+<p align="center"><sub>📅 Última atualização: Maio de 2026 · 📦 Versão 3.1 · 👥 Hetosoft — Sol.NET ERP</sub></p>
