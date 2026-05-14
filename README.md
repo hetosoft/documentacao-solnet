@@ -23,6 +23,7 @@ mindmap
     🏛️ Fiscal
       Reforma Tributária
       CBS · IBS
+      Manifestação do Destinatário
     📦 Movimentação
       Tipos de movimento
       Precificação
@@ -58,4 +59,4 @@ Cada módulo segue o mesmo ritmo de três documentos: a **Documentação** (refe
 
 ---
 
-<p align="center"><sub>📅 Última atualização: Abril de 2026 · 📦 Versão 3.0 · 👥 Hetosoft — Sol.NET ERP</sub></p>
+<p align="center"><sub>📅 Última atualização: Maio de 2026 · 📦 Versão 3.0 · 👥 Hetosoft — Sol.NET ERP</sub></p>
