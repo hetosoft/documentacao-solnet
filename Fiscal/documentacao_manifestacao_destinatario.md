@@ -107,7 +107,7 @@ Depois de ajustar os filtros, clique em **`Buscar`** para atualizar a lista.
 
 ### O que cada coluna do grid representa
 
-A grid do meio da tela exibe uma linha por documento. As colunas mais importantes para o suporte são:
+O grid do meio da tela exibe uma linha por documento. As colunas mais importantes para o suporte são:
 
 - `Sel.` — caixa de seleção (usada para manifestar em lote)
 - `Modelo` — `NF-e` ou `CT-e`
