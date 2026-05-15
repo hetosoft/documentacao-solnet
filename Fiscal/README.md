@@ -95,7 +95,22 @@ Checklist para cadastrar uma Região, anatomia da tela, comportamento dos curing
 #### ❓ [Região ICMS Saída — FAQ](faq_regiao_icms.md)
 Conceito, escolha entre múltiplas linhas, aplicação no movimento, override do NCM, validações e relação com Tipos de Movimento e Natureza de Operação.
 
-> 🚧 **Em fila**: Região ICMS ST Saída (`94`) e Natureza de Operação (`36`) completam este subgrupo.
+#### 📖 [Natureza de Operação — Documentação](documentacao_natureza_operacao.md)
+Tela `36`: cadastro central dos parâmetros fiscais por tipo de operação. Consolida:
+- CFOP principal com autocomplete inteligente (ajusta Tipo e Localização)
+- Regras de ICMS, PIS/COFINS, CBS/IBS (Reforma Tributária) e CSOSN
+- CFOP Reverso para importação de XML (mapeia o CFOP de saída do fornecedor)
+- CFOPs alternativos para Material de Uso/Consumo e Ativo Imobilizado
+- Flags `Manter` para fazer a Natureza prevalecer sobre a Região ICMS
+- Flags `Não Gerar Crédito` (ICMS e PIS/COFINS) com efeito direto no SPED
+
+#### ⚡ [Natureza de Operação — Guia Rápido](guia_rapido_natureza_operacao.md)
+Checklists separados para Naturezas de Saída e de Entrada, anatomia das abas (Importar XML, Informações, Extras, Pis/Confis), tabela de coerência CFOP × Tipo × Localização e soluções para erros recorrentes.
+
+#### ❓ [Natureza de Operação — FAQ](faq_natureza_operacao.md)
+Conceito, autocomplete do CFOP, regras fiscais, flags Manter, Importar XML, Reforma Tributária e como a Natureza chega ao item do movimento.
+
+> 🚧 **Em fila**: Região ICMS ST Saída (`94`) fecha este subgrupo.
 
 ---
 
@@ -115,5 +130,5 @@ Conceito, escolha entre múltiplas linhas, aplicação no movimento, override do
 ---
 
 **📅 Última atualização**: Maio de 2026  
-**📦 Versão**: 1.5  
+**📦 Versão**: 1.6  
 **🎯 Público-alvo**: Usuários, contadores, configuradores e equipe de suporte Sol.NET

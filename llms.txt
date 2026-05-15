@@ -40,6 +40,9 @@ Toda tela do Sol.NET é acessada pela pesquisa universal (atalho `F1`), digitand
 - [Região ICMS Saída — Documentação](https://hetosoft.github.io/documentacao-solnet/Fiscal/documentacao_regiao_icms/): tela Região ICMS Saída (código 93) — mapeamento contextual que liga filtros da operação a uma Natureza de Operação, com flags de override sobre o NCM.
 - [Região ICMS Saída — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Fiscal/guia_rapido_regiao_icms/): checklist operacional, anatomia da tela e soluções rápidas para erros recorrentes.
 - [Região ICMS Saída — FAQ](https://hetosoft.github.io/documentacao-solnet/Fiscal/faq_regiao_icms/): conceito, escolha entre linhas, aplicação no movimento, override do NCM e relação com Tipos de Movimento e Natureza de Operação.
+- [Natureza de Operação — Documentação](https://hetosoft.github.io/documentacao-solnet/Fiscal/documentacao_natureza_operacao/): tela Natureza de Operação (código 36) — cadastro central com CFOP, ICMS, PIS/COFINS, CBS/IBS, mapeamento de CFOP para importação de XML e flags de override sobre Região ICMS.
+- [Natureza de Operação — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Fiscal/guia_rapido_natureza_operacao/): checklists para Saída e Entrada, autocomplete do CFOP e soluções rápidas para erros recorrentes.
+- [Natureza de Operação — FAQ](https://hetosoft.github.io/documentacao-solnet/Fiscal/faq_natureza_operacao/): conceito, autocomplete, regras fiscais, flags Manter, Importar XML e aplicação no movimento.
 
 ## Movimentação
 
