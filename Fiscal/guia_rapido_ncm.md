@@ -21,15 +21,16 @@ Abra pela pesquisa universal (`F1`), digitando o nome ou o código.
 
 1. ☐ Abrir `Cadastro de NCM` (código `21`).
 2. ☐ Incluir um novo registro.
-3. ☐ Digitar o código NCM (formato `NN.NN.NN.NN`).
-4. ☐ Conferir se **Descrição**, **Tipo** e **CNI** foram preenchidos automaticamente (vêm da Tabela NCM `121`).
-5. ☐ Preencher **EX** se o produto exigir desdobramento por finalidade.
-6. ☐ Selecionar a **Tributação Federal** apropriada (perfil pré-cadastrado de PIS/COFINS/IPI).
-7. ☐ Selecionar a **Região Tributária ICMS ST**, quando aplicável.
-8. ☐ Preencher o grupo **ICMS Normal — Saída** (Base, Alíquota, CST de Entrada e Saída, CSOSN se for Simples).
-9. ☐ Conferir **Fundo Combate Pobreza** e **Crédito Outorgado** quando o estado exigir.
-10. ☐ Conferir a aba **IVA** (CST, Classificação, Alíquotas CBS e IBS) para empresas já operando sob a Reforma.
-11. ☐ Salvar.
+3. ☐ No campo **NCM**, dar duplo clique para abrir a Tabela NCM federal e selecionar o código.
+4. ☐ Conferir o que veio automaticamente: **Descrição**, **EX** e **Tipo** (vêm da Tabela NCM `121`).
+5. ☐ Conferir os campos da aba `Principal` pré-preenchidos a partir da Tabela NCM Tributos + parâmetros da empresa (CST Entrada/Saída, CSOSN, Base e Alíq. interno/externo).
+6. ☐ Preencher **CNI** manualmente se o produto tiver tributação zerada/monofásica/suspensão.
+7. ☐ Selecionar a **Tributação Federal** apropriada — o sistema **copia** os campos de PIS/COFINS/IPI a partir do perfil; ajustar manualmente se necessário.
+8. ☐ Selecionar a **Região Tributária ICMS ST**, quando aplicável.
+9. ☐ Conferir o MVA quando o produto tem ST (CST Entrada = `060`).
+10. ☐ Conferir **Fundo Combate Pobreza** e **Crédito Outorgado** quando o estado exigir.
+11. ☐ Na aba **IVA**, usar duplo clique no **Código Classificação** para puxar CST CBS/IBS e reduções automaticamente.
+12. ☐ Salvar.
 
 ---
 
@@ -37,11 +38,11 @@ Abra pela pesquisa universal (`F1`), digitando o nome ou o código.
 
 | Grupo | O que preencher |
 |---|---|
-| **ICMS Normal — Saída** | Base/Alíquota Interno e Externo, CST Saída e Entrada, CSOSN, MVA, Modalidade BC, Redução BC, Código de Desoneração |
+| **ICMS Normal — Saída** | Base/Alíquota Interno e Externo, CST Saída e Entrada, CSOSN, MVA, Modalidade BC, Código de Desoneração. **Redução BC** é calculada automaticamente como `100 − Base ICMS Interno`. |
 | **Fundo Combate Pobreza** | FCP Aliq., MVA FCP, FCP Aliq. Externa |
 | **ICMS Crédito Outorgado — Saída** | Crédito Interno, Crédito Externo, Código do Crédito |
-| **Tributação Federal** | PIS/COFINS (Entrada / Saída / Entrada Dev.) e IPI — **só vale se o combo do cabeçalho estiver vazio** |
-| **SEFAZ REJEITOU** | NCM Inválido + texto do retorno da NF-e/NFC-e |
+| **Tributação Federal** | PIS/COFINS (Entrada / Saída / Entrada Dev.) e IPI. O combo do cabeçalho **copia** os valores do perfil para esses campos; eles podem ser ajustados manualmente depois. |
+| **SEFAZ REJEITOU** | Bloco preenchido **automaticamente pelo sistema** quando a SEFAZ rejeita uma emissão; o flag `NCM Inválido` é desmarcado automaticamente ao alterar o código do NCM. |
 
 ---
 
@@ -64,9 +65,11 @@ Abra pela pesquisa universal (`F1`), digitando o nome ou o código.
 ## 🔥 Problemas comuns — soluções rápidas
 
 ### ❌ "NCM inválido" no retorno da SEFAZ
+- O sistema marca o flag **NCM Inválido** e grava o motivo no campo **Retorno da NF-e/NFC-e** automaticamente
+- Ler o motivo apontado pela SEFAZ no campo de retorno
 - Conferir se preencheu a **EX** quando o NCM exige desdobramento
 - Conferir se o código está na Tabela NCM `121`
-- Marcar **NCM Inválido** no grupo SEFAZ REJEITOU e colar o retorno para registro
+- Ao alterar o `CODIGO` do NCM e salvar, o flag é desmarcado automaticamente
 
 ### ❌ Descrição NCM não preencheu automaticamente
 - A Tabela NCM `121` provavelmente está desatualizada — abrir chamado para a Hetosoft revisar
@@ -76,8 +79,18 @@ Abra pela pesquisa universal (`F1`), digitando o nome ou o código.
 - Verificar se está usando o **CST CBS/IBS correto** (campo `CST` da aba IVA, não o CST da aba Principal)
 - Verificar se a operação cai dentro do cronograma da Reforma já em vigor
 
-### ❌ PIS/COFINS vindo errado mesmo com os campos da aba `Principal` preenchidos
-- O combo **Tributação Federal** do cabeçalho **prevalece** sobre os campos da aba — se estiver preenchido, é ele quem manda
+### ❌ PIS/COFINS zerou depois de mexer no combo `Tributação Federal`
+- Selecionar uma `Tributação Federal` **copia** os valores do perfil para os campos da aba; **limpar** o combo **zera** os campos. Se você quer valores específicos, mantenha o combo selecionado e ajuste os campos manualmente, ou deixe o combo vazio e preencha tudo na mão.
+
+### ❌ Erro "Configure os Parâmetros dos Impostos em Empresa!"
+- Aparece quando o autocomplete da Tabela NCM tenta puxar CSOSN/Alíquotas e a tela `Empresas` (código `1`) está sem `CSOSN_EXCEL`, `ICMS_ALIQ_I` ou `ICMS_ALIQ_E` preenchidos
+- Requer acesso de suporte para corrigir; abra um chamado com a Hetosoft
+
+### ❌ "Obrigatório Ter Aliq. Interno e Aliq. Externo" ao salvar
+- Aparece quando o CST Saída está em `000` mas alguma das alíquotas está zerada — `000` exige alíquota cheia
+
+### ❌ "Obrigatório Ter MVA" ao salvar
+- Aparece quando o CST Entrada está em `060` (ICMS-ST) e o MVA está zerado
 
 ---
 

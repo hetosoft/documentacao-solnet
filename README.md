@@ -61,4 +61,4 @@ Toda página de documentação referencia as telas pelo **nome + código** (ex.:
 
 ---
 
-<p align="center"><sub>📅 Última atualização: Maio de 2026 · 📦 Versão 3.2 · 👥 Hetosoft — Sol.NET ERP</sub></p>
+<p align="center"><sub>📅 Última atualização: Maio de 2026 · 📦 Versão 3.3 · 👥 Hetosoft — Sol.NET ERP</sub></p>

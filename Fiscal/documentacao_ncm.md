@@ -32,20 +32,20 @@ Ao incluir ou editar um NCM, os campos do topo são os de identificação. Eles 
 
 | Campo | O que é | Observações |
 |---|---|---|
-| **NCM** | Código numérico, formato `NN.NN.NN.NN` (até 8 dígitos) | Chave fiscal — o mesmo que está na tabela da Receita |
-| **EX** | Código de exceção do NCM (até 3 caracteres) | Usado quando o NCM tem desdobramento por finalidade |
-| **CNI** | Código de Não Incidência (até 3 caracteres) | Aplicado em produtos com tributação zerada, monofásica ou suspensão — geralmente vem preenchido a partir da Tabela NCM |
+| **NCM** | Código numérico, até 8 dígitos | Chave fiscal — abre a pesquisa da Tabela NCM federal (`121`) com duplo clique |
+| **EX** | Código de exceção do NCM (até 3 dígitos numéricos) | Usado quando o NCM tem desdobramento por finalidade |
+| **CNI - Código Não Incidência** | Até 3 dígitos numéricos | Aplicado em produtos com tributação zerada, monofásica ou suspensão — **preenchido manualmente pelo configurador** |
 | **Descrição NCM** | Texto descritivo do código | Preenchido automaticamente ao puxar da Tabela NCM (`121`) |
-| **Tipo** | Produto ou Serviço | Preenchido automaticamente ao carregar o NCM da Tabela NCM |
-| **Tributação Federal** | Combo que aponta para um perfil de PIS/COFINS/IPI já cadastrado | Quando preenchido, **prevalece** sobre os campos de PIS/COFINS/IPI da aba `Principal` |
+| **Tipo** | Produto ou Serviço (campo somente leitura) | Preenchido automaticamente ao carregar o NCM da Tabela NCM |
+| **Tributação Federal** | Combo que aponta para um perfil de PIS/COFINS/IPI já cadastrado | Ao selecionar, o sistema **copia** os valores do perfil (CST PIS/COFINS Entrada/Saída/Entrada Dev., Alíq. PIS/COFINS interna e externa, CST IPI, Alíq. IPI) para os campos correspondentes da aba `Principal`. Limpar o combo **zera** esses campos. |
 | **Região Tributária ICMS ST** | Combo que aponta para uma `Região ICMS ST` (código `94`) | Define a regra de Substituição Tributária aplicada nas saídas |
 
 ### Caixa `SEFAZ REJEITOU`
 
 Identifica um NCM que a SEFAZ rejeitou na transmissão de NF-e/NFC-e:
 
-- **NCM Inválido** — marcador que sinaliza o registro como inválido para novas emissões até a regularização
-- **Retorno da NF-e/NFC-e** — texto do retorno técnico (motivo da rejeição) para o configurador conferir o que precisa ajustar
+- **NCM Inválido** — checkbox preenchido **automaticamente pelo sistema** quando a SEFAZ rejeita uma emissão com aquele NCM. Quando você corrige o código do NCM e salva, o flag é **desmarcado automaticamente**, permitindo nova emissão.
+- **Retorno da NF-e/NFC-e** — campo **somente leitura**. O sistema grava aqui o motivo técnico devolvido pela SEFAZ durante a transmissão, para o configurador entender o que precisa ajustar.
 
 ---
 
@@ -63,15 +63,19 @@ Define como o ICMS é calculado nas saídas:
 | **ICMS Aliq. — Interno** | Alíquota aplicada na operação interna |
 | **Base de Cálculo ICMS — Externo** | Base usada nas vendas interestaduais |
 | **ICMS Aliq. — Externo** | Alíquota aplicada na operação interestadual |
-| **CST — Saída** | Código de Situação Tributária aplicado nas saídas |
-| **CST — Ent.** | CST aplicado quando o produto retorna como devolução |
+| **CST — Saída** | Código de Situação Tributária aplicado nas saídas (3 dígitos) |
+| **CST — Ent.** | CST aplicado na entrada / retorno de devolução (3 dígitos) |
 | **CSOSN** | Código equivalente para empresas do Simples Nacional |
 | **MVA** | Margem de Valor Agregado (substituição tributária) |
-| **Modalidade BC ICMS** | Como a base de cálculo é determinada |
-| **Redução BC ICMS** | Percentual de redução aplicado sobre a base |
+| **Modalidade BC ICMS** | Combo: `0 = Margem Valor Agregado (%)`, `1 = Pauta (Valor)`, `2 = Preço Tabelado Máx. (valor)`, `3 = Valor da operação` |
+| **Redução BC ICMS** | Calculado automaticamente como `100 − Base ICMS Interno` ao sair do campo de Base — somente leitura |
 | **Código de Desoneração** | Identifica o motivo de desoneração quando aplicável |
 
-> 💡 Os campos CSOSN, MVA e Modalidade/Redução BC só fazem sentido em certas combinações de regime tributário e CST. Em uma empresa do Lucro Real, por exemplo, o CSOSN não é usado.
+> 💡 Os campos CSOSN, MVA e Modalidade BC só fazem sentido em certas combinações de regime tributário e CST. Em uma empresa do Lucro Real, por exemplo, o CSOSN não é usado.
+
+> 🔒 **Validações ao salvar:**
+> - Quando o **CST Saída = `000`**, é obrigatório preencher **Alíq. Interno** e **Alíq. Externo** (não podem ficar em zero).
+> - Quando o **CST Entrada = `060`** (ICMS-ST), é obrigatório preencher **MVA** — exceto se a empresa estiver configurada para não usar Substituição Tributária.
 
 ### 🟠 Grupo `Fundo Combate Pobreza`
 
@@ -98,7 +102,7 @@ Subdividido em quatro blocos. Cada um trata de uma situação distinta:
 - **Pis/Cofins (Entrada Dev.)** — `CST - PIS/COFINS (E.D)` — aplicado nas devoluções de venda
 - **IPI** — `CST - IPI`, `Aliq IPI`
 
-> ⚠️ Esses campos só são usados quando o combo **Tributação Federal** do cabeçalho **não** está preenchido. Quando você aponta uma Tributação Federal pré-cadastrada, ela tem prioridade sobre o que estiver aqui.
+> 💡 **Sobre o combo `Tributação Federal` do cabeçalho:** ele é um atalho de preenchimento. Ao selecionar um perfil, o sistema **copia** os valores correspondentes (CSTs e alíquotas) para os campos deste grupo. Limpar o combo **zera** os campos. Depois de carregar, você ainda pode ajustar os valores manualmente — os valores finais nos campos são o que vai para a emissão.
 
 ---
 
@@ -111,8 +115,10 @@ Subdividido em quatro blocos. Cada um trata de uma situação distinta:
 
 ### Identificação
 
-- **CST** — Código de Situação Tributária CBS/IBS (combo com os códigos publicados pela Receita)
-- **Código Classificação** — código de Classificação Tributária (`cClassTrib`) usado nos novos documentos fiscais
+- **CST** — Código de Situação Tributária CBS/IBS
+- **Código Classificação** — código de Classificação Tributária (`cClassTrib`) que vai nos novos documentos fiscais
+
+> 💡 Duplo clique no campo **Código Classificação** abre a tabela de classificações tributárias. Ao selecionar uma linha, o sistema autocompleta o **CST**, o próprio **Código Classificação** e as **Reduções de Alíquota** (CBS, IBS UF e IBS Mun.).
 
 ### Grupo `CBS`
 
@@ -130,20 +136,34 @@ Subdividido em quatro blocos. Cada um trata de uma situação distinta:
 
 ---
 
-## 🔁 Atualização via Tabela NCM (`121`)
+## 🔁 Bases mestras que alimentam o Cadastro de NCM
 
-A **Tabela NCM** (`121`) é a base federal completa — contém todos os NCMs publicados pela Receita, com descrição oficial e marcações que ajudam a popular o cadastro local.
+O Sol.NET usa **duas bases mestras** complementares para apoiar o preenchimento do Cadastro de NCM (`21`):
 
-Fluxo típico:
+### Tabela NCM (`121`) — descrição e identificação
 
-1. A Hetosoft (ou a equipe interna) **atualiza a Tabela NCM `121`** quando há publicação nova da Receita.
-2. No cadastro `21`, ao **incluir um NCM novo**, o sistema busca o código na Tabela NCM e preenche automaticamente:
-   - **Descrição NCM**
-   - **Tipo** (Produto / Serviço)
-   - **CNI** (quando aplicável)
-3. As parametrizações tributárias (ICMS, PIS/COFINS, CBS/IBS) continuam sendo definidas pelo configurador — a Tabela NCM **não sobrescreve** esses campos.
+Cobre **todos os NCMs publicados** com descrição oficial, EX, Tipo (Produto/Serviço) e — para a Reforma Tributária — alíquotas CBS/IBS por vigência (`VIGENCIA_INICIO`, `VIGENCIA_FIM`, `VERSAO`). É a tabela que aparece ao dar duplo clique no campo **NCM** do cadastro.
 
-> 🚧 NCM que existe no cadastro `21` mas não aparece na Tabela NCM `121` é sinal de desatualização da base — abra um chamado para a Hetosoft revisar.
+Quando você seleciona um NCM na Tabela NCM, o cadastro `21` recebe automaticamente:
+- **Código NCM**
+- **Descrição NCM**
+- **EX**
+- **Tipo** (Produto / Serviço)
+
+> 🔎 O campo **CNI** **não** é preenchido por essa tabela — é digitação manual do configurador quando aplicável.
+
+### Tabela NCM Tributos — referência de MVA
+
+Tabela separada usada apenas para encontrar **MVA por NCM**. Quando o NCM é selecionado, o sistema busca o MVA com fallback sucessivo (8 → 7 → 6 → 5 → 4 dígitos do NCM) até achar uma correspondência:
+
+- **Se acha MVA > 0** (NCM com ST): o cadastro recebe automaticamente CST Entrada/Saída = `060`, CSOSN = `500`, alíquota externa vinda da tela `Empresas`, e a Base Externa fica `100%`.
+- **Se MVA = 0 ou não encontrado**: o cadastro recebe CST Entrada/Saída = `000`, CSOSN vindo da empresa, e alíquotas internas e externas também vindas da empresa.
+
+Para esse autocomplete funcionar, a tela `Empresas` (código `1`) precisa ter os parâmetros `CSOSN_EXCEL`, `ICMS_ALIQ_I`, `ICMS_ALIQ_E` (e `ICMS_ALIQ_STE` quando aplicável) preenchidos. Se faltar, o sistema avisa: *"Configure os Parâmetros dos Impostos em Empresa! Aba Fiscal/SPED/Imp. Excel"*.
+
+> ⚠️ **Acesso de suporte necessário:** alterações no `Cadastro de Empresas` requerem permissão de acesso de suporte. Entre em contato com o suporte Hetosoft antes de realizar qualquer modificação nesta tela.
+
+> 🚧 NCM que existe no cadastro `21` mas não aparece na Tabela NCM `121` é sinal de desatualização — abra um chamado para a Hetosoft revisar.
 
 ---
 
@@ -153,26 +173,24 @@ Fluxo típico:
 
 1. Abrir a pesquisa (`F1`) e digitar `NCM` (código `21`).
 2. Incluir um novo registro.
-3. Digitar o código NCM (ex.: `2204.21.00` — vinho engarrafado).
-4. Se a Tabela NCM `121` estiver atualizada, **Descrição**, **Tipo** e **CNI** já vêm preenchidos.
-5. Selecionar a **Tributação Federal** apropriada — quando existe um perfil pré-cadastrado, ele preenche PIS/COFINS/IPI.
-6. Preencher o grupo **ICMS Normal — Saída**:
-   - CST de saída conforme o regime fiscal da empresa
-   - Alíquotas internas e externas conforme a UF da empresa
-7. Se o produto tem ST, escolher a **Região Tributária ICMS ST** e preencher MVA.
-8. Conferir os campos da aba `IVA` se a empresa já estiver operando sob a Reforma — alíquotas CBS e IBS conforme o anexo aplicável.
-9. Salvar.
+3. No campo **NCM**, dar duplo clique para abrir a Tabela NCM federal e selecionar o código (ex.: `2204.21.00` — vinho engarrafado). O sistema preenche **Descrição**, **EX** e **Tipo**.
+4. Em seguida, o sistema consulta a Tabela NCM Tributos para o MVA e pré-preenche CST, CSOSN e alíquotas da aba `Principal` com base nos parâmetros da empresa.
+5. Conferir / ajustar os valores carregados (Base e Alíq. interno e externo, CST entrada, CST saída).
+6. Preencher o **CNI** se o produto tiver tributação zerada, monofásica ou suspensão.
+7. Selecionar a **Tributação Federal** apropriada para puxar o perfil de PIS/COFINS/IPI; ajustar manualmente se necessário.
+8. Se o produto tem ST, escolher a **Região Tributária ICMS ST** e conferir o MVA.
+9. Conferir os campos da aba `IVA` se a empresa já estiver operando sob a Reforma — usar o duplo clique no **Código Classificação** para puxar CST CBS/IBS e reduções automaticamente.
+10. Salvar.
 
-### Exemplo 2 — Tratar um NCM rejeitado pela SEFAZ
+### Exemplo 2 — NCM rejeitado pela SEFAZ
 
-Cenário: a empresa transmitiu uma NF-e e a SEFAZ rejeitou com motivo "NCM inválido".
+Cenário: a SEFAZ rejeitou uma NF-e com motivo de NCM inválido. O próprio sistema marca a caixa **NCM Inválido** e registra o retorno no campo `Retorno da NF-e/NFC-e` quando isso acontece.
 
-1. Localizar o NCM problemático na lista do cadastro `21`.
-2. Editar o registro.
-3. Marcar a caixa **NCM Inválido** dentro do grupo `SEFAZ REJEITOU`.
-4. Colar o texto do retorno no campo **Retorno da NF-e/NFC-e**.
-5. Salvar.
-6. Conferir se o código existe na Tabela NCM `121`. Se não existir, é desatualização da base. Se existir, conferir **EX**, **CNI** e a parametrização tributária — geralmente o que está faltando é a EX correspondente.
+1. Localizar o NCM marcado como inválido no cadastro `21`.
+2. Ler o **Retorno da NF-e/NFC-e** para entender o motivo apontado pela SEFAZ.
+3. Conferir o código na Tabela NCM `121`. Se não existir, é desatualização da base. Se existir, geralmente o que está faltando é a **EX** correspondente.
+4. Ajustar o que for necessário (EX, CST, CNI, parametrização tributária).
+5. Salvar — ao mudar o `CODIGO` do NCM, o sistema desmarca automaticamente o flag **NCM Inválido**, liberando o uso em novas emissões.
 
 ### Exemplo 3 — Produto com tributação CBS/IBS reduzida (cesta básica)
 
@@ -197,9 +215,9 @@ Sempre na aba **IVA**. O combo **Tributação Federal** continua sendo usado ape
 
 A causa mais frequente é a **EX** (exceção do NCM). Sem ela, a SEFAZ rejeita produtos que exigem desdobramento. Confira a coluna EX da tabela oficial e preencha o campo correspondente no cadastro.
 
-### ❓ Posso usar o mesmo NCM com configurações diferentes por filial?
+### ❓ Posso ter dois registros com o mesmo NCM no cadastro `21`?
 
-Não — o cadastro de NCM (`21`) é compartilhado entre todas as filiais. Para tratar regras tributárias que variam por estado, use as telas de **Região ICMS Saída** (`93`) e **Região ICMS ST Saída** (`94`) referenciadas pelo NCM.
+Pode — desde que a parametrização tributária seja **diferente** em pelo menos um dos campos da chave de unicidade (NCM, EX, CST Entrada, CST Saída, CSOSN, Tributação Federal, MVA, Base e Alíq. ICMS Interno/Externo). Um NCM com EX `00` e outro com EX `01`, por exemplo, são registros distintos.
 
 ---
 
