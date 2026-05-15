@@ -17,43 +17,44 @@ O **Self Checkout** é uma aplicação que faz parte do ecossistema Sol.NET ERP,
 
 ## 🔧 Processo de Instalação
 
-### Passo 1: Configuração no Sol.NET - Cadastro de Empresas
+### Passo 1: Configuração no Sol.NET — tela `Empresas` {#passo-1-empresas}
 
-As **configurações padrão do Self Checkout** são definidas no Sol.NET através do **Cadastro de Empresas**.
+As **configurações padrão do Self Checkout** são definidas no Sol.NET dentro da tela **`Empresas`** (código `1`).
+
+> ⚠️ **Acesso de suporte necessário:** alterações no `Cadastro de Empresas` requerem permissão de acesso de suporte. Entre em contato com o suporte Hetosoft antes de realizar qualquer modificação nesta tela.
 
 #### 🖥️ Acesso:
 
-1. **Abra o Sol.NET ERP**
-2. **Navegue até**: Cadastro de Empresas
-3. Seleciona a Empresa para a qual o Self Checkout será configurado
-4. Edite o registro
-5. Localize a seção de configurações do PDV
+1. Abra o Sol.NET ERP.
+2. Pela pesquisa universal (`F1`), abra a tela **`Empresas`** (código `1`).
+3. Localize na lista a empresa para a qual o Self Checkout será configurado.
+4. Edite o registro.
+5. Localize a seção de configurações do PDV.
 
 #### ⚙️ Configurações Padrão:
-Na Aba de Configurações Gerais, defina:
-- **Tipo de Movimento**: Configure o tipo de movimento para vendas do Self Checkout
-- Na sessão de PDVs cadastrados, insira um novo registro
-- Configure o registro como o padrão de configuração de PDV
-- **Tipo Sistema**: Em tipo sistema, selecione `Self Checkout`
+Na aba de configurações gerais, defina:
+- **Tipo de Movimento**: configure o tipo de movimento para vendas do Self Checkout.
+- Na sessão de PDVs cadastrados, insira um novo registro.
+- Configure o registro como o padrão de configuração de PDV.
+- **Tipo Sistema**: em "tipo sistema", selecione `Self Checkout`.
 
 #### 💾 Salvar Configurações:
-1. **Revise todas as configurações**
-2. **Salve** (F5)
-3. **Código Autenticação**: Acesse o cadastro da empresa novamente e localize o PDV recém-cadastrado. Copie o código de autenticação gerado para usar posteriormente.
+1. Revise todas as configurações.
+2. Confirme/salve pelo botão equivalente da tela.
+3. **Código Autenticação**: acesse o cadastro da empresa novamente e localize o PDV recém-cadastrado. Copie o código de autenticação gerado para usar posteriormente.
 
 ---
 
-### Passo 2: Configuração Inicial do Self Checkout
+### Passo 2: Instalação dos executáveis do Self Checkout {#passo-2-executaveis}
 
-#### 🚀 Primeiro Acesso - Configuração do Servidor
+1. Utilize o `Sol.NET_PDV_Instalador` para obter a pasta padrão do `Sol.NET_PDV`.
+2. Copie os executáveis `SolNET_SyncPDV.exe`, `SolNET_PDV_Inicializar.exe`, `SolNET_SyncAuxPDV.exe` e `SolNET_SelfCheckout.exe` para a pasta raiz da instalação.
 
-1. **Instalação do sistema**
-- Utilize o `Sol.NET_PDV_Instalador` para obter a pasta padrão do Sol.NET_PDV.
-- Copie os executaveis `SolNET_SyncPDV.exe`, `SolNET_PDV_Inicializar.exe`, `SolNET_SyncAuxPDV.exe` e `SolNET_SelfCheckout.exe` para pasta raiz da instalçao.
+> 💡 A configuração do servidor (vínculo do PDV ao Self Checkout) é feita mais à frente, no **Passo 4**, depois das configurações de ambiente.
 ---
 
-### Passo 3: Configurações de ambiente
-#### Passo 3.1: Instalação das DLLs Skia
+### Passo 3: Configurações de ambiente {#passo-3-ambiente}
+#### Passo 3.1: Instalação das DLLs Skia {#passo-3-1-dlls-skia}
 
 As bibliotecas Skia são essenciais para renderização gráfica de alta qualidade da interface do Self Checkout.
 
@@ -74,7 +75,7 @@ As bibliotecas Skia são essenciais para renderização gráfica de alta qualida
 - Execute o aplicativo Self Checkout temporariamente
 - Se ao abrir a aplicação, for acusado `runtime error`, a arquitetura da dll pode estar invertida, ou o arquivo pode estar corrompido. Tente copiar e colar novamente.
 
-#### Passo 3.2: Instalação das Fontes Poppins
+#### Passo 3.2: Instalação das Fontes Poppins {#passo-3-2-fontes-poppins}
 
 A fonte Poppins é utilizada para garantir uma interface moderna e de fácil leitura no Self Checkout.
 
@@ -110,11 +111,11 @@ A fonte Poppins é utilizada para garantir uma interface moderna e de fácil lei
    - Poppins Black
 4. **Reinicie o aplicativo Self Checkout** se já estiver em execução
 
-#### Passo 3.3 Configuração do ambiente de pagamento
+#### Passo 3.3 Configuração do ambiente de pagamento {#passo-3-3-tef}
 
 💳 Realize os passos de configuração de acordo com o Modelo TEF (CliSitef, Destaxa)
 
-#### Passo 3.4: Configuração da Balança R7
+#### Passo 3.4: Configuração da Balança R7 {#passo-3-4-balanca}
 
 A balança é essencial para pesagem de produtos no Self Checkout.
 
@@ -189,7 +190,7 @@ A balança é essencial para pesagem de produtos no Self Checkout.
 
 ---
 
-### Passo 4: Configurações no Self Checkout
+### Passo 4: Configurações no Self Checkout {#passo-4-servidor}
 
 Ao abrir o Self Checkout pela primeira vez (ou quando não configurado), você será direcionado para a tela de **Configuração do Servidor**.
 
@@ -211,7 +212,7 @@ O preenchimento deste campo indica sucesso no vínculo. Isso impede que um mesmo
 ---
 
 
-### Passo 5: Configuração de Dispositivos no Self Checkout
+### Passo 5: Configuração de Dispositivos no Self Checkout {#passo-5-dispositivos}
 
 Após a configuração inicial do servidor e das configurações padrão no Sol.NET, é necessário configurar os **dispositivos periféricos** no próprio Self Checkout.
 
@@ -332,11 +333,11 @@ Antes de colocar o Self Checkout em produção, realize testes completos:
    - Acesse Configuração de Dispositivos → Balança
    - Confirme porta COM
 
-3. **Teste o cabo**:
+4. **Teste o cabo**:
    - Verifique se o cabo serial está bem conectado
    - Teste com outro cabo se disponível
 
-4. **Drivers do adaptador USB-Serial**:
+5. **Drivers do adaptador USB-Serial**:
    - Se usar adaptador, reinstale os drivers
    - Alguns adaptadores podem não ser compatíveis
 
@@ -433,7 +434,7 @@ Use este checklist para garantir que todos os passos foram concluídos:
 
 ---
 
-**📅 Última atualização**: Fevereiro de 2026  
-**📦 Versão**: 1.0  
+**📅 Última atualização**: Maio de 2026  
+**📦 Versão**: 1.1  
 **🎯 Público-alvo**: Equipe de suporte e técnicos de implantação  
 **👨‍💻 Elaborado por**: Equipe Hetosoft - Documentação Sol.NET

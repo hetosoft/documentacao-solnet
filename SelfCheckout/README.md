@@ -63,17 +63,17 @@ Respostas para dúvidas comuns organizadas por categoria:
 ## 🔍 Busca Rápida por Tópico
 
 ### **Instalação**
-- [Pré-requisitos do Sistema](documentacao_instalacao.md#-pré-requisitos-do-sistema)
-- [Instalação das DLLs Skia](documentacao_instalacao.md#passo-1-instalação-das-dlls-skia)
-- [Instalação das Fontes Poppins](documentacao_instalacao.md#passo-2-instalação-das-fontes-poppins)
+- [Instalação dos executáveis do Self Checkout](documentacao_instalacao.md#passo-2-executaveis)
+- [Instalação das DLLs Skia](documentacao_instalacao.md#passo-3-1-dlls-skia)
+- [Instalação das Fontes Poppins](documentacao_instalacao.md#passo-3-2-fontes-poppins)
 - [Checklist Final](documentacao_instalacao.md#-checklist-final-de-instalação)
 
 ### **Configuração**
-- [Configuração da Balança Toledo](documentacao_instalacao.md#passo-3-configuração-da-balança-toledo-prix-r7)
-- [Configuração Inicial do Servidor](documentacao_instalacao.md#passo-4-configuração-inicial-do-self-checkout)
-- [Configurações Padrão no Sol.NET](documentacao_instalacao.md#passo-5-configuração-no-solnet---cadastro-de-empresas)
-- [Configuração de Dispositivos](documentacao_instalacao.md#passo-6-configuração-de-dispositivos-no-self-checkout)
-- [Teste de Comunicação](documentacao_instalacao.md#-validação)
+- [Configurações Padrão no Sol.NET — tela `Empresas`](documentacao_instalacao.md#passo-1-empresas)
+- [Configuração do ambiente de pagamento (TEF)](documentacao_instalacao.md#passo-3-3-tef)
+- [Configuração da Balança R7](documentacao_instalacao.md#passo-3-4-balanca)
+- [Configuração do Servidor (primeiro acesso)](documentacao_instalacao.md#passo-4-servidor)
+- [Configuração de Dispositivos no Self Checkout](documentacao_instalacao.md#passo-5-dispositivos)
 
 ### **Problemas**
 - [DLLs Skia não encontradas](documentacao_instalacao.md#-problema-dlls-skia-não-encontradas)
@@ -229,7 +229,7 @@ Todos os arquivos necessários para instalação:
 
 ---
 
-**📅 Última atualização**: Fevereiro de 2026  
-**📦 Versão**: 1.0  
+**📅 Última atualização**: Maio de 2026  
+**📦 Versão**: 1.1  
 **🎯 Público-alvo**: Equipe de suporte e técnicos de implantação  
 **👨‍💻 Elaborado por**: Equipe Hetosoft - Documentação Sol.NET

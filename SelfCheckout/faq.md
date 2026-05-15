@@ -23,9 +23,9 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 - Diretório onde o executável do Self Checkout está localizado
 - Use o local de instalação do sistema
 
-**Importante**: As DLLs devem estar na mesma pasta que o arquivo `.exe` do Self Checkout.
+**Importante**: As DLLs devem estar na mesma pasta que o arquivo `.exe` do Self Checkout. O arquivo principal é `sk4d.dll` (com versão 32 ou 64 bits, conforme o executável).
 
-**Referência:** [Instalação das DLLs Skia](documentacao_instalacao.md#passo-1-instalação-das-dlls-skia)
+**Referência:** [Instalação das DLLs Skia](documentacao_instalacao.md#passo-3-1-dlls-skia)
 
 ---
 
@@ -40,7 +40,7 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 **IMPORTANTE:** Sempre instale "para todos os usuários" para que o Self Checkout possa acessar as fontes.
 
-**Referência:** [Instalação das Fontes Poppins](documentacao_instalacao.md#passo-2-instalação-das-fontes-poppins)
+**Referência:** [Instalação das Fontes Poppins](documentacao_instalacao.md#passo-3-2-fontes-poppins)
 
 ---
 
@@ -52,7 +52,7 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 **CRÍTICO:** Esta é a configuração mais importante da balança.
 
-**Referência:** [Configuração da Balança](documentacao_instalacao.md#passo-3-configuração-da-balança-toledo-prix-r7)
+**Referência:** [Configuração da Balança R7](documentacao_instalacao.md#passo-3-4-balanca)
 
 ---
 
@@ -67,21 +67,21 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 ## 🐛 Problemas com DLLs e Fontes
 
-### P: Aparece erro "SkiaSharp.dll não encontrada" ao iniciar
+### P: Aparece "runtime error" ao iniciar (falha de carregamento da DLL `sk4d.dll`)
 
 **R:** Causas e soluções:
 
-1. **DLLs não estão no lugar correto**
-   - Verifique se as DLLs estão no mesmo diretório do executável
+1. **DLL não está no lugar correto**
+   - Verifique se a `sk4d.dll` está no mesmo diretório do executável do Self Checkout
    - Use o local de instalação do sistema
 
-2. **DLLs de arquitetura incorreta**
-   - Use a versão 64 bits das DLLs para Windows 64 bits
-   - Baixe novamente o pacote correto
+2. **DLL de arquitetura incorreta**
+   - Use a versão 64 bits da DLL para executável 64 bits (e 32 bits para 32 bits)
+   - Baixe novamente o pacote correto se estiver em dúvida
 
 3. **Permissões insuficientes**
    - Execute o Self Checkout como Administrador
-   - Verifique permissões de leitura/execução nas DLLs
+   - Verifique permissões de leitura/execução na DLL
 
 **Referência:** [Problema: DLLs Skia não encontradas](documentacao_instalacao.md#-problema-dlls-skia-não-encontradas)
 
@@ -191,8 +191,8 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 **Vendas:**
 - Cada venda finalizada é registrada como movimento no Sol.NET
-- Tipo de movimento configurável no Cadastro de Empresas
-- Série fiscal configurável no Cadastro de Empresas
+- Tipo de movimento configurável na tela `Empresas` (código `1`)
+- Série fiscal configurável na tela `Empresas` (código `1`)
 
 **Estoque:**
 - Atualização automática ao finalizar venda
@@ -280,7 +280,7 @@ Este documento responde às dúvidas mais comuns sobre instalação, configuraç
 
 ---
 
-**📅 Última atualização**: Fevereiro de 2026  
-**📦 Versão**: 1.0  
+**📅 Última atualização**: Maio de 2026  
+**📦 Versão**: 1.1  
 **🎯 Público-alvo**: Equipe de suporte técnico  
 **💬 Contribuições**: Documente novos problemas e soluções para atualização contínua

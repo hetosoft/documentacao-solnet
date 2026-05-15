@@ -472,9 +472,16 @@
             <summary class="sn-sidebar__group-summary">🏛️ Fiscal</summary>
             <ul class="sn-sidebar__items">
               <li><a href="{{ '/Fiscal/' | relative_url }}">Visão geral</a></li>
-              <li><a href="{{ '/Fiscal/documentacao_reforma_tributaria/' | relative_url }}">Reforma Tributária — Documentação</a></li>
-              <li><a href="{{ '/Fiscal/guia_rapido_reforma_tributaria/' | relative_url }}">Reforma Tributária — Guia Rápido</a></li>
-              <li><a href="{{ '/Fiscal/faq_reforma_tributaria/' | relative_url }}">Reforma Tributária — FAQ</a></li>
+              <li class="sn-sidebar__subgroup-item">
+                <details class="sn-sidebar__subgroup" data-sn-subgroup="reforma-tributaria">
+                  <summary class="sn-sidebar__subgroup-summary">Reforma Tributária</summary>
+                  <ul class="sn-sidebar__subitems">
+                    <li><a href="{{ '/Fiscal/documentacao_reforma_tributaria/' | relative_url }}">Documentação</a></li>
+                    <li><a href="{{ '/Fiscal/guia_rapido_reforma_tributaria/' | relative_url }}">Guia Rápido</a></li>
+                    <li><a href="{{ '/Fiscal/faq_reforma_tributaria/' | relative_url }}">FAQ</a></li>
+                  </ul>
+                </details>
+              </li>
               <li class="sn-sidebar__subgroup-item">
                 <details class="sn-sidebar__subgroup" data-sn-subgroup="manifestacao-destinatario">
                   <summary class="sn-sidebar__subgroup-summary">Manifestação do Destinatário</summary>
@@ -534,6 +541,7 @@
                     <li><a href="{{ '/Movimentacao/documentacao_locais_de_estoque/' | relative_url }}">Locais de Estoque</a></li>
                     <li><a href="{{ '/Movimentacao/documentacao_transacoes_de_estoque/' | relative_url }}">Transações de Estoque</a></li>
                     <li><a href="{{ '/Movimentacao/documentacao_saldo_estoque/' | relative_url }}">Saldo Estoque</a></li>
+                    <li><a href="{{ '/Movimentacao/documentacao_ajuste_de_estoque/' | relative_url }}">Ajuste de Estoque</a></li>
                   </ul>
                 </details>
               </li>
@@ -547,11 +555,24 @@
                   </ul>
                 </details>
               </li>
-              <li><a href="{{ '/Movimentacao/documentacao_tabela_de_preco/' | relative_url }}">Tabela de Preço</a></li>
-              <li><a href="{{ '/Movimentacao/documentacao_regras_cashback/' | relative_url }}">Regras Cashback</a></li>
-              <li><a href="{{ '/Movimentacao/documentacao_ajuste_de_estoque/' | relative_url }}">Ajuste de Estoque</a></li>
-              <li><a href="{{ '/Movimentacao/documentacao_historico_de_movimentacoes/' | relative_url }}">Histórico de Movimentações</a></li>
-              <li><a href="{{ '/Movimentacao/documentacao_historico_de_produtos/' | relative_url }}">Histórico de Produtos</a></li>
+              <li>
+                <details class="sn-sidebar__subgroup" data-sn-subgroup="precos-promocoes">
+                  <summary class="sn-sidebar__subgroup-summary">Preços e Promoções</summary>
+                  <ul class="sn-sidebar__subitems">
+                    <li><a href="{{ '/Movimentacao/documentacao_tabela_de_preco/' | relative_url }}">Tabela de Preço</a></li>
+                    <li><a href="{{ '/Movimentacao/documentacao_regras_cashback/' | relative_url }}">Regras Cashback</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li>
+                <details class="sn-sidebar__subgroup" data-sn-subgroup="consultas">
+                  <summary class="sn-sidebar__subgroup-summary">Consultas</summary>
+                  <ul class="sn-sidebar__subitems">
+                    <li><a href="{{ '/Movimentacao/documentacao_historico_de_movimentacoes/' | relative_url }}">Histórico de Movimentações</a></li>
+                    <li><a href="{{ '/Movimentacao/documentacao_historico_de_produtos/' | relative_url }}">Histórico de Produtos</a></li>
+                  </ul>
+                </details>
+              </li>
             </ul>
           </details>
 
