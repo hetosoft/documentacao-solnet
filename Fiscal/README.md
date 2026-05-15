@@ -81,7 +81,21 @@ Checklist do dia a dia: ordem de preenchimento, mapa dos grupos da aba `Principa
 #### ❓ [Cadastro de NCM — FAQ](faq_ncm.md)
 Conceito, diferenças entre `21` e Tabela NCM `121`, regras de PIS/COFINS, comportamento de Tributação Federal vs. campos da aba, Reforma Tributária e tratamento de rejeições.
 
-> 🚧 **Em fila**: Região ICMS Saída (`93`), Região ICMS ST Saída (`94`) e Natureza de Operação (`36`) completam este subgrupo — ainda em produção.
+#### 📖 [Região ICMS Saída — Documentação](documentacao_regiao_icms.md)
+Tela `93`: mapeamento contextual que liga **contexto da operação → Natureza de Operação aplicada**:
+- Cabeçalho com Tipo (PESSOA/PRODUTO), CSTs cobertos, Operação e vigência
+- Configurações (sub-CRUD) com filtros de loja, estado, regime, atividade, IE e tipo de item
+- Natureza de Operação como pivô; CFOP, CST, alíquotas e CBS/IBS exibidos a partir dela
+- Flags `Manter CST/CSOSN`, `Manter Base/Aliq.` e `Manter Red/Aliq. IBS/CBS` para sobrescrever o NCM
+- Vigência sempre aplicada; especificidade da linha decide o vencedor
+
+#### ⚡ [Região ICMS Saída — Guia Rápido](guia_rapido_regiao_icms.md)
+Checklist para cadastrar uma Região, anatomia da tela, comportamento dos curingas (`-1` / vazio), regras de coerência CFOP × Tipo × Localização e soluções para os erros recorrentes.
+
+#### ❓ [Região ICMS Saída — FAQ](faq_regiao_icms.md)
+Conceito, escolha entre múltiplas linhas, aplicação no movimento, override do NCM, validações e relação com Tipos de Movimento e Natureza de Operação.
+
+> 🚧 **Em fila**: Região ICMS ST Saída (`94`) e Natureza de Operação (`36`) completam este subgrupo.
 
 ---
 
@@ -101,5 +115,5 @@ Conceito, diferenças entre `21` e Tabela NCM `121`, regras de PIS/COFINS, compo
 ---
 
 **📅 Última atualização**: Maio de 2026  
-**📦 Versão**: 1.4  
+**📦 Versão**: 1.5  
 **🎯 Público-alvo**: Usuários, contadores, configuradores e equipe de suporte Sol.NET

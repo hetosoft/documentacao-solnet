@@ -37,6 +37,9 @@ Toda tela do Sol.NET é acessada pela pesquisa universal (atalho `F1`), digitand
 - [Cadastro de NCM — Documentação](https://hetosoft.github.io/documentacao-solnet/Fiscal/documentacao_ncm/): tela NCM (código 21) — regras tributárias por NCM (ICMS, ICMS-ST, FCP, PIS/COFINS, IPI, CBS/IBS).
 - [Cadastro de NCM — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Fiscal/guia_rapido_ncm/): checklist operacional do Cadastro de NCM.
 - [Cadastro de NCM — FAQ](https://hetosoft.github.io/documentacao-solnet/Fiscal/faq_ncm/): perguntas frequentes sobre o Cadastro de NCM e a Tabela NCM federal.
+- [Região ICMS Saída — Documentação](https://hetosoft.github.io/documentacao-solnet/Fiscal/documentacao_regiao_icms/): tela Região ICMS Saída (código 93) — mapeamento contextual que liga filtros da operação a uma Natureza de Operação, com flags de override sobre o NCM.
+- [Região ICMS Saída — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Fiscal/guia_rapido_regiao_icms/): checklist operacional, anatomia da tela e soluções rápidas para erros recorrentes.
+- [Região ICMS Saída — FAQ](https://hetosoft.github.io/documentacao-solnet/Fiscal/faq_regiao_icms/): conceito, escolha entre linhas, aplicação no movimento, override do NCM e relação com Tipos de Movimento e Natureza de Operação.
 
 ## Movimentação
 
