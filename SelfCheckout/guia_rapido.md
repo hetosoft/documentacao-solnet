@@ -36,9 +36,11 @@
 - [ ] Testar conexão
 - [ ] Confirmar que a carga de dados foi realizada
 
-### 🏢 5. Configuração Padrão - Sol.NET
+### 🏢 5. Configuração Padrão — Sol.NET
 
-**Acesso:** Cadastro de Empresas no Sol.NET
+**Acesso:** tela `Empresas` (código `1`) — abra pela pesquisa universal (`F1`).
+
+> ⚠️ **Acesso de suporte necessário:** alterações no `Cadastro de Empresas` requerem permissão de acesso de suporte. Entre em contato com o suporte Hetosoft antes de realizar qualquer modificação nesta tela.
 
 | Item | Configuração |
 |------|--------------|
@@ -85,10 +87,11 @@
 
 ## 🔥 Problemas Comuns - Soluções Imediatas
 
-### ❌ Erro: "SkiaSharp.dll não encontrada"
+### ❌ Erro: "runtime error" ao iniciar (DLL `sk4d.dll` não encontrada)
 **Solução:**
-- Verificar se DLLs estão no diretório do executável Self Checkout
-- Executar como Administrador
+- Verificar se a DLL `sk4d.dll` está no diretório do executável do Self Checkout.
+- Confirmar se a arquitetura (32 ou 64 bits) da DLL bate com a do executável.
+- Executar como Administrador.
 
 ### ❌ Fontes não aparecem
 **Solução:**
@@ -152,7 +155,7 @@ dir C:\Windows\Fonts\Poppins*
 
 ---
 
-**📅 Última atualização**: Fevereiro de 2026  
-**📦 Versão**: 1.0  
-**🎯 Público-alvo**: Técnicos de suporte  
+**📅 Última atualização**: Maio de 2026  
+**📦 Versão**: 1.1  
+**🎯 Público-alvo**: Técnicos de implantação e suporte  
 **⏱️ Tempo médio de instalação**: 30-45 minutos
