@@ -16,7 +16,7 @@ Use a **navegação à esquerda** ← para passear por módulos e submenus. No c
 | Módulo | O que você encontra aqui |
 |---|---|
 | 💰 [Financeiro](Financeiro/) | Caixa Geral, Pagar e Receber, Plano de Contas, Portadores, Bancos, Quitação. |
-| 🏛️ [Fiscal](Fiscal/) | Reforma Tributária (CBS/IBS) e Manifestação do Destinatário de NF-e/CT-e. |
+| 🏛️ [Fiscal](Fiscal/) | Reforma Tributária (CBS/IBS), Manifestação do Destinatário de NF-e/CT-e e Cadastros Fiscais (NCM, Região ICMS, Natureza de Operação). |
 | 📦 [Movimentação](Movimentacao/) | Compras, Vendas, Outros Movimentos, Importar XML, Estoque, Preços e Cashback. |
 | 👥 [RH](RH/) | Folha de Pagamento e processo mensal de fechamento. |
 | 📡 [API Externa](ApiExterna/) | Credenciais de parceiros, permissões por contexto, limites e IP whitelist. |

@@ -34,6 +34,9 @@ Toda tela do Sol.NET é acessada pela pesquisa universal (atalho `F1`), digitand
 - [Manifestação do Destinatário — Documentação](https://hetosoft.github.io/documentacao-solnet/Fiscal/documentacao_manifestacao_destinatario/): referência completa da Manifestação do Destinatário (tela 401).
 - [Manifestação do Destinatário — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Fiscal/guia_rapido_manifestacao_destinatario/): cheat-sheet operacional da Manifestação.
 - [Manifestação do Destinatário — FAQ](https://hetosoft.github.io/documentacao-solnet/Fiscal/faq_manifestacao_destinatario/): perguntas frequentes sobre Manifestação.
+- [Cadastro de NCM — Documentação](https://hetosoft.github.io/documentacao-solnet/Fiscal/documentacao_ncm/): tela NCM (código 21) — regras tributárias por NCM (ICMS, ICMS-ST, FCP, PIS/COFINS, IPI, CBS/IBS).
+- [Cadastro de NCM — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Fiscal/guia_rapido_ncm/): checklist operacional do Cadastro de NCM.
+- [Cadastro de NCM — FAQ](https://hetosoft.github.io/documentacao-solnet/Fiscal/faq_ncm/): perguntas frequentes sobre o Cadastro de NCM e a Tabela NCM federal.
 
 ## Movimentação
 

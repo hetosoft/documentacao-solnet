@@ -64,6 +64,27 @@ Perguntas comuns sobre conceitos, operação, NSU e vínculo com a Movimentaçã
 
 ---
 
+### 🗂️ Cadastros Fiscais
+
+Cadastros de configuração tributária que sustentam a emissão de documentos fiscais. Cada NCM, região e natureza de operação determina **como o sistema deve tributar** cada movimento.
+
+#### 📖 [Cadastro de NCM — Documentação](documentacao_ncm.md)
+Tela `21`: regra tributária associada ao código NCM, com cobertura para os três blocos de impostos:
+- ICMS, ICMS-ST e FCP — aba `Principal`
+- Tributação Federal — PIS, COFINS e IPI
+- Reforma Tributária — CBS e IBS na aba `IVA`
+- Atualização via Tabela NCM (`121`) federal
+
+#### ⚡ [Cadastro de NCM — Guia Rápido](guia_rapido_ncm.md)
+Checklist do dia a dia: ordem de preenchimento, mapa dos grupos da aba `Principal` e da aba `IVA`, e soluções rápidas para os erros mais comuns (rejeição da SEFAZ, EX, descrição não autocompletada).
+
+#### ❓ [Cadastro de NCM — FAQ](faq_ncm.md)
+Conceito, diferenças entre `21` e Tabela NCM `121`, regras de PIS/COFINS, comportamento de Tributação Federal vs. campos da aba, Reforma Tributária e tratamento de rejeições.
+
+> 🚧 **Em fila**: Região ICMS Saída (`93`), Região ICMS ST Saída (`94`) e Natureza de Operação (`36`) completam este subgrupo — ainda em produção.
+
+---
+
 ## 🎯 Por Onde Começar
 
 - **👤 Primeira leitura** — abra a [Documentação da Reforma Tributária](documentacao_reforma_tributaria.md) para entender o cronograma fiscal e depois passe pela [Documentação da Manifestação](documentacao_manifestacao_destinatario.md) para o fluxo de NF-e e CT-e da SEFAZ. O lançamento subsequente em entrada está em [Movimentação — Importar XML](../Movimentacao/documentacao_importar_xml.md).
@@ -80,5 +101,5 @@ Perguntas comuns sobre conceitos, operação, NSU e vínculo com a Movimentaçã
 ---
 
 **📅 Última atualização**: Maio de 2026  
-**📦 Versão**: 1.3  
+**📦 Versão**: 1.4  
 **🎯 Público-alvo**: Usuários, contadores, configuradores e equipe de suporte Sol.NET
