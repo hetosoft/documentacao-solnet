@@ -47,6 +47,13 @@ Toda tela do Sol.NET é acessada pela pesquisa universal (atalho `F1`), digitand
 - [Região ICMS ST Saída — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Fiscal/guia_rapido_regiao_icms_st_saida/): checklist de cadastro, anatomia da tela, formato das listas de lojas e estados, operações do detalhe e erros recorrentes.
 - [Região ICMS ST Saída — FAQ](https://hetosoft.github.io/documentacao-solnet/Fiscal/faq_regiao_icms_st_saida/): diferença para a 93, escolha entre Tipo PRODUTO e PESSOA, papel do Usar MVA NCM, quando usar Industria MT e desbloqueio de exclusão.
 
+## Produtos
+
+- [Visão geral do módulo Produtos](https://hetosoft.github.io/documentacao-solnet/Produtos/): índice da seção.
+- [Cadastro de Produtos — Documentação](https://hetosoft.github.io/documentacao-solnet/Produtos/documentacao_produtos/): referência completa da tela Produtos (código 32) — identificação, classificação, preços (8 colunas), custos, tributação (NCM, ICMS, CBS/IBS), balança, medicamento, formulado agronômico, validações principais.
+- [Cadastro de Produtos — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Produtos/guia_rapido/): checklist do cadastro completo (aba a aba) e atalhos do dia a dia.
+- [Cadastro de Produtos — FAQ](https://hetosoft.github.io/documentacao-solnet/Produtos/faq/): perguntas frequentes — código/descrição duplicada, moeda × preço, NCM, balança, medicamento, agro, e-commerce, grade e linkado.
+
 ## Movimentação
 
 - [Visão geral do módulo Movimentação](https://hetosoft.github.io/documentacao-solnet/Movimentacao/): índice da seção.

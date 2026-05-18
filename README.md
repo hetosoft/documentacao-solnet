@@ -17,6 +17,7 @@ Use a **navegação à esquerda** ← para passear por módulos e submenus. No c
 |---|---|
 | 💰 [Financeiro](Financeiro/) | Caixa Geral, Pagar e Receber, Plano de Contas, Portadores, Bancos, Quitação. |
 | 🏛️ [Fiscal](Fiscal/) | Reforma Tributária (CBS/IBS), Manifestação do Destinatário de NF-e/CT-e e Cadastros Fiscais (NCM, Região ICMS, Natureza de Operação). |
+| 🏷️ [Produtos](Produtos/) | Cadastro completo de Produtos — identificação, preços, custos, tributação, balança, medicamento, formulado agronômico. |
 | 📦 [Movimentação](Movimentacao/) | Compras, Vendas, Outros Movimentos, Importar XML, Estoque, Preços e Cashback. |
 | 👥 [RH](RH/) | Folha de Pagamento e processo mensal de fechamento. |
 | 📡 [API Externa](ApiExterna/) | Credenciais de parceiros, permissões por contexto, limites e IP whitelist. |
@@ -61,4 +62,4 @@ Toda página de documentação referencia as telas pelo **nome + código** (ex.:
 
 ---
 
-<p align="center"><sub>📅 Última atualização: Maio de 2026 · 📦 Versão 3.3 · 👥 Hetosoft — Sol.NET ERP</sub></p>
+<p align="center"><sub>📅 Última atualização: Maio de 2026 · 📦 Versão 4.0 · 👥 Hetosoft — Sol.NET ERP</sub></p>
