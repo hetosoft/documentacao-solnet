@@ -43,6 +43,9 @@ Toda tela do Sol.NET é acessada pela pesquisa universal (atalho `F1`), digitand
 - [Natureza de Operação — Documentação](https://hetosoft.github.io/documentacao-solnet/Fiscal/documentacao_natureza_operacao/): tela Natureza de Operação (código 36) — cadastro central com CFOP, ICMS, PIS/COFINS, CBS/IBS, mapeamento de CFOP para importação de XML e flags de override sobre Região ICMS.
 - [Natureza de Operação — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Fiscal/guia_rapido_natureza_operacao/): checklists para Saída e Entrada, autocomplete do CFOP e soluções rápidas para erros recorrentes.
 - [Natureza de Operação — FAQ](https://hetosoft.github.io/documentacao-solnet/Fiscal/faq_natureza_operacao/): conceito, autocomplete, regras fiscais, flags Manter, Importar XML e aplicação no movimento.
+- [Região ICMS ST Saída — Documentação](https://hetosoft.github.io/documentacao-solnet/Fiscal/documentacao_regiao_icms_st_saida/): tela Região ICMS ST Saída (código 94) — percentuais diretos de Base, MVA e alíquota de ICMS-ST por contexto, vínculo por Produto ou Pessoa, `Usar MVA NCM` e modo `Industria MT`.
+- [Região ICMS ST Saída — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Fiscal/guia_rapido_regiao_icms_st_saida/): checklist de cadastro, anatomia da tela, formato das listas de lojas e estados, operações do detalhe e erros recorrentes.
+- [Região ICMS ST Saída — FAQ](https://hetosoft.github.io/documentacao-solnet/Fiscal/faq_regiao_icms_st_saida/): diferença para a 93, escolha entre Tipo PRODUTO e PESSOA, papel do Usar MVA NCM, quando usar Industria MT e desbloqueio de exclusão.
 
 ## Movimentação
 
