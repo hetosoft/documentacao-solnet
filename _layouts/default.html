@@ -203,6 +203,57 @@
         color: var(--sn-sidebar-accent);
       }
 
+      /* ---------- Sub-sub-grupo (3º nível, ex.: cadastro dentro de Cadastros Fiscais) ---------- */
+      .sn-sidebar__subgroup2 { margin: 0; }
+      .sn-sidebar__subgroup2-summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 6px 20px 6px 52px;
+        color: var(--sn-sidebar-text);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        user-select: none;
+        font-size: 13px;
+        line-height: 1.35;
+      }
+      .sn-sidebar__subgroup2-summary::-webkit-details-marker { display: none; }
+      .sn-sidebar__subgroup2-summary::before {
+        content: "▸";
+        font-size: 9px;
+        color: var(--sn-sidebar-muted);
+        transition: transform 0.15s ease;
+        display: inline-block;
+        width: 9px;
+      }
+      .sn-sidebar__subgroup2[open] > .sn-sidebar__subgroup2-summary::before {
+        transform: rotate(90deg);
+      }
+      .sn-sidebar__subgroup2-summary:hover { background: var(--sn-sidebar-hover-bg); }
+      .sn-sidebar__subitems2 {
+        list-style: none;
+        margin: 0;
+        padding: 2px 0 4px;
+      }
+      .sn-sidebar__subitems2 li { margin: 0; }
+      .sn-sidebar__subitems2 a {
+        display: block;
+        padding: 4px 20px 4px 76px;
+        text-decoration: none;
+        color: var(--sn-sidebar-text);
+        border-left: 3px solid transparent;
+        line-height: 1.35;
+        font-size: 13px;
+      }
+      .sn-sidebar__subitems2 a:hover { background: var(--sn-sidebar-hover-bg); }
+      .sn-sidebar__subitems2 a.is-active {
+        background: var(--sn-sidebar-active-bg);
+        border-left-color: var(--sn-sidebar-accent);
+        font-weight: 600;
+        color: var(--sn-sidebar-accent);
+      }
+
       .sn-sidebar__footer {
         padding: 12px 20px 20px;
         font-size: 11px;
@@ -496,15 +547,46 @@
                 <details class="sn-sidebar__subgroup" data-sn-subgroup="cadastros-fiscais">
                   <summary class="sn-sidebar__subgroup-summary">Cadastros Fiscais</summary>
                   <ul class="sn-sidebar__subitems">
-                    <li><a href="{{ '/Fiscal/documentacao_ncm/' | relative_url }}">NCM — Documentação</a></li>
-                    <li><a href="{{ '/Fiscal/guia_rapido_ncm/' | relative_url }}">NCM — Guia Rápido</a></li>
-                    <li><a href="{{ '/Fiscal/faq_ncm/' | relative_url }}">NCM — FAQ</a></li>
-                    <li><a href="{{ '/Fiscal/documentacao_regiao_icms/' | relative_url }}">Região ICMS Saída — Documentação</a></li>
-                    <li><a href="{{ '/Fiscal/guia_rapido_regiao_icms/' | relative_url }}">Região ICMS Saída — Guia Rápido</a></li>
-                    <li><a href="{{ '/Fiscal/faq_regiao_icms/' | relative_url }}">Região ICMS Saída — FAQ</a></li>
-                    <li><a href="{{ '/Fiscal/documentacao_natureza_operacao/' | relative_url }}">Natureza de Operação — Documentação</a></li>
-                    <li><a href="{{ '/Fiscal/guia_rapido_natureza_operacao/' | relative_url }}">Natureza de Operação — Guia Rápido</a></li>
-                    <li><a href="{{ '/Fiscal/faq_natureza_operacao/' | relative_url }}">Natureza de Operação — FAQ</a></li>
+                    <li>
+                      <details class="sn-sidebar__subgroup2" data-sn-subgroup2="ncm">
+                        <summary class="sn-sidebar__subgroup2-summary">NCM</summary>
+                        <ul class="sn-sidebar__subitems2">
+                          <li><a href="{{ '/Fiscal/documentacao_ncm/' | relative_url }}">Documentação</a></li>
+                          <li><a href="{{ '/Fiscal/guia_rapido_ncm/' | relative_url }}">Guia Rápido</a></li>
+                          <li><a href="{{ '/Fiscal/faq_ncm/' | relative_url }}">FAQ</a></li>
+                        </ul>
+                      </details>
+                    </li>
+                    <li>
+                      <details class="sn-sidebar__subgroup2" data-sn-subgroup2="regiao-icms-saida">
+                        <summary class="sn-sidebar__subgroup2-summary">Região ICMS Saída</summary>
+                        <ul class="sn-sidebar__subitems2">
+                          <li><a href="{{ '/Fiscal/documentacao_regiao_icms/' | relative_url }}">Documentação</a></li>
+                          <li><a href="{{ '/Fiscal/guia_rapido_regiao_icms/' | relative_url }}">Guia Rápido</a></li>
+                          <li><a href="{{ '/Fiscal/faq_regiao_icms/' | relative_url }}">FAQ</a></li>
+                        </ul>
+                      </details>
+                    </li>
+                    <li>
+                      <details class="sn-sidebar__subgroup2" data-sn-subgroup2="regiao-icms-st-saida">
+                        <summary class="sn-sidebar__subgroup2-summary">Região ICMS ST Saída</summary>
+                        <ul class="sn-sidebar__subitems2">
+                          <li><a href="{{ '/Fiscal/documentacao_regiao_icms_st_saida/' | relative_url }}">Documentação</a></li>
+                          <li><a href="{{ '/Fiscal/guia_rapido_regiao_icms_st_saida/' | relative_url }}">Guia Rápido</a></li>
+                          <li><a href="{{ '/Fiscal/faq_regiao_icms_st_saida/' | relative_url }}">FAQ</a></li>
+                        </ul>
+                      </details>
+                    </li>
+                    <li>
+                      <details class="sn-sidebar__subgroup2" data-sn-subgroup2="natureza-operacao">
+                        <summary class="sn-sidebar__subgroup2-summary">Natureza de Operação</summary>
+                        <ul class="sn-sidebar__subitems2">
+                          <li><a href="{{ '/Fiscal/documentacao_natureza_operacao/' | relative_url }}">Documentação</a></li>
+                          <li><a href="{{ '/Fiscal/guia_rapido_natureza_operacao/' | relative_url }}">Guia Rápido</a></li>
+                          <li><a href="{{ '/Fiscal/faq_natureza_operacao/' | relative_url }}">FAQ</a></li>
+                        </ul>
+                      </details>
+                    </li>
                   </ul>
                 </details>
               </li>
@@ -702,7 +784,7 @@
         var activeLink = null;
         var bestLength = -1;
 
-        var links = sidebar.querySelectorAll('.sn-sidebar__items a, .sn-sidebar__subitems a, .sn-sidebar__home');
+        var links = sidebar.querySelectorAll('.sn-sidebar__items a, .sn-sidebar__subitems a, .sn-sidebar__subitems2 a, .sn-sidebar__home');
         links.forEach(function (a) {
           var hrefPath;
           try { hrefPath = new URL(a.href, window.location.href).pathname; }

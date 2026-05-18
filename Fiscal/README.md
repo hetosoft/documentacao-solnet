@@ -110,7 +110,18 @@ Checklists separados para Naturezas de Saída e de Entrada, anatomia das abas (I
 #### ❓ [Natureza de Operação — FAQ](faq_natureza_operacao.md)
 Conceito, autocomplete do CFOP, regras fiscais, flags Manter, Importar XML, Reforma Tributária e como a Natureza chega ao item do movimento.
 
-> 🚧 **Em fila**: Região ICMS ST Saída (`94`) fecha este subgrupo.
+#### 📖 [Região ICMS ST Saída — Documentação](documentacao_regiao_icms_st_saida.md)
+Tela `94`: regras de cálculo do ICMS por Substituição Tributária. Trabalha com:
+- Percentuais diretos de **B.C. ICMS ST**, **MVA** e **alíquota ICMS-ST** por contexto
+- Vínculo por **Produto** ou por **Pessoa**, com bloqueio de exclusão quando há produtos vinculados
+- Flag `Usar MVA NCM` para puxar a margem direto do NCM do item
+- Modo de cálculo `Industria MT` para o regime de indústrias de Mato Grosso
+
+#### ⚡ [Região ICMS ST Saída — Guia Rápido](guia_rapido_regiao_icms_st_saida.md)
+Checklist para cadastrar uma Região ICMS-ST, anatomia da tela, formato das listas de lojas/estados, operações do detalhe e erros mais comuns.
+
+#### ❓ [Região ICMS ST Saída — FAQ](faq_regiao_icms_st_saida.md)
+Diferença para a `93`, escolha entre Tipo `PRODUTO` × `PESSOA`, papel do `Usar MVA NCM`, quando usar `Industria MT` e como destravar a exclusão quando há produtos vinculados.
 
 ---
 
@@ -130,5 +141,5 @@ Conceito, autocomplete do CFOP, regras fiscais, flags Manter, Importar XML, Refo
 ---
 
 **📅 Última atualização**: Maio de 2026  
-**📦 Versão**: 1.6  
+**📦 Versão**: 1.7  
 **🎯 Público-alvo**: Usuários, contadores, configuradores e equipe de suporte Sol.NET
