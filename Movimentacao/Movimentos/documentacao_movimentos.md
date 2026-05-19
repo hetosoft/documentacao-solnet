@@ -144,7 +144,7 @@ Aciona a transmissão fiscal do documento eletrônico. O sistema gera o XML, ass
 
 ### Estornar (botão **Estornar** / `F11`)
 
-Reverte completamente o efeito do movimento — devolve saldo ao estoque, cancela financeiro, cancela documento fiscal (quando permitido pela SEFAZ). A reversão é registrada e gera trilha de auditoria visível em `Histórico de Movimentações` (código `205`).
+Reverte completamente o efeito do movimento — devolve saldo ao estoque, cancela financeiro, cancela documento fiscal (quando permitido pela SEFAZ). O movimento estornado aparece nos relatórios de movimentação como estornado/cancelado, e pode ser filtrado por `Status` em `Histórico de Movimentações` (código `205`).
 
 ---
 
@@ -233,8 +233,8 @@ A `Transação de Estoque` amarrada ao Tipo não está configurada para subtrair
 **O combo `Tipo de Movimento` não mostra o Tipo que preciso.**
 O Tipo está inativo, ou está com Comportamento incompatível com a tela aberta (Entrada → `201`, Saída → `202`, Outros → `203`), ou o usuário não tem permissão no grupo de acesso desse Tipo.
 
-**Onde vejo o histórico completo das alterações deste movimento?**
-Em [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) (código `205`) — todas as operações (gravação, edição, finalização, mudança, quitação, estorno, transmissão fiscal) ficam registradas com data, hora e usuário.
+**Onde vejo o histórico de alterações deste movimento (quem alterou, quando)?**
+O Sol.NET **não tem tela dedicada** a esse tipo de trilha de auditoria — a `Histórico de Movimentações` (código `205`) lista os movimentos e seus dados atuais, com filtros e totais (vendas, devoluções, comissões), mas não preserva quem alterou cada campo ao longo do tempo. Para reconstituir o que mudou, a alternativa prática é consultar a tela `205` para o estado atual e, em casos críticos, abrir chamado de suporte para investigação direta no banco.
 
 **Lancei na tela errada (compra na `202` em vez de `201`).**
 Não há como lançar na tela errada, na verdade — o filtro de Tipos por Comportamento impede. Se a sensação é que o Tipo deveria estar disponível em outra tela, é a **configuração do Tipo** em `37` que está com Comportamento divergente. Ajuste lá.
@@ -252,7 +252,7 @@ Mais perguntas e a referência completa de mensagens de erro em [FAQ](faq.md).
 | [Locais de Estoque](../documentacao_locais_de_estoque.md) | `28` | Identifica em qual armazém/loja o saldo afetado vive. Cabeçalho exige Local quando o Tipo movimenta estoque. |
 | [Tabela de Preço](../documentacao_tabela_de_preco.md) | `27` | Origem do `Preço` aplicado a cada item no Cabeçalho/Itens. |
 | [Saldo Estoque](../documentacao_saldo_estoque.md) | `78` | Visão consolidada do efeito dos movimentos nos saldos por Local/Situação. |
-| [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) | `205` | Trilha de auditoria do que aconteceu com cada movimento. |
+| [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) | `205` | Análise e totais de movimentos — por dia, mês, pessoa, tipo, portador, condição, vendedor, operador, tabela; cálculo de comissões. |
 | [Histórico de Produtos](../documentacao_historico_de_produtos.md) | `206` | Filtra por produto — vê quais movimentos afetaram cada item. |
 | [Ajuste de Estoque](../documentacao_ajuste_de_estoque.md) | `79` | Tela auxiliar que **dispara** movimentos visíveis em `203`. |
 | `Pedido de Compra` | `64` | Tela que **dispara** movimentos em `201` ao ser convertido em entrada. |
@@ -272,5 +272,5 @@ Mais perguntas e a referência completa de mensagens de erro em [FAQ](faq.md).
 ---
 
 **Última atualização**: Maio de 2026
-**Versão**: 5.0
+**Versão**: 5.1
 **Público-alvo**: Usuários operacionais (caixa, frente de loja, retaguarda) / Suporte
