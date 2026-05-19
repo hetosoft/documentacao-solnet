@@ -5,6 +5,19 @@ permalink: /Movimentacao/
 
 # 📚 Documentação do Módulo Movimentação — Sol.NET
 
+## 🛤️ Comece pelas trilhas
+
+Se sua demanda é **executar algo ponta a ponta** — em vez de aprender uma tela isolada — vá direto para uma das [Trilhas operacionais](Trilhas/):
+
+- [Entrada de NF-e completa](Trilhas/trilha_entrada_nfe.md) — Manifestação → Importar XML → Conferência → `201` → estoque + financeiro.
+- [Venda completa](Trilhas/trilha_venda_completa.md) — `202` → emissão fiscal → Quitação.
+- [Devolução de venda](Trilhas/trilha_devolucao_venda.md) — `203` com Tipo `Devolução de Venda` + referência à nota original.
+- [Ajuste de estoque com auditoria](Trilhas/trilha_ajuste_estoque_auditoria.md) — `79` → `203` → auditar em `206` / `78`.
+
+Quando uma mensagem aparecer e você não souber por onde começar a resolver, use o [Índice unificado de mensagens](indice_mensagens.md).
+
+---
+
 > 🚧 **Em reescrita.** O conteúdo anterior deste módulo foi descartado e está sendo refeito do zero, no mesmo padrão usado em [Financeiro](../Financeiro/) — uma página por tela, ancorada no código-fonte e em consultas ao banco. Novos documentos são listados aqui à medida que forem publicados. Dúvidas pontuais sobre telas ainda não cobertas podem ser respondidas pelo suporte Hetosoft.
 
 ---

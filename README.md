@@ -11,6 +11,18 @@ Use a **navegação à esquerda** ← para passear por módulos e submenus. No c
 
 ---
 
+## 🚪 Por onde começar
+
+| Você quer… | Vá para |
+|---|---|
+| 🧭 Entender **como o sistema pensa** antes de qualquer operação | [Visão geral do Sol.NET](visao_geral_sol_net.md) |
+| ❓ Resolver uma **tarefa específica** ("Quero saber o saldo", "Quero cancelar uma nota") | [Quero…](quero.md) |
+| 📖 Procurar o significado de um **termo** (NF-e, CFOP, Movimento, Tipo, Faturar…) | [Glossário](glossario.md) |
+| 📦 **Executar uma demanda do dia** de ponta a ponta (entrada de NF-e, venda completa, devolução, ajuste auditável) | [Trilhas operacionais de Movimentação](Movimentacao/Trilhas/) |
+| ⚠️ Entender uma **mensagem de erro** que apareceu | [Índice unificado de mensagens](Movimentacao/indice_mensagens.md) |
+
+---
+
 ## 🗺️ O ecossistema, num olhar
 
 | Módulo | O que você encontra aqui |
@@ -62,4 +74,4 @@ Toda página de documentação referencia as telas pelo **nome + código** (ex.:
 
 ---
 
-<p align="center"><sub>📅 Última atualização: Maio de 2026 · 📦 Versão 4.0 · 👥 Hetosoft — Sol.NET ERP</sub></p>
+<p align="center"><sub>📅 Última atualização: Maio de 2026 · 📦 Versão 4.1 · 👥 Hetosoft — Sol.NET ERP</sub></p>

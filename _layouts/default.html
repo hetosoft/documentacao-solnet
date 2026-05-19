@@ -498,6 +498,9 @@
 
         <nav class="sn-sidebar__nav">
           <a href="{{ '/' | relative_url }}" class="sn-sidebar__home{% if current == '/' or current == '/index.html' %} is-active{% endif %}">🏠 Início</a>
+          <a href="{{ '/visao-geral/' | relative_url }}" class="sn-sidebar__home">🧭 Visão geral do sistema</a>
+          <a href="{{ '/glossario/' | relative_url }}" class="sn-sidebar__home">📖 Glossário</a>
+          <a href="{{ '/quero/' | relative_url }}" class="sn-sidebar__home">❓ Quero…</a>
 
           <details class="sn-sidebar__group" data-sn-group="financeiro">
             <summary class="sn-sidebar__group-summary">💰 Financeiro</summary>
@@ -619,6 +622,19 @@
             <summary class="sn-sidebar__group-summary">📦 Movimentação</summary>
             <ul class="sn-sidebar__items">
               <li><a href="{{ '/Movimentacao/' | relative_url }}">Visão geral</a></li>
+              <li>
+                <details class="sn-sidebar__subgroup" data-sn-subgroup="trilhas">
+                  <summary class="sn-sidebar__subgroup-summary">🛤️ Trilhas operacionais</summary>
+                  <ul class="sn-sidebar__subitems">
+                    <li><a href="{{ '/Movimentacao/Trilhas/' | relative_url }}">Visão geral</a></li>
+                    <li><a href="{{ '/Movimentacao/Trilhas/trilha_entrada_nfe/' | relative_url }}">Entrada de NF-e completa</a></li>
+                    <li><a href="{{ '/Movimentacao/Trilhas/trilha_venda_completa/' | relative_url }}">Venda completa</a></li>
+                    <li><a href="{{ '/Movimentacao/Trilhas/trilha_devolucao_venda/' | relative_url }}">Devolução de venda</a></li>
+                    <li><a href="{{ '/Movimentacao/Trilhas/trilha_ajuste_estoque_auditoria/' | relative_url }}">Ajuste de estoque com auditoria</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li><a href="{{ '/Movimentacao/indice_mensagens/' | relative_url }}">Índice de mensagens</a></li>
               <li>
                 <details class="sn-sidebar__subgroup" data-sn-subgroup="movimentos">
                   <summary class="sn-sidebar__subgroup-summary">Movimentos</summary>

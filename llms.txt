@@ -7,6 +7,9 @@ Toda tela do Sol.NET é acessada pela pesquisa universal (atalho `F1`), digitand
 ## Portal
 
 - [Início](https://hetosoft.github.io/documentacao-solnet/): página inicial do portal, com o ecossistema de módulos.
+- [Visão geral do Sol.NET](https://hetosoft.github.io/documentacao-solnet/visao-geral/): modelo mental do sistema — eixo Movimento ↔ Tipo de Movimento ↔ Transação de Estoque ↔ Estoque/Financeiro/Fiscal, 3 dimensões de qualquer operação, mapa "Quero…" e 7 verbos do dia.
+- [Glossário](https://hetosoft.github.io/documentacao-solnet/glossario/): glossário central de termos do Sol.NET (NF-e, CT-e, NCM, CFOP, CST, NSU, Manifesto, Movimento, Tipo de Movimento, Transação, Faturar, Quitar, Estornar etc.) com âncoras para deep-link.
+- [Quero…](https://hetosoft.github.io/documentacao-solnet/quero/): índice de tarefas em primeira pessoa ("Quero saber quanto tenho", "Quero cancelar uma nota") que aponta para a tela ou trilha certa.
 
 ## Financeiro
 
@@ -62,6 +65,12 @@ Toda tela do Sol.NET é acessada pela pesquisa universal (atalho `F1`), digitand
 ## Movimentação
 
 - [Visão geral do módulo Movimentação](https://hetosoft.github.io/documentacao-solnet/Movimentacao/): índice da seção.
+- [Trilhas operacionais — visão geral](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Trilhas/): índice das trilhas narrativas que atravessam múltiplas telas para cobrir uma demanda real ponta a ponta.
+- [Trilha — Entrada de NF-e completa](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Trilhas/trilha_entrada_nfe/): manifestação → Importar XML → conferência → Movimentos de Compras (201) → estoque + título Pagar.
+- [Trilha — Venda completa](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Trilhas/trilha_venda_completa/): Movimentos de Vendas (202) → ciclo Orçamento/Pedido/Venda → emissão fiscal → Quitação.
+- [Trilha — Devolução de venda](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Trilhas/trilha_devolucao_venda/): Outros Movimentos (203) com Tipo Devolução de Venda, referência à nota original e padrão de duas etapas para cupom NFC-e.
+- [Trilha — Ajuste de estoque com auditoria](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Trilhas/trilha_ajuste_estoque_auditoria/): Ajuste de Estoque (79) → movimentos em 203 → auditoria em Histórico de Produtos (206) e Saldo Estoque (78).
+- [Índice unificado de mensagens](https://hetosoft.github.io/documentacao-solnet/Movimentacao/indice_mensagens/): tabela consolidada das mensagens de validação das telas 201/202/203, 37, 204 e 401, com causa provável e link para a FAQ detalhada.
 - [Movimentos — visão geral](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Movimentos/): índice dos documentos de Movimentos.
 - [Movimentos — referência](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Movimentos/documentacao_movimentos/): referência transversal de Movimentos (201/202/203).
 - [Movimentos de Compras](https://hetosoft.github.io/documentacao-solnet/Movimentacao/Movimentos/movimentos_de_compras/): tela Compras (código 201).
