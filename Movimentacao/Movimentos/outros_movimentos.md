@@ -97,10 +97,10 @@ Outras referências úteis:
 - [Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) (`37`) — onde os Tipos `Outros` são configurados.
 - [Ajuste de Estoque](../documentacao_ajuste_de_estoque.md) (`79`) — telas auxiliares que disparam movimentos aqui.
 - [Produção de Produtos](../Producao/documentacao_producao_de_produtos.md) (`144`) — idem.
-- [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) (`205`) — trilha de auditoria.
+- [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) (`205`) — análise e totais dos movimentos lançados aqui.
 
 ---
 
 **Última atualização**: Maio de 2026
-**Versão**: 5.0
+**Versão**: 5.1
 **Público-alvo**: Retaguarda de estoque / Logística / Suporte

@@ -74,10 +74,10 @@ Outras referências úteis:
 - [Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) (`37`) — onde os Tipos de Saída são configurados.
 - [Tabela de Preço](../documentacao_tabela_de_preco.md) (`27`) — origem do preço aplicado a cada item.
 - [Regras Cashback](../documentacao_regras_cashback.md) (`124`) — regras de cashback (uso/geração) configuradas por Tipo; movimentos do PDV chegam aqui com o cashback já aplicado.
-- [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) (`205`) — trilha de auditoria.
+- [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) (`205`) — análise e totais de vendas por período, vendedor, portador, condição, tabela; cálculo de comissões.
 
 ---
 
 **Última atualização**: Maio de 2026
-**Versão**: 5.0
+**Versão**: 5.1
 **Público-alvo**: Vendedores de balcão / Retaguarda comercial / Suporte

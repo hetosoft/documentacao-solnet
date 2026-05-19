@@ -49,9 +49,9 @@ Cada entrada mostra a pergunta em primeira pessoa, a resposta curta e onde ir.
 
 → Abra [Tabela de Preço](Movimentacao/documentacao_tabela_de_preco.md) (`27`). Veja qual Tabela está vinculada ao Tipo de Movimento que você usa (na tela `Tipos de Movimento`, código `37`) e ajuste lá.
 
-### Quero ver o que aconteceu numa data específica (movimentos do dia)
+### Quero ver os totais de vendas (por dia, vendedor, portador, condição)
 
-→ Abra [Histórico de Movimentações](Movimentacao/documentacao_historico_de_movimentacoes.md) (`205`) e filtre pelo período.
+→ Abra [Histórico de Movimentações](Movimentacao/documentacao_historico_de_movimentacoes.md) (`205`) e filtre pelo período. As sub-abas agregam por data, mês, pessoa, tipo, portador, condição de pagamento, vendedor, operador e tabela de preço; a aba `Comissão` calcula comissão sobre vendas e devoluções.
 
 ### Quero entender uma mensagem de erro que apareceu
 

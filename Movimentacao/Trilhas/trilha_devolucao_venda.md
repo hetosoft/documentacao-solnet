@@ -143,7 +143,7 @@ Use o padrão de **duas etapas** descrito acima. Atendente cria `PEDIDO DE DEVOL
 | [Movimentos — referência](../Movimentos/documentacao_movimentos.md) | Ciclo de vida, validações, sub-aba `Crédito - Gerado`. |
 | [Tipos de Movimento](../TiposDeMovimento/documentacao_tipos_de_movimento.md) (`37`) | Configuração `Devolução = Sim`, `Devolução Crédito`, `Referenciar Mov. Próprio`. |
 | [Tipos de Movimento — referência de configurações](../TiposDeMovimento/referencia_configuracoes_tipos_movimento.md) | Detalhe de cada flag mencionada acima. |
-| [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) (`205`) | Auditoria. |
+| [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) (`205`) | Análise e totais de devoluções por período, vendedor, cliente. |
 
 ---
 

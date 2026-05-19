@@ -104,9 +104,9 @@ Verifique nesta ordem:
 
 A `Transação de Estoque` amarrada ao Tipo não está configurada para subtrair as camadas certas (`Físico`, `Disponível`). Abra [Transações de Estoque](../documentacao_transacoes_de_estoque.md) (`33`), localize a Transação amarrada ao Tipo do movimento e confira os marcadores. Verifique também o `Local de Estoque` informado no Cabeçalho — o saldo é por Local, e às vezes o que parece "não baixou" é "baixou no Local errado".
 
-### Onde vejo o histórico completo de alterações deste movimento?
+### Onde vejo o histórico de alterações deste movimento (quem alterou, quando)?
 
-Em [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) (`205`) — toda gravação, edição, finalização, mudança de Tipo, quitação, transmissão fiscal e estorno fica registrada com data, hora e usuário.
+O Sol.NET **não tem tela dedicada** a esse tipo de trilha de auditoria. A tela [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) (`205`) lista os movimentos e seus dados atuais com filtros e totais (vendas, devoluções, comissões), mas não preserva o histórico de quem alterou cada campo ao longo do tempo. Para reconstituir alterações em casos críticos, abra chamado de suporte para investigação direta no banco.
 
 ### Como repor um movimento estornado?
 
@@ -148,5 +148,5 @@ Aparece quando o movimento foi origem de uma **Mudança Duplicar** (`F7` com o T
 ---
 
 **Última atualização**: Maio de 2026
-**Versão**: 5.0
+**Versão**: 5.1
 **Público-alvo**: Usuários operacionais / Equipe de Suporte / Consultores de Implantação Sol.NET

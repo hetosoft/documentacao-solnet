@@ -239,7 +239,7 @@ Operação que **liquida os títulos do contas a Pagar/Receber** ligados a um mo
 
 ### Estornar
 
-Operação que **reverte completamente o efeito de um movimento** — devolve saldo ao estoque, cancela financeiro e cancela documento fiscal (quando permitido pela SEFAZ). A reversão é registrada e gera trilha de auditoria visível em [Histórico de Movimentações](Movimentacao/documentacao_historico_de_movimentacoes.md) (`205`).
+Operação que **reverte completamente o efeito de um movimento** — devolve saldo ao estoque, cancela financeiro e cancela documento fiscal (quando permitido pela SEFAZ). O movimento estornado aparece nos relatórios de movimentação como estornado/cancelado.
 
 **Onde aparece:** [Movimentos — referência](Movimentacao/Movimentos/documentacao_movimentos.md) (seção `Estornar`).
 

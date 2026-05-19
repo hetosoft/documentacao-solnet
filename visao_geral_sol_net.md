@@ -89,7 +89,7 @@ Mapa rápido das telas mais usadas, organizadas pela tarefa do dia:
 | Ajustar saldo manualmente | [Ajuste de Estoque](Movimentacao/documentacao_ajuste_de_estoque.md) (`79`) — gera movimento visível em `203` |
 | Saber quanto tenho de um produto | [Saldo Estoque](Movimentacao/documentacao_saldo_estoque.md) (`78`) |
 | Entender por que o saldo está assim | [Histórico de Produtos](Movimentacao/documentacao_historico_de_produtos.md) (`206`) |
-| Auditar um movimento (quem alterou, quando) | [Histórico de Movimentações](Movimentacao/documentacao_historico_de_movimentacoes.md) (`205`) |
+| Ver totais e indicadores de vendas (por dia, vendedor, portador, condição, tabela) | [Histórico de Movimentações](Movimentacao/documentacao_historico_de_movimentacoes.md) (`205`) |
 | Lançar/quitar um título | [Pagar e Receber](Financeiro/documentacao_pagar_e_receber.md) (`301`) · [Quitação](Financeiro/documentacao_quitacao.md) (`303`) |
 | Operar caixa diário | [Caixa Geral — operação](Financeiro/documentacao_caixa_geral_op.md) (`302`) |
 | Configurar como um Tipo se comporta | [Tipos de Movimento](Movimentacao/TiposDeMovimento/documentacao_tipos_de_movimento.md) (`37`) |

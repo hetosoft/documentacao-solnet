@@ -168,7 +168,7 @@ Cliente pede uma cotação. Lance um Tipo `ORÇAMENTO` em `202` — não baixa e
 | [Tabela de Preço](../documentacao_tabela_de_preco.md) (`27`) | Origem do preço aplicado a cada item. |
 | [Pagar e Receber](../../Financeiro/documentacao_pagar_e_receber.md) (`301`) | Onde os títulos gerados ficam disponíveis. |
 | [Quitação](../../Financeiro/documentacao_quitacao.md) (`303`) | Quitação em lote / por agrupamento. |
-| [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) (`205`) | Auditoria do que aconteceu com cada movimento. |
+| [Histórico de Movimentações](../documentacao_historico_de_movimentacoes.md) (`205`) | Análise e totais de vendas — por dia, vendedor, portador, condição, tabela; cálculo de comissões. |
 
 ---
 
