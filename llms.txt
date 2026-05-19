@@ -53,6 +53,11 @@ Toda tela do Sol.NET é acessada pela pesquisa universal (atalho `F1`), digitand
 - [Cadastro de Produtos — Documentação](https://hetosoft.github.io/documentacao-solnet/Produtos/documentacao_produtos/): referência completa da tela Produtos (código 32) — identificação, classificação, preços (8 colunas), custos, tributação (NCM, ICMS, CBS/IBS), balança, medicamento, formulado agronômico, validações principais.
 - [Cadastro de Produtos — Guia Rápido](https://hetosoft.github.io/documentacao-solnet/Produtos/guia_rapido/): checklist do cadastro completo (aba a aba) e atalhos do dia a dia.
 - [Cadastro de Produtos — FAQ](https://hetosoft.github.io/documentacao-solnet/Produtos/faq/): perguntas frequentes — código/descrição duplicada, moeda × preço, NCM, balança, medicamento, agro, e-commerce, grade e linkado.
+- [Famílias de Produtos](https://hetosoft.github.io/documentacao-solnet/Produtos/documentacao_familias/): primeiro nível da hierarquia (código 24), com regras de margem mín/máx, comissão, desconto, arredondamento automático de preços e toggles de integração e-commerce/mobile da linha.
+- [Grupos de Produtos](https://hetosoft.github.io/documentacao-solnet/Produtos/documentacao_grupos/): segundo nível (código 25), filho obrigatório de uma Família, refina margem e política comercial e adiciona toggles para desativar envio e-commerce/mobile do Grupo.
+- [Sub Grupo de Produtos](https://hetosoft.github.io/documentacao-solnet/Produtos/documentacao_sub_grupos/): terceiro nível (código 26), filho obrigatório de um Grupo, com mesma estrutura de regras do Grupo e Família exibida como referência.
+- [Departamento de Produtos](https://hetosoft.github.io/documentacao-solnet/Produtos/documentacao_departamento/): classificação livre (código 104) paralela à hierarquia, geralmente usada para setor físico da loja ou área de negócio.
+- [Lista de Produtos](https://hetosoft.github.io/documentacao-solnet/Produtos/documentacao_lista_produtos/): rótulo livre (código 80) para classificação interna, também usado pelo Self-Checkout para identificar itens pesáveis.
 
 ## Movimentação
 

@@ -31,17 +31,33 @@ Perguntas comuns sobre código duplicado, inativação, preços, tributação, b
 
 ---
 
-## 🔗 Cadastros e telas relacionadas
+### 🧩 Cadastros auxiliares
+
+Telas de classificação que orbitam o `Cadastro de Produtos`. Cada uma documentada individualmente:
+
+#### 🌳 [Famílias de Produtos](documentacao_familias.md)
+Primeiro nível da hierarquia (código `24`). Centraliza margem, comissão, desconto, regra de arredondamento de preços e integrações e-commerce/mobile da linha.
+
+#### 📦 [Grupos de Produtos](documentacao_grupos.md)
+Segundo nível (código `25`), filho de uma Família. Refina margem e política comercial e adiciona toggles para desativar envio de e-commerce/mobile do Grupo.
+
+#### 🔖 [Sub Grupo de Produtos](documentacao_sub_grupos.md)
+Terceiro nível (código `26`), filho de um Grupo. Permite subdividir a categoria com regras próprias de margem, comissão e integração.
+
+#### 🏬 [Departamento de Produtos](documentacao_departamento.md)
+Classificação livre (código `104`) paralela à hierarquia. Geralmente usada para setor físico da loja (açougue, padaria, hortifrúti) ou área de negócio.
+
+#### 📋 [Lista de Produtos](documentacao_lista_produtos.md)
+Rótulo livre (código `80`) para classificação interna. Também é o vínculo usado pelo Self-Checkout para identificar itens pesáveis.
+
+---
+
+## 🔗 Outras telas relacionadas
 
 Todas abertas pela pesquisa universal (atalho `F1`).
 
 | Tela | Código | O que faz |
 |---|---|---|
-| Famílias de Produtos | `24` | Agrupamento amplo (primeiro nível hierárquico). |
-| Grupos de Produtos | `25` | Segundo nível de agrupamento. |
-| Sub Grupo de Produtos | `26` | Terceiro nível. |
-| Departamento de Produtos | `104` | Classificação por departamento da loja. |
-| Lista de Produtos | `80` | Listas auxiliares para classificação interna. |
 | Unificar Dados Produtos | `815` | Mescla cadastros duplicados. |
 | Histórico de Produtos | — | Movimentações de cada produto (módulo [Movimentação](../Movimentacao/documentacao_historico_de_produtos.md)). |
 | Fórmulas de Produtos | `143` | Composição para produção (módulo [Movimentação](../Movimentacao/Producao/)). |
@@ -50,7 +66,7 @@ Todas abertas pela pesquisa universal (atalho `F1`).
 | Região ICMS Saída | — | Tributação ICMS (módulo [Fiscal](../Fiscal/documentacao_regiao_icms.md)). |
 | Região ICMS-ST Saída | — | Tributação ICMS-ST (módulo [Fiscal](../Fiscal/documentacao_regiao_icms_st_saida.md)). |
 
-> Os códigos auxiliares (Famílias, Grupos, Subgrupos, Departamentos, Listas, Unificação) ainda não têm documentação dedicada — serão cobertos em revisões futuras deste módulo.
+> A tela `Unificar Dados Produtos` (código `815`) ainda não tem documentação dedicada — será coberta em revisão futura.
 
 ---
 
